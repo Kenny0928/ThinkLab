@@ -1,0 +1,104 @@
+{
+  "id": 171,
+  "title": "因數配對清單",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "tags": [
+    "基礎數論",
+    "餘數",
+    "枚舉"
+  ],
+  "audienceLevel": "M-8",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "用餘數判斷整除",
+    "避免交換順序與平方根造成重複配對"
+  ],
+  "prerequisites": [
+    "整除與餘數",
+    "迴圈",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>列出正整數的所有因數配對。</p><p>找出所有正整數 a、b，使 <code>a × b = N</code> 且 <code>a ≤ b</code>。每對只列一次，按 a 由小到大輸出。當 N 為完全平方數，兩個相同因數的配對也要列出。</p>",
+  "hint": "<p>找到因數 a 時，另一個因數就是 N 除以 a 的商。</p>",
+  "inputFormat": "<p>一行正整數 N。</p>",
+  "outputFormat": "<p>每行輸出一組 <code>a b</code>，中間以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 10000</li></ul>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "sampleInput": "12",
+  "sampleOutput": "1 12\n2 6\n3 4",
+  "samples": [
+    {
+      "input": "12",
+      "output": "1 12\n2 6\n3 4"
+    },
+    {
+      "input": "1",
+      "output": "1 1"
+    },
+    {
+      "input": "49",
+      "output": "1 49\n7 7"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "12",
+      "output": "1 12\n2 6\n3 4"
+    },
+    {
+      "input": "1",
+      "output": "1 1"
+    },
+    {
+      "input": "49",
+      "output": "1 49\n7 7"
+    },
+    {
+      "input": "10000",
+      "output": "1 10000\n2 5000\n4 2500\n5 2000\n8 1250\n10 1000\n16 625\n20 500\n25 400\n40 250\n50 200\n80 125\n100 100"
+    },
+    {
+      "input": "9973",
+      "output": "1 9973"
+    },
+    {
+      "input": "2",
+      "output": "1 2"
+    },
+    {
+      "input": "4",
+      "output": "1 4\n2 2"
+    },
+    {
+      "input": "36",
+      "output": "1 36\n2 18\n3 12\n4 9\n6 6"
+    },
+    {
+      "input": "64",
+      "output": "1 64\n2 32\n4 16\n8 8"
+    },
+    {
+      "input": "81",
+      "output": "1 81\n3 27\n9 9"
+    },
+    {
+      "input": "9999",
+      "output": "1 9999\n3 3333\n9 1111\n11 909\n33 303\n99 101"
+    },
+    {
+      "input": "60",
+      "output": "1 60\n2 30\n3 20\n4 15\n5 12\n6 10"
+    },
+    {
+      "input": "100",
+      "output": "1 100\n2 50\n4 25\n5 20\n10 10"
+    },
+    {
+      "input": "17",
+      "output": "1 17"
+    }
+  ]
+}

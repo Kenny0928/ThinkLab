@@ -1,0 +1,100 @@
+{
+  "id": 176,
+  "title": "有邊界的電梯移動",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "tags": [
+    "簡單模擬",
+    "邊界判斷",
+    "累加"
+  ],
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "根據方向提出新位置並檢查合法範圍",
+    "只累計成功移動的距離"
+  ],
+  "prerequisites": [
+    "條件分支",
+    "變數更新",
+    "累加器"
+  ],
+  "description": "<p class='problem-lead'>模擬電梯指令，計算終點、總移動樓層與拒絕次數。</p><p>建築只有 1 至 F 樓，沒有地下樓。<code>U k</code> 表示向上 k 層，<code>D k</code> 表示向下 k 層。若目的樓層超出範圍，整道指令拒絕，電梯不動；不可只移動到邊界。移動 0 層是成功指令，距離增加 0。</p>",
+  "hint": "<p>判斷目的樓層是否合法後，才能同時更新目前樓層與總距離。</p>",
+  "inputFormat": "<p>第一行為最高樓層 F、起始樓層 S、指令數 N。接著 N 行各為方向字母與非負整數 k。</p>",
+  "outputFormat": "<p>依序輸出最後樓層、成功移動的總樓層數、拒絕次數，三數間以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ F ≤ 50</li><li>1 ≤ S ≤ F</li><li>1 ≤ N ≤ 100</li><li>0 ≤ k ≤ 50，方向只會是 U 或 D</li></ul>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "sampleInput": "10 3 3\nU 4\nD 7\nD 6",
+  "sampleOutput": "1 10 1",
+  "samples": [
+    {
+      "input": "10 3 3\nU 4\nD 7\nD 6",
+      "output": "1 10 1"
+    },
+    {
+      "input": "1 1 1\nU 0",
+      "output": "1 0 0"
+    },
+    {
+      "input": "5 5 2\nU 1\nD 4",
+      "output": "1 4 1"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "10 3 3\nU 4\nD 7\nD 6",
+      "output": "1 10 1"
+    },
+    {
+      "input": "1 1 1\nU 0",
+      "output": "1 0 0"
+    },
+    {
+      "input": "5 5 2\nU 1\nD 4",
+      "output": "1 4 1"
+    },
+    {
+      "input": "50 1 100\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49\nU 49\nD 49",
+      "output": "1 4900 0"
+    },
+    {
+      "input": "1 1 100\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50\nU 50",
+      "output": "1 0 100"
+    },
+    {
+      "input": "50 50 100\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50\nD 50",
+      "output": "50 0 100"
+    },
+    {
+      "input": "50 1 1\nU 50",
+      "output": "1 0 1"
+    },
+    {
+      "input": "50 50 1\nD 49",
+      "output": "1 49 0"
+    },
+    {
+      "input": "1 1 100\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0\nD 0",
+      "output": "1 0 0"
+    },
+    {
+      "input": "2 1 2\nU 1\nD 1",
+      "output": "1 2 0"
+    },
+    {
+      "input": "10 5 3\nU 6\nD 4\nD 1",
+      "output": "1 4 2"
+    },
+    {
+      "input": "10 5 3\nD 5\nU 5\nU 1",
+      "output": "10 5 2"
+    },
+    {
+      "input": "50 25 3\nU 25\nD 49\nU 24",
+      "output": "25 98 0"
+    }
+  ]
+}

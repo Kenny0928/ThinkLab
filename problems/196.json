@@ -1,0 +1,94 @@
+{
+  "id": 196,
+  "title": "最長共同子序列",
+  "stage": "Advanced",
+  "difficulty": "Hard",
+  "tags": [
+    "動態規劃",
+    "字串",
+    "子序列"
+  ],
+  "audienceLevel": "M-HS",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "設計兩字串前綴的最佳狀態並處理跳過字元的選擇"
+  ],
+  "prerequisites": [
+    "二維狀態",
+    "字串索引"
+  ],
+  "description": "<p class='problem-lead'>找出兩個字串都能保留的最長子序列長度。</p><p>子序列可以刪去任意字元，但不能交換保留字元的先後順序。例如 <code>ace</code> 是 <code>abcde</code> 的子序列。求 A 與 B 的最長共同子序列長度，字元不必連續；空字串的答案為 0。</p>",
+  "hint": "<p>比較兩個前綴的最後字元，思考可以配對或必須跳過的情況。</p>",
+  "inputFormat": "<p>第一行是字串 A，第二行是字串 B；字串為空時仍保留該行。</p>",
+  "outputFormat": "<p>一行輸出最長共同子序列長度。</p>",
+  "constraints": "<ul><li>0 ≤ A、B 的長度 ≤ 200</li><li>字串只含英文小寫字母 a 到 z</li></ul>",
+  "timeLimit": 2,
+  "memoryLimit": 256,
+  "sampleInput": "abcde\nace\n",
+  "sampleOutput": "3",
+  "samples": [
+    {
+      "input": "abcde\nace\n",
+      "output": "3"
+    },
+    {
+      "input": "abc\ndef\n",
+      "output": "0"
+    },
+    {
+      "input": "\nabc\n",
+      "output": "0"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "abcde\nace\n",
+      "output": "3"
+    },
+    {
+      "input": "abc\ndef\n",
+      "output": "0"
+    },
+    {
+      "input": "\nabc\n",
+      "output": "0"
+    },
+    {
+      "input": "\n\n",
+      "output": "0"
+    },
+    {
+      "input": "abc\n\n",
+      "output": "0"
+    },
+    {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n",
+      "output": "200"
+    },
+    {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\n",
+      "output": "0"
+    },
+    {
+      "input": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\nzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzza\n",
+      "output": "199"
+    },
+    {
+      "input": "abac\nbaca\n",
+      "output": "3"
+    },
+    {
+      "input": "aaaa\naa\n",
+      "output": "2"
+    },
+    {
+      "input": "xyz\nzyx\n",
+      "output": "1"
+    },
+    {
+      "input": "cabcdda\nbca\n",
+      "output": "3"
+    }
+  ]
+}

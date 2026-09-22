@@ -1,0 +1,100 @@
+{
+  "id": 156,
+  "title": "座標步行與最遠距離",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "tags": [
+    "座標",
+    "簡單模擬",
+    "最值"
+  ],
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "依方向更新座標",
+    "追蹤起點與指令完成時的最大曼哈頓距離"
+  ],
+  "prerequisites": [
+    "條件分支",
+    "絕對值",
+    "迴圈"
+  ],
+  "description": "<p class='problem-lead'>依指令移動，回報終點與距離原點最遠的紀錄。</p><p>北 N 讓 y 增加，南 S 讓 y 減少，東 E 讓 x 增加，西 W 讓 x 減少。距離定義為 <code>|x| + |y|</code>。只比較起點與每道指令完成後的位置。</p>",
+  "hint": "<p>最大距離要從起點初始化，因為後續移動可能一直靠近原點。</p>",
+  "inputFormat": "<p>第一行是起點 <code>x y</code> 與指令數 N。接著 N 行各為方向字母與移動長度。</p>",
+  "outputFormat": "<p>依序輸出終點 x、終點 y、最大距離，整數間以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>-1000 ≤ 起點 x、y ≤ 1000</li><li>0 ≤ 每次移動長度 ≤ 1000</li><li>方向為 N、S、E、W 其中之一</li></ul>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "sampleInput": "0 0 3\nN 3\nE 4\nS 3",
+  "sampleOutput": "4 0 7",
+  "samples": [
+    {
+      "input": "0 0 3\nN 3\nE 4\nS 3",
+      "output": "4 0 7"
+    },
+    {
+      "input": "5 -2 2\nW 5\nN 2",
+      "output": "0 0 7"
+    },
+    {
+      "input": "0 0 1\nE 0",
+      "output": "0 0 0"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "0 0 3\nN 3\nE 4\nS 3",
+      "output": "4 0 7"
+    },
+    {
+      "input": "5 -2 2\nW 5\nN 2",
+      "output": "0 0 7"
+    },
+    {
+      "input": "0 0 1\nE 0",
+      "output": "0 0 0"
+    },
+    {
+      "input": "-1000 -1000 100\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000\nS 1000",
+      "output": "-1000 -101000 102000"
+    },
+    {
+      "input": "1000 1000 100\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000\nN 1000",
+      "output": "1000 101000 102000"
+    },
+    {
+      "input": "0 0 1\nW 1000",
+      "output": "-1000 0 1000"
+    },
+    {
+      "input": "0 0 1\nE 1000",
+      "output": "1000 0 1000"
+    },
+    {
+      "input": "0 0 2\nN 1\nS 2",
+      "output": "0 -1 1"
+    },
+    {
+      "input": "-1 1 2\nE 2\nS 2",
+      "output": "1 -1 2"
+    },
+    {
+      "input": "1 0 100\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2\nW 2",
+      "output": "-199 0 199"
+    },
+    {
+      "input": "0 0 100\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0\nN 0",
+      "output": "0 0 0"
+    },
+    {
+      "input": "10 20 4\nN 10\nS 10\nE 10\nW 10",
+      "output": "10 20 40"
+    },
+    {
+      "input": "0 -1 1\nN 2",
+      "output": "0 1 1"
+    }
+  ]
+}

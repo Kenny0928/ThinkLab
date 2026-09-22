@@ -1,0 +1,100 @@
+{
+  "id": 163,
+  "title": "連續字元壓縮",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "tags": [
+    "字串",
+    "連續紀錄",
+    "格式化輸出"
+  ],
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "以相鄰字元的改變切分連段",
+    "在掃描結束後輸出最後一段"
+  ],
+  "prerequisites": [
+    "字串索引",
+    "迴圈",
+    "計數器"
+  ],
+  "description": "<p class='problem-lead'>將每段連續相同字元改寫為字母與次數。</p><p>依原順序處理每個最長的相同字元連段，例如 <code>aaabb</code> 變成 <code>a3 b2</code>。只有一個字元的段也要寫出次數 1；被其他字元隔開的相同字母不能合併。</p>",
+  "hint": "<p>遇到字元改變時，就可以輸出上一段的字母與長度。</p>",
+  "inputFormat": "<p>一行只含小寫英文字母的字串。</p>",
+  "outputFormat": "<p>輸出壓縮結果，每段之間以一個空白分隔，段內不加空白。</p>",
+  "constraints": "<ul><li>1 ≤ 字串長度 ≤ 1000</li><li>字元僅為 a–z</li></ul>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "sampleInput": "aaabbcaa",
+  "sampleOutput": "a3 b2 c1 a2",
+  "samples": [
+    {
+      "input": "aaabbcaa",
+      "output": "a3 b2 c1 a2"
+    },
+    {
+      "input": "z",
+      "output": "z1"
+    },
+    {
+      "input": "abcd",
+      "output": "a1 b1 c1 d1"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "aaabbcaa",
+      "output": "a3 b2 c1 a2"
+    },
+    {
+      "input": "z",
+      "output": "z1"
+    },
+    {
+      "input": "abcd",
+      "output": "a1 b1 c1 d1"
+    },
+    {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "output": "a1000"
+    },
+    {
+      "input": "azazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazaz",
+      "output": "a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1 a1 z1"
+    },
+    {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+      "output": "a999 b1"
+    },
+    {
+      "input": "abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "output": "a1 b999"
+    },
+    {
+      "input": "aaa",
+      "output": "a3"
+    },
+    {
+      "input": "aba",
+      "output": "a1 b1 a1"
+    },
+    {
+      "input": "aabbccdd",
+      "output": "a2 b2 c2 d2"
+    },
+    {
+      "input": "zzzzaaaazzzz",
+      "output": "z4 a4 z4"
+    },
+    {
+      "input": "abcdefghijklmnopqrstuvwxyz",
+      "output": "a1 b1 c1 d1 e1 f1 g1 h1 i1 j1 k1 l1 m1 n1 o1 p1 q1 r1 s1 t1 u1 v1 w1 x1 y1 z1"
+    },
+    {
+      "input": "aaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "output": "a10 b100"
+    }
+  ]
+}

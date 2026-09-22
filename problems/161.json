@@ -1,0 +1,104 @@
+{
+  "id": 161,
+  "title": "密碼格式檢查",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "tags": [
+    "字串",
+    "條件組合",
+    "相鄰比較"
+  ],
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "累積字元種類的出現旗標",
+    "檢查相鄰字元與長度條件"
+  ],
+  "prerequisites": [
+    "字串走訪",
+    "布林運算",
+    "索引"
+  ],
+  "description": "<p class='problem-lead'>逐筆判斷密碼是否符合全部格式規則。</p><p>合法密碼長度為 8 至 20 個字元，至少包含一個大寫英文字母、一個小寫英文字母及一個數字，而且不能有兩個相鄰字元完全相同。底線可以出現，但不算英文字母或數字。大小寫視為不同字元。</p>",
+  "hint": "<p>檢查過程中保留是否看過各種字元的旗標。</p>",
+  "inputFormat": "<p>第一行是密碼數 N，接著 N 行各有一組不含空白的密碼。</p>",
+  "outputFormat": "<p>每組密碼依序輸出一行；符合全部規則輸出 <code>YES</code>，否則輸出 <code>NO</code>。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 30</li><li>每組輸入長度為 1 至 100</li><li>字元僅為 A–Z、a–z、0–9、底線 _</li></ul>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "sampleInput": "3\nAbc123_x\nAbc112_x\nabcdefgh",
+  "sampleOutput": "YES\nNO\nNO",
+  "samples": [
+    {
+      "input": "3\nAbc123_x\nAbc112_x\nabcdefgh",
+      "output": "YES\nNO\nNO"
+    },
+    {
+      "input": "1\nAa1_bcde",
+      "output": "YES"
+    },
+    {
+      "input": "1\nA",
+      "output": "NO"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "3\nAbc123_x\nAbc112_x\nabcdefgh",
+      "output": "YES\nNO\nNO"
+    },
+    {
+      "input": "1\nAa1_bcde",
+      "output": "YES"
+    },
+    {
+      "input": "1\nA",
+      "output": "NO"
+    },
+    {
+      "input": "30\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_\nAa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_Aa1_",
+      "output": "NO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO\nNO"
+    },
+    {
+      "input": "1\nAa1_Aa1_Aa1_Aa1_Aa1_",
+      "output": "YES"
+    },
+    {
+      "input": "1\nAa1_Aa1_Aa1_Aa1_Aa1_x",
+      "output": "NO"
+    },
+    {
+      "input": "1\nAa1_bcd",
+      "output": "NO"
+    },
+    {
+      "input": "1\nABC123_X",
+      "output": "NO"
+    },
+    {
+      "input": "1\nabc123_x",
+      "output": "NO"
+    },
+    {
+      "input": "1\nAbcdef_x",
+      "output": "NO"
+    },
+    {
+      "input": "1\nAa1__bcd",
+      "output": "NO"
+    },
+    {
+      "input": "2\naA0aA0aA\nAa1_bcdd",
+      "output": "YES\nNO"
+    },
+    {
+      "input": "30\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde\nAa1_bcde",
+      "output": "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES"
+    },
+    {
+      "input": "5\n_\n0\nz\nZ\nAa0_Ab1_",
+      "output": "NO\nNO\nNO\nNO\nYES"
+    }
+  ]
+}

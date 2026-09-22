@@ -1,0 +1,104 @@
+{
+  "id": 154,
+  "title": "跨午夜的經過分鐘",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "tags": [
+    "字串解析",
+    "時間",
+    "條件判斷"
+  ],
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "learningObjectives": [
+    "將時分字串轉為分鐘",
+    "用條件分支處理跨午夜的時間差"
+  ],
+  "prerequisites": [
+    "字串分割",
+    "整數運算",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>計算從開始時刻走到結束時刻經過幾分鐘。</p><p>時刻皆採 24 小時制。若結束時刻早於開始時刻，表示結束於隔天；兩個時刻相同則經過 0 分鐘，並非一天。</p>",
+  "hint": "<p>先把每個時刻換成從當天午夜起算的分鐘。</p>",
+  "inputFormat": "<p>一行包含開始及結束時刻，格式皆為 <code>HH:MM</code>，中間以一個空白分隔。</p>",
+  "outputFormat": "<p>輸出經過的整數分鐘數。</p>",
+  "constraints": "<ul><li>00 ≤ HH ≤ 23</li><li>00 ≤ MM ≤ 59</li><li>兩段數字皆固定兩位</li></ul>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "sampleInput": "09:15 10:05",
+  "sampleOutput": "50",
+  "samples": [
+    {
+      "input": "09:15 10:05",
+      "output": "50"
+    },
+    {
+      "input": "23:50 00:10",
+      "output": "20"
+    },
+    {
+      "input": "12:30 12:30",
+      "output": "0"
+    }
+  ],
+  "testCases": [
+    {
+      "input": "09:15 10:05",
+      "output": "50"
+    },
+    {
+      "input": "23:50 00:10",
+      "output": "20"
+    },
+    {
+      "input": "12:30 12:30",
+      "output": "0"
+    },
+    {
+      "input": "00:00 23:59",
+      "output": "1439"
+    },
+    {
+      "input": "23:59 00:00",
+      "output": "1"
+    },
+    {
+      "input": "00:00 00:00",
+      "output": "0"
+    },
+    {
+      "input": "23:59 23:59",
+      "output": "0"
+    },
+    {
+      "input": "01:00 00:59",
+      "output": "1439"
+    },
+    {
+      "input": "00:59 01:00",
+      "output": "1"
+    },
+    {
+      "input": "13:59 14:00",
+      "output": "1"
+    },
+    {
+      "input": "06:30 06:29",
+      "output": "1439"
+    },
+    {
+      "input": "18:00 05:00",
+      "output": "660"
+    },
+    {
+      "input": "00:00 00:01",
+      "output": "1"
+    },
+    {
+      "input": "23:58 23:59",
+      "output": "1"
+    }
+  ]
+}

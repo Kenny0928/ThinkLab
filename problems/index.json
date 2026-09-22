@@ -1980,5 +1980,768 @@
       "清單",
       "迴圈"
     ]
+  },
+  {
+    "id": 154,
+    "title": "跨午夜的經過分鐘",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "字串解析",
+      "時間",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 155,
+    "title": "播放清單結束時間",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "時間",
+      "累加",
+      "字串解析"
+    ]
+  },
+  {
+    "id": 156,
+    "title": "座標步行與最遠距離",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "座標",
+      "簡單模擬",
+      "最值"
+    ]
+  },
+  {
+    "id": 157,
+    "title": "矩形內外與邊界點",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "座標",
+      "邏輯判斷",
+      "分類統計"
+    ]
+  },
+  {
+    "id": 158,
+    "title": "擲骰連段獎分",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "簡單模擬",
+      "連續紀錄",
+      "累加"
+    ]
+  },
+  {
+    "id": 159,
+    "title": "飲水機容量模擬",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "簡單模擬",
+      "條件判斷",
+      "狀態更新"
+    ]
+  },
+  {
+    "id": 160,
+    "title": "週期號誌查詢",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "餘數",
+      "條件判斷",
+      "週期"
+    ]
+  },
+  {
+    "id": 161,
+    "title": "密碼格式檢查",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字串",
+      "條件組合",
+      "相鄰比較"
+    ]
+  },
+  {
+    "id": 162,
+    "title": "交替權重校驗碼",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "字串",
+      "索引",
+      "餘數"
+    ]
+  },
+  {
+    "id": 163,
+    "title": "連續字元壓縮",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字串",
+      "連續紀錄",
+      "格式化輸出"
+    ]
+  },
+  {
+    "id": 164,
+    "title": "重複指令展開",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字串解析",
+      "迴圈",
+      "累積輸出"
+    ]
+  },
+  {
+    "id": 165,
+    "title": "分號成績紀錄解析",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字串解析",
+      "統計",
+      "缺漏資料"
+    ]
+  },
+  {
+    "id": 166,
+    "title": "點數分布與眾數",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "次數統計",
+      "清單",
+      "並列規則"
+    ]
+  },
+  {
+    "id": 167,
+    "title": "最長連續達標天數",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "連續紀錄",
+      "最值",
+      "並列規則"
+    ]
+  },
+  {
+    "id": 168,
+    "title": "忽略持平的溫度轉折",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "相鄰比較",
+      "狀態紀錄",
+      "計數"
+    ]
+  },
+  {
+    "id": 169,
+    "title": "有效選票與並列當選",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "次數統計",
+      "清單",
+      "並列規則"
+    ]
+  },
+  {
+    "id": 170,
+    "title": "跨組練習配對",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "巢狀迴圈",
+      "條件組合",
+      "配對計數"
+    ]
+  },
+  {
+    "id": 171,
+    "title": "因數配對清單",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "基礎數論",
+      "餘數",
+      "枚舉"
+    ]
+  },
+  {
+    "id": 172,
+    "title": "空心方框列印",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "巢狀迴圈",
+      "邊界判斷",
+      "格式化輸出"
+    ]
+  },
+  {
+    "id": 173,
+    "title": "多日出席統計",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "巢狀迴圈",
+      "統計",
+      "並列規則"
+    ]
+  },
+  {
+    "id": 174,
+    "title": "紙牌逐輪勝負",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "多分支",
+      "累加",
+      "簡單模擬"
+    ]
+  },
+  {
+    "id": 175,
+    "title": "多商品庫存紀錄",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "清單",
+      "索引更新",
+      "簡單模擬"
+    ]
+  },
+  {
+    "id": 176,
+    "title": "有邊界的電梯移動",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "簡單模擬",
+      "邊界判斷",
+      "累加"
+    ]
+  },
+  {
+    "id": 177,
+    "title": "日期往後一天",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "日期",
+      "多分支",
+      "閏年"
+    ]
+  },
+  {
+    "id": 178,
+    "title": "多段里程車資",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "分段計費",
+      "無條件進位",
+      "累加"
+    ]
+  },
+  {
+    "id": 179,
+    "title": "競賽成績排序",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "排序",
+      "多重排序鍵"
+    ]
+  },
+  {
+    "id": 180,
+    "title": "商品價格上限查詢",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "二分搜尋",
+      "排序"
+    ]
+  },
+  {
+    "id": 181,
+    "title": "連續帳目總額",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "前綴和",
+      "區間查詢"
+    ]
+  },
+  {
+    "id": 182,
+    "title": "矩形區域總和",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "二維前綴和",
+      "二維陣列"
+    ]
+  },
+  {
+    "id": 183,
+    "title": "最長不重複片段",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "滑動視窗",
+      "雜湊表"
+    ]
+  },
+  {
+    "id": 184,
+    "title": "達標的最短連續日數",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "雙指標",
+      "滑動視窗"
+    ]
+  },
+  {
+    "id": 185,
+    "title": "三種括號配對",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "堆疊",
+      "字串"
+    ]
+  },
+  {
+    "id": 186,
+    "title": "可復原的庫存紀錄",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "堆疊",
+      "操作模擬"
+    ]
+  },
+  {
+    "id": 187,
+    "title": "輪流執行任務",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "佇列",
+      "模擬"
+    ]
+  },
+  {
+    "id": 188,
+    "title": "最多不重疊活動",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "貪心",
+      "區間排序"
+    ]
+  },
+  {
+    "id": 189,
+    "title": "雙人救生艇",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "貪心",
+      "排序",
+      "雙指標"
+    ]
+  },
+  {
+    "id": 190,
+    "title": "路段塗色總長",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "區間合併",
+      "排序"
+    ]
+  },
+  {
+    "id": 191,
+    "title": "最大連續區段和",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "動態規劃",
+      "連續區段"
+    ]
+  },
+  {
+    "id": 192,
+    "title": "最少硬幣數",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "動態規劃",
+      "最小化"
+    ]
+  },
+  {
+    "id": 193,
+    "title": "避開封閉階梯",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "動態規劃",
+      "路徑計數"
+    ]
+  },
+  {
+    "id": 194,
+    "title": "最低通行費路徑",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "動態規劃",
+      "二維陣列"
+    ]
+  },
+  {
+    "id": 195,
+    "title": "最長嚴格遞增子序列",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "動態規劃",
+      "子序列"
+    ]
+  },
+  {
+    "id": 196,
+    "title": "最長共同子序列",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "動態規劃",
+      "字串",
+      "子序列"
+    ]
+  },
+  {
+    "id": 197,
+    "title": "地圖連通區",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "深度優先搜尋",
+      "網格",
+      "連通性"
+    ]
+  },
+  {
+    "id": 198,
+    "title": "最少經過幾條路",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "廣度優先搜尋",
+      "圖論",
+      "最短路徑"
+    ]
+  },
+  {
+    "id": 199,
+    "title": "能否分成兩組",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "圖論",
+      "二分圖",
+      "廣度優先搜尋"
+    ]
+  },
+  {
+    "id": 200,
+    "title": "樹的子樹大小",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "樹",
+      "遍歷",
+      "狀態累加"
+    ]
+  },
+  {
+    "id": 201,
+    "title": "可整除的連續區段",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "前綴和",
+      "餘數",
+      "計數"
+    ]
+  },
+  {
+    "id": 202,
+    "title": "批次區間加值",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "差分陣列",
+      "前綴和"
+    ]
+  },
+  {
+    "id": 203,
+    "title": "方格遞迴切分",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "遞迴",
+      "分治",
+      "二維陣列"
+    ]
+  },
+  {
+    "id": 204,
+    "title": "連續包裹分車",
+    "stage": "Challenge",
+    "audienceLevel": "M-HS",
+    "apcsLevel": "APCS-Implementation",
+    "difficulty": "Easy",
+    "tags": [
+      "二分搜尋",
+      "貪心",
+      "答案單調性"
+    ]
+  },
+  {
+    "id": 205,
+    "title": "觀測窗的最高溫",
+    "stage": "Challenge",
+    "audienceLevel": "M-HS",
+    "apcsLevel": "APCS-Implementation",
+    "difficulty": "Easy",
+    "tags": [
+      "滑動視窗",
+      "單調佇列",
+      "deque"
+    ]
+  },
+  {
+    "id": 206,
+    "title": "社團合併查詢",
+    "stage": "Challenge",
+    "audienceLevel": "M-HS",
+    "apcsLevel": "APCS-Implementation",
+    "difficulty": "Easy",
+    "tags": [
+      "並查集",
+      "連通性",
+      "資料結構"
+    ]
+  },
+  {
+    "id": 207,
+    "title": "終點路線計數",
+    "stage": "Challenge",
+    "audienceLevel": "M-HS",
+    "apcsLevel": "APCS-Implementation",
+    "difficulty": "Medium",
+    "tags": [
+      "拓撲排序",
+      "動態規劃",
+      "有向無環圖"
+    ]
+  },
+  {
+    "id": 208,
+    "title": "快遞最短路程",
+    "stage": "Challenge",
+    "audienceLevel": "A-HS",
+    "apcsLevel": "APCS-Advanced",
+    "difficulty": "Medium",
+    "tags": [
+      "最短路徑",
+      "Dijkstra",
+      "優先佇列"
+    ]
+  },
+  {
+    "id": 209,
+    "title": "校園光纖最低成本",
+    "stage": "Challenge",
+    "audienceLevel": "A-HS",
+    "apcsLevel": "APCS-Advanced",
+    "difficulty": "Medium",
+    "tags": [
+      "最小生成樹",
+      "Kruskal",
+      "並查集"
+    ]
+  },
+  {
+    "id": 210,
+    "title": "任務時段最大獎勵",
+    "stage": "Challenge",
+    "audienceLevel": "A-HS",
+    "apcsLevel": "APCS-Advanced",
+    "difficulty": "Hard",
+    "tags": [
+      "加權區間排程",
+      "動態規劃",
+      "二分搜尋"
+    ]
+  },
+  {
+    "id": 211,
+    "title": "排隊逆序對",
+    "stage": "Challenge",
+    "audienceLevel": "A-HS",
+    "apcsLevel": "APCS-Advanced",
+    "difficulty": "Hard",
+    "tags": [
+      "合併排序",
+      "分治",
+      "逆序對"
+    ]
+  },
+  {
+    "id": 212,
+    "title": "即時庫存區間總量",
+    "stage": "Challenge",
+    "audienceLevel": "A-HS",
+    "apcsLevel": "APCS-Advanced",
+    "difficulty": "Hard",
+    "tags": [
+      "Fenwick Tree",
+      "前綴和",
+      "動態查詢"
+    ]
+  },
+  {
+    "id": 213,
+    "title": "半價券採購計畫",
+    "stage": "Challenge",
+    "audienceLevel": "A-HS",
+    "apcsLevel": "APCS-Advanced",
+    "difficulty": "Medium",
+    "tags": [
+      "0/1背包",
+      "動態規劃",
+      "狀態設計"
+    ]
   }
 ]
