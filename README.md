@@ -1,14 +1,14 @@
-# 🧪 SkillLab — 從程式學習到實作專題的能力實驗室
+# 🧪 ThinkLab — 從程式學習到實作專題的能力實驗室
 
-SkillLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 31 關、93 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.3 H01、H02 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
+ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 31 關、93 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.3 H01、H02 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
 
 三階段講義依照「讀懂任務 → 先猜結果 → 拆解步驟 → 動手測試」組成連續學習路徑：LV.1 11 關（含 8.5 的 `while` 補充）、LV.2 10 關、LV.3 10 關。每關包含 1 題核心題與 2 題變體；各作答方式共用題目、測資與通關紀錄，每題、每種語言的草稿則分別保存。
 
 Python 與 Blockly 產生的 Python 由 **Pyodide**（Python in WebAssembly）執行；Scratch 使用官方 **Scratch Blocks** 編輯、**Scratch VM** 執行。所有程式都在學生的瀏覽器內判題，不需要後端、資料庫或部署時的 Node.js 服務。
 
-https://kenny0928.github.io/Pyjudge/
+https://kenny0928.github.io/ThinkLab/
 
-完整產品定位、分齡學習路徑與階段性建置方向請見：[SkillLab 未來發展藍圖](docs/SkillLab_未來發展藍圖.md)。
+完整產品定位、分齡學習路徑與階段性建置方向請見：[ThinkLab 未來發展藍圖](docs/SkillLab_未來發展藍圖.md)。
 
 
 ## ✨ 功能特色
@@ -64,7 +64,7 @@ Scratch 的判題 I/O 約定：
 ## 📁 專案結構
 
 ```
-skilllab/
+ThinkLab/
 ├── index.html          ← 學習選單首頁
 ├── beginner.html       ← 三階段共用講義頁（由 `?course=` 選擇課程）
 ├── judge.html          ← Judge 主程式（UI 邏輯，不含題目資料）
@@ -122,7 +122,7 @@ skilllab/
 
 ## 🧭 題目分級標準
 
-SkillLab 將「學習階段、適齡、同階段難度、APCS 導向」分開記錄，避免只以學生年級或數學內容判斷程式題難度。
+ThinkLab 將「學習階段、適齡、同階段難度、APCS 導向」分開記錄，避免只以學生年級或數學內容判斷程式題難度。
 
 | 學習階段 | `stage` | 適合對象與判定依據 | 常見內容 |
 |---|---|---|---|
@@ -233,7 +233,7 @@ python3 scripts/sync_google_sites_catalog.py --check
 
 1. 前往 [github.com](https://github.com) 並登入
 2. 點擊右上角 **+** → **New repository**
-3. 輸入倉庫名稱，例如：`skilllab`，選擇 **Public**
+3. 輸入倉庫名稱，例如：`ThinkLab`，選擇 **Public**
 4. 點擊 **Create repository**
 
 ### 步驟 2：上傳所有檔案
@@ -249,9 +249,9 @@ python3 scripts/sync_google_sites_catalog.py --check
 ```bash
 git init
 git add .
-git commit -m "Initial SkillLab"
+git commit -m "Initial ThinkLab"
 git branch -M main
-git remote add origin https://github.com/你的帳號/skilllab.git
+git remote add origin https://github.com/你的帳號/ThinkLab.git
 git push -u origin main
 ```
 
@@ -261,7 +261,7 @@ git push -u origin main
 2. Source 選 **Deploy from a branch**，Branch 選 **main / (root)**
 3. 點擊 **Save**，等待 1～3 分鐘
 
-你的網站網址：`https://你的帳號.github.io/skilllab/`
+你的網站網址：`https://你的帳號.github.io/ThinkLab/`
 
 ---
 
@@ -270,7 +270,7 @@ git push -u origin main
 因為 `fetch()` 在 `file://` 協定下受瀏覽器限制，本機測試需要啟動簡易 HTTP 伺服器：
 
 ```bash
-# 在 skilllab/ 資料夾下執行
+# 在 ThinkLab/ 資料夾下執行
 python3 -m http.server 8080
 # 然後開啟瀏覽器前往 http://localhost:8080
 ```

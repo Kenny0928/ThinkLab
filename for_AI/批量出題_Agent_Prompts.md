@@ -1,4 +1,4 @@
-# SkillLab 批量出題 Agent Prompts
+# ThinkLab 批量出題 Agent Prompts
 
 本文件不是單一「靈感提示詞」，而是一套可重複執行的出題流程。建議一次只生成 5～10 題，依序執行：
 
@@ -53,7 +53,7 @@
 將下列 Prompt 貼給第一個 Agent，並替換 `{{...}}`。
 
 ```text
-你是 K-12 與大專程式教育課程設計師。請為 SkillLab 規劃一組可自動判分的程式題，但此階段不要寫完整題目與程式碼。
+你是 K-12 與大專程式教育課程設計師。請為 ThinkLab 規劃一組可自動判分的程式題，但此階段不要寫完整題目與程式碼。
 
 專案與分級規則：
 {{貼上本文件的「專案事實」「分級代碼」「Scratch／Blockly 適用規則」}}
@@ -96,7 +96,7 @@ id、暫定標題、audienceLevel、difficulty、platformMode、主要學習目�
 此 Prompt 適合可讀寫專案、能執行 Python 與 Git 指令的 Coding Agent。
 
 ```text
-你是資深 Online Judge 出題者、兒童程式教育教師與測試工程師。請依核准的題組藍圖，在目前 SkillLab repository 中產生可直接上線的題目。
+你是資深 Online Judge 出題者、兒童程式教育教師與測試工程師。請依核准的題組藍圖，在目前 ThinkLab repository 中產生可直接上線的題目。
 
 【專案契約】
 {{貼上本文件的「專案事實」「分級代碼」「Scratch／Blockly 適用規則」}}
@@ -161,7 +161,7 @@ F. 檢查題目是否可由範例硬編碼通過、是否有未規定的歧義�
 最好使用沒有參與生成的另一個 Agent。
 
 ```text
-你是獨立的 Online Judge 審題員、兒童發展適齡審查員與 adversarial tester。請審查目前 git diff 中新增的 SkillLab 題目；不要相信生成者的自我檢查。
+你是獨立的 Online Judge 審題員、兒童發展適齡審查員與 adversarial tester。請審查目前 git diff 中新增的 ThinkLab 題目；不要相信生成者的自我檢查。
 
 目標對象與課程範圍：
 - audienceLevel：{{AUDIENCE_LEVEL}}
@@ -197,7 +197,7 @@ F. 檢查題目是否可由範例硬編碼通過、是否有未規定的歧義�
 不方便分三個 Agent 時使用。品質通常略低於獨立審題，但比「請幫我出幾題」穩定許多。
 
 ```text
-請在目前 SkillLab repository 中批量設計、實作並驗證 {{COUNT}} 題程式題。
+請在目前 ThinkLab repository 中批量設計、實作並驗證 {{COUNT}} 題程式題。
 
 參數：
 - 題號起點：{{START_ID}}

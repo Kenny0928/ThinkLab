@@ -264,7 +264,7 @@ for (const [fixture, cases] of [
   await h.request('init', { state: JSON.parse(read('scripts/fixtures/' + fixture)) });
   const first = (await h.request('snapshot')).code;
   for (const [input, expected] of cases) assert.equal(execute(first, input), expected);
-  await assert.rejects(h.request('init', { state: { format: 'wrong' } }), /SkillLab/);
+  await assert.rejects(h.request('init', { state: { format: 'wrong' } }), /ThinkLab/);
   assert.equal((await h.request('snapshot')).code, first, 'Invalid import must preserve work');
   await h.request('reset');
   assert.equal((await h.request('snapshot')).code.trim(), '');

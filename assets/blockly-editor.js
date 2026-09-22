@@ -83,7 +83,7 @@
   const serialize = () => ({ format: 'skilllab-blockly', version: 1, workspace: Blockly.serialization.workspaces.save(workspace) });
   const changed = () => { if (!loading) { send({ event: 'change', state: serialize() }); updatePreview(); } };
   function load(state) {
-    if (state && (state.format !== 'skilllab-blockly' || state.version !== 1 || !state.workspace)) throw new Error('請選擇 SkillLab 匯出的 Blockly 積木檔。');
+    if (state && (state.format !== 'skilllab-blockly' || state.version !== 1 || !state.workspace)) throw new Error('請選擇 ThinkLab 匯出的 Blockly 積木檔。');
     loading = true;
     const before = Blockly.serialization.workspaces.save(workspace);
     try { Blockly.serialization.workspaces.load(state?.workspace || {}, workspace); }
@@ -109,7 +109,7 @@
   };
   document.getElementById('export').onclick = () => {
     const url = URL.createObjectURL(new Blob([JSON.stringify(serialize(), null, 2)], { type: 'application/json' }));
-    const link = document.createElement('a'); link.href = url; link.download = 'skilllab-blockly.json'; link.click();
+    const link = document.createElement('a'); link.href = url; link.download = 'thinklab-blockly.json'; link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
   document.getElementById('import').onchange = async event => {

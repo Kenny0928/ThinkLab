@@ -352,7 +352,7 @@
       try {
         const url = URL.createObjectURL(new Blob([await encodeSb3()], {type: 'application/x.scratch.sb3'}));
         const anchor = document.createElement('a');
-        anchor.href = url; anchor.download = 'skilllab-scratch.sb3'; anchor.click();
+        anchor.href = url; anchor.download = 'thinklab-scratch.sb3'; anchor.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       } catch (error) { say('下載失敗：' + error.message, true); }
     };

@@ -44,7 +44,7 @@ def log_info(msg):
 
 def verify_all():
     print(f"\n{BOLD}{CYAN}==================================================={RESET}")
-    print(f"{BOLD}{CYAN}      SkillLab 題庫與測資全量自動化驗證工具          {RESET}")
+    print(f"{BOLD}{CYAN}      ThinkLab 題庫與測資全量自動化驗證工具          {RESET}")
     print(f"{BOLD}{CYAN}==================================================={RESET}\n")
 
     if not INDEX_FILE.exists():

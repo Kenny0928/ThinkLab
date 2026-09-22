@@ -1,4 +1,4 @@
-# SkillLab LV.2／LV.3 課程內容草稿
+# ThinkLab LV.2／LV.3 課程內容草稿
 
 本資料夾是下一階段網頁整合前的內容母稿。它只定義課程與題庫內容，不修改 `beginner.html`、`judge.html`、`problems/*.json` 或 `solutions/*.py`。
 

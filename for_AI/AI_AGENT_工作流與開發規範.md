@@ -1,4 +1,4 @@
-# 🤖 SkillLab AI Agent 開發與維護工作流規範
+# 🤖 ThinkLab AI Agent 開發與維護工作流規範
 
 本文件是所有 **AI Agent**（包含代碼生成、修改、審題與網頁維護代理）以及人類維護者在進行專案維護時的**最高遵循規約（SOP）**。  
 任何 AI Agent 在接收到修改需求時，必須嚴格依循本文件的流程、原則與驗證要求，嚴禁跳步或擅自破壞架構契約。
@@ -41,7 +41,7 @@
    - `M-7` / `M-8`：國中（分支巢狀、一維/二維陣列、字串走訪、簡單搜尋）。
    - `M-HS` / `A-HS`：高中（演算法思維、複雜度分析、雜湊表、遞推 DP）。
 4. 指定同階段內的相對難度（`difficulty`），只能使用 `Easy`、`Medium`、`Hard`。`difficulty` 不得代替 `stage`：例如 `Intermediate + Easy` 表示LV.2中的入門題。
-5. 指定 APCS 導向（`apcsLevel`）：`Beginner`、`Intermediate`、`Advanced` 一律填 `null`；`Challenge` 必須填 `APCS-Concept`、`APCS-Implementation` 或 `APCS-Advanced`。這是 SkillLab 內部分類，不宣稱等同官方成績級分；若要對應特定年度官方標準，必須另行查核當期規則。
+5. 指定 APCS 導向（`apcsLevel`）：`Beginner`、`Intermediate`、`Advanced` 一律填 `null`；`Challenge` 必須填 `APCS-Concept`、`APCS-Implementation` 或 `APCS-Advanced`。這是 ThinkLab 內部分類，不宣稱等同官方成績級分；若要對應特定年度官方標準，必須另行查核當期規則。
 6. 取得最新可用的題目 ID（整數遞增，不可重複或插隊）。
 
 #### 四個分級欄位不可混用
