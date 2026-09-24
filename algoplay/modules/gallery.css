@@ -1,0 +1,17 @@
+/* 會動的演算法：模組列表 */
+.gallery-head { margin-bottom: 26px; }
+.module-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.module-card { display: flex; flex-direction: column; gap: 8px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); }
+a.module-card { transition: border-color 0.18s, transform 0.18s; }
+a.module-card:hover { border-color: #3d5f96; transform: translateY(-2px); }
+.module-card .module-icon { font-size: 28px; }
+.module-card h2 { font-size: 1.1rem; font-weight: 800; }
+.module-card p { color: var(--muted); font-size: 14px; flex: 1; }
+.module-card.soon { border-style: dashed; background: transparent; }
+.module-card.soon h2, .module-card.soon p { color: #6f7f97; }
+.module-card > .tag { align-self: flex-start; }
+.mode-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.mode-chips .tag.green::before { content: "✓"; }
+
+@media (max-width: 960px) { .module-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .module-grid { grid-template-columns: 1fr; } }

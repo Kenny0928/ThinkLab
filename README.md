@@ -68,6 +68,7 @@ ThinkLab/
 ├── index.html          ← 學習選單首頁
 ├── beginner.html       ← 三階段共用講義頁（由 `?course=` 選擇課程）
 ├── judge.html          ← Judge 主程式（UI 邏輯，不含題目資料）
+├── guide.html          ← 驗資說明頁（怎麼讀範例輸入／輸出、Scratch 與 Blockly 的輸入輸出）
 │
 ├── assets/
 │   ├── programming-editor.js/.css ← 共用語言切換、草稿與判題介面

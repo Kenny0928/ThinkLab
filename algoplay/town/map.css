@@ -1,0 +1,253 @@
+/* 小鎮地圖：像素畫布、建築名牌與關卡展開 */
+/* 小鎮跟關卡一樣是一個畫面：地圖同時被視窗的寬和高限制，不用捲動 */
+.town-page { height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+.town-page .site-header { flex: none; }
+
+.town-main {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-height: 0;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 14px clamp(12px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.stage-wrap {
+  position: relative;
+  flex: none;
+  /* 地圖是 3:2，所以高度剩多少就只能有多寬 */
+  width: min(100%, (100dvh - 118px) * 1.5);
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0a0d14;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.scene {
+  position: relative;
+  transform-origin: 50% 50%;
+  transition: transform 620ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#map {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* 建築名牌：位置用百分比，跟著畫布一起縮放 */
+.hud { position: absolute; inset: 0; transition: opacity 260ms ease; }
+.hud.is-hidden { opacity: 0; pointer-events: none; }
+
+.plate {
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 4px 7px;
+  padding: 5px 9px 6px;
+  border: 1px solid #39456b;
+  border-radius: 8px;
+  background: rgba(12, 15, 24, 0.88);
+  backdrop-filter: blur(4px);
+  color: #dbe6f7;
+  text-align: left;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.plate-above { transform: translate(-50%, -118%); }
+.plate-below { transform: translate(-50%, 14%); }
+.plate:hover, .plate:focus-visible {
+  background: rgba(20, 28, 46, 0.95);
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 18px rgba(59, 130, 246, 0.35);
+  color: white;
+}
+.plate .p-icon { font-size: 16px; line-height: 1; grid-row: span 2; }
+.plate .p-name { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+.plate .p-sub { font-size: 11px; color: var(--muted); grid-column: 2; }
+.plate .p-stars { font-size: 11px; letter-spacing: 1px; color: #3a4355; grid-column: 2; }
+.plate .p-stars b { color: var(--amber); font-weight: 400; }
+.plate.is-done { border-color: #2f6b58; }
+.plate.is-new::after {
+  content: "";
+  position: absolute; top: -4px; right: -4px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: plate-ping 1.6s ease-out infinite;
+}
+@keyframes plate-ping { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.55; } }
+.plate.is-soon {
+  border-style: dashed;
+  border-color: #4a4433;
+  background: rgba(12, 15, 24, 0.75);
+  color: #8b96ab;
+  cursor: not-allowed;
+}
+.plate-above:hover, .plate-above:focus-visible { transform: translate(-50%, calc(-118% - 3px)); }
+.plate-below:hover, .plate-below:focus-visible { transform: translate(-50%, calc(14% - 3px)); }
+.plate.is-soon:hover { border-color: #4a4433; box-shadow: none; color: #8b96ab; }
+.plate.is-soon.plate-above:hover { transform: translate(-50%, -118%); }
+.plate.is-soon.plate-below:hover { transform: translate(-50%, 14%); }
+.plate.is-board { border-color: #5b4a33; }
+
+.vignette {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 50% 45%, transparent 55%, rgba(5, 7, 12, 0.55) 100%);
+}
+
+.title-card {
+  position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%);
+  text-align: center; pointer-events: none;
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.title-card h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em; margin: 6px 0;
+  color: white; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 0 40px rgba(59, 130, 246, 0.5);
+}
+.title-card .title-sub { color: #c9d5e8; font-size: 15px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); }
+.title-card.is-gone { opacity: 0; transform: translate(-50%, -60%); }
+
+.fade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: #0a0d14; opacity: 0; transition: opacity 420ms ease;
+}
+.fade.on { opacity: 1; }
+
+.town-hint {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px;
+  color: var(--subtle); font-size: 13px;
+}
+
+#dex-open { padding: 5px 10px; font-size: 13px; }
+#dex-open b { color: var(--accent-ink); font-family: var(--mono); font-weight: 500; }
+
+body.level-open { overflow: hidden; }
+
+/* 關卡在同一頁展開：整個關卡就是一個視窗高的遊戲框，玩的時候不用捲動 */
+.level-sheet {
+  position: fixed; inset: 0; z-index: 40;
+  overflow: hidden; overscroll-behavior: contain;
+  background: var(--paper);
+  animation: sheet-in 380ms cubic-bezier(0.2, 0, 0, 1);
+}
+.level-sheet.is-closing { animation: sheet-out 260ms ease forwards; }
+@keyframes sheet-in { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: none; } }
+@keyframes sheet-out { to { opacity: 0; transform: scale(1.03); } }
+
+.game { position: relative; height: 100dvh; display: grid; grid-template-rows: 46px minmax(0, 1fr); }
+.game-bar {
+  display: flex; align-items: center; gap: 12px; padding: 0 12px;
+  border-bottom: 1px solid var(--line); background: rgba(12, 13, 18, 0.92);
+}
+.icon-back { width: 32px; height: 32px; padding: 0; font-size: 15px; flex: none; }
+.bar-name { font-size: 14px; font-weight: 700; white-space: nowrap; }
+.bar-title { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.step-dots { display: flex; gap: 7px; margin-left: auto; flex: none; }
+.step-dots li {
+  width: 9px; height: 9px; border-radius: 50%; background: #202634; border: 1px solid #39435c;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.step-dots li.done { background: var(--green); border-color: var(--green); }
+.step-dots li[aria-current="step"] { background: var(--accent); border-color: var(--accent); transform: scale(1.35); box-shadow: 0 0 10px rgba(59, 130, 246, 0.65); }
+.bar-stars { font-size: 14px; letter-spacing: 2px; color: #39425a; flex: none; }
+.bar-stars b { color: var(--amber); font-weight: 400; }
+
+.game-body { display: grid; grid-template-columns: minmax(0, 1fr) 306px; gap: 12px; padding: 12px; min-height: 0; }
+.game-side { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: 10px; min-height: 0; }
+.side-log { display: flex; flex-direction: column; min-height: 0; }
+.side-log .guess-log { flex: 1; min-height: 0; max-height: none; }
+.stage { padding: 14px 16px; min-height: 0; display: flex; flex-direction: column; gap: 10px; overflow: hidden auto; position: relative; }
+.result-screen { overflow-y: auto; overscroll-behavior: contain; padding: 20px clamp(14px, 4vw, 40px) 60px; display: grid; gap: 16px; align-content: start; }
+.result-screen > * { width: min(1100px, 100%); margin: 0 auto; }
+
+/* 進場的任務卡 */
+.brief-layer {
+  position: absolute; inset: 46px 0 0; z-index: 6; display: none; place-items: center;
+  background: rgba(8, 10, 16, 0.74); backdrop-filter: blur(6px);
+}
+.brief-layer.on { display: grid; animation: brief-fade 240ms ease; }
+@keyframes brief-fade { from { opacity: 0; } to { opacity: 1; } }
+.brief-card {
+  width: min(520px, calc(100% - 28px)); padding: 30px 30px 26px; text-align: center;
+  border: 1px solid #35507c; border-radius: 16px;
+  background: linear-gradient(165deg, rgba(59, 130, 246, 0.18), #141923 60%);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  animation: brief-card-in 340ms cubic-bezier(0.2, 0, 0, 1);
+}
+@keyframes brief-card-in { from { opacity: 0; transform: translateY(18px) scale(0.96); } to { opacity: 1; transform: none; } }
+.brief-card h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 6px 0 14px; }
+.brief-line { color: #c9d5e8; font-size: 15px; margin-bottom: 8px; }
+.brief-line b { color: white; }
+.brief-goal {
+  margin: 16px 0 22px; padding: 10px 14px; border-radius: 8px; font-size: 14px;
+  background: rgba(241, 189, 98, 0.1); border: 1px solid rgba(241, 189, 98, 0.35); color: #f3e3c3;
+}
+.brief-go { padding: 12px 34px; font-size: 16px; }
+
+/* 舞台中央的大字（比賽倒數） */
+.stage-flash {
+  position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; z-index: 4;
+  font-size: clamp(3rem, 12vw, 7rem); font-weight: 800; color: white;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(59, 130, 246, 0.6);
+}
+.stage-flash.go span { animation: flash-pop 600ms ease-out; display: block; }
+@keyframes flash-pop { from { opacity: 0; transform: scale(1.6); } 40% { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
+
+/* 圖鑑 */
+.dex-dialog {
+  color: var(--ink); background: #141923; border: 1px solid #35435b; border-radius: 14px;
+  max-width: 760px; width: calc(100% - 32px); padding: 26px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.6);
+}
+.dex-dialog::backdrop { background: rgba(5, 7, 13, 0.72); backdrop-filter: blur(4px); }
+.dex-dialog .dialog-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.dex-dialog h2 { font-size: 1.4rem; font-weight: 800; margin-top: 4px; }
+.dex-dialog h2 span { font: 500 14px var(--mono); color: var(--subtle); margin-left: 6px; }
+.dex-note { color: var(--muted); font-size: 14px; margin: 10px 0 16px; }
+
+@media (max-width: 900px) {
+  /* 手機：舞台在上，資源和小 AI 縮成一條，紀錄壓在最下面 */
+  .game-body { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 8px; }
+  .game-side { grid-template-rows: auto auto; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 8px; }
+  .side-log { grid-column: 1 / -1; max-height: 96px; }
+  .side-meter, .side-ai, .side-log { padding: 10px 12px; }
+  .side-ai .ai-bubble { grid-template-columns: 40px 1fr; gap: 8px; }
+  .side-ai .ai-avatar { width: 40px; height: 40px; }
+  .side-ai .ai-avatar canvas { width: 36px !important; height: 36px !important; }
+  .side-ai .ai-text { font-size: 13px; padding: 8px 10px; }
+  .bar-title { display: none; }
+  .stage { padding: 12px; }
+}
+
+@media (max-width: 860px) {
+  .plate { padding: 4px 7px 5px; gap: 3px 5px; }
+  .plate .p-icon { font-size: 13px; }
+  .plate .p-name { font-size: 11px; }
+  .plate .p-sub { display: none; }
+  .plate .p-stars { font-size: 10px; }
+  .title-card h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+  .town-hint { font-size: 12px; gap: 6px 14px; }
+}
+@media (max-width: 560px) {
+  .town-main { padding: 12px 10px; }
+  .dex-label { display: none; }
+  #dex-open { padding: 4px 8px; }
+  .plate { padding: 3px 5px; }
+  .plate .p-name { font-size: 10px; }
+  .plate .p-stars { display: none; }
+}
+
+@media (max-height: 460px) {
+  .town-page { height: auto; min-height: 100dvh; overflow: visible; }
+  .stage-wrap { width: 100%; }
+}

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0d12">
+  <meta name="description" content="會動的演算法：用動畫、預測、動手操作和積木機器人學會二分搜尋。">
+  <title>二分搜尋｜會動的演算法｜ThinkLab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Ccircle cx='14' cy='14' r='6' stroke='white' stroke-width='2.5' fill='none'/%3E%3Cpath d='M19 19l6 6' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../core/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true"></span>ThinkLab</a>
+    <span class="header-divider"></span>
+    <span class="header-label"><a href="../index.html">會動的演算法</a><span class="sep">/</span>二分搜尋</span>
+    <nav><a href="../index.html" class="keep">← 所有模組</a><a href="../../town/index.html#guess">終極密碼</a><a href="../../../judge.html">題目列表</a></nav>
+  </header>
+
+  <main class="page">
+    <div class="module-head">
+      <p class="eyebrow">會動的演算法</p>
+      <h1 class="page-title">🔍 二分搜尋</h1>
+      <p class="page-lead">在排好序的數列裡找一個數：每次看中間，範圍就少一半。先看動畫、再猜下一步、自己動手，最後教機器人。</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="玩法">
+      <button role="tab" id="tab-watch" data-mode="watch" aria-controls="panel-anim" aria-selected="true">👀 看</button>
+      <button role="tab" id="tab-quiz" data-mode="quiz" aria-controls="panel-anim" aria-selected="false" tabindex="-1">🤔 猜</button>
+      <button role="tab" id="tab-play" data-mode="play" aria-controls="panel-play" aria-selected="false" tabindex="-1">🕹️ 做</button>
+      <button role="tab" id="tab-robot" data-mode="robot" aria-controls="panel-robot" aria-selected="false" tabindex="-1">🤖 教機器人</button>
+      <button role="tab" id="tab-next" data-mode="next" aria-controls="panel-next" aria-selected="false" tabindex="-1">📚 下一步</button>
+    </div>
+
+    <!-- 👀 看 ／ 🤔 猜 -->
+    <section id="panel-anim" role="tabpanel" aria-labelledby="tab-watch">
+      <p class="mode-intro" id="anim-intro"></p>
+      <div class="data-bar panel">
+        <label>數列（由小到大）<input id="nums-input" autocomplete="off" spellcheck="false"></label>
+        <label>要找的數 target<input id="target-input" autocomplete="off" inputmode="numeric"></label>
+        <button id="apply-data" type="button">套用</button>
+        <button id="random-data" type="button">隨機一組</button>
+        <div class="segmented" id="algo-switch" role="radiogroup" aria-label="演算法">
+          <button type="button" role="radio" aria-checked="true" data-algo="binary">二分搜尋</button>
+          <button type="button" role="radio" aria-checked="false" data-algo="linear">線性搜尋</button>
+        </div>
+        <p id="data-error" class="field-error" role="alert"></p>
+      </div>
+
+      <div class="viz panel">
+        <div class="viz-top">
+          <span class="tag accent" id="viz-algo">二分搜尋</span>
+          <div class="counters"><span>比較次數 <b id="c-compares">0</b></span><span>範圍還剩 <b id="c-left">0</b> 個</span></div>
+        </div>
+        <div class="array-scroll"><div class="array-view" id="array-view"></div></div>
+        <p class="legend"><span><b class="p-i">i</b> 範圍左端</span><span><b class="p-j">j</b> 範圍右端</span><span><b class="p-m">m</b> 中點</span><span class="lg-out">變暗＋刪除線：已排除</span><span class="lg-found">✓ 找到</span></p>
+      </div>
+
+      <div class="anim-lower">
+        <section class="panel panel-pad">
+          <div class="panel-title"><h2>Python 程式碼</h2><span>變數名稱和《Hello 演算法》相同</span></div>
+          <div class="code-panel" id="code-panel"></div>
+        </section>
+        <div class="anim-side">
+          <section class="panel panel-pad">
+            <div class="panel-title"><h2>這一步發生什麼</h2><span id="quiz-score"></span></div>
+            <p class="narration" id="narration" aria-live="polite"></p>
+            <div id="ask-box"></div>
+          </section>
+          <section class="panel panel-pad">
+            <div class="panel-title"><h2>變數</h2></div>
+            <table class="vars-table"><tbody id="vars-body"></tbody></table>
+          </section>
+        </div>
+      </div>
+
+      <div class="playback-bar" id="playback">
+        <div class="playback-actions">
+          <button class="primary" data-act="play" type="button">▶ 播放</button>
+          <button class="icon-button" data-act="prev" type="button" aria-label="上一步" title="上一步（←）">⏮</button>
+          <button class="icon-button" data-act="next" type="button" aria-label="下一步" title="下一步（→）">⏭</button>
+          <button class="icon-button" data-act="restart" type="button" aria-label="從頭開始" title="從頭開始">↻</button>
+        </div>
+        <div class="playback-progress">
+          <div class="progress-meta"><span data-role="step-label">第 0 / 0 步</span><span class="key-hint">空白鍵播放／暫停，← → 單步</span></div>
+          <input type="range" min="0" max="0" value="0" aria-label="播放進度">
+        </div>
+        <div class="speed-control"><label for="speed">速度</label>
+          <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🕹️ 做 -->
+    <section id="panel-play" role="tabpanel" aria-labelledby="tab-play" hidden>
+      <p class="mode-intro">電腦看不到格子裡的數字，要「打開」才知道。用二分搜尋找出目標：每一輪先點中點 m 打開它，再決定往哪邊找。打開的格子越少越好，按錯會記一次錯誤。</p>
+      <div class="play-grid">
+        <div class="viz panel">
+          <div class="viz-top">
+            <span class="tag accent" id="play-target"></span>
+            <div class="counters"><span>打開 <b id="p-open">0</b> 格</span><span>錯誤 <b id="p-errors">0</b> 次</span></div>
+          </div>
+          <div class="array-scroll"><div class="array-view" id="play-view"></div></div>
+          <p class="legend"><span><b class="p-i">i</b> 範圍左端</span><span><b class="p-j">j</b> 範圍右端</span><span>? 還沒打開</span></p>
+        </div>
+        <section class="panel panel-pad play-side">
+          <div class="panel-title"><h2>現在要做什麼</h2><span id="play-vars"></span></div>
+          <p class="narration" id="play-prompt" aria-live="polite"></p>
+          <div class="choice-row" id="play-choices"></div>
+          <div class="feedback" id="play-feedback" role="status" hidden></div>
+          <div id="play-result"></div>
+          <div class="stage-actions"><button id="play-new" type="button">換一題</button></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- 🤖 教機器人 -->
+    <section id="panel-robot" role="tabpanel" aria-labelledby="tab-robot" hidden>
+      <p class="mode-intro">教機器人玩 <a href="../../town/index.html#guess">終極密碼</a>：不管答案是多少，機器人都要猜中，而且猜的次數越少越好。用積木寫出你的方法，下面會自動轉成 Python。</p>
+      <div class="robot-grid">
+        <div class="panel blockly-wrap">
+          <div id="blockly" aria-label="積木工作區"></div>
+          <p id="blockly-loading" class="loading">積木載入中……</p>
+        </div>
+        <div class="robot-side">
+          <section class="panel panel-pad">
+            <div class="panel-title"><h2>任務與星星</h2><span id="robot-stars"></span></div>
+            <ul class="goal-list" id="goal-list"></ul>
+            <div class="stage-actions">
+              <button class="primary" id="robot-test" type="button" disabled>▶ 測試機器人</button>
+              <button id="robot-ai" type="button" disabled>載入小 AI 的程式</button>
+              <button id="robot-reset" type="button" disabled>重來</button>
+            </div>
+            <div id="robot-results" aria-live="polite"></div>
+          </section>
+          <section class="panel panel-pad" id="replay-panel" hidden>
+            <div class="panel-title"><h2>重播一局</h2><span id="replay-info"></span></div>
+            <form class="replay-form" id="replay-form">
+              <select id="replay-range" aria-label="範圍"><option value="100">1～100</option><option value="1000000">1～1,000,000</option></select>
+              <input id="replay-secret" inputmode="numeric" autocomplete="off" aria-label="答案">
+              <button type="submit">播放這一局</button>
+            </form>
+            <div class="range-track"><div class="range-live" id="replay-live"></div></div>
+            <p class="replay-now" id="replay-now"></p>
+            <ol class="guess-log" id="replay-log"></ol>
+            <div class="playback-bar compact" id="replay-bar">
+              <div class="playback-actions">
+                <button class="primary" data-act="play" type="button">▶ 播放</button>
+                <button class="icon-button" data-act="prev" type="button" aria-label="上一步">⏮</button>
+                <button class="icon-button" data-act="next" type="button" aria-label="下一步">⏭</button>
+                <button class="icon-button" data-act="restart" type="button" aria-label="從頭開始">↻</button>
+              </div>
+              <div class="playback-progress">
+                <div class="progress-meta"><span data-role="step-label">第 0 / 0 步</span></div>
+                <input type="range" min="0" max="0" value="0" aria-label="重播進度">
+              </div>
+              <select aria-label="重播速度"><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+            </div>
+          </section>
+          <details class="panel hints" id="hints">
+            <summary>卡住了？看提示</summary>
+            <ol id="hint-list"></ol>
+            <button id="hint-more" type="button" class="text-button">再給一個提示 →</button>
+          </details>
+          <section class="panel panel-pad">
+            <div class="panel-title"><h2>你的積木變成 Python</h2><span>guess() 是遊戲提供的函式</span></div>
+            <pre class="code-panel py" id="python-out"></pre>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- 📚 下一步 -->
+    <section id="panel-next" role="tabpanel" aria-labelledby="tab-next" hidden>
+      <div class="bridge-intro">
+        <p class="eyebrow">下一步</p>
+        <h2>準備好系統學習了嗎？</h2>
+        <p>你已經玩過二分搜尋了。下面是「你玩過的」和「書上怎麼說」的對照，讀《Hello 演算法》時就不會陌生。</p>
+      </div>
+      <div class="bridge-list" id="bridge-list"></div>
+      <div class="bridge-cols">
+        <section class="panel panel-pad">
+          <div class="panel-title"><h2>積木 → Python</h2><span>同一個想法，兩種寫法</span></div>
+          <p class="bridge-note">左邊是你教機器人的程式，右邊是書上在陣列裡找數字的寫法：while 迴圈、中點、往左或往右，都是同一件事。</p>
+          <div class="py-compare">
+            <div><h3>你的機器人（終極密碼）</h3><pre class="code-panel py" id="my-python"></pre></div>
+            <div><h3>在陣列裡找（書上的寫法）</h3><pre class="code-panel py" id="book-python"></pre></div>
+          </div>
+        </section>
+        <section class="panel panel-pad">
+          <div class="panel-title"><h2>讀完去練習</h2><span>ThinkLab 題目列表</span></div>
+          <ul class="judge-list">
+            <li><b>016</b><span>搜尋目標數字</span><span class="tag">暖身：線性搜尋</span></li>
+            <li><b>180</b><span>商品價格上限查詢</span><span class="tag accent">二分搜尋</span></li>
+            <li><b>204</b><span>連續包裹分車</span><span class="tag amber">挑戰：二分搜尋＋貪心</span></li>
+          </ul>
+          <p class="bridge-note">到 <a href="../../../judge.html">題目列表</a> 搜尋題號就找得到。</p>
+        </section>
+      </div>
+      <p class="fine-print">《Hello 演算法》是 krahets 等人撰寫的開源書，採用 CC BY-NC-SA 4.0 授權。AlgoPlay 只提供連結，沒有複製書中的文字或圖片。</p>
+    </section>
+  </main>
+</body>
+</html>

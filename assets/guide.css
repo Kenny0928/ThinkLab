@@ -1,0 +1,193 @@
+/* 驗資說明頁：只用 algoplay/core/base.css 既有的變數與元件延伸樣式。 */
+
+/* ── 章節捷徑（sticky chip nav） ───────────────────────── */
+.guide-chipnav {
+  position: sticky; top: 52px; z-index: 9;
+  display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  padding: 10px clamp(16px, 4vw, 40px);
+  background: rgba(12, 13, 18, 0.92); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: none;
+}
+.guide-chipnav::-webkit-scrollbar { display: none; }
+/* 捷徑列每頁都在畫面上，所以只留「目前這一章」是亮的，其餘退成純文字，
+   免得一條 8 顆膠囊的橫帶比頁面標題還搶眼。 */
+.guide-chipnav a {
+  flex: none; font-size: 12.5px; font-weight: 500; color: var(--subtle);
+  padding: 6px 11px; border-radius: 99px; border: 1px solid transparent; background: transparent;
+  white-space: nowrap; transition: color 0.16s, border-color 0.16s, background 0.16s;
+}
+.guide-chipnav a:hover { color: white; background: var(--raised); }
+.guide-chipnav a.is-current {
+  color: #cfe0fb; font-weight: 650;
+  border-color: rgba(59, 130, 246, 0.42); background: var(--accent-soft);
+}
+
+/* ── 補 base.css 沒有的 tag 顏色（沿用既有變數） ─────────── */
+.tag.violet { border-color: rgba(182, 156, 255, 0.4); background: rgba(182, 156, 255, 0.1); color: var(--violet); }
+.tag.red { border-color: rgba(255, 129, 146, 0.4); background: rgba(255, 129, 146, 0.1); color: var(--red); }
+
+/* ── 章節共用 ───────────────────────────────────────────── */
+/* 點捷徑跳過來時，別被上面固定的頁首＋捷徑列蓋住 */
+.guide-section { margin-top: 56px; scroll-margin-top: 112px; }
+.guide-section:first-of-type { margin-top: 32px; }
+.guide-note { color: var(--muted); font-size: 0.92rem; max-width: 720px; margin-top: 8px; }
+.guide-key { margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 0.92rem; color: #dbe6f7; }
+.guide-key strong { color: white; }
+
+/* 輸入怎麼進來、輸出怎麼比對——兩件事並排，才看得出它們是一組的 */
+.guide-keys { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.guide-keys .guide-key { margin-top: 0; }
+.guide-key-tag {
+  display: inline-block; margin-bottom: 7px; padding: 2px 9px; border-radius: 99px;
+  font: 600 11px/1.6 var(--mono); letter-spacing: 0.08em;
+  color: var(--accent-ink); background: rgba(59, 130, 246, 0.16);
+}
+@media (max-width: 720px) { .guide-keys { grid-template-columns: 1fr; } }
+
+/* ── Section 1：驗資流程圖 ─────────────────────────────── */
+.flow-diagram { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.flow-box {
+  flex: 1 1 160px; min-width: 140px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--soft); padding: 16px; text-align: center;
+}
+.flow-box .flow-icon { font-size: 22px; }
+.flow-box h3 { font-size: 14px; font-weight: 700; margin-top: 8px; }
+.flow-box p { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.flow-arrow { flex: none; color: var(--accent); font-size: 20px; }
+.flow-compare {
+  flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px; align-items: stretch;
+  border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--raised); padding: 14px;
+}
+.flow-compare .vs { text-align: center; font-family: var(--mono); color: var(--amber); font-size: 12px; }
+/* 直向排列時要取消 flex-basis，否則 160px 會被當成「高度」把卡片撐開 */
+.flow-compare .flow-box { flex: none; background: transparent; border: none; padding: 4px; }
+@media (max-width: 720px) {
+  .flow-diagram { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+
+/* ── Section 2：看懂範例 ──────────────────────────────── */
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+.tab-btn { font-size: 13px; padding: 8px 14px; }
+.tab-btn.active { background: var(--accent); border-color: var(--accent); color: white; font-weight: 650; }
+.sample-io-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; margin-top: 14px; }
+.sample-io-grid .code-panel { min-height: 92px; }
+.sample-io-grid .code-panel .eol { color: var(--subtle); }
+#sample-format { border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); padding: 14px 16px; font-size: 13.5px; color: #c6d0e0; }
+#sample-format p + p { margin-top: 8px; }
+#sample-format code { color: var(--accent-ink); }
+@media (max-width: 720px) { .sample-io-grid { grid-template-columns: 1fr; } }
+
+.wrap-demo { margin-top: 18px; border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: 14px 16px; background: var(--sunken); }
+.wrap-demo-box {
+  margin-top: 10px; max-width: 260px; border: 1px solid var(--line); border-radius: 8px; background: #0c1018;
+  padding: 10px 12px; font: 13px/1.7 var(--mono); color: #c9d5e8; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.wrap-demo-box .ln-tag { display: inline-block; margin-top: 4px; font-size: 11px; color: var(--amber); }
+
+/* ── Section 3：要讀幾次（核心互動） ──────────────────── */
+#howmany-stage { margin-top: 18px; }
+.howmany-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 860px) { .howmany-grid { grid-template-columns: 1fr; } }
+.howmany-col { border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.howmany-col.is-scratch { border-top: 3px solid #5cb1d6; }
+.howmany-col.is-blockly { border-top: 3px solid var(--cyan); }
+.howmany-col-head { display: flex; align-items: center; gap: 8px; }
+.howmany-col-head h4 { font-size: 14px; font-weight: 700; flex: 1; }
+.howmany-count { font-family: var(--mono); font-size: 11.5px; color: var(--subtle); }
+.howmany-dot { display: none; }
+
+.feeder {
+  border: 1px solid var(--line); border-radius: 8px; background: #0c1018; padding: 10px 12px;
+  font: 13px/1.8 var(--mono); overflow-x: auto;
+}
+.feeder-tape { white-space: pre-wrap; overflow-wrap: anywhere; }
+.feeder-tape .eol { color: var(--subtle); }
+.feeder-consumed { color: #4b5870; text-decoration: line-through; text-decoration-color: #3a4355; }
+.feeder-current { color: var(--paper); background: var(--amber); border-radius: 3px; padding: 0 1px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.feeder-pending { color: #c9d5e8; }
+.feeder-empty { color: var(--subtle); font-style: italic; }
+.feeder-foot { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+.feeder-foot code { color: var(--accent-ink); font-family: var(--mono); }
+.feeder-error code { color: var(--red); }
+
+.program-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+@media (max-width: 480px) { .program-panel { grid-template-columns: 1fr; } }
+.program-subtitle { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--subtle); margin-bottom: 6px; }
+.program-var-list { display: flex; flex-direction: column; gap: 6px; }
+.var-card { display: flex; justify-content: space-between; gap: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--raised); padding: 6px 9px; font-size: 12.5px; }
+.var-card-label { color: var(--muted); }
+.var-card-value { font-family: var(--mono); color: var(--green); font-weight: 600; }
+.program-empty { font-size: 12px; color: var(--subtle); }
+.program-output-lines { margin: 0; font: 12.5px/1.7 var(--mono); color: #c9d5e8; white-space: pre-wrap; overflow-wrap: anywhere; border: 1px solid var(--line); border-radius: 6px; background: #0c1018; padding: 8px 10px; min-height: 40px; }
+
+.demo-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.re-callout { display: grid; gap: 8px; margin-top: 12px; }
+.re-callout:empty { display: none; }
+.re-callout code { font-family: var(--mono); }
+
+/* ── Section 4／5：積木外觀 ───────────────────────────── */
+.block-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; align-items: flex-start; }
+.scratch-block, .blockly-block {
+  position: relative; display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: 13px; color: white; font-size: 13.5px; font-weight: 600;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.25);
+}
+.scratch-block { border-radius: 13px; }
+.scratch-block.sensing { background: #5cb1d6; }
+.scratch-block.looks { background: #9966ff; }
+.scratch-block .slot { background: rgba(255,255,255,0.22); border-radius: 9px; padding: 2px 10px; font-weight: 500; }
+.scratch-block.reporter { border-radius: 99px; }
+.blockly-block { background: var(--cyan); color: #0c1018; border-radius: 4px; }
+.blockly-block .slot { background: rgba(12,16,24,0.18); border-radius: 4px; padding: 2px 8px; font-weight: 500; }
+
+.block-caption { margin-top: 8px; font-size: 12.5px; color: var(--subtle); max-width: 260px; }
+.block-pair { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 12px; align-items: center; margin-top: 16px; }
+.block-pair .arrow { color: var(--accent); font-size: 18px; text-align: center; }
+@media (max-width: 640px) { .block-pair { grid-template-columns: 1fr; } .block-pair .arrow { transform: rotate(90deg); } }
+
+.point-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+@media (max-width: 640px) { .point-grid { grid-template-columns: 1fr; } }
+.point-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); padding: 14px 16px; }
+.point-card h4 { font-size: 13.5px; font-weight: 700; color: #dbe6f7; }
+.point-card p { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+/* ── Section 6：答案都是文字 ──────────────────────────── */
+.text-answer-demo { display: flex; align-items: center; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+.text-answer-demo .chip-val { font-family: var(--mono); font-size: 20px; font-weight: 700; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--raised); }
+.text-answer-demo .op { color: var(--subtle); font-size: 18px; }
+.text-answer-demo .chip-val.bad { border-color: rgba(255,129,146,0.45); color: var(--red); }
+.text-answer-demo .chip-val.good { border-color: rgba(99,214,173,0.45); color: var(--green); }
+
+/* ── Section 7：常見錯誤對照 ──────────────────────────── */
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 18px; }
+.compare-cell { border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.compare-cell h4 { font-size: 13px; font-weight: 700; }
+.compare-rows { display: grid; gap: 6px; }
+.compare-row { display: flex; align-items: baseline; gap: 8px; font-family: var(--mono); font-size: 12.5px; border-radius: 6px; padding: 5px 8px; }
+/* 要保留連續空格，否則「多一個空格」的例子會被 HTML 摺成跟期望值一模一樣 */
+.compare-row > span:last-child { white-space: pre-wrap; }
+.compare-row .tag-label { flex: none; font-family: var(--font); font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; }
+.compare-row.expect { background: rgba(99, 214, 173, 0.08); color: var(--green); }
+.compare-row.actual { background: rgba(255, 129, 146, 0.08); color: var(--red); }
+.compare-why { font-size: 12px; color: var(--muted); }
+
+/* ── Section 8：AC / WA / TLE / RE ────────────────────── */
+.verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+.verdict-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); padding: 16px; border-top: 3px solid var(--line-strong); }
+.verdict-card .verdict-code { font-family: var(--mono); font-size: 20px; font-weight: 800; }
+.verdict-card p { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+.verdict-card.ac { border-top-color: var(--green); } .verdict-card.ac .verdict-code { color: var(--green); }
+.verdict-card.wa { border-top-color: var(--red); } .verdict-card.wa .verdict-code { color: var(--red); }
+.verdict-card.tle { border-top-color: var(--amber); } .verdict-card.tle .verdict-code { color: var(--amber); }
+.verdict-card.re { border-top-color: var(--violet); } .verdict-card.re .verdict-code { color: var(--violet); }
+
+/* ── 收尾 ─────────────────────────────────────────────── */
+.guide-footer-nav { margin-top: 60px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 390px) {
+  .flow-box { min-width: 0; }
+  .howmany-col { padding: 10px; }
+}

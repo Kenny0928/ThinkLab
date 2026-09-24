@@ -142,7 +142,12 @@ python3 scripts/verify_problems.py
 
 ## 三、 場景二：網頁前端修改工作流（Web Frontend SOP）
 
-專案包含三個核心前端頁面，修改時各有其保護規範：
+> ⚠️ **任何視覺相關的修改（版面、色彩、字級、間距、元件樣式）一律先讀
+> [`for_AI/視覺設計規範.md`](視覺設計規範.md)。**
+> 那份文件是全站的視覺契約，包含設計權杖、排版規則與元件模式。
+> 本節只規範「不可破壞的功能契約」；「長什麼樣子」以視覺設計規範為準。
+
+專案的核心前端頁面如下，修改時各有其保護規範：
 
 ### 1. 修改 `judge.html`（評測核心頁）
 - **核心職責**：題目導覽、題目載入展示、CodeMirror 編輯器、Pyodide 執行與比對。
@@ -151,22 +156,45 @@ python3 scripts/verify_problems.py
   - 答案比對邏輯：`actual.trimEnd() === expected.trimEnd()`。
   - Pyodide 載入機制：全域單例與延遲初始化。
 - **UI/UX 規範**：
-  - 維持 Dracula 深色主題與響應式雙欄佈局（左側題目、右側代碼與結果）。
+  - 維持響應式雙欄佈局（左側題目、右側程式碼與結果）。
+  - CodeMirror 沿用 Dracula **語法配色**，但編輯區底色已覆寫為站上的 `--surface-dark`；
+    不要把 Dracula 原生的 `#282a36` 背景改回來。
+  - 判題結果面板以 `data-verdict` 屬性上色（AC／WA／TLE／RE），**該屬性只用於顯示，不得參與判定**。
   - 所有新加入的 UI 元素必須支援鍵盤無障礙操作與行動端折疊。
+  - 其餘視覺規則見 [`視覺設計規範.md`](視覺設計規範.md)。
 
-### 2. 修改 `beginner.html`（LV.1講義頁）
-- **核心職責**：零基礎 10 關自學講義、教學引導、填空練習板。
+### 2. 修改 `beginner.html`（LV.1／LV.2／LV.3 講義頁）
+- **核心職責**：三階段自學講義、教學引導、練習板。以 `?course=` 查詢參數切換課程
+  （`beginner`／`intermediate`／`advanced`），關卡數由 `LESSONS.length` 動態計算，勿寫死。
 - **資料規範**：
-  - 題目定義於內嵌的 `LESSONS` 陣列。
+  - LV.1 定義於頁內的 `BEGINNER_LESSONS` 陣列；LV.2／LV.3 由
+    `assets/course-catalog.js`、`assets/advanced-course.js` 掛在 `window.SKILLLAB_COURSES` 上。
   - 每個關卡結構包含：`id`, `title`, `badge`, `kicker`, `goal`, `mission`, `predict`, `predictAnswer`, `steps`, `starter`, `solution`, `hint`, `checkpoint`, `tests`, `variants`。
   - 填空題樣板 `starter` 應使用四個底線 `____` 提示學生填入代碼。
+- **教材文字規範**：
+  - 敘述文字（`goal`／`mission`／`predict`／`steps`／`hint`／`checkpoint`）會經過 `withCode()`
+    自動把程式碼片段包成 `<code>`。撰寫時**中文與程式碼之間請留半形空格**，例如
+    「第一個 `print()` 放⋯」。
+  - 只有「識別字後面直接接 `()` 或 `[]`」的片段會被標記，裸英文字（`set`、`dict`、`YES`）不會。
+    這是刻意的保守設計，詳見視覺設計規範 §四。
 - **執行環境**：共用同一個 Pyodide 執行實例，每次執行後需清理變數空間，防止前後題變數互相污染。
 
 ### 3. 修改 `index.html`（首頁學習選單）
-- **核心職責**：學習入口導覽、通關進度視覺化。
-- **邏輯連動**：
-  - 讀取 `localStorage.getItem('pyjudge_beginner_completed')` 顯示LV.1講義進度條。
-  - 當新增講義（如LV.2、LV.3講義）或開放新功能時，方可將 `card-state` 由「準備中」改為「可以開始」，並補上有效連結。
+- **核心職責**：學習入口導覽。首頁**刻意只放入口，不放說明文字與進度統計**——
+  一個螢幕、少量選單、沒有說明段落。新增內容時不要破壞這個原則。
+- **入口分三個層級**（class 名稱即語意，新增入口時選對層級）：
+
+  | class | 層級 | 樣式 | 數量限制 |
+  |---|---|---|---|
+  | `.entry-primary` | 主要：每天都要用 | 整排、藍色實心、最大 | **只能有一個** |
+  | `.entry-secondary` | 次要：互動練習場 | 兩欄、外框 | 2–4 個 |
+  | `.entry-tertiary` | 參考：查閱用資料 | 小格，需配 `.entry-group-label` 群組標題 | 不限 |
+
+- 新增一個「主要入口」等於宣告它比「開始解題」更重要——除非確實如此，否則新入口一律放次要或參考層級。
+
+### 4. 修改 `algoplay/`、`test/`（遊樂場與流程圖實驗室）
+- 這兩區掛 `algoplay/core/base.css`／`test/flow-lab.css`，使用 **A 套設計權杖**。
+- 新增模組請複製既有模組的骨架（`algoplay/modules/binary-search/`），不要自創版面。
 
 ---
 
@@ -186,6 +214,12 @@ python3 scripts/verify_problems.py
 - [ ] `solutions/NNN.py` 無使用第三方套件，僅使用標準庫。
 - [ ] `problems/index.json` 已正確登錄該題。
 - [ ] `docs/題庫總覽與學習階梯.md` 已同步更新。
+
+### 視覺檢查（只要動到前端就必須執行）
+- [ ] 已對照 [`視覺設計規範.md`](視覺設計規範.md) 第七節的自檢清單逐項確認。
+- [ ] 沒有引入新的色票、字體或圓角值；一律使用既有設計權杖。
+- [ ] 實際跑起來看過桌機（1440×900）與手機（390×844），Console 無錯誤。
+- [ ] `node --test algoplay/test/*.test.mjs test/*.test.mjs` 全數通過。
 
 ### 自動驗證檢查
 - [ ] 終端已執行 `python3 scripts/verify_problems.py` 且回傳碼為 0。

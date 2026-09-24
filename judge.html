@@ -4,7 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Judge 系統｜ThinkLab</title>
+  <meta name="theme-color" content="#0c0d12">
+  <meta name="description" content="ThinkLab 題庫：214 題循序練習，支援 Scratch、Blockly 與 Python，寫完立刻自動驗資。">
+  <title>題庫｜ThinkLab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Cpath d='M8 17l5 5 11-13' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- CodeMirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
@@ -22,25 +28,33 @@
 
   <style>
     :root {
-      --bg: #111214;
-      --surface: #181a1d;
-      --surface2: #202328;
-      --border: #30343a;
-      --border-strong: #444a53;
-      --accent: #3d6fd8;
+      color-scheme: dark;
+      /* 全站共用色票（與 algoplay/core/base.css、test/flow-lab.css 同一組值） */
+      --bg: #0c0d12;
+      --surface: #141720;
+      --surface2: #1a1e28;
+      --surface-dark: #10131b;
+      --border: #262a33;
+      --border-strong: #343d50;
+      --accent: #3b82f6;
       --accent-hover: #4b7de7;
+      --accent-soft: rgba(59, 130, 246, 0.14);
+      --accent-ink: #9ec5ff;
       --on-accent: #ffffff;
-      --success: #22c55e;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --info: #06b6d4;
+      --success: #63d6ad;
+      --warning: #f1bd62;
+      --danger: #ff8192;
+      --info: #6dd5ed;
       --text: #f5f7fa;
-      --text-muted: #a6adb7;
-      --text-subtle: #7c8491;
-      --easy: #22c55e;
-      --medium: #f59e0b;
-      --hard: #ef4444;
-      --radius: 6px;
+      --text-muted: #94a3b8;
+      --text-subtle: #6f7f97;
+      --easy: #63d6ad;
+      --medium: #f1bd62;
+      --hard: #ff8192;
+      --mono: "Fira Code", "SFMono-Regular", Consolas, monospace;
+      --font: "Plus Jakarta Sans", "Noto Sans TC", "Segoe UI", system-ui, sans-serif;
+      --radius: 7px;
+      --radius-lg: 11px;
       --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
     }
 
@@ -51,11 +65,14 @@
     }
 
     body {
-      font-family: 'Segoe UI', 'Noto Sans TC', system-ui, sans-serif;
+      font-family: var(--font);
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
     }
+
+    /* 關掉 Fira Code 連字，學生才看得到真正要打的 <=、==。 */
+    *, *::before, *::after { font-variant-ligatures: none !important; }
 
     button:focus-visible,
     a:focus-visible,
@@ -66,15 +83,16 @@
       outline-offset: 2px;
     }
 
-    /* ─── Header ─── */
+    /* ─── Header：與 algoplay/core/base.css、flow-lab.css 同一組規格 ─── */
     header {
-      background: rgba(17, 18, 20, 0.96);
+      background: rgba(12, 13, 18, 0.9);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      height: 60px;
+      padding: 0 clamp(16px, 3vw, 28px);
+      height: 52px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -83,84 +101,93 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 1.25rem;
-      font-weight: 700;
+      gap: 9px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       color: var(--text);
-      cursor: pointer;
       text-decoration: none;
+      flex: none;
     }
 
-    .logo span {
-      font-size: 1.5rem;
+    .logo::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--accent);
+      flex: none;
+    }
+
+    .header-divider {
+      height: 18px;
+      width: 1px;
+      background: var(--border);
+      flex: none;
+    }
+
+    .header-label {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .header-label:hover {
+      color: var(--text);
+    }
+
+    header nav {
+      margin-left: auto;
+      display: flex;
+      gap: 22px;
+      align-items: center;
     }
 
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.875rem;
-      padding: 6px 12px;
-      border-radius: var(--radius);
-      transition: all 0.2s;
+      font-size: 0.8125rem;
+      white-space: nowrap;
+      transition: color 0.2s;
       cursor: pointer;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
+    .nav-link:hover {
       color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
     }
 
-    .nav-link.active {
-      box-shadow: inset 0 -2px var(--accent);
-    }
-
+    /* Python 環境只是背景狀態，不該比導覽列還搶眼：一顆點 + 一行灰字 */
     .badge-pyodide {
-      margin-left: auto;
-      font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 999px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      white-space: nowrap;
     }
 
-    .pyodide-loading {
-      background: rgba(245, 158, 11, 0.2);
-      color: var(--warning);
-    }
-
-    .pyodide-ready {
-      background: rgba(34, 197, 94, 0.2);
-      color: var(--success);
-    }
-
-    .pyodide-error {
-      background: rgba(239, 68, 68, 0.2);
-      color: var(--danger);
-    }
+    .pyodide-loading .dot { background: var(--warning); }
+    .pyodide-ready { color: var(--text-subtle); }
+    .pyodide-ready .dot { background: var(--success); }
+    .pyodide-error { color: var(--danger); }
+    .pyodide-error .dot { background: var(--danger); }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: currentColor;
+      flex: none;
     }
 
     .dot.pulse {
-      animation: pulse 1.5s infinite;
+      animation: pulse 1.6s infinite;
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0.3
-      }
+      0%, 100% { opacity: 1 }
+      50% { opacity: 0.25 }
     }
 
     /* ─── Views ─── */
@@ -196,28 +223,34 @@
     }
 
     .list-heading {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       display: flex;
-      align-items: end;
+      align-items: baseline;
       justify-content: space-between;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .list-heading .page-title {
       margin-bottom: 0;
+      font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .filter-result-count {
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      color: var(--text-subtle);
+      font-size: 0.82rem;
+      font-variant-numeric: tabular-nums;
     }
 
+    /* 篩選列是工具不是內容：搜尋框保持明顯，下拉選單一律退後一階 */
     .problem-filters {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       padding: 0;
       display: grid;
-      grid-template-columns: minmax(220px, 1.3fr) repeat(4, minmax(118px, 0.75fr)) auto;
-      gap: 10px;
+      grid-template-columns: minmax(240px, 1.6fr) repeat(4, minmax(108px, 0.7fr)) auto;
+      gap: 8px;
       border: 0;
       background: transparent;
     }
@@ -241,14 +274,63 @@
     .filter-field select,
     .filter-reset {
       width: 100%;
-      min-height: 42px;
-      padding: 9px 12px;
+      min-height: 38px;
+      padding: 8px 11px;
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: var(--radius);
       color: var(--text);
       background: var(--surface);
       font: inherit;
-      font-size: 0.875rem;
+      font-size: 0.84rem;
+    }
+
+    .filter-field select,
+    .filter-reset {
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .filter-field select:hover,
+    .filter-reset:hover {
+      border-color: var(--border-strong);
+      color: var(--text);
+    }
+
+    #problem-search {
+      background: var(--surface);
+      padding-left: 34px;
+    }
+
+    .filter-field:first-child {
+      position: relative;
+    }
+
+    .filter-field:first-child::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      width: 13px;
+      height: 13px;
+      margin-top: -8px;
+      border: 1.6px solid var(--text-subtle);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .filter-field:first-child::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      width: 6px;
+      height: 1.6px;
+      margin-top: 3px;
+      background: var(--text-subtle);
+      transform: rotate(45deg);
+      transform-origin: left center;
+      pointer-events: none;
     }
 
     .filter-field input:focus,
@@ -261,7 +343,7 @@
 
     .filter-reset {
       width: auto;
-      cursor: pointer;
+      font-size: 0.82rem;
     }
 
     .table-scroll {
@@ -351,24 +433,26 @@
       min-width: 840px;
       border: 0;
       overflow: hidden;
+      table-layout: fixed;
     }
 
     .problem-table th {
       background: var(--surface);
-      padding: 12px 16px;
+      padding: 11px 16px;
       text-align: left;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-subtle);
+      letter-spacing: 0.04em;
       border-bottom: 1px solid var(--border);
     }
 
     .problem-table td {
-      padding: 14px 16px;
+      padding: 0 16px;
+      height: 52px;
       border-bottom: 1px solid var(--border);
       font-size: 0.9rem;
+      vertical-align: middle;
     }
 
     .problem-table tr:last-child td {
@@ -376,64 +460,96 @@
     }
 
     .problem-table tr:hover td {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.035);
     }
 
+    /* 題號只是索引，用等寬字排齊、壓到最暗 */
+    .problem-table td:first-child {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-subtle) !important;
+      font-weight: 400 !important;
+    }
+
+    /* 題目名稱＝這一列唯一要點的東西，所以是全列最亮、最重 */
     .problem-title-link {
-      color: var(--accent);
+      color: var(--accent-ink);
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 0.95rem;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.16s;
     }
 
+    .problem-table tr:hover .problem-title-link,
     .problem-title-link:hover {
-      color: white;
-      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    /* 標籤欄固定單行，超出的淡出——列高一致，眼睛才掃得動 */
+    .problem-table td.cell-tags {
+      overflow: hidden;
+      white-space: nowrap;
+      -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+      mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
     }
 
     .badge {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 999px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
+      white-space: nowrap;
     }
 
-    .badge-easy {
-      background: rgba(34, 197, 94, 0.15);
-      color: var(--easy);
-    }
-
-    .badge-medium {
-      background: rgba(245, 158, 11, 0.15);
-      color: var(--medium);
-    }
-
+    /* 難度：降成「一顆點＋文字」，不再是整列最亮的色塊 */
+    .badge-easy,
+    .badge-medium,
     .badge-hard {
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--hard);
+      background: transparent;
+      padding: 0;
+      font-weight: 500;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
+    .badge-easy::before,
+    .badge-medium::before,
+    .badge-hard::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex: none;
+    }
+
+    .badge-easy { color: var(--easy); }
+    .badge-medium { color: var(--medium); }
+    .badge-hard { color: var(--hard); }
+
+    /* 階段＝課程分組，保留色塊，是第二層級 */
     .badge-stage-beginner {
       background: rgba(59, 130, 246, 0.16);
       color: #93c5fd;
     }
 
     .badge-stage-intermediate {
-      background: rgba(20, 184, 166, 0.16);
-      color: #5eead4;
+      background: rgba(109, 213, 237, 0.14);
+      color: #8fdcef;
     }
 
     .badge-stage-advanced {
-      background: rgba(168, 85, 247, 0.16);
-      color: #d8b4fe;
+      background: rgba(182, 156, 255, 0.16);
+      color: #c9b6ff;
     }
 
     .badge-stage-challenge {
-      background: rgba(244, 63, 94, 0.17);
-      color: #fda4af;
-      box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.28);
+      background: rgba(255, 129, 146, 0.15);
+      color: #ffa4b1;
     }
 
     .badge-stage-unclassified {
@@ -442,8 +558,8 @@
     }
 
     .badge-apcs {
-      background: rgba(245, 158, 11, 0.16);
-      color: #fbbf24;
+      background: rgba(241, 189, 98, 0.15);
+      color: var(--warning);
     }
 
     .meta-audience {
@@ -453,28 +569,43 @@
 
     .tag {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 999px;
-      font-size: 0.7rem;
-      background: var(--surface2);
-      color: var(--text-muted);
+      font-size: 0.68rem;
+      background: transparent;
+      box-shadow: inset 0 0 0 1px var(--border);
+      color: var(--text-subtle);
       margin-right: 4px;
     }
 
+    /* 未完成＝安靜；已完成＝一個綠勾，讓學生一眼看到自己走到哪 */
     .ac-rate {
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      color: var(--text-subtle);
+      font-size: 0.82rem;
+      white-space: nowrap;
     }
 
     .status-icon {
-      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--success);
+      white-space: nowrap;
+    }
+
+    .status-icon::before {
+      content: "✓";
+      font-size: 0.9rem;
+      line-height: 1;
     }
 
     /* ─── Problem Detail ─── */
     #view-problem {
       display: none;
       flex-direction: column;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 52px);
     }
 
     #view-problem.active {
@@ -484,10 +615,10 @@
     .problem-header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 12px 24px;
+      padding: 9px 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .back-btn {
@@ -506,11 +637,16 @@
       color: var(--accent);
     }
 
+    /* 這裡只是「你現在在哪一題」的提示，真正的標題在左欄，所以壓低一階 */
     .problem-header-title {
-      min-width: 180px;
-      font-size: 1rem;
-      font-weight: 600;
+      min-width: 120px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
       flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .judge-answer-controls {
@@ -550,14 +686,16 @@
       width: 38%;
       min-width: 320px;
       overflow-y: auto;
-      padding: 24px;
+      padding: 22px 24px 40px;
       border-right: 1px solid var(--border);
     }
 
     .desc-panel h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 10px;
     }
 
     .desc-meta {
@@ -573,14 +711,49 @@
       color: var(--text-muted);
     }
 
+    /* 小節標題＝在長長的捲動裡定位用的地標，必須比內文「更亮」而不是更淡。
+       左側藍色短線讓每個段落的起點一眼看得到。 */
     .section-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 20px;
-      margin-bottom: 8px;
+      position: relative;
+      padding-left: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.3em;
+      bottom: 0.3em;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--accent);
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .samples-help-link {
+      text-transform: none;
+      letter-spacing: normal;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      text-decoration: none;
+    }
+
+    .samples-help-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     .desc-panel p,
@@ -631,46 +804,87 @@
     }
 
     .sample-block {
-      background: #0f172a;
+      background: var(--surface-dark);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .sample-block-header {
-      background: var(--surface2);
-      padding: 6px 12px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
+      background: var(--surface);
+      padding: 4px 10px;
+      font-size: 0.68rem;
+      color: var(--text-subtle);
       font-weight: 600;
+      letter-spacing: 0.06em;
     }
 
     .sample-block pre {
-      padding: 12px;
-      font-family: 'Consolas', 'Courier New', monospace;
-      font-size: 0.85rem;
+      padding: 9px 10px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
       white-space: pre-wrap;
       color: #e2e8f0;
     }
 
+    /* 每行一列、左側行號，讓「一行折成兩行」和「本來就是兩行」一眼可辨 */
+    .sample-lines {
+      padding: 9px 10px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: #e2e8f0;
+    }
+
+    .sample-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .sample-line + .sample-line {
+      margin-top: 2px;
+    }
+
+    .sample-line-no {
+      flex: 0 0 auto;
+      min-width: 1.8em;
+      text-align: right;
+      color: var(--text-subtle);
+      user-select: none;
+    }
+
+    .sample-line-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .sample-line-break {
+      margin-left: 2px;
+      color: var(--text-subtle);
+      user-select: none;
+    }
+
     .sample-pair + .sample-pair {
-      margin-top: 16px;
-      padding-top: 16px;
+      margin-top: 12px;
+      padding-top: 12px;
       border-top: 1px solid var(--border);
     }
 
     .sample-pair-title {
-      margin-bottom: 8px;
-      color: #bfdbfe;
-      font-size: 0.82rem;
-      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-subtle);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
     }
 
     .sample-pair-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
     }
 
     .sample-note {
@@ -682,19 +896,23 @@
 
     .limits-row {
       display: flex;
-      gap: 16px;
+      gap: 8px;
       margin-bottom: 8px;
+      flex-wrap: wrap;
     }
 
     .limit-item {
-      background: var(--surface2);
+      background: transparent;
+      box-shadow: inset 0 0 0 1px var(--border);
       border-radius: var(--radius);
-      padding: 8px 14px;
-      font-size: 0.8rem;
+      padding: 5px 11px;
+      font-size: 0.76rem;
+      color: var(--text-subtle);
     }
 
     .limit-item strong {
-      color: var(--accent);
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
     /* Right panel */
@@ -706,19 +924,22 @@
       overflow: hidden;
     }
 
-    .focus-mode-btn {
-      padding: 5px 10px;
+    .focus-mode-btn,
+    .problem-header .btn-secondary {
+      padding: 6px 11px !important;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      color: #cbd5e1;
-      background: var(--surface2);
-      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: transparent;
+      font-size: 0.78rem !important;
+      font-weight: 500;
       cursor: pointer;
     }
 
-    .focus-mode-btn:hover {
-      border-color: var(--accent);
-      color: white;
+    .focus-mode-btn:hover,
+    .problem-header .btn-secondary:hover {
+      border-color: var(--border-strong);
+      color: var(--text);
     }
 
     body.judge-focus .desc-panel {
@@ -761,10 +982,14 @@
       /* 讓 gutter 正確 clip */
     }
 
+    .editor-area .CodeMirror,
+    .editor-area .CodeMirror-scroll {
+      background: var(--surface-dark) !important;
+    }
+
     .CodeMirror-gutters {
-      background: #282a36 !important;
-      /* Dracula 背景色，不透明 */
-      border-right: 1px solid rgba(248, 248, 242, 0.08) !important;
+      background: var(--surface-dark) !important;
+      border-right: 1px solid var(--border) !important;
       z-index: 3 !important;
       white-space: nowrap !important;
       min-height: 100% !important;
@@ -775,9 +1000,13 @@
       padding: 0 10px 0 8px !important;
       min-width: 24px !important;
       text-align: right !important;
-      color: #6272a4 !important;
+      color: var(--text-subtle) !important;
       white-space: nowrap !important;
     }
+
+    .CodeMirror-cursor { border-left-color: #8eb0ff !important; }
+    .CodeMirror-selected { background: rgba(59, 130, 246, 0.22) !important; }
+    .CodeMirror-activeline-background { background: rgba(255, 255, 255, 0.028) !important; }
 
     /* 確保程式碼區域不從 gutter 下方開始 */
     .CodeMirror-sizer {
@@ -840,8 +1069,8 @@
     }
 
     .submit-hint {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      font-size: 0.78rem;
+      color: var(--text-subtle);
       margin-left: auto;
     }
 
@@ -887,8 +1116,63 @@
 
     .results-drawer-title {
       color: #e2e8f0;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 結果列是整個流程的終點，收合時也要一眼看出過或沒過 */
+    .results-panel[data-verdict] {
+      border-left: 3px solid var(--border-strong);
+    }
+
+    .results-panel[data-verdict="AC"] {
+      border-color: rgba(99, 214, 173, 0.45);
+      border-left-color: var(--success);
+    }
+
+    .results-panel[data-verdict="AC"] .results-drawer-header {
+      background: linear-gradient(90deg, rgba(99, 214, 173, 0.12), transparent 60%);
+    }
+
+    .results-panel[data-verdict="AC"] .results-drawer-title {
+      color: var(--success);
+    }
+
+    .results-panel[data-verdict="AC"] .results-drawer-title::before {
+      content: "✓";
+      font-size: 0.95rem;
+    }
+
+    .results-panel[data-verdict="WA"],
+    .results-panel[data-verdict="RE"] {
+      border-color: rgba(255, 129, 146, 0.45);
+      border-left-color: var(--danger);
+    }
+
+    .results-panel[data-verdict="WA"] .results-drawer-header,
+    .results-panel[data-verdict="RE"] .results-drawer-header {
+      background: linear-gradient(90deg, rgba(255, 129, 146, 0.12), transparent 60%);
+    }
+
+    .results-panel[data-verdict="WA"] .results-drawer-title,
+    .results-panel[data-verdict="RE"] .results-drawer-title {
+      color: var(--danger);
+    }
+
+    .results-panel[data-verdict="TLE"] {
+      border-color: rgba(241, 189, 98, 0.45);
+      border-left-color: var(--warning);
+    }
+
+    .results-panel[data-verdict="TLE"] .results-drawer-header {
+      background: linear-gradient(90deg, rgba(241, 189, 98, 0.12), transparent 60%);
+    }
+
+    .results-panel[data-verdict="TLE"] .results-drawer-title {
+      color: var(--warning);
     }
 
     .results-drawer-summary {
@@ -945,15 +1229,16 @@
     }
 
     .result-summary-pill.success {
-      border-color: rgba(34, 197, 94, 0.38);
-      color: #86efac;
-      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(99, 214, 173, 0.5);
+      color: var(--success);
+      background: rgba(99, 214, 173, 0.14);
+      font-weight: 700;
     }
 
     .result-summary-pill.error {
-      border-color: rgba(239, 68, 68, 0.38);
-      color: #fca5a5;
-      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(255, 129, 146, 0.38);
+      color: #ffb3bd;
+      background: rgba(255, 129, 146, 0.1);
     }
 
     .result-summary-pill:not([hidden]) + .submit-hint {
@@ -961,53 +1246,53 @@
     }
 
     .results-title {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      letter-spacing: 0.04em;
       margin-bottom: 10px;
     }
 
     .verdict-banner {
-      padding: 10px 16px;
+      padding: 13px 18px;
       border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .verdict-AC {
-      background: rgba(34, 197, 94, 0.15);
+      background: rgba(99, 214, 173, 0.15);
       color: var(--success);
-      border: 1px solid rgba(34, 197, 94, 0.3);
+      border: 1px solid rgba(99, 214, 173, 0.3);
     }
 
     .verdict-WA {
-      background: rgba(239, 68, 68, 0.15);
+      background: rgba(255, 129, 146, 0.15);
       color: var(--danger);
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      border: 1px solid rgba(255, 129, 146, 0.3);
     }
 
     .verdict-RE {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      background: rgba(255, 129, 146, 0.15);
+      color: #ff9aa8;
+      border: 1px solid rgba(255, 129, 146, 0.3);
     }
 
     .verdict-TLE {
-      background: rgba(245, 158, 11, 0.15);
+      background: rgba(241, 189, 98, 0.15);
       color: var(--warning);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid rgba(241, 189, 98, 0.3);
     }
 
     .verdict-PE {
-      background: rgba(6, 182, 212, 0.15);
+      background: rgba(109, 213, 237, 0.15);
       color: var(--info);
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      border: 1px solid rgba(109, 213, 237, 0.3);
     }
 
     .tc-grid {
@@ -1031,27 +1316,27 @@
     }
 
     .tc-AC {
-      background: rgba(34, 197, 94, 0.15);
+      background: rgba(99, 214, 173, 0.15);
       color: var(--success);
-      border-color: rgba(34, 197, 94, 0.3);
+      border-color: rgba(99, 214, 173, 0.3);
     }
 
     .tc-WA {
-      background: rgba(239, 68, 68, 0.15);
+      background: rgba(255, 129, 146, 0.15);
       color: var(--danger);
-      border-color: rgba(239, 68, 68, 0.3);
+      border-color: rgba(255, 129, 146, 0.3);
     }
 
     .tc-RE {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
-      border-color: rgba(239, 68, 68, 0.3);
+      background: rgba(255, 129, 146, 0.15);
+      color: #ff9aa8;
+      border-color: rgba(255, 129, 146, 0.3);
     }
 
     .tc-TLE {
-      background: rgba(245, 158, 11, 0.15);
+      background: rgba(241, 189, 98, 0.15);
       color: var(--warning);
-      border-color: rgba(245, 158, 11, 0.3);
+      border-color: rgba(241, 189, 98, 0.3);
     }
 
     .tc-running {
@@ -1060,14 +1345,14 @@
     }
 
     .error-block {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      background: rgba(255, 129, 146, 0.1);
+      border: 1px solid rgba(255, 129, 146, 0.3);
       border-radius: var(--radius);
       padding: 10px 14px;
       margin-top: 10px;
       font-family: monospace;
       font-size: 0.8rem;
-      color: #fca5a5;
+      color: #ffb3bd;
       white-space: pre-wrap;
       max-height: 120px;
       overflow-y: auto;
@@ -1081,7 +1366,7 @@
     }
 
     .diff-side {
-      background: #0f172a;
+      background: var(--surface-dark);
       border-radius: var(--radius);
       overflow: hidden;
     }
@@ -1095,12 +1380,12 @@
     }
 
     .diff-expected .diff-side-header {
-      background: rgba(34, 197, 94, 0.2);
+      background: rgba(99, 214, 173, 0.2);
       color: var(--success);
     }
 
     .diff-actual .diff-side-header {
-      background: rgba(239, 68, 68, 0.2);
+      background: rgba(255, 129, 146, 0.2);
       color: var(--danger);
     }
 
@@ -1197,7 +1482,7 @@
       background: var(--surface2);
       padding: 1px 5px;
       border-radius: 4px;
-      font-family: monospace;
+      font-family: var(--mono);
       font-size: 0.85em;
       color: #93c5fd;
     }
@@ -1213,10 +1498,26 @@
     }
 
     @media (max-width: 768px) {
-      header { height:auto; min-height:56px; padding:8px 12px; gap:8px; flex-wrap:wrap; }
+      /* 手機上先砍掉次要欄位，讓「題名／階段／完成沒完成」不用左右滑就看得到 */
+      .problem-table { min-width: 0; }
+
+      .problem-table th:nth-child(4),
+      .problem-table td:nth-child(4),
+      .problem-table th:nth-child(5),
+      .problem-table td:nth-child(5) {
+        display: none;
+      }
+
+      .problem-table th,
+      .problem-table td {
+        padding: 0 10px;
+      }
+
+      header { height:auto; min-height:52px; padding:8px 14px; gap:10px; flex-wrap:wrap; }
       header .logo, header .nav-link { white-space:nowrap; flex-shrink:0; }
-      header .nav-link { padding:5px 8px; }
-      header .badge-pyodide { margin-left:0; white-space:nowrap; }
+      header .header-divider { display:none; }
+      header nav { gap:14px; }
+      header .badge-pyodide { font-size:0.7rem; }
       .split-layout {
         flex-direction: column;
       }
@@ -1302,15 +1603,19 @@
 
   <!-- ══════════════ Header ══════════════ -->
   <header>
-    <a class="logo" href="index.html">
-      ThinkLab
-    </a>
-    <a class="nav-link" href="index.html">學習選單</a>
-    <span class="nav-link active" onclick="showView('list')">題目列表</span>
+    <a class="logo" href="index.html">ThinkLab</a>
+    <span class="header-divider"></span>
+    <span class="header-label" onclick="showView('list')" role="link" tabindex="0"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showView('list');}">題庫</span>
     <div id="pyodide-badge" class="badge-pyodide pyodide-loading">
       <div class="dot pulse"></div>
       <span id="pyodide-status">載入 Python 環境中…</span>
     </div>
+    <nav>
+      <a class="nav-link" href="guide.html">驗資說明</a>
+      <a class="nav-link" href="beginner.html">LV.1 講義</a>
+      <a class="nav-link" href="index.html">學習選單</a>
+    </nav>
   </header>
 
   <!-- ══════════════ View: Problem List ══════════════ -->
@@ -1362,12 +1667,12 @@
         <table class="problem-table">
         <thead>
           <tr>
-            <th style="width:60px">#</th>
+            <th style="width:64px">#</th>
             <th>題目名稱</th>
-            <th style="width:86px">階段</th>
-            <th style="width:120px">標籤</th>
-            <th style="width:90px">難度</th>
-            <th style="width:90px">狀態</th>
+            <th style="width:84px">階段</th>
+            <th style="width:186px">標籤</th>
+            <th style="width:88px">難度</th>
+            <th style="width:96px">狀態</th>
           </tr>
         </thead>
         <tbody id="problem-tbody"></tbody>
@@ -1384,7 +1689,7 @@
       <div class="problem-header-title" id="problem-header-title">—</div>
       <div class="judge-answer-controls" id="judge-answer-controls" aria-label="作答設定"></div>
       <button id="focus-mode-btn" class="focus-mode-btn" type="button" onclick="toggleJudgeFocus()">放大編輯區</button>
-      <button id="reset-code-btn" class="btn btn-secondary" onclick="resetCode()" style="padding:4px 12px;font-size:0.8rem;">重置</button>
+      <button id="reset-code-btn" class="btn btn-secondary" onclick="resetCode()">重置</button>
     </div>
     <div class="split-layout">
       <!-- Left: Description -->
@@ -1397,7 +1702,10 @@
         <div id="p-input-fmt"></div>
         <div class="section-title">輸出格式</div>
         <div id="p-output-fmt"></div>
-        <div class="section-title">範例輸入 / 輸出</div>
+        <div class="section-title section-title-row">
+          <span>範例輸入 / 輸出</span>
+          <a class="samples-help-link" href="guide.html#samples" target="_blank" rel="noopener">怎麼看？</a>
+        </div>
         <div id="p-samples"></div>
         <section id="p-limits-section" aria-labelledby="p-limits-title">
           <div class="section-title" id="p-limits-title">限制</div>
@@ -1937,10 +2245,12 @@ finally:
       summary.setAttribute('aria-label', `${text}，開啟詳細結果`);
     }
 
-    function renderResultDrawer(title, summary, body, { collapsed = false } = {}) {
+    function renderResultDrawer(title, summary, body, { collapsed = false, verdict = '' } = {}) {
       const panel = document.getElementById('results-panel');
       panel.style.display = 'flex';
       panel.classList.toggle('collapsed', collapsed);
+      // 只用於上色，不參與任何判定
+      if (verdict) panel.dataset.verdict = verdict; else delete panel.dataset.verdict;
       panel.innerHTML = `
         <div class="results-drawer-header">
           <span class="results-drawer-title">${escHtml(title)}</span>
@@ -2041,7 +2351,7 @@ finally:
       }
 
       const summary = `${STATUS_DESC[worstStatus]} · ${passCount}/${results.length} 通過`;
-      renderResultDrawer('評測結果', summary, html, { collapsed: allAC });
+      renderResultDrawer('評測結果', summary, html, { collapsed: allAC, verdict: worstStatus });
       setResultSummary(`${passCount}/${results.length} 通過`, allAC ? 'success' : 'error');
       window._lastResults = results;
       window._lastResultLabel = '測資';
@@ -2119,14 +2429,14 @@ finally:
       const firstBad = results.findIndex(result => result.status !== 'AC');
       if (firstBad >= 0) html += renderTcDetail(results[firstBad], firstBad, '範例');
       const summary = `${allAC ? '全部通過' : STATUS_DESC[worstStatus]} · ${passCount}/${results.length}`;
-      renderResultDrawer('範例測試結果', summary, html, { collapsed: allAC });
+      renderResultDrawer('範例測試結果', summary, html, { collapsed: allAC, verdict: worstStatus });
       setResultSummary(`範例 ${passCount}/${results.length}`, allAC ? 'success' : 'error');
       window._lastResults = results;
       window._lastResultLabel = '範例';
     }
 
     function renderError(msg) {
-      renderResultDrawer('執行失敗', '請查看錯誤訊息', `<div class="verdict-banner verdict-RE">${escHtml(msg)}</div>`);
+      renderResultDrawer('執行失敗', '請查看錯誤訊息', `<div class="verdict-banner verdict-RE">${escHtml(msg)}</div>`, { verdict: 'RE' });
       setResultSummary('執行失敗', 'error');
     }
 
@@ -2217,7 +2527,7 @@ finally:
       <td style="color:var(--text-muted);font-weight:600">${String(p.id).padStart(3, '0')}</td>
       <td><span class="problem-title-link" onclick="openProblem(${p.id})">${escHtml(p.title)}</span></td>
       <td><span class="badge badge-stage-${stageMeta.cssClass}">${stageMeta.label}</span></td>
-      <td>${tags}</td>
+      <td class="cell-tags">${tags}</td>
       <td><span class="badge badge-${diff}">${difficultyLabel}</span></td>
       <td>${solvedLabel}</td>
     </tr>`;
@@ -2372,11 +2682,11 @@ finally:
             <div class="sample-pair-grid">
               <div class="sample-block">
                 <div class="sample-block-header">輸入</div>
-                <pre>${escHtml(sample.input || '(無輸入)')}</pre>
+                ${renderSampleLines(sample.input, '(無輸入)')}
               </div>
               <div class="sample-block">
                 <div class="sample-block-header">輸出</div>
-                <pre>${escHtml(sample.output)}</pre>
+                ${renderSampleLines(sample.output)}
               </div>
             </div>
             ${sample.explanation ? `<p class="sample-note">${escHtml(sample.explanation)}</p>` : ''}
@@ -2434,6 +2744,21 @@ finally:
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
+    }
+
+    // 把範例輸入／輸出拆成「每行一列、左側行號」，避免長行自動折行時
+    // 被誤認成兩行。每行結尾標一個淡色 ⏎（最後一行不標，因為測資字串
+    // 本身結尾沒有換行）。emptyFallback 只用於輸入為空字串時顯示提示文字。
+    function renderSampleLines(text, emptyFallback) {
+      if (!text && emptyFallback) {
+        return `<pre>${escHtml(emptyFallback)}</pre>`;
+      }
+      const lines = String(text ?? '').split('\n');
+      const rows = lines.map((line, i) => {
+        const isLast = i === lines.length - 1;
+        return `<div class="sample-line"><span class="sample-line-no">${i + 1}</span><span class="sample-line-content">${escHtml(line)}${isLast ? '' : '<span class="sample-line-break" aria-hidden="true">⏎</span>'}</span></div>`;
+      }).join('');
+      return `<div class="sample-lines">${rows}</div>`;
     }
 
     // ═══════════════════════════════════════════════

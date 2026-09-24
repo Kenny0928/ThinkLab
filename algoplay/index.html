@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0d12">
+  <meta name="description" content="ThinkLab 演算法遊樂場：走進演算法小鎮，或看會動的演算法。">
+  <title>演算法遊樂場｜ThinkLab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Cpath d='M8 22l5-6 4 3 7-9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="core/base.css">
+  <link rel="stylesheet" href="home.css">
+  <script type="module" src="home.js"></script>
+</head>
+<body class="hub">
+  <div class="bg-canvas" aria-hidden="true"><div class="bg-grid"></div><div class="bg-aurora"></div></div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true"></span>ThinkLab</a>
+    <span class="header-divider"></span>
+    <span class="header-label">演算法遊樂場</span>
+    <nav><a href="../judge.html" class="keep">題目列表</a></nav>
+  </header>
+
+  <main class="hub-main">
+    <div class="hub-head">
+      <p class="eyebrow">AlgoPlay</p>
+      <h1>演算法遊樂場</h1>
+    </div>
+
+    <nav class="menu" aria-label="演算法遊樂場選單">
+      <a class="menu-card" href="town/index.html">
+        <span class="menu-art"><canvas id="town-preview" aria-hidden="true"></canvas></span>
+        <span class="menu-body">
+          <strong>🏘️ 演算法小鎮</strong>
+          <span class="menu-sub">在生活問題裡，玩出演算法</span>
+          <span class="menu-meta" id="town-meta"></span>
+        </span>
+      </a>
+      <a class="menu-card" href="modules/index.html">
+        <span class="menu-art"><canvas id="motion-preview" aria-hidden="true"></canvas></span>
+        <span class="menu-body">
+          <strong>🎞️ 會動的演算法</strong>
+          <span class="menu-sub">演算法動畫與遊戲</span>
+          <span class="menu-meta" id="motion-meta"></span>
+        </span>
+      </a>
+    </nav>
+
+    <div class="hub-foot">
+      <button class="text-button" id="teacher-open" type="button">給老師</button>
+    </div>
+  </main>
+
+  <dialog class="sheet" id="teacher-dialog" aria-labelledby="teacher-title">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">For teachers</p>
+        <h2 id="teacher-title">關卡、演算法與題目對照</h2>
+      </div>
+      <button class="icon-button" id="teacher-close" type="button" aria-label="關閉">×</button>
+    </div>
+    <p class="teacher-note">學生看到的關卡只有生活問題，演算法的名稱要破關後才揭曉。進度只存在學生自己的瀏覽器，不會上傳。</p>
+    <div class="table-scroll">
+      <table class="map-table">
+        <thead><tr><th>建築</th><th>生活問題</th><th>為什麼要學演算法</th><th>偷偷學到</th><th>延伸閱讀</th><th>ThinkLab 題目</th></tr></thead>
+        <tbody id="teacher-rows"></tbody>
+      </table>
+    </div>
+    <div class="teacher-actions">
+      <button id="reset-progress" type="button">清除這台電腦的進度</button>
+      <span class="fine-print" id="reset-note">共用電腦下課前可以清除，下一位學生就從頭開始。</span>
+    </div>
+  </dialog>
+</body>
+</html>

@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ThinkLab 程式學習平台，支援 Scratch、Blockly 與 Python。" />
+  <meta name="theme-color" content="#0c0d12">
   <title>ThinkLab｜程式學習</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Cpath d='M8 17l5 5 11-13' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,7 +20,7 @@
       --soft: #141720;
       --accent: #3b82f6;
       --accent-hover: #4b7de7;
-      --header-height: 60px;
+      --header-height: 52px;
       --mouse-x: 50%;
       --mouse-y: 35%;
     }
@@ -99,7 +101,7 @@
     /* 頂部導覽列 */
     .site-header {
       min-height: var(--header-height);
-      padding: 0 clamp(24px, 7vw, 112px);
+      padding: 0 clamp(16px, 3vw, 28px);
       display: flex;
       align-items: center;
       gap: 40px;
@@ -130,33 +132,14 @@
       display: inline-block;
     }
 
-    .header-nav {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .header-nav a {
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .header-nav a:hover,
-    .header-nav a:focus-visible {
-      color: white;
-    }
-
-    /* 主視覺區域 */
+    /* 主視覺區域：整塊垂直置中，畫面不再有一半是空的 */
     main {
       width: min(1180px, 100%);
       min-height: calc(100vh - var(--header-height));
       margin: 0 auto;
-      padding: clamp(56px, 8vh, 100px) clamp(24px, 5vw, 64px) 70px;
+      padding: clamp(40px, 6vh, 72px) clamp(24px, 5vw, 64px);
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       position: relative;
       z-index: 2;
     }
@@ -164,24 +147,24 @@
     .entry {
       width: 100%;
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 480px);
       align-items: center;
-      gap: clamp(56px, 9vw, 120px);
+      gap: clamp(48px, 7vw, 96px);
     }
 
     .title-area {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
-    /* 主標題 */
+    /* 主標題：縮小一階，把視覺份量讓給右邊「要去哪裡」 */
     .entry h1 {
       max-width: 660px;
-      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      font-size: clamp(3rem, 5.8vw, 5rem);
       font-weight: 800;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
     }
 
     .hero-title-text {
@@ -189,18 +172,17 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
-      transition: all 0.3s ease;
     }
 
     .beta-badge {
       flex-shrink: 0;
-      padding: 5px 8px;
-      border: 1px solid rgba(96, 165, 250, 0.4);
-      border-radius: 6px;
-      background: rgba(59, 130, 246, 0.12);
+      padding: 4px 8px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      border-radius: 5px;
+      background: rgba(59, 130, 246, 0.1);
       color: #93c5fd;
       font-family: "Fira Code", monospace;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 500;
       line-height: 1;
       letter-spacing: 0.04em;
@@ -220,114 +202,209 @@
       50% { opacity: 0; }
     }
 
-    /* 副標說明 */
+    /* 副標：這句話才說得出這個站是做什麼的，所以比品牌名更亮一階 */
     .entry-desc {
       display: flex;
       align-items: center;
       gap: 12px;
-      color: #94a3b8;
-      font-size: 1.05rem;
-      letter-spacing: 0.02em;
+      flex-wrap: wrap;
+      color: #cbd5e1;
+      font-size: 1.12rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
       line-height: 1.5;
     }
 
-    /* 支援的編輯器標籤 (純文字等寬風格) */
     .editor-tags {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 4px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .editor-tag {
       font-family: "Fira Code", monospace;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 6px;
-      background: rgba(20, 24, 33, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #cbd5e1;
+      padding: 4px 11px;
+      border-radius: 5px;
+      background: rgba(20, 24, 33, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: #94a3b8;
       letter-spacing: 0.04em;
-      transition: all 0.2s ease;
-      backdrop-filter: blur(4px);
     }
 
-    .editor-tag:hover {
-      border-color: rgba(96, 165, 250, 0.4);
+    /* 驗資說明：解題時的求助，不跟右邊的「去哪裡」同級，所以做成安靜的文字連結 */
+    .guide-link {
+      align-self: flex-start;
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px 8px 10px;
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.06);
+      color: #94a3b8;
+      font-size: 0.86rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    }
+
+    .guide-link:hover,
+    .guide-link:focus-visible {
+      border-color: rgba(96, 165, 250, 0.55);
+      background: rgba(59, 130, 246, 0.14);
       color: #ffffff;
-      background: rgba(30, 37, 51, 0.85);
-      transform: translateY(-1px);
+      transform: translateX(4px);
     }
 
-    /* 右側按鈕清單 (保持純文字，注入科技質感) */
-    .entry-list {
-      width: min(100%, 360px);
+    .guide-link strong {
+      color: #93c5fd;
+      font-weight: 650;
+    }
+
+    .guide-link:hover strong {
+      color: #ffffff;
+    }
+
+    .guide-link-icon {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
       display: grid;
+      place-items: center;
+      background: rgba(59, 130, 246, 0.85);
+      color: #ffffff;
+      font-family: "Fira Code", monospace;
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    .guide-link-arrow {
+      color: #93c5fd;
+      transition: transform 0.2s ease;
+    }
+
+    .guide-link:hover .guide-link-arrow {
+      transform: translateX(3px);
+    }
+
+    /* ── 入口清單：三個層級 ──
+       1 主要：開始解題（每天要用）  → 整排、藍底、最大
+       2 次要：兩個互動練習場        → 兩欄、外框
+       3 參考：三本講義              → 一排小格，先有「講義」這個群組標題 */
+    .entry-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
-      transform: translateY(24px);
     }
 
     .entry-button {
-      min-height: 58px;
-      padding: 13px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       border: 1px solid var(--line);
       color: var(--ink);
       background: rgba(20, 23, 30, 0.6);
       backdrop-filter: blur(8px);
-      font-size: 1rem;
-      font-weight: 650;
-      letter-spacing: 0.06em;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 10px;
       transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
     }
 
-    .entry-button::after {
-      content: "";
-      width: 26px;
-      height: 1px;
-      background: currentColor;
-      transform-origin: right;
-      transition: transform 180ms ease;
+    .entry-button .arrow {
+      color: #64748b;
+      transition: transform 180ms ease, color 180ms ease;
     }
 
-    /* 第一個按鈕「開始解題」 */
-    .entry-list a:first-child {
+    .entry-button:hover .arrow,
+    .entry-button:focus-visible .arrow {
+      transform: translateX(4px);
+      color: currentColor;
+    }
+
+    /* 1 主要 */
+    .entry-primary {
+      grid-column: 1 / -1;
+      min-height: 96px;
+      padding: 22px 26px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
       border-color: var(--accent);
       color: #ffffff;
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.28);
     }
 
-    .entry-list a:first-child:hover,
-    .entry-list a:first-child:focus-visible {
+    .entry-primary .arrow {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .entry-primary:hover,
+    .entry-primary:focus-visible {
       border-color: #60a5fa;
       background: linear-gradient(135deg, #3b82f6, #2563eb);
-      box-shadow: 0 0 28px rgba(59, 130, 246, 0.55);
-      transform: translateX(5px);
+      box-shadow: 0 14px 38px rgba(59, 130, 246, 0.45);
+      transform: translateY(-2px);
     }
 
-    /* 其他可點擊按鈕懸停 */
-    a.entry-button:hover,
-    a.entry-button:focus-visible {
-      color: white;
-      border-color: #444f60;
-      background: rgba(28, 33, 44, 0.85);
-      transform: translateX(5px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    /* 2 次要 */
+    .entry-secondary {
+      min-height: 76px;
+      padding: 18px 20px;
+      font-size: 1.04rem;
+      font-weight: 650;
     }
 
-    a.entry-button:hover::after,
-    a.entry-button:focus-visible::after {
-      transform: scaleX(0.55);
+    .entry-secondary:hover,
+    .entry-secondary:focus-visible {
+      color: #ffffff;
+      border-color: #44506a;
+      background: rgba(28, 33, 44, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
     }
 
-    /* 停用按鈕 */
+    /* 3 參考 */
+    .entry-group {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .entry-group-label {
+      grid-column: 1 / -1;
+      color: #6f7f97;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+    }
+
+    .entry-tertiary {
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 10px;
+      border-radius: 8px;
+      background: transparent;
+      border-color: #1f242e;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .entry-tertiary:hover,
+    .entry-tertiary:focus-visible {
+      color: #ffffff;
+      border-color: #3b4557;
+      background: rgba(28, 33, 44, 0.7);
+    }
+
     .entry-button[aria-disabled="true"] {
       color: #626975;
       border-color: #1e2229;
@@ -335,50 +412,46 @@
       cursor: not-allowed;
     }
 
-    @media (max-width: 880px) {
-      :root {
-        --header-height: 68px;
-      }
-
-      .site-header {
-        padding-inline: 24px;
-      }
-
+    @media (max-width: 980px) {
       main {
         min-height: auto;
-        padding: 64px 24px 72px;
+        padding: 56px 24px 64px;
       }
 
       .entry {
         grid-template-columns: 1fr;
-        gap: 56px;
+        gap: 44px;
       }
 
       .entry-list {
-        width: min(100%, 360px);
-        transform: none;
+        max-width: 520px;
       }
     }
 
     @media (max-width: 520px) {
-      .header-nav {
-        gap: 16px;
-      }
-
-      .header-nav a:first-child {
-        display: none;
-      }
-
       main {
-        padding-top: 48px;
+        padding: 40px 20px 56px;
       }
 
       .entry h1 {
-        font-size: clamp(2.55rem, 14vw, 4rem);
+        font-size: clamp(2.4rem, 13vw, 3.4rem);
       }
 
-      .entry-button {
-        min-height: 60px;
+      .entry-desc {
+        font-size: 1rem;
+      }
+
+      .entry-primary {
+        min-height: 76px;
+        font-size: 1.15rem;
+      }
+
+      .entry-list {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-group {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -407,12 +480,6 @@
       <span class="brand-icon"></span>
       ThinkLab
     </a>
-    <nav class="header-nav" aria-label="主要導覽">
-      <a href="beginner.html">LV.1 講義</a>
-      <a href="beginner.html?course=intermediate">LV.2 講義</a>
-      <a href="beginner.html?course=advanced">LV.3 講義</a>
-      <a href="judge.html">題目列表</a>
-    </nav>
   </header>
 
   <main>
@@ -422,22 +489,34 @@
           <span class="hero-title-text">ThinkLab</span><span class="cursor-blinker">_</span>
         </h1>
 
-        <p class="entry-desc"><span>零基礎循序掌握運算思維 x 自動驗資系統</span><span class="beta-badge">beta</span></p>
+        <p class="entry-desc"><span>零基礎循序掌握運算思維 × 自動驗資系統</span><span class="beta-badge">beta</span></p>
 
         <div class="editor-tags">
           <span class="editor-tag">Scratch</span>
           <span class="editor-tag">Blockly</span>
           <span class="editor-tag">Python</span>
         </div>
+
+        <a class="guide-link" href="guide.html">
+          <span class="guide-link-icon" aria-hidden="true">?</span>
+          <span>第一次解題？先看<strong>驗資在檢查什麼</strong></span>
+          <span class="guide-link-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
 
-      <div class="entry-list" aria-label="學習入口">
-        <a class="entry-button" href="judge.html">開始解題</a>
-        <a class="entry-button" href="test/index.html">流程圖實驗室</a>
-        <a class="entry-button" href="beginner.html">LV.1 講義</a>
-        <a class="entry-button" href="beginner.html?course=intermediate">LV.2 講義</a>
-        <a class="entry-button" href="beginner.html?course=advanced">LV.3 講義</a>
-      </div>
+      <nav class="entry-list" aria-label="學習入口">
+        <a class="entry-button entry-primary" href="judge.html">開始解題<span class="arrow" aria-hidden="true">→</span></a>
+
+        <a class="entry-button entry-secondary" href="algoplay/index.html">演算法遊樂場<span class="arrow" aria-hidden="true">→</span></a>
+        <a class="entry-button entry-secondary" href="test/index.html">流程圖實驗室<span class="arrow" aria-hidden="true">→</span></a>
+
+        <div class="entry-group">
+          <span class="entry-group-label">講義</span>
+          <a class="entry-button entry-tertiary" href="beginner.html">LV.1</a>
+          <a class="entry-button entry-tertiary" href="beginner.html?course=intermediate">LV.2</a>
+          <a class="entry-button entry-tertiary" href="beginner.html?course=advanced">LV.3</a>
+        </div>
+      </nav>
     </section>
   </main>
 

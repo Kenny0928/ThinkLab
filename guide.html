@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0d12">
+  <meta name="description" content="ThinkLab 驗資說明：看懂輸入範例、算出程式要讀幾次、避開常見的對答案錯誤。">
+  <title>驗資說明｜ThinkLab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Cpath d='M8 17l5 5 11-13' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="algoplay/core/base.css">
+  <link rel="stylesheet" href="assets/guide.css">
+  <script type="module" src="assets/guide.js"></script>
+</head>
+<body>
+  <div class="bg-canvas" aria-hidden="true"><div class="bg-grid"></div><div class="bg-aurora"></div></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"></span>ThinkLab</a>
+    <span class="header-divider"></span><span class="header-label">驗資說明</span>
+    <nav><a href="judge.html" class="keep">題目列表</a><a href="beginner.html">LV.1 講義</a></nav>
+  </header>
+
+  <nav class="guide-chipnav" aria-label="章節捷徑">
+    <a href="#judge-basics">1. 驗資是什麼</a>
+    <a href="#samples">2. 看懂範例</a>
+    <a href="#how-many">3. 要讀幾次</a>
+    <a href="#scratch-ask">4. Scratch 詢問</a>
+    <a href="#blockly-line">5. Blockly 一整行</a>
+    <a href="#text-answers">6. 答案是文字</a>
+    <a href="#common-mistakes">7. 常見錯誤</a>
+    <a href="#verdicts">8. AC WA TLE RE</a>
+  </nav>
+
+  <main class="page">
+    <p class="eyebrow">Judge Guide</p>
+    <h1 class="page-title">驗資到底在檢查什麼？</h1>
+    <p class="page-lead">交出去的程式碼，是被「機器」一字一句對答案，不是被人看過就給分。這頁用互動示範，帶你看懂測資怎麼被吃掉、輸出怎麼被比對。</p>
+
+    <!-- ═══════════ 1. 驗資是什麼（30 秒） ═══════════ -->
+    <section class="guide-section" id="judge-basics">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 · 30 秒看懂</p>
+          <h2>驗資是什麼</h2>
+        </div>
+      </div>
+
+      <div class="flow-diagram">
+        <div class="flow-box">
+          <div class="flow-icon" aria-hidden="true">▤</div>
+          <h3>測資檔</h3>
+          <p>題目準備好的完整資料</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-box">
+          <div class="flow-icon" aria-hidden="true">▣</div>
+          <h3>你的程式</h3>
+          <p>一次讀進整包資料</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-compare">
+          <div class="flow-box">
+            <h3>你的輸出</h3>
+            <p>程式印出來的文字</p>
+          </div>
+          <div class="vs">一字不差地比對</div>
+          <div class="flow-box">
+            <h3>標準答案</h3>
+            <p>題目寫好的正確輸出</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-keys">
+        <div class="guide-key">
+          <span class="guide-key-tag">INPUT</span>
+          <strong>沒有人坐在鍵盤前面打字。</strong>驗資的時候，電腦把整包測資一次餵給你的程式，程式要自己一段一段把它讀出來。
+        </div>
+        <div class="guide-key">
+          <span class="guide-key-tag">OUTPUT</span>
+          你的輸出要跟標準答案<strong>一字不差</strong>——包括空格、換行、大小寫。唯一會被原諒的，是<strong>整份輸出「最後面」多出來的空白或換行</strong>；中間任何一個字元不一樣，都算錯。
+        </div>
+      </div>
+      <p class="guide-note">只要 stderr（錯誤訊息）有任何內容，不管答案對不對，一律先判成 RE。</p>
+    </section>
+
+    <!-- ═══════════ 2. 看懂輸入範例／輸出範例 ═══════════ -->
+    <section class="guide-section" id="samples">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 · 看懂範例</p>
+          <h2>看懂輸入範例／輸出範例</h2>
+          <p>切換下面四種題型，範例會標上行號和換行記號 <code>⏎</code>，旁邊是題目寫的「輸入格式」。</p>
+        </div>
+      </div>
+
+      <div class="tabs" id="samples-tabs" role="tablist" aria-label="選擇題型">
+        <button type="button" class="tab-btn" data-problem="000" title="不用讀">000 Hello World</button>
+        <button type="button" class="tab-btn active" data-problem="001" title="一行、裡面有幾個數字">001 A+B 問題</button>
+        <button type="button" class="tab-btn" data-problem="015" title="先給數量，再給一行">015 清單中的最大值</button>
+        <button type="button" class="tab-btn" data-problem="004" title="先給次數，再一行一筆">004 質數判斷</button>
+      </div>
+
+      <p class="guide-note" id="sample-title" style="margin-top:14px;font-weight:650;color:#c6d0e0;"></p>
+
+      <div class="sample-io-grid">
+        <div>
+          <p class="program-subtitle">輸入範例（帶行號）</p>
+          <div class="code-panel" id="sample-linebox"></div>
+        </div>
+        <div>
+          <p class="program-subtitle">題目寫的輸入格式</p>
+          <div id="sample-format"></div>
+        </div>
+      </div>
+
+      <div class="wrap-demo">
+        <p class="guide-note" style="margin-top:0;">範例框會<strong>自動折行</strong>。下面這個示意框只有一行文字，但因為太長，看起來像兩行——真正的行數要看行號和輸入格式，不要用眼睛數有幾行。</p>
+        <div class="wrap-demo-box">1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18<span class="ln-tag">← 這其實是同一行，只是被折成兩段顯示</span></div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 3. 要讀幾次（主角） ═══════════ -->
+    <section class="guide-section" id="how-many">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 · 本頁主角</p>
+          <h2>要讀幾次？</h2>
+          <p>同一筆測資，Scratch 和 Blockly 左右並排。按「下一步」看測資怎麼被一步步吃掉。</p>
+        </div>
+      </div>
+
+      <div class="tabs" id="howmany-tabs" role="tablist" aria-label="選擇題型">
+        <button type="button" class="tab-btn" data-problem="000" title="不用讀">000 Hello World</button>
+        <button type="button" class="tab-btn active" data-problem="001" title="一行、裡面有幾個數字">001 A+B 問題</button>
+        <button type="button" class="tab-btn" data-problem="015" title="先給數量，再給一行">015 清單中的最大值</button>
+        <button type="button" class="tab-btn" data-problem="004" title="先給次數，再一行一筆">004 質數判斷</button>
+      </div>
+
+      <div id="howmany-stage"></div>
+
+      <div class="guide-key" style="margin-top:20px;">
+        問太多次：測資被讀光了還要再讀，程式當場壞掉，變成 <span class="tag violet">RE</span>。點上面「兩邊都再多問一次看看」，會看到兩邊各自真正丟出來的錯誤訊息。
+      </div>
+      <div class="guide-key">
+        問太少次：沒關係。剩下沒讀到的測資會直接被丟掉，不影響結果——只要你已經讀到的部分算出了正確答案。
+      </div>
+      <p class="guide-note">ThinkLab 全部 214 題，沒有一題需要讀到測資的最後一個字。每一題要讀幾次，都是算得出來的固定數字。</p>
+    </section>
+
+    <!-- ═══════════ 4. Scratch：詢問積木在問誰？ ═══════════ -->
+    <section class="guide-section" id="scratch-ask">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04 · Scratch</p>
+          <h2>詢問積木在問誰？</h2>
+          <p>驗資的時候沒有人會看到提示字，也沒有人會在舞台上打字回答——「詢問」積木其實是直接從測資裡拿下一個詞。</p>
+        </div>
+      </div>
+
+      <div class="block-row">
+        <span class="scratch-block sensing">詢問 <span class="slot">你叫什麼名字？</span> 並等待</span>
+        <span class="scratch-block sensing reporter">詢問的答案</span>
+      </div>
+      <div class="block-row">
+        <span class="scratch-block looks">說出 <span class="slot">你好</span></span>
+        <span class="scratch-block looks">想著 <span class="slot">你好</span></span>
+      </div>
+
+      <div class="point-grid">
+        <div class="point-card">
+          <h4>提示字只有你自己看得到</h4>
+          <p>「你叫什麼名字？」這句話不會出現在輸出裡，驗資的時候也沒有人會看到它。</p>
+        </div>
+        <div class="point-card">
+          <h4>一個詢問＝一個詞</h4>
+          <p>空格和換行都算分隔。輸入「3 5」，第一次詢問拿到「3」，第二次詢問拿到「5」——跟 Blockly 一次吃一整行完全不同。</p>
+        </div>
+        <div class="point-card">
+          <h4>「詢問的答案」只記得最後一次</h4>
+          <p>第二次詢問一問完，第一次的答案就被蓋掉了。要保留第一次的值，必須先把它存進一個變數。</p>
+        </div>
+        <div class="point-card">
+          <h4>「說出」才有輸出，「想著」完全沒有</h4>
+          <p>「說出」會輸出一行並自動換行；「想著」不管想什麼，都不會出現在輸出裡。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 5. Blockly：一次讀一整行 ═══════════ -->
+    <section class="guide-section" id="blockly-line">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05 · Blockly</p>
+          <h2>一次讀一整行</h2>
+          <p>「要求輸入文字」積木對應 Python 的 <code>input()</code>：一塊接住的是一整行文字，中間的空格都保留。</p>
+        </div>
+      </div>
+
+      <div class="block-pair">
+        <span class="blockly-block">要求輸入文字 <span class="slot">請輸入 A 和 B</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="code-panel">
+          <div class="code-line"><span class="ln">1</span><span><span class="tok-fn">input</span>()</span></div>
+        </div>
+      </div>
+      <div class="block-pair">
+        <span class="blockly-block">輸出答案 <span class="slot">A + B</span> 然後換行</span>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="code-panel">
+          <div class="code-line"><span class="ln">1</span><span><span class="tok-fn">print</span>(A + B, end=<span class="tok-str">'\n'</span>)</span></div>
+        </div>
+      </div>
+      <div class="block-pair">
+        <span class="blockly-block">要求輸入數字 <span class="slot">請輸入一個數字</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="code-panel">
+          <div class="code-line"><span class="ln">1</span><span><span class="tok-fn">float</span>(<span class="tok-fn">input</span>())</span></div>
+        </div>
+      </div>
+
+      <div class="point-grid">
+        <div class="point-card">
+          <h4>一塊＝一整行</h4>
+          <p>放一塊「要求輸入文字」，就吃掉測資的一整行，直到換行為止。</p>
+        </div>
+        <div class="point-card">
+          <h4>提示字同樣不會進輸出</h4>
+          <p>積木上寫的提示字只是給你自己看的說明，生成的程式碼裡根本沒有這段文字。</p>
+        </div>
+        <div class="point-card">
+          <h4>一行有兩個數字，要先拆開</h4>
+          <p>把讀到的整行接到清單分類的「從文本製作清單 用分隔符」，分隔符填一個空格，再用索引 0、索引 1 分別取出兩個值（索引從 0 開始）。</p>
+        </div>
+        <div class="point-card">
+          <h4>「要求輸入數字」會變成 3.0</h4>
+          <p>這塊積木對應 <code>float(input())</code>，就算輸入是整數，印出來也會多一個 <code>.0</code>。要拿到整數，請用「要求輸入文字」再接「轉成 整數」。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 6. 答案都是文字 ═══════════ -->
+    <section class="guide-section" id="text-answers">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 · 容易忽略</p>
+          <h2>答案都是文字</h2>
+          <p>讀進來的每一段資料，一開始都是文字，不是數字。忘記轉換，加法就會變成「接字串」。</p>
+        </div>
+      </div>
+
+      <div class="text-answer-demo">
+        <span class="chip-val bad">"1"</span>
+        <span class="op">+</span>
+        <span class="chip-val bad">"1"</span>
+        <span class="op">=</span>
+        <span class="chip-val bad">"11"</span>
+        <span class="guide-note" style="margin:0;">忘記轉成數字：文字接文字</span>
+      </div>
+      <div class="text-answer-demo">
+        <span class="chip-val good">1</span>
+        <span class="op">+</span>
+        <span class="chip-val good">1</span>
+        <span class="op">=</span>
+        <span class="chip-val good">2</span>
+        <span class="guide-note" style="margin:0;">轉成數字之後：正常相加</span>
+      </div>
+
+      <div class="point-grid">
+        <div class="point-card">
+          <h4>Scratch：運算子積木很聰明</h4>
+          <p>「+」「−」「×」「÷」這類運算子積木，看到文字裡是數字時會自動當數字算，所以大部分時候不用特別轉換。但「字串組合」是把文字接起來，不會相加——要算加法就得用「+」積木。</p>
+        </div>
+        <div class="point-card">
+          <h4>Blockly：要自己轉型</h4>
+          <p>讀進來的每一段文字，要接到「轉成 整數」（或「轉成 小數」）才會變成真正的數字，才能拿去做四則運算或大小比較。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 7. 常見錯誤對照 ═══════════ -->
+    <section class="guide-section" id="common-mistakes">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">07 · 對答案</p>
+          <h2>常見錯誤對照</h2>
+          <p>綠色是標準答案，紅色是常見的錯誤輸出。差一個字元，就是 WA。</p>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-cell">
+          <h4>多印了提示字</h4>
+          <div class="compare-rows">
+            <div class="compare-row expect"><span class="tag-label">期望</span><span>8</span></div>
+            <div class="compare-row actual"><span class="tag-label">你的</span><span>請輸入答案：8</span></div>
+          </div>
+          <p class="compare-why">自己多印出來的說明文字，也會被當成輸出的一部分，跟答案對不起來。</p>
+        </div>
+
+        <div class="compare-cell">
+          <h4>少一個換行</h4>
+          <div class="compare-rows">
+            <div class="compare-row expect"><span class="tag-label">期望</span><span>Yes⏎No</span></div>
+            <div class="compare-row actual"><span class="tag-label">你的</span><span>YesNo</span></div>
+          </div>
+          <p class="compare-why">只有整份輸出「最後面」的換行會被原諒，中間漏掉的換行不會。</p>
+        </div>
+
+        <div class="compare-cell">
+          <h4>多一個空格</h4>
+          <div class="compare-rows">
+            <div class="compare-row expect"><span class="tag-label">期望</span><span>3 5</span></div>
+            <div class="compare-row actual"><span class="tag-label">你的</span><span>3  5</span></div>
+          </div>
+          <p class="compare-why">中間多出來的空格不在「最後面」，一樣算不一樣的字元。</p>
+        </div>
+
+        <div class="compare-cell">
+          <h4>用了「想著」</h4>
+          <div class="compare-rows">
+            <div class="compare-row expect"><span class="tag-label">期望</span><span>89</span></div>
+            <div class="compare-row actual"><span class="tag-label">你的</span><span>（空白）</span></div>
+          </div>
+          <p class="compare-why">「想著」完全不會輸出任何東西，該有的那一行答案整個不見了。</p>
+        </div>
+
+        <div class="compare-cell">
+          <h4>大小寫不同</h4>
+          <div class="compare-rows">
+            <div class="compare-row expect"><span class="tag-label">期望</span><span>Yes</span></div>
+            <div class="compare-row actual"><span class="tag-label">你的</span><span>yes</span></div>
+          </div>
+          <p class="compare-why">比對不會幫你忽略大小寫，Yes 跟 yes 是兩個不同的答案。</p>
+        </div>
+
+        <div class="compare-cell">
+          <h4>全形空格</h4>
+          <div class="compare-rows">
+            <div class="compare-row expect"><span class="tag-label">期望</span><span>3 5</span></div>
+            <div class="compare-row actual"><span class="tag-label">你的</span><span>3　5</span></div>
+          </div>
+          <p class="compare-why">全形空格「　」和半形空格是不同的字元，比對時當然對不起來。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 8. AC / WA / TLE / RE ═══════════ -->
+    <section class="guide-section" id="verdicts">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">08 · 判題結果</p>
+          <h2>看懂 AC / WA / TLE / RE</h2>
+        </div>
+      </div>
+
+      <div class="verdict-grid">
+        <div class="verdict-card ac">
+          <div class="verdict-code">AC</div>
+          <p>Accepted。輸出跟標準答案一字不差（只原諒最後面的空白與換行）。</p>
+        </div>
+        <div class="verdict-card wa">
+          <div class="verdict-code">WA</div>
+          <p>Wrong Answer。程式順利跑完，但輸出跟標準答案對不起來，哪怕只差一個字元。</p>
+        </div>
+        <div class="verdict-card tle">
+          <div class="verdict-code">TLE</div>
+          <p>Time Limit Exceeded。程式跑太久，通常是迴圈次數抓錯或忘記結束條件。</p>
+        </div>
+        <div class="verdict-card re">
+          <div class="verdict-code">RE</div>
+          <p>Runtime Error。程式執行中壞掉了。<strong>最常見的原因就是問太多次</strong>——測資被讀光了，程式還在硬要讀下一個。</p>
+        </div>
+      </div>
+
+      <div class="guide-footer-nav">
+        <a class="button primary" href="judge.html">回題目列表 →</a>
+        <a class="button" href="#how-many">重新看一次「要讀幾次」 ↑</a>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -5,7 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ThinkLab 程式學習講義：先預測、再拆解、動手測試，每關包含核心題與兩題變體。" />
+  <meta name="theme-color" content="#0c0d12">
   <title>LV.1 講義｜ThinkLab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Cpath d='M7 8h18v3H7zm0 6h18v3H7zm0 6h11v3H7z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/programming-editor.css" />
   <!-- CodeMirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
@@ -16,23 +21,33 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
   <style>
     :root {
-      --bg: #111214;
-      --surface: #181a1d;
-      --surface2: #202328;
-      --surface-dark: #0d0f12;
-      --border: #30343a;
-      --border-strong: #444a53;
-      --accent: #3d6fd8;
+      color-scheme: dark;
+      /* 全站共用色票（與 algoplay/core/base.css、test/flow-lab.css 同一組值） */
+      --bg: #0c0d12;
+      --surface: #141720;
+      --surface2: #1a1e28;
+      --surface-dark: #10131b;
+      --border: #262a33;
+      --border-strong: #343d50;
+      --accent: #3b82f6;
       --accent-hover: #4b7de7;
+      --accent-soft: rgba(59, 130, 246, 0.14);
+      --accent-ink: #9ec5ff;
       --on-accent: #ffffff;
-      --success: #22c55e;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --info: #06b6d4;
+      --success: #63d6ad;
+      --warning: #f1bd62;
+      --danger: #ff8192;
+      --info: #6dd5ed;
       --text: #f5f7fa;
-      --text-muted: #a6adb7;
-      --text-subtle: #7c8491;
-      --radius: 6px;
+      --text-muted: #94a3b8;
+      --text-subtle: #6f7f97;
+      --mono: "Fira Code", "SFMono-Regular", Consolas, monospace;
+      --font: "Plus Jakarta Sans", "Noto Sans TC", "Segoe UI", system-ui, sans-serif;
+      --radius: 7px;
+      --radius-lg: 11px;
+      /* 閱讀行長：em 為單位，字級變小時欄寬跟著變窄，「字／行」才維持不變。
+         42em ≈ 42 個全形字，中文回掃時還找得到下一行的行首。 */
+      --measure: 42em;
       --shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
     }
 
@@ -50,8 +65,11 @@
       min-height: 100vh;
       color: var(--text);
       background: var(--bg);
-      font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
+      font-family: var(--font);
     }
+
+    /* 關掉 Fira Code 連字，學生才看得到真正要打的 <=、==。 */
+    *, *::before, *::after { font-variant-ligatures: none !important; }
 
     button,
     textarea {
@@ -70,41 +88,80 @@
       outline-offset: 2px;
     }
 
+    /* Header：與全站其他頁同一組規格（52px、藍方塊、細分隔線） */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 30;
-      height: 60px;
-      padding: 0 24px;
+      height: 52px;
+      padding: 0 clamp(16px, 3vw, 28px);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       border-bottom: 1px solid var(--border);
-      background: rgba(17, 18, 20, 0.96);
+      background: rgba(12, 13, 18, 0.9);
       backdrop-filter: blur(12px);
     }
 
     .brand {
-      color: white;
-      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--text);
+      font-size: 1.15rem;
       font-weight: 800;
+      letter-spacing: -0.03em;
       text-decoration: none;
       white-space: nowrap;
+      flex: none;
     }
 
-    .brand span {
-      margin-right: 7px;
+    .brand::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--accent);
+      flex: none;
+    }
+
+    .header-divider {
+      height: 18px;
+      width: 1px;
+      background: var(--border);
+      flex: none;
     }
 
     .course-name {
-      padding-left: 16px;
-      border-left: 1px solid var(--border);
-      color: #cbd5e1;
-      font-size: 0.86rem;
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      white-space: nowrap;
+    }
+
+    .site-header nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .site-header nav a {
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .site-header nav a:hover {
+      color: var(--text);
+    }
+
+    .site-header nav {
+      margin-left: auto;
     }
 
     .header-progress {
-      margin-left: auto;
+      margin-left: 26px;
       min-width: 170px;
     }
 
@@ -144,7 +201,7 @@
     }
 
     .app-shell {
-      min-height: calc(100vh - 60px);
+      min-height: calc(100vh - 52px);
       display: grid;
       grid-template-columns: 286px minmax(0, 1fr);
       transition: grid-template-columns 0.22s ease;
@@ -152,12 +209,12 @@
 
     .course-sidebar {
       position: sticky;
-      top: 60px;
-      height: calc(100vh - 60px);
+      top: 52px;
+      height: calc(100vh - 52px);
       overflow-y: auto;
       padding: 26px 18px;
       border-right: 1px solid var(--border);
-      background: #141619;
+      background: var(--surface);
       transition: padding 0.22s ease;
     }
 
@@ -254,7 +311,7 @@
     .lesson-nav button.active {
       border-left-color: var(--accent);
       color: var(--text);
-      background: rgba(61, 111, 216, 0.08);
+      background: rgba(59, 130, 246, 0.08);
     }
 
     .lesson-number {
@@ -299,6 +356,15 @@
       line-height: 1.65;
     }
 
+    .sidebar-tip a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .sidebar-tip a:hover {
+      text-decoration: underline;
+    }
+
     .lesson-main {
       width: min(100%, 1180px);
       margin: 0 auto;
@@ -337,24 +403,64 @@
       font-weight: 800;
     }
 
+    /* ── 講義內文排版 ──
+       行長：一律 var(--measure)，不讓文字被拉到 1000px 寬。
+       字級：只留三階 —— 小節標題 1.22rem／內文 1rem 上下／註解 0.94rem。
+       行高：內文 1.85、註解 1.75（中文需要比英文更鬆的行距）。 */
+    .lesson-goal,
+    .mission-copy,
+    .concept-copy,
+    .think-question,
+    .step-list,
+    .reveal-answer,
+    .hint-content,
+    .variant-intro,
+    .variant-mission,
+    .checkpoint p,
+    .common-mistakes ul {
+      max-width: var(--measure);
+    }
+
+    /* 這些區塊本身也收到同一個右邊界，整個閱讀欄才只有一條右緣；
+       只有程式編輯器例外——它真的需要寬度。 */
+    .card-body > .io-grid,
+    .card-body > details.reveal,
+    .card-body > details.hint-box,
+    .card-body > .common-mistakes,
+    .card-body > .checkpoint {
+      max-width: var(--measure);
+    }
+
+    /* 避免中文段落最後一行只剩一兩個孤字 */
+    .lesson-goal,
+    .mission-copy,
+    .concept-copy,
+    .think-question,
+    .step-list li,
+    .reveal-answer,
+    .hint-content,
+    .variant-intro,
+    .checkpoint p {
+      text-wrap: pretty;
+    }
+
     .lesson-goal {
-      max-width: 760px;
       margin-top: 16px;
       color: #cbd5e1;
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 1.02rem;
+      line-height: 1.85;
     }
 
     .study-route {
       margin: 30px 0 26px;
       position: sticky;
-      top: 72px;
+      top: 52px;
       z-index: 15;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: rgba(24, 26, 29, 0.94);
+      background: rgba(20, 23, 32, 0.94);
       backdrop-filter: blur(12px);
     }
 
@@ -363,7 +469,7 @@
       padding: 13px 8px 12px;
       color: var(--text-muted);
       font-size: 0.875rem;
-      font-weight: 700;
+      font-weight: 500;
       text-align: center;
       text-decoration: none;
       transition: color 0.16s ease, background 0.16s ease;
@@ -386,6 +492,8 @@
 
     .route-item.active {
       color: var(--text);
+      font-weight: 700;
+      background: rgba(59, 130, 246, 0.07);
     }
 
     .route-item.active span {
@@ -423,8 +531,9 @@
       box-shadow: none;
     }
 
+    /* 標題離「上一段」遠、離「自己的內文」近，才分得出哪段屬於哪個標題 */
     .card-heading {
-      padding: 28px 0 16px;
+      padding: 36px 0 12px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -445,8 +554,11 @@
       font-weight: 800;
     }
 
+    /* 原本 h2 只比內文大 0.7px，等於沒有標題。拉到 1.22rem 才看得出層級。 */
     .card-heading h2 {
-      font-size: 1.08rem;
+      font-size: 1.22rem;
+      font-weight: 750;
+      letter-spacing: -0.01em;
     }
 
     .card-body {
@@ -455,39 +567,44 @@
 
     .mission-copy {
       color: #e2e8f0;
-      font-size: 1.04rem;
-      line-height: 1.8;
+      font-size: 1.05rem;
+      line-height: 1.85;
     }
 
     .concept-copy {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       padding: 16px 18px;
       border-left: 3px solid var(--accent);
       border-radius: 0 var(--radius) var(--radius) 0;
       color: #dbe7ff;
-      background: rgba(61, 111, 216, 0.09);
-      font-size: 0.95rem;
-      line-height: 1.8;
+      background: rgba(59, 130, 246, 0.09);
+      font-size: 1rem;
+      line-height: 1.85;
     }
 
     .common-mistakes {
-      margin-top: 18px;
+      margin-top: 20px;
       padding: 15px 18px;
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid rgba(241, 189, 98, 0.28);
       border-radius: var(--radius);
-      background: rgba(245, 158, 11, 0.07);
+      background: rgba(241, 189, 98, 0.07);
     }
 
     .common-mistakes h3 {
       margin-bottom: 8px;
-      color: #f7c76c;
-      font-size: 0.88rem;
+      color: var(--warning);
+      font-size: 0.92rem;
     }
 
     .common-mistakes ul {
       padding-left: 20px;
       color: #d7dbe2;
-      line-height: 1.7;
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .common-mistakes li + li {
+      margin-top: 6px;
     }
 
     .io-grid {
@@ -499,14 +616,28 @@
 
     .io-box {
       overflow: hidden;
-      border: 1px solid #3c4b60;
+      border: 1px solid var(--border-strong);
       border-radius: 8px;
       background: var(--surface-dark);
     }
 
+    /* 跟題目頁一樣，在範例旁邊留一條求助的路 */
+    .io-guide-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--text-subtle);
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+
+    .io-guide-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
     .io-label {
       padding: 7px 11px;
-      border-bottom: 1px solid #293548;
+      border-bottom: 1px solid var(--border);
       color: var(--text-subtle);
       background: var(--surface);
       font-size: 0.78rem;
@@ -524,12 +655,13 @@
     }
 
     .think-question {
-      padding: 16px;
+      padding: 16px 18px;
       border-left: 3px solid var(--warning);
       border-radius: 0 8px 8px 0;
-      color: #fde68a;
-      background: rgba(245, 158, 11, 0.08);
-      line-height: 1.7;
+      color: #f3d89b;
+      background: rgba(241, 189, 98, 0.08);
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
     details.reveal,
@@ -543,8 +675,8 @@
 
     details summary {
       padding: 13px 15px;
-      color: #93c5fd;
-      font-size: 0.84rem;
+      color: var(--accent-ink);
+      font-size: 0.88rem;
       font-weight: 750;
       cursor: pointer;
       list-style-position: inside;
@@ -552,55 +684,79 @@
 
     .reveal-answer,
     .hint-content {
-      padding: 0 15px 15px;
+      padding: 0 15px 16px;
       color: #cbd5e1;
-      font-size: 0.88rem;
-      line-height: 1.75;
+      font-size: 0.94rem;
+      line-height: 1.8;
     }
 
+    /* 這是「一個連續的流程」，不是三張互不相干的卡片。
+       原本每個步驟一個外框，框的視覺重量遠大於裡面那十幾個字，
+       閱讀被切成好幾段。改成一條垂直軸線＋編號，順序看得到，
+       句子也連得起來。 */
     .step-list {
+      position: relative;
       display: grid;
-      gap: 12px;
+      gap: 0;
+      padding-left: 34px;
       list-style: none;
     }
 
+    .step-list::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      left: 11px;
+      width: 2px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.45), rgba(59, 130, 246, 0.12));
+    }
+
     .step-list li {
-      padding: 15px 16px 15px 50px;
       position: relative;
-      border: 1px solid #3c4b60;
-      border-radius: 8px;
+      padding: 8px 0;
+      border: 0;
+      border-radius: 0;
       color: #dbeafe;
-      background: rgba(15, 23, 42, 0.46);
-      line-height: 1.65;
+      background: transparent;
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
     .step-list li::before {
       content: attr(data-step);
       position: absolute;
-      top: 13px;
-      left: 14px;
-      width: 24px;
-      height: 24px;
+      top: 12px;
+      left: -34px;
+      width: 23px;
+      height: 23px;
       display: grid;
       place-items: center;
       border-radius: 50%;
-      color: var(--info);
-      background: rgba(6, 182, 212, 0.12);
-      font-size: 0.7rem;
+      color: var(--accent-ink);
+      background: var(--bg);
+      box-shadow: inset 0 0 0 1px var(--border-strong);
+      font-size: 0.68rem;
       font-weight: 800;
     }
 
+    /* 行內程式碼：中文與西文之間需要一點氣口，所以左右各留 1px；
+       垂直 padding 壓到 1px，才不會把整行的行高頂開。 */
     code {
-      padding: 2px 5px;
+      padding: 1px 5px;
+      margin: 0 1px;
       border-radius: 4px;
       color: #bfdbfe;
-      background: var(--surface2);
-      font: 0.88em ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: rgba(59, 130, 246, 0.13);
+      box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.16);
+      font: 0.9em var(--mono);
+      white-space: nowrap;
     }
 
     .runner {
       overflow: hidden;
-      border: 1px solid #3c4b60;
+      border: 1px solid var(--border-strong);
       border-radius: 9px;
       background: var(--surface-dark);
     }
@@ -611,7 +767,7 @@
       display: flex;
       align-items: center;
       gap: 9px;
-      border-bottom: 1px solid #293548;
+      border-bottom: 1px solid var(--border);
       color: var(--text-muted);
       background: var(--surface);
       font-size: 0.8rem;
@@ -637,7 +793,7 @@
       outline: none;
       color: #f8fafc;
       caret-color: white;
-      background: #0b1120;
+      background: var(--surface-dark);
       font: 0.9rem/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       tab-size: 4;
     }
@@ -646,7 +802,7 @@
     .CodeMirror {
       height: auto;
       min-height: 480px;
-      background: #0b1120;
+      background: var(--surface-dark);
       font-family: 'Consolas', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 0.9rem;
       line-height: 1.65;
@@ -657,8 +813,8 @@
     }
 
     .CodeMirror-gutters {
-      background: #0b1120;
-      border-right: 1px solid #1e293b;
+      background: var(--surface-dark);
+      border-right: 1px solid var(--border);
     }
 
 
@@ -667,7 +823,7 @@
       display: flex;
       align-items: center;
       gap: 9px;
-      border-top: 1px solid #293548;
+      border-top: 1px solid var(--border);
       background: var(--surface);
     }
 
@@ -715,7 +871,7 @@
     .test-results {
       display: none;
       padding: 15px;
-      border-top: 1px solid #293548;
+      border-top: 1px solid var(--border);
     }
 
     .test-results.show {
@@ -732,15 +888,15 @@
     }
 
     .result-banner.success {
-      border-color: rgba(34, 197, 94, 0.36);
-      color: #86efac;
-      background: rgba(34, 197, 94, 0.09);
+      border-color: rgba(99, 214, 173, 0.36);
+      color: var(--success);
+      background: rgba(99, 214, 173, 0.09);
     }
 
     .result-banner.error {
-      border-color: rgba(239, 68, 68, 0.36);
+      border-color: rgba(255, 129, 146, 0.36);
       color: #fca5a5;
-      background: rgba(239, 68, 68, 0.09);
+      background: rgba(255, 129, 146, 0.09);
     }
 
     .result-detail {
@@ -761,14 +917,14 @@
     }
 
     .practice-state.done {
-      color: #86efac;
-      background: rgba(34, 197, 94, 0.12);
+      color: var(--success);
+      background: rgba(99, 214, 173, 0.12);
     }
 
     .variant-intro {
       color: #cbd5e1;
-      font-size: 0.88rem;
-      line-height: 1.75;
+      font-size: 0.94rem;
+      line-height: 1.8;
     }
 
     .variant-list {
@@ -815,8 +971,8 @@
     .variant-label {
       padding: 4px 8px;
       border-radius: 6px;
-      color: #fde68a;
-      background: rgba(245, 158, 11, 0.13);
+      color: #f3d89b;
+      background: rgba(241, 189, 98, 0.13);
       font-size: 0.7rem;
       font-weight: 850;
     }
@@ -850,7 +1006,7 @@
       display: grid;
       place-items: center;
       color: var(--text-muted);
-      background: #0b1120;
+      background: var(--surface-dark);
       font-size: 0.8rem;
     }
 
@@ -893,15 +1049,15 @@
     }
 
     .checkpoint h3 {
-      color: #86efac;
-      font-size: 0.92rem;
+      color: var(--success);
+      font-size: 0.96rem;
     }
 
     .checkpoint p {
-      margin-top: 7px;
+      margin-top: 8px;
       color: #cbd5e1;
-      font-size: 0.86rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.8;
     }
 
     .lesson-footer {
@@ -944,9 +1100,9 @@
       display: none;
       margin-top: 28px;
       padding: 22px;
-      border: 1px solid rgba(34, 197, 94, 0.45);
+      border: 1px solid rgba(99, 214, 173, 0.45);
       border-radius: var(--radius);
-      background: rgba(34, 197, 94, 0.08);
+      background: rgba(99, 214, 173, 0.08);
       text-align: center;
     }
 
@@ -955,7 +1111,7 @@
     }
 
     .finish-panel h2 {
-      color: #86efac;
+      color: var(--success);
     }
 
     .finish-panel p {
@@ -1001,7 +1157,7 @@
 
       .course-sidebar {
         position: fixed;
-        top: 60px;
+        top: 52px;
         bottom: 0;
         left: 0;
         z-index: 25;
@@ -1135,7 +1291,12 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">ThinkLab</a>
+    <span class="header-divider"></span>
     <div class="course-name" id="course-name">LV.1 講義</div>
+    <nav>
+      <a href="judge.html">題庫</a>
+      <a href="guide.html">驗資說明</a>
+    </nav>
     <div class="header-progress" aria-label="課程進度">
       <div class="progress-copy"><span>你的進度</span><span id="progress-text">0 / 10</span></div>
       <div class="progress-track"><span id="progress-bar"></span></div>
@@ -1151,7 +1312,7 @@
       </div>
       <div class="sidebar-label" id="sidebar-label">學習關卡</div>
       <nav class="lesson-nav" id="lesson-nav"></nav>
-      <div class="sidebar-tip"><strong>學習提醒</strong><br>先猜、再執行，最後說出「為什麼」。</div>
+      <div class="sidebar-tip"><strong>學習提醒</strong><br>先猜、再執行，最後說出「為什麼」。<br><a href="guide.html">看不懂輸入範例？→ 驗資說明</a></div>
     </aside>
     <button class="sidebar-scrim" id="sidebar-scrim" type="button" aria-label="關閉課程目錄"></button>
 
@@ -1178,6 +1339,7 @@
             <div class="io-box"><div class="io-label">範例輸入</div><pre id="sample-input"></pre></div>
             <div class="io-box"><div class="io-label">範例輸出</div><pre id="sample-output"></pre></div>
           </div>
+          <a class="io-guide-link" href="guide.html#samples" target="_blank" rel="noopener">看不懂範例？程式要讀幾次？→ 驗資說明</a>
         </div>
       </section>
 
@@ -1850,6 +2012,27 @@
         .replace(/"/g, '&quot;');
     }
 
+    // 講義的敘述是中文夾程式碼（「第一個 print() 放…」「使用 text[::-1] 反轉」），
+    // 但整段都用 textContent 送出，程式碼看起來跟中文完全一樣。
+    // 這裡只把「明確長得像程式碼」的片段包成 <code>：識別字後面直接接 ( ) 或 [ ]。
+    // 刻意不處理 set、dict、YES 這種裸英文字——寧可漏標，也不要標錯。
+    const CODE_TOKEN = /[A-Za-z_][A-Za-z0-9_.]*(?:\([^()]*\)|\[[^\[\]]*\])/g;
+
+    function withCode(value) {
+      const text = String(value ?? '');
+      let html = '';
+      let last = 0;
+      CODE_TOKEN.lastIndex = 0;
+      for (let match; (match = CODE_TOKEN.exec(text)) !== null;) {
+        // 括號裡有中文的，是中文括號用法，不是程式碼
+        if (/[\u4e00-\u9fff\u3000-\u303f]/.test(match[0])) continue;
+        html += escapeHtml(text.slice(last, match.index));
+        html += `<code>${escapeHtml(match[0])}</code>`;
+        last = match.index + match[0].length;
+      }
+      return html + escapeHtml(text.slice(last));
+    }
+
     function migrateLegacyProgress() {
       if (localStorage.getItem(STORAGE_PROGRESS)) return;
       const legacyCompleted = JSON.parse(localStorage.getItem(STORAGE_COMPLETED) || '[]');
@@ -1954,20 +2137,20 @@
         $('lesson-kicker').textContent = `${lessonNumber(lesson)} · ${lesson.kicker}`;
         $('lesson-title').textContent = lesson.title;
         $('concept-badge').textContent = lesson.badge;
-        $('lesson-goal').textContent = lesson.goal;
-        $('mission-copy').textContent = lesson.mission;
+        $('lesson-goal').innerHTML = withCode(lesson.goal);
+        $('mission-copy').innerHTML = withCode(lesson.mission);
         $('sample-input').textContent = lesson.sampleInput;
         $('sample-output').textContent = lesson.sampleOutput;
-        $('predict-question').textContent = lesson.predict;
-        $('predict-answer').textContent = lesson.predictAnswer;
-        $('concept-copy').textContent = lesson.concept || '';
+        $('predict-question').innerHTML = withCode(lesson.predict);
+        $('predict-answer').innerHTML = withCode(lesson.predictAnswer);
+        $('concept-copy').innerHTML = withCode(lesson.concept || '');
         $('concept-copy').hidden = !lesson.concept;
-        $('step-list').innerHTML = lesson.steps.map((step, index) => `<li data-step="${index + 1}">${escapeHtml(step)}</li>`).join('');
-        $('hint-content').textContent = lesson.hint;
+        $('step-list').innerHTML = lesson.steps.map((step, index) => `<li data-step="${index + 1}">${withCode(step)}</li>`).join('');
+        $('hint-content').innerHTML = withCode(lesson.hint);
         const mistakes = lesson.commonMistakes || [];
-        $('common-mistake-list').innerHTML = mistakes.map(item => `<li>${escapeHtml(item)}</li>`).join('');
+        $('common-mistake-list').innerHTML = mistakes.map(item => `<li>${withCode(item)}</li>`).join('');
         $('common-mistakes').hidden = mistakes.length === 0;
-        $('checkpoint-question').textContent = lesson.checkpoint;
+        $('checkpoint-question').innerHTML = withCode(lesson.checkpoint);
         const pythonOnly = Array.isArray(lesson.allowedLanguages) && lesson.allowedLanguages.length === 1 && lesson.allowedLanguages[0] === 'python';
         $('core-language-label').textContent = pythonOnly ? '🐍 本關使用 Python 實作' : '自由選用程式語言';
         $('variant-intro').textContent = pythonOnly
@@ -2074,7 +2257,7 @@
           <article class="variant-card" data-task="${taskKey}">
             <button class="variant-heading variant-toggle" data-task="${taskKey}" type="button" aria-expanded="false" aria-controls="variant-body-${taskKey}"><span class="variant-label">${label}</span><h3>${escapeHtml(variant.title)}</h3><span class="practice-state ${done ? 'done' : ''}">${done ? '已完成' : '尚未完成'}</span><span class="variant-open-label">開始作答</span></button>
             <div class="variant-body" id="variant-body-${taskKey}" hidden>
-              <p class="variant-mission">${escapeHtml(variant.mission)}</p>
+              <p class="variant-mission">${withCode(variant.mission)}</p>
               <div class="io-grid">
                 <div class="io-box"><div class="io-label">範例輸入</div><pre>${escapeHtml(variant.sampleInput)}</pre></div>
                 <div class="io-box"><div class="io-label">範例輸出</div><pre>${escapeHtml(variant.sampleOutput)}</pre></div>
@@ -2089,7 +2272,7 @@
                 </div>
                 <div class="test-results ${done ? 'show' : ''}" data-result="${taskKey}" aria-live="polite">${done ? '<div class="result-banner success">已通過這一題。</div>' : ''}</div>
               </div>
-              <details class="hint-box"><summary>卡住了？先看提示</summary><div class="hint-content">${escapeHtml(variant.hint)}</div></details>
+              <details class="hint-box"><summary>卡住了？先看提示</summary><div class="hint-content">${withCode(variant.hint)}</div></details>
             </div>
           </article>`;
       }).join('');

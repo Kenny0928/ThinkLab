@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0d12">
+  <meta name="description" content="演算法小鎮：在小鎮裡走一走，從生活問題認識演算法。">
+  <title>演算法小鎮｜演算法遊樂場｜ThinkLab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Cpath d='M7 20h6v6H7zm12-8h6v14h-6z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="town.css">
+  <link rel="stylesheet" href="map.css">
+  <script type="module" src="town.js"></script>
+</head>
+<body class="town-page">
+  <header class="site-header">
+    <a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true"></span>ThinkLab</a>
+    <span class="header-divider"></span>
+    <span class="header-label"><a href="../index.html">演算法遊樂場</a><span class="sep">/</span>演算法小鎮</span>
+    <nav>
+      <button id="dex-open" class="keep" type="button">🔍 <span class="dex-label">演算法圖鑑</span> <b id="dex-count">0 / 7</b></button>
+      <a href="../index.html">← 回遊樂場</a>
+      <a href="../../judge.html">題目列表</a>
+    </nav>
+  </header>
+
+  <main class="town-main">
+    <div class="stage-wrap" id="stage-wrap">
+      <div class="scene" id="scene">
+        <canvas id="map" aria-hidden="true"></canvas>
+        <div class="hud" id="hud"></div>
+      </div>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="title-card" id="title-card">
+        <p class="eyebrow">生活議題城鎮</p>
+        <h1>演算法小鎮</h1>
+        <p class="title-sub">點一棟亮著燈的建築，走過去看看。</p>
+      </div>
+      <div class="fade" id="fade" aria-hidden="true"></div>
+    </div>
+    <p class="town-hint">
+      <span>🖱️ 點建築，角色會沿著街道走過去</span>
+      <span>⌨️ 也可以用 Tab 選建築、Enter 進入</span>
+      <span>🏆 完成一關會解鎖演算法圖鑑</span>
+    </p>
+  </main>
+
+  <section class="level-sheet" id="level-sheet" aria-label="關卡" hidden></section>
+
+  <dialog id="dex-dialog" class="dex-dialog">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">Collection</p>
+        <h2>演算法圖鑑 <span id="dex-progress"></span></h2>
+      </div>
+      <button class="icon-button" id="dex-close" type="button" aria-label="關閉圖鑑">×</button>
+    </div>
+    <p class="dex-note">在小鎮裡玩過的方法會收進圖鑑。還沒遇到的，先保密。</p>
+    <div class="dex-grid" id="dex-grid"></div>
+  </dialog>
+</body>
+</html>
