@@ -201,6 +201,48 @@
 .trip-map .home .icon { font-size: 20px; }
 .trip-map .home .name { font: 600 12px var(--font); fill: #b5f0da; }
 .trip-map .edge-km { font: 600 11px var(--mono); fill: #9ec5ff; text-anchor: middle; paint-order: stroke; stroke: #10131b; stroke-width: 4px; }
+.trip-map .spot.now circle { stroke: var(--amber); fill: #2a2114; stroke-width: 3; }
+/* 景點很多的時候只畫圓點，名字會糊成一團 */
+.trip-map .spot.bare circle { fill: #1a1e28; stroke: #45516a; stroke-width: 2; }
+.trip-map .spot.bare.visited circle { fill: #172a4a; stroke: var(--accent); }
+
+/* 方法卡：先押注哪一個比較短，再看它們跑 */
+.rule-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; flex: none; }
+.rule-card {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto;
+  gap: 2px 10px; align-items: center; text-align: left; white-space: normal;
+  padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: #181d28;
+}
+button.rule-card:hover { background: #222a3a; border-color: var(--accent); }
+.rule-card .r-icon { font-size: 24px; grid-row: span 2; }
+.rule-card b { font-size: 14px; color: white; font-weight: 700; }
+.rule-card .r-hint { font-size: 12px; color: var(--muted); line-height: 1.45; }
+.rule-card .r-km { font: 700 16px var(--mono); color: var(--accent-ink); }
+.rule-card.done { border-color: #35507c; }
+.rule-card.waiting { opacity: 0.5; }
+.rule-card.waiting .r-km { color: var(--subtle); font-size: 13px; font-weight: 400; }
+.rule-board.small .rule-card { padding: 9px 12px; }
+.rule-board.small .rule-card .r-icon { font-size: 19px; }
+
+/* 第 3 關：選景點數量，讓瀏覽器真的去跑 */
+.count-ladder { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: none; }
+.ladder-label { font-size: 13px; color: var(--muted); }
+.count-pick { padding: 7px 13px; font-family: var(--mono); font-size: 13px; }
+.count-pick.on { border-color: var(--accent); background: var(--accent-soft); color: white; }
+.brute-map { min-height: 0; display: flex; }
+.brute-map .trip-map { max-height: 34vh; width: auto; margin: 0 auto; }
+.stop-run { border-color: #6b3a45; background: #2a1a20; color: #ffc2cc; }
+.stop-run:hover { background: #38222a; border-color: #8d4b58; color: white; }
+.hint-line { font-size: 13px; color: var(--subtle); }
+
+/* 破關之後的連續挑戰 */
+.challenge-box { display: grid; gap: 12px; }
+.challenge-box > p { color: var(--muted); font-size: 14px; }
+.challenge-box > p b { color: #c9d5e8; }
+.streak-head { display: flex; align-items: baseline; gap: 10px; font-size: 13px; color: var(--muted); }
+.streak-head .big-number { font-size: 26px; }
+.streak-best { margin-left: auto; font-size: 12px; color: var(--amber); }
+.challenge-box .trip-map { max-height: 46vh; width: auto; margin: 0 auto; }
 .explode { display: grid; gap: 16px; }
 .explode-controls { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 .explode-controls label { font-size: 14px; color: #c9d5e8; display: flex; gap: 10px; align-items: center; }
@@ -220,6 +262,10 @@
   .race-heads { gap: 8px; }
 }
 @media (max-width: 560px) {
+  .rule-board { grid-template-columns: 1fr; }
+  .count-ladder { gap: 6px; }
+  .count-pick { padding: 6px 10px; font-size: 12px; }
+  .brute-map .trip-map, .challenge-box .trip-map { max-height: none; width: 100%; }
   .number-board { gap: 3px; max-height: none; }
   .number-board .cell { min-height: 22px; font-size: 12px; }
   .teacher-strip .line { font-size: 14px; }

@@ -101,6 +101,40 @@ export function bestRoute(start, spots) {
   return { ...best, count };
 }
 
+/** 路線上每一段的距離，用來說明「哪一段特別長」。 */
+export function routeLegs(start, spots, order) {
+  const legs = [];
+  let here = start;
+  for (const index of order) {
+    legs.push(distanceKm(here, spots[index]));
+    here = spots[index];
+  }
+  return legs;
+}
+
+/**
+ * 「照地圖繞一圈」：以所有地點的重心當圓心，從學校的方位開始一路繞過去，不走回頭路。
+ * 兩個方向都算，回傳比較短的那一邊——人也會挑順手的方向繞。
+ */
+export function sweepRoute(start, spots) {
+  const all = [start, ...spots];
+  const cx = all.reduce((sum, p) => sum + p.x, 0) / all.length;
+  const cy = all.reduce((sum, p) => sum + p.y, 0) / all.length;
+  const from = Math.atan2(start.y - cy, start.x - cx);
+  const oneWay = dir => {
+    const angle = point => {
+      let a = (Math.atan2(point.y - cy, point.x - cx) - from) * dir;
+      while (a < 0) a += Math.PI * 2;
+      return a;
+    };
+    const order = spots.map((_, i) => i).sort((i, j) => angle(spots[i]) - angle(spots[j]));
+    return { order, length: routeLength(start, spots, order) };
+  };
+  const clockwise = oneWay(1);
+  const anti = oneWay(-1);
+  return clockwise.length <= anti.length ? clockwise : anti;
+}
+
 /** 每次都去最近、還沒去過的景點。 */
 export function nearestRoute(start, spots) {
   const left = new Set(spots.map((_, i) => i));
@@ -116,6 +150,105 @@ export function nearestRoute(start, spots) {
     here = spots[pick];
   }
   return { order, length: routeLength(start, spots, order) };
+}
+
+/**
+ * 把所有順序試一遍，但可以分批做：每次呼叫 step(limit) 最多檢查 limit 條，
+ * UI 才不會整個卡住，學生也才看得到進度條爬不動的樣子。
+ *
+ * 用 Heap 演算法就地交換產生排列，不另外配置陣列，
+ * 所以量到的速度就是這台電腦真正的速度，不是假的。
+ */
+export function bruteForceRunner(start, spots) {
+  const n = spots.length;
+  const order = Array.from({ length: n }, (_, i) => i);
+  const counters = new Array(n).fill(0);
+  let level = 1;
+  let firstOne = true;
+  let done = n === 0;
+  let checked = 0;
+  let best = null;
+
+  /** 就地換成下一個排列；已經沒有下一個時回傳 false。 */
+  function advance() {
+    if (firstOne) { firstOne = false; return true; }
+    while (level < n) {
+      if (counters[level] < level) {
+        const swap = level % 2 === 0 ? 0 : counters[level];
+        [order[swap], order[level]] = [order[level], order[swap]];
+        counters[level]++;
+        level = 1;
+        return true;
+      }
+      counters[level] = 0;
+      level++;
+    }
+    return false;
+  }
+
+  return {
+    total: factorial(n),
+    get checked() { return checked; },
+    get best() { return best; },
+    get done() { return done; },
+    /** 檢查最多 limit 條路線，回傳這一批實際檢查了幾條。 */
+    step(limit) {
+      let count = 0;
+      while (count < limit) {
+        if (!advance()) { done = true; break; }
+        count++;
+        checked++;
+        const length = routeLength(start, spots, order);
+        if (!best || length < best.length) best = { order: [...order], length };
+      }
+      return count;
+    }
+  };
+}
+
+/**
+ * 隨機抽一張「有教學意義」的地圖給破關後的無上限挑戰：
+ * 最短路線唯一、兩個規則都找不到它、最短路線的第一站不是離學校最近的那個，
+ * 而且要留下夠多條比規則更短的路線，學生才贏得了。
+ * 抽不到就回傳 null，呼叫端再試一次。
+ */
+export function randomTripMap({ start, count = 5, area, rng = Math.random, tries = 300 }) {
+  const { x0, x1, y0, y1, gap = 100 } = area;
+  for (let attempt = 0; attempt < tries; attempt++) {
+    const spots = [];
+    let placed = true;
+    for (let i = 0; i < count; i++) {
+      let point = null;
+      for (let t = 0; t < 60; t++) {
+        const candidate = { x: Math.round(x0 + rng() * (x1 - x0)), y: Math.round(y0 + rng() * (y1 - y0)) };
+        if ([start, ...spots].every(other => Math.hypot(candidate.x - other.x, candidate.y - other.y) >= gap)) {
+          point = candidate;
+          break;
+        }
+      }
+      if (!point) { placed = false; break; }
+      spots.push(point);
+    }
+    if (!placed) continue;
+
+    const lengths = [];
+    for (const order of permutations(count)) lengths.push(routeLength(start, spots, order));
+    lengths.sort((a, b) => a - b);
+    const shortest = lengths[0];
+    if (lengths[1] === shortest) continue;                       // 最短的要唯一
+
+    const best = bestRoute(start, spots);
+    const near = nearestRoute(start, spots);
+    const sweep = sweepRoute(start, spots);
+    const ruleBest = Math.min(near.length, sweep.length);
+    if (near.length < shortest * 1.15) continue;                 // 最近優先要明顯輸
+    if (sweep.length < shortest * 1.05) continue;                // 繞一圈也不能剛好最短
+    if (best.order[0] === near.order[0]) continue;               // 最短的第一站 ≠ 最近的那個
+    if (lengths.filter(km => km < ruleBest).length < 5) continue; // 要留得下贏的空間
+
+    return { spots, best, nearest: near, sweep, ruleBest };
+  }
+  return null;
 }
 
 export function factorial(n) {
