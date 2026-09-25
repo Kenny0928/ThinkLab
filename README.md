@@ -1,8 +1,8 @@
 # 🧪 ThinkLab — 從程式學習到實作專題的能力實驗室
 
-ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 39 關、117 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.1「小數與格式化輸出」、LV.2「讀懂錯誤訊息與自訂測資」、LV.3 H01、H02 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
+ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 45 關、135 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.1「小數與格式化輸出」、LV.2「讀懂錯誤訊息與自訂測資」、LV.3 H01、H04 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
 
-三階段講義依照「讀懂任務 → 先猜結果 → 拆解步驟 → 動手測試」組成連續學習路徑：LV.1 15 關、LV.2 14 關、LV.3 10 關。每關包含 1 題核心題與 2 題變體；各作答方式共用題目、測資與通關紀錄，每題、每種語言的草稿則分別保存。
+三階段講義依照「讀懂任務 → 先猜結果 → 拆解步驟 → 動手測試」組成連續學習路徑：LV.1 15 關、LV.2 14 關、LV.3 16 關。每關包含 1 題核心題與 2 題變體；各作答方式共用題目、測資與通關紀錄，每題、每種語言的草稿則分別保存。
 
 Python 與 Blockly 產生的 Python 由 **Pyodide**（Python in WebAssembly）執行；Scratch 使用官方 **Scratch Blocks** 編輯、**Scratch VM** 執行。所有程式都在學生的瀏覽器內判題，不需要後端、資料庫或部署時的 Node.js 服務。
 
@@ -15,7 +15,7 @@ https://kenny0928.github.io/ThinkLab/
 
 - 🧭 首頁整合講義、Judge、演算法遊樂場與流程圖實驗室入口
 - 🎮 演算法遊樂場：不用寫程式的「演算法小鎮」與「會動的演算法」動畫模組
-- 🌱 LV.1 15 關、LV.2 14 關、LV.3 10 關的自學講義，每關含核心題與變體 A、B
+- 🌱 LV.1 15 關、LV.2 14 關、LV.3 16 關的自學講義，每關含核心題與變體 A、B
 - 🧪 講義以多組隱藏測資核對程式輸出，支援不同的正確寫法
 - 🧩 每題可選 Scratch、Blockly 或 Python，使用相同的標準輸入／輸出測資
 - 🐍 Python 與 Blockly 共用頁面內延遲載入的 Pyodide 執行環境
@@ -32,7 +32,7 @@ https://kenny0928.github.io/ThinkLab/
 
 ## 🧩 學生作答方式
 
-在講義的核心題、變體練習板，或 Judge 的編輯區，使用「作答方式」選單切換語言，再按「執行並檢查」或 Judge 的試跑／送出按鈕。切換後會恢復該題、該語言的草稿；重設只恢復目前語言的起始內容。Blockly 從空白工作區開始，Scratch 預先放一個綠旗起始積木，解答由學生自行完成。LV.2「讀懂錯誤訊息與自訂測資」使用 Traceback 與 `sys.stdin`，LV.3 H01、H02 使用 `set`、`dict` 與自訂排序鍵等 Python 寫法，這些關卡的作答選單會限制為 Python。
+在講義的核心題、變體練習板，或 Judge 的編輯區，使用「作答方式」選單切換語言，再按「執行並檢查」或 Judge 的試跑／送出按鈕。切換後會恢復該題、該語言的草稿；重設只恢復目前語言的起始內容。Blockly 從空白工作區開始，Scratch 預先放一個綠旗起始積木，解答由學生自行完成。LV.2「讀懂錯誤訊息與自訂測資」使用 Traceback 與 `sys.stdin`，LV.3 H01、H04 使用 `set`、`dict` 與自訂排序鍵等 Python 寫法，這些關卡的作答選單會限制為 Python。
 
 | 作答方式 | 操作與執行方式 |
 |----------|----------------|
@@ -82,7 +82,7 @@ ThinkLab/
 ├── assets/
 │   ├── programming-editor.js/.css ← 共用語言切換、草稿與判題介面
 │   ├── course-catalog.js           ← LV.2 14 關課程資料
-│   ├── advanced-course.js          ← LV.3 10 關課程資料
+│   ├── advanced-course.js          ← LV.3 16 關課程資料
 │   ├── problem-classification.js  ← 題目分級名稱、顯示與篩選邏輯
 │   ├── blockly-editor.html/.js    ← Blockly 工作區、I/O 積木、Python 生成
 │   ├── scratch-editor.html/.js    ← Scratch Blocks 工作區與 .sb3 匯入／匯出
@@ -301,7 +301,7 @@ node scripts/verify_courses.mjs
 node --test "test/*.test.mjs" "algoplay/test/*.test.mjs"
 ```
 
-第一個指令驗證 Judge 題庫與 Python 參考解答；第二個使用 Node.js 內建模組與本機 Python 3，檢查語言切換、草稿相容性、重設、過期訊息處理，以及實際 Blockly 生成程式的輸入／輸出；第三個檢查三階段 39 關、117 題的資料結構，並將每題參考解答跑過全部測資；第四個跑流程圖實驗室與演算法遊樂場的 48 個單元測試（路徑要加引號，讓 node 自己展開）。四個指令全部正常時離開碼都是 0，可以用 `&&` 串起來。Node.js 只用於開發驗證，網站不需要 Node.js 執行環境或建置步驟。
+第一個指令驗證 Judge 題庫與 Python 參考解答；第二個使用 Node.js 內建模組與本機 Python 3，檢查語言切換、草稿相容性、重設、過期訊息處理，以及實際 Blockly 生成程式的輸入／輸出；第三個檢查三階段 45 關、135 題的資料結構，並將每題參考解答跑過全部測資；第四個跑流程圖實驗室與演算法遊樂場的 48 個單元測試（路徑要加引號，讓 node 自己展開）。四個指令全部正常時離開碼都是 0，可以用 `&&` 串起來。Node.js 只用於開發驗證，網站不需要 Node.js 執行環境或建置步驟。
 
 啟動上述 HTTP 伺服器後，開啟 [Scratch 瀏覽器測試頁](http://localhost:8080/scripts/verify-scratch.html)，依頁面操作執行測試並確認全部通過。此頁載入真實 Scratch Blocks、Scratch VM 與 Worker，補足終端測試沒有涵蓋的瀏覽器執行流程。
 
@@ -319,7 +319,7 @@ node --test "test/*.test.mjs" "algoplay/test/*.test.mjs"
 | Scratch 文字判題範圍 | 提供演算法積木與標準 I/O；沒有舞台動畫、硬體或網路擴充執行。不支援的積木會被拒絕。 |
 | 首次載入需要網路 | Pyodide、CodeMirror、Scratch Blocks、Scratch VM、JSZip 由外部 CDN 載入，首次載入時間視網路與裝置而定。Blockly 程式庫與媒體檔已包含在倉庫。 |
 | 本地保存 | 草稿存於 localStorage；清除網站資料或更換瀏覽器／網站來源後不會自動還原。 |
-| 講義範圍 | 已開放LV.1 15 關、LV.2 14 關、LV.3 10 關，共 117 題；LV.1「小數與格式化輸出」、LV.2「讀懂錯誤訊息與自訂測資」、LV.3 H01、H02 僅支援 Python。 |
+| 講義範圍 | 已開放LV.1 15 關、LV.2 14 關、LV.3 16 關，共 135 題；LV.1「小數與格式化輸出」、LV.2「讀懂錯誤訊息與自訂測資」、LV.3 H01、H04 僅支援 Python。 |
 
 ---
 
