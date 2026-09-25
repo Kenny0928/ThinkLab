@@ -1749,8 +1749,6 @@
   <!-- Toast -->
   <div id="toast"></div>
 
-  <!-- 直接以 file:// 開啟時使用的新增題目備援資料 -->
-  <script src="problems/fallback-new.js"></script>
   <script>
     // ═══════════════════════════════════════════════
     //  PROBLEM LOADER  （資料來自 problems/*.json）
@@ -1936,7 +1934,7 @@
           { "input": "12345", "output": "54321" },
           { "input": "a", "output": "a" },
           { "input": "abcdefghij", "output": "jihgfedcba" },
-          { "input": "SkillLab2025", "output": "5202baLllikS" }
+          { "input": "ThinkLab2025", "output": "5202baLknihT" }
         ]
       },
       7: {
@@ -2034,9 +2032,7 @@
         ]
       }
     };
-    // 合併完整備援；前 0–10 題以此頁較精簡且同步更新的版本為準。
-    const CORE_PROBLEMS_DATA = { ...PROBLEMS_DATA };
-    Object.assign(PROBLEMS_DATA, window.NEW_PROBLEMS_DATA || {}, CORE_PROBLEMS_DATA);
+    // file:// 模式只備援上面這 0–10 題；其餘題目一律由 problems/*.json 載入。
     const PROBLEMS = [];
     const PROBLEM_CLASSIFICATION = window.SkillLabProblemClassification;
 

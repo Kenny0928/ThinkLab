@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+._*
+
+# 編輯器與工具的本機設定
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Finder／同步工具產生的重複檔，例如 "161 2.py"
+* [0-9].py

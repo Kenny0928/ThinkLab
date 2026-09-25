@@ -8,12 +8,13 @@ Python 與 Blockly 產生的 Python 由 **Pyodide**（Python in WebAssembly）�
 
 https://kenny0928.github.io/ThinkLab/
 
-完整產品定位、分齡學習路徑與階段性建置方向請見：[ThinkLab 未來發展藍圖](docs/SkillLab_未來發展藍圖.md)。
+分齡學習路徑與題庫全景請見：[題庫總覽與學習階梯](docs/題庫總覽與學習階梯.md)；演算法遊樂場的設計理念見 [AlgoPlay README](algoplay/README.md)。
 
 
 ## ✨ 功能特色
 
-- 🧭 首頁整合講義、Judge 與流程圖實驗室入口
+- 🧭 首頁整合講義、Judge、演算法遊樂場與流程圖實驗室入口
+- 🎮 演算法遊樂場：不用寫程式的「演算法小鎮」與「會動的演算法」動畫模組
 - 🌱 LV.1 15 關、LV.2 10 關、LV.3 10 關的自學講義，每關含核心題與變體 A、B
 - 🧪 講義以多組隱藏測資核對程式輸出，支援不同的正確寫法
 - 🧩 每題可選 Scratch、Blockly 或 Python，使用相同的標準輸入／輸出測資
@@ -70,6 +71,14 @@ ThinkLab/
 ├── judge.html          ← Judge 主程式（UI 邏輯，不含題目資料）
 ├── guide.html          ← 驗資說明頁（怎麼讀範例輸入／輸出、Scratch 與 Blockly 的輸入輸出）
 │
+├── algoplay/           ← 演算法遊樂場（首頁兩個選單：演算法小鎮、會動的演算法）
+│   ├── core/           ← 共用底色樣式、進度、角色、Pyodide 與預覽畫布
+│   ├── town/           ← 2D 像素小鎮與生活情境關卡
+│   ├── modules/        ← 演算法動畫模組（目前：二分搜尋）
+│   └── test/           ← 小鎮地圖、關卡邏輯與機器人程式的 node 測試
+│
+├── test/               ← 流程圖實驗室（拖曳式流程圖執行器）與其 node 測試
+│
 ├── assets/
 │   ├── programming-editor.js/.css ← 共用語言切換、草稿與判題介面
 │   ├── course-catalog.js           ← LV.2 10 關課程資料
@@ -81,8 +90,9 @@ ThinkLab/
 │   └── vendor/blockly/           ← 固定版本 Blockly 與授權、媒體檔案
 │
 ├── docs/
-│   ├── SkillLab_未來發展藍圖.md  ← 跨年齡、積木程式與機電專題發展方向
-│   └── 題庫總覽與學習階梯.md    ← 六大循序漸進階梯與題庫全景對照
+│   ├── 題庫總覽與學習階梯.md    ← 六大循序漸進階梯與題庫全景對照
+│   ├── 題庫擴充審查_154-213.md  ← 原創 60 題的審查與驗證紀錄
+│   └── 課程內容草稿/            ← LV.2／LV.3 講義與擴充題庫的內容母稿
 │
 ├── for_AI/
 │   ├── AI_AGENT_工作流與開發規範.md ← AI Agent 題庫與網頁維護最高規約 (SOP)
@@ -288,9 +298,10 @@ python3 -m http.server 8080
 python3 scripts/verify_problems.py
 node scripts/verify_editors.cjs
 node scripts/verify_courses.mjs
+node --test "test/*.test.mjs" "algoplay/test/*.test.mjs"
 ```
 
-第一個指令驗證 Judge 題庫與 Python 參考解答；第二個使用 Node.js 內建模組與本機 Python 3，檢查語言切換、草稿相容性、重設、過期訊息處理，以及實際 Blockly 生成程式的輸入／輸出；第三個檢查三階段 35 關、105 題的資料結構，並將每題參考解答跑過全部測資。Node.js 只用於開發驗證，網站不需要 Node.js 執行環境或建置步驟。
+第一個指令驗證 Judge 題庫與 Python 參考解答；第二個使用 Node.js 內建模組與本機 Python 3，檢查語言切換、草稿相容性、重設、過期訊息處理，以及實際 Blockly 生成程式的輸入／輸出；第三個檢查三階段 35 關、105 題的資料結構，並將每題參考解答跑過全部測資；第四個跑流程圖實驗室與演算法遊樂場的 48 個單元測試（路徑要加引號，讓 node 自己展開）。四個指令全部正常時離開碼都是 0，可以用 `&&` 串起來。Node.js 只用於開發驗證，網站不需要 Node.js 執行環境或建置步驟。
 
 啟動上述 HTTP 伺服器後，開啟 [Scratch 瀏覽器測試頁](http://localhost:8080/scripts/verify-scratch.html)，依頁面操作執行測試並確認全部通過。此頁載入真實 Scratch Blocks、Scratch VM 與 Worker，補足終端測試沒有涵蓋的瀏覽器執行流程。
 

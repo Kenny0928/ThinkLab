@@ -17,11 +17,20 @@ const test = (name, run) => tests.push({ name, run });
 
 test('Judge stage filters combine with difficulty, search and completion status', () => {
   const manifest = JSON.parse(read('problems/index.json'));
-  const counts = manifest.reduce((result, problem) => {
-    result[problem.stage] = (result[problem.stage] || 0) + 1;
-    return result;
-  }, {});
-  assert.deepEqual(counts, { Beginner: 56, Intermediate: 85, Advanced: 12, Challenge: 1 });
+  const byId = new Map(manifest.map(problem => [problem.id, problem]));
+  assert.equal(byId.size, manifest.length, 'Problem ids must be unique');
+
+  // 題數會隨題庫擴充改變，所以不寫死數字；改成檢查索引與題目檔永遠一致。
+  const census = {};
+  for (const problem of manifest) {
+    const file = JSON.parse(read(`problems/${String(problem.id).padStart(3, '0')}.json`));
+    for (const field of ['title', 'stage', 'audienceLevel', 'apcsLevel', 'difficulty']) {
+      assert.equal(problem[field], file[field], `index.json 與 ${file.id}.json 的 ${field} 不一致`);
+    }
+    assert.ok(problemClassification.STAGES[problem.stage], `未知的 stage：${problem.stage}`);
+    census[problem.stage] = (census[problem.stage] || 0) + 1;
+  }
+  assert.equal(Object.values(census).reduce((a, b) => a + b, 0), manifest.length);
 
   const filter = (filters, solvedIds = []) => {
     const solved = new Set(solvedIds);
@@ -29,11 +38,36 @@ test('Judge stage filters combine with difficulty, search and completion status'
       .filter(problem => problemClassification.matches(problem, filters, solved.has(problem.id)))
       .map(problem => problem.id);
   };
-  assert.deepEqual(filter({ stage: 'Challenge' }), [7]);
-  assert.deepEqual(filter({ stage: 'Advanced', difficulty: 'Medium' }), [4, 145, 148, 151]);
-  assert.deepEqual(filter({ search: 'APCS 實作' }), [7]);
-  assert.deepEqual(filter({ stage: 'Beginner', status: 'solved' }, [0, 2, 11]), [0, 11]);
-  assert.ok(filter({ stage: 'Intermediate', tag: '字串' }).every(id => manifest[id].stage === 'Intermediate'));
+  const expect = predicate => manifest.filter(predicate).map(problem => problem.id);
+
+  // 每個篩選條件都跟「直接從索引算出來的答案」對拍，擴充題庫不會讓這裡失真。
+  for (const stage of Object.keys(problemClassification.STAGES)) {
+    assert.deepEqual(filter({ stage }), expect(problem => problem.stage === stage), `stage=${stage}`);
+  }
+  assert.deepEqual(
+    filter({ stage: 'Advanced', difficulty: 'Medium' }),
+    expect(problem => problem.stage === 'Advanced' && problem.difficulty === 'Medium')
+  );
+  assert.ok(filter({ stage: 'Challenge' }).length > 0, '挑戰題不應為空');
+  assert.ok(
+    filter({ search: 'APCS 實作' }).every(id => byId.get(id).apcsLevel === 'APCS-Implementation'),
+    '搜尋 APCS 實作只能命中 APCS-Implementation'
+  );
+  const solvedIds = [0, 2, 11];
+  assert.deepEqual(
+    filter({ stage: 'Beginner', status: 'solved' }, solvedIds),
+    expect(problem => problem.stage === 'Beginner' && solvedIds.includes(problem.id))
+  );
+  assert.deepEqual(
+    filter({ stage: 'Beginner', status: 'unsolved' }, solvedIds),
+    expect(problem => problem.stage === 'Beginner' && !solvedIds.includes(problem.id))
+  );
+  assert.ok(
+    filter({ stage: 'Intermediate', tag: '字串' }).every(id => {
+      const problem = byId.get(id);
+      return problem.stage === 'Intermediate' && problem.tags.includes('字串');
+    })
+  );
 });
 
 test('Judge file-mode fallback keeps classification metadata for core problems', () => {
