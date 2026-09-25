@@ -1,8 +1,8 @@
 # 🧪 ThinkLab — 從程式學習到實作專題的能力實驗室
 
-ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 31 關、93 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.3 H01、H02 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
+ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 35 關、105 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.1「小數與格式化輸出」、LV.3 H01、H02 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
 
-三階段講義依照「讀懂任務 → 先猜結果 → 拆解步驟 → 動手測試」組成連續學習路徑：LV.1 11 關（含 8.5 的 `while` 補充）、LV.2 10 關、LV.3 10 關。每關包含 1 題核心題與 2 題變體；各作答方式共用題目、測資與通關紀錄，每題、每種語言的草稿則分別保存。
+三階段講義依照「讀懂任務 → 先猜結果 → 拆解步驟 → 動手測試」組成連續學習路徑：LV.1 15 關、LV.2 10 關、LV.3 10 關。每關包含 1 題核心題與 2 題變體；各作答方式共用題目、測資與通關紀錄，每題、每種語言的草稿則分別保存。
 
 Python 與 Blockly 產生的 Python 由 **Pyodide**（Python in WebAssembly）執行；Scratch 使用官方 **Scratch Blocks** 編輯、**Scratch VM** 執行。所有程式都在學生的瀏覽器內判題，不需要後端、資料庫或部署時的 Node.js 服務。
 
@@ -14,7 +14,7 @@ https://kenny0928.github.io/ThinkLab/
 ## ✨ 功能特色
 
 - 🧭 首頁整合講義、Judge 與流程圖實驗室入口
-- 🌱 LV.1 11 關、LV.2 10 關、LV.3 10 關的自學講義，每關含核心題與變體 A、B
+- 🌱 LV.1 15 關、LV.2 10 關、LV.3 10 關的自學講義，每關含核心題與變體 A、B
 - 🧪 講義以多組隱藏測資核對程式輸出，支援不同的正確寫法
 - 🧩 每題可選 Scratch、Blockly 或 Python，使用相同的標準輸入／輸出測資
 - 🐍 Python 與 Blockly 共用頁面內延遲載入的 Pyodide 執行環境
@@ -280,6 +280,8 @@ python3 -m http.server 8080
 
 ### 修改後驗證
 
+> 快速查表見 [測試入口](測試入口.md)：該跑哪個指令、兩個瀏覽器測試頁怎麼開、增減關卡時的連動清單。
+
 在專案根目錄執行：
 
 ```bash
@@ -288,7 +290,7 @@ node scripts/verify_editors.cjs
 node scripts/verify_courses.mjs
 ```
 
-第一個指令驗證 Judge 題庫與 Python 參考解答；第二個使用 Node.js 內建模組與本機 Python 3，檢查語言切換、草稿相容性、重設、過期訊息處理，以及實際 Blockly 生成程式的輸入／輸出；第三個檢查三階段 31 關、93 題的資料結構，並將每題參考解答跑過全部測資。Node.js 只用於開發驗證，網站不需要 Node.js 執行環境或建置步驟。
+第一個指令驗證 Judge 題庫與 Python 參考解答；第二個使用 Node.js 內建模組與本機 Python 3，檢查語言切換、草稿相容性、重設、過期訊息處理，以及實際 Blockly 生成程式的輸入／輸出；第三個檢查三階段 35 關、105 題的資料結構，並將每題參考解答跑過全部測資。Node.js 只用於開發驗證，網站不需要 Node.js 執行環境或建置步驟。
 
 啟動上述 HTTP 伺服器後，開啟 [Scratch 瀏覽器測試頁](http://localhost:8080/scripts/verify-scratch.html)，依頁面操作執行測試並確認全部通過。此頁載入真實 Scratch Blocks、Scratch VM 與 Worker，補足終端測試沒有涵蓋的瀏覽器執行流程。
 
@@ -306,7 +308,7 @@ node scripts/verify_courses.mjs
 | Scratch 文字判題範圍 | 提供演算法積木與標準 I/O；沒有舞台動畫、硬體或網路擴充執行。不支援的積木會被拒絕。 |
 | 首次載入需要網路 | Pyodide、CodeMirror、Scratch Blocks、Scratch VM、JSZip 由外部 CDN 載入，首次載入時間視網路與裝置而定。Blockly 程式庫與媒體檔已包含在倉庫。 |
 | 本地保存 | 草稿存於 localStorage；清除網站資料或更換瀏覽器／網站來源後不會自動還原。 |
-| 講義範圍 | 已開放LV.1 11 關、LV.2 10 關、LV.3 10 關，共 93 題；LV.3 H01、H02 僅支援 Python。 |
+| 講義範圍 | 已開放LV.1 15 關、LV.2 10 關、LV.3 10 關，共 105 題；LV.1「小數與格式化輸出」、LV.3 H01、H02 僅支援 Python。 |
 
 ---
 

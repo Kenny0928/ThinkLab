@@ -26,7 +26,7 @@ const courses = {
   intermediate: window.SKILLLAB_COURSES?.intermediate?.lessons,
   advanced: window.SKILLLAB_COURSES?.advanced?.lessons
 };
-const expectedCounts = { beginner: 11, intermediate: 10, advanced: 10 };
+const expectedCounts = { beginner: 15, intermediate: 10, advanced: 10 };
 const failures = [];
 let taskCount = 0;
 let testCount = 0;

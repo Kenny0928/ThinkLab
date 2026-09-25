@@ -1616,6 +1616,54 @@
       },
       {
         id: 5,
+        title: '文字還是數字',
+        badge: 'int() · str()',
+        kicker: 'TWO KINDS OF DATA',
+        goal: '分辨文字與數字兩種資料，知道 input() 拿到的一定是文字，要做數學前必須先轉成數字。',
+        concept: 'input() 永遠回傳文字。文字用 + 是接在一起（"3" + "5" 得到 "35"），數字用 + 才是相加（3 + 5 得到 8）。int() 把文字轉成整數，str() 把數字轉回文字。Scratch 與 Blockly 會自動判斷該用哪一種，Python 要自己說清楚。',
+        mission: '記分板要同時顯示兩種東西。依序輸入兩個整數 a 和 b，第一行原封不動地把兩個輸入接成一段文字，第二行輸出兩數相加的結果。',
+        sampleInput: '3\n5',
+        sampleOutput: '35\n8',
+        predict: '兩行分別輸入 3 和 5，程式寫 print(a + b) 而且沒有轉換，會輸出什麼？',
+        predictAnswer: '35。a、b 都是文字，+ 做的是接在一起。要得到 8 必須寫 int(a) + int(b)。',
+        steps: ['用 input() 讀取兩行文字，分別存進 a 和 b。', '第一行直接 print(a + b)，文字的 + 是接在一起。', '第二行用 print(int(a) + int(b))，把文字轉成整數後再相加。'],
+        starter: 'a = input()\nb = input()\nprint(a + b)\nprint(____ + ____)',
+        solution: 'a = input()\nb = input()\nprint(a + b)\nprint(int(a) + int(b))',
+        hint: '第二個 print() 要先用 int() 把 a、b 轉成數字才能相加；第一個 print() 保持文字接在一起就好。',
+        checkpoint: '同樣是 a + b，為什麼兩次 print() 的結果不一樣？int() 在中間做了什麼事？',
+        commonMistakes: ['以為 input() 拿到的是數字，直接拿去做數學，出現 TypeError。', '把 int() 套在整個 input().split() 上，而不是分別轉換每一個變數。'],
+        tests: [{ input: '3\n5', output: '35\n8' }, { input: '12\n7', output: '127\n19' }, { input: '20\n30', output: '2030\n50' }],
+        variants: [
+          {
+            title: '選手編號',
+            mission: '幫選手製作號碼牌。輸入一個整數 n，代表選手編號，輸出格式是「No.」接上編號，例如輸入 7 要輸出 No.7。',
+            sampleInput: '7', sampleOutput: 'No.7',
+            starter: 'n = int(input())\nprint("No." + ____)',
+            solution: 'n = int(input())\nprint("No." + str(n))',
+            hint: 'n 已經被 int() 轉成整數，不能直接和文字 "No." 相加，要先用 str(n) 轉回文字。',
+            tests: [
+              { input: '7', output: 'No.7' },
+              { input: '23', output: 'No.23' },
+              { input: '100', output: 'No.100' }
+            ]
+          },
+          {
+            title: '先轉再算',
+            mission: '輸入一行，包含兩個整數，中間用一個空格分開。把這一行拆成兩段文字，各自轉成整數後再相加，輸出加總。',
+            sampleInput: '3 5', sampleOutput: '8',
+            starter: 'a, b = input().split()\ntotal = int(a) + ____\nprint(total)',
+            solution: 'a, b = input().split()\ntotal = int(a) + int(b)\nprint(total)',
+            hint: 'split() 拆出來的兩段還是文字，要各自用 int() 轉換才能相加。',
+            tests: [
+              { input: '3 5', output: '8' },
+              { input: '12 30', output: '42' },
+              { input: '0 9', output: '9' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 6,
         title: '算術運算',
         badge: '+ − × ÷',
         kicker: 'TURN WORDS INTO MATH',
@@ -1646,22 +1694,121 @@
             ]
           },
           {
-            title: '分組後剩幾個',
-            mission: '輸入物品數量與每組數量，輸出完整組數及剩餘數量，中間一個空格。',
-            sampleInput: '23 5', sampleOutput: '4 3',
-            starter: 'items, size = map(int, input().split())\ngroups = items ____ size\nleft = items ____ size\nprint(groups, left)',
-            solution: 'items, size = map(int, input().split())\ngroups = items // size\nleft = items % size\nprint(groups, left)',
-            hint: '// 求完整組數，% 求分組後的餘數。',
+            title: '總價計算',
+            mission: '輸入單價、數量與運費三個整數（同一行、空白分隔），輸出總金額，計算方式是「單價 × 數量 + 運費」。',
+            sampleInput: '50 3 20', sampleOutput: '170',
+            starter: 'price, qty, shipping = map(int, input().split())\ntotal = price ____ qty ____ shipping\nprint(total)',
+            solution: 'price, qty, shipping = map(int, input().split())\ntotal = price * qty + shipping\nprint(total)',
+            hint: '先算「單價 × 數量」，再加上運費；乘法會先算，不需要額外加括號。',
             tests: [
-              { input: '23 5', output: '4 3' },
-              { input: '20 5', output: '4 0' },
-              { input: '4 6', output: '0 4' }
+              { input: '50 3 20', output: '170' },
+              { input: '10 5 0', output: '50' },
+              { input: '100 1 15', output: '115' }
             ]
           }
         ]
       },
       {
-        id: 6,
+        id: 7,
+        title: '整除與餘數',
+        badge: '// · %',
+        kicker: 'HOW MANY, HOW MANY LEFT',
+        goal: '用整除回答「可以分成幾份」，用餘數回答「還剩幾個」。',
+        concept: '7 // 2 是 3，只留整數部分，不是四捨五入。7 % 2 是 1，是分完剩下的。想知道能不能整除，就看 % 是不是 0。',
+        mission: '分裝點心。輸入總數量與每組人數（同一行、空白分隔），第一行輸出可以分成幾組，第二行輸出還剩下幾個。',
+        sampleInput: '23 5',
+        sampleOutput: '4\n3',
+        predict: '23 顆糖每袋裝 5 顆。23 // 5 和 23 % 5 各是多少？',
+        predictAnswer: '23 // 5 是 4，代表可以裝滿 4 袋；23 % 5 是 3，代表分完後還剩下 3 顆。',
+        steps: ['用 input().split() 讀入總數量與每組人數，並轉成整數。', '用 // 計算可以裝滿的組數。', '用 % 計算裝完整組後還剩下的數量，分成兩行輸出。'],
+        starter: 'n, k = map(int, input().split())\ngroups = n ____ k\nleft = n ____ k\nprint(groups)\nprint(left)',
+        solution: 'n, k = map(int, input().split())\ngroups = n // k\nleft = n % k\nprint(groups)\nprint(left)',
+        hint: '// 求出能裝滿幾組，% 求出裝完後剩下幾個。',
+        checkpoint: '// 和 % 分別回答哪一種問題？如果總數恰好可以分完，% 的結果會是多少？',
+        commonMistakes: ['用 / 得到小數（23 / 5 是 4.6 不是 4）。', '把 // 和 % 的結果順序寫反，導致組數和剩餘數對調。'],
+        tests: [{ input: '23 5', output: '4\n3' }, { input: '20 5', output: '4\n0' }, { input: '4 6', output: '0\n4' }],
+        variants: [
+          {
+            title: '秒數換算',
+            mission: '輸入總秒數，換算成分與秒，輸出「X 分 Y 秒」，例如 125 秒要輸出 2 分 5 秒。',
+            sampleInput: '125', sampleOutput: '2 分 5 秒',
+            starter: 'seconds = int(input())\nminutes = seconds ____ 60\nremain = seconds ____ 60\nprint(minutes, "分", remain, "秒")',
+            solution: 'seconds = int(input())\nminutes = seconds // 60\nremain = seconds % 60\nprint(minutes, "分", remain, "秒")',
+            hint: '// 60 求出滿分鐘數，% 60 求出剩下的秒數。',
+            tests: [
+              { input: '125', output: '2 分 5 秒' },
+              { input: '60', output: '1 分 0 秒' },
+              { input: '59', output: '0 分 59 秒' }
+            ]
+          },
+          {
+            title: '拆出個位與十位',
+            mission: '輸入一個 0 到 99 之間的整數，第一行輸出十位數字，第二行輸出個位數字，例如輸入 47 要輸出 4 和 7。',
+            sampleInput: '47', sampleOutput: '4\n7',
+            starter: 'n = int(input())\ntens = n ____ 10\nones = n ____ 10\nprint(tens)\nprint(ones)',
+            solution: 'n = int(input())\ntens = n // 10\nones = n % 10\nprint(tens)\nprint(ones)',
+            hint: '// 10 取出十位數字，% 10 取出個位數字。',
+            tests: [
+              { input: '47', output: '4\n7' },
+              { input: '7', output: '0\n7' },
+              { input: '99', output: '9\n9' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: '小數與格式化輸出',
+        badge: '/ · f"{x:.2f}"',
+        kicker: 'SHOW THE RIGHT DIGITS',
+        allowedLanguages: ['python'],
+        goal: '分清楚 / 與 //，並把小數輸出成題目要求的位數。',
+        concept: '/ 一定得到小數，8 / 2 是 4.0 不是 4。要固定幾位小數，用 f"{x:.2f}" 這種格式碼：小數第二位之後四捨五入，不足的位數會補 0。題目說「小數點後兩位」時，3.5 要輸出成 3.50。',
+        mission: '結帳時要平均分攤金額。輸入總金額與人數（同一行、空白分隔），輸出每人應付金額，固定顯示小數點後兩位。',
+        sampleInput: '100 3',
+        sampleOutput: '33.33',
+        predict: 'print(100 / 3) 會印出什麼？題目只要小數點後兩位時要怎麼改？',
+        predictAnswer: '100 / 3 會印出很長一串小數，例如 33.333333333333336。題目只要小數點後兩位時，要改成 print(f"{100 / 3:.2f}")，印出 33.33。',
+        steps: ['讀入總金額與人數，並轉成整數。', '用 / 計算每人平均金額，這裡一定會得到小數。', '用 f-string 搭配 :.2f 固定輸出小數點後兩位。'],
+        starter: 'total, people = map(int, input().split())\naverage = total / people\nprint(f"{average:____}")',
+        solution: 'total, people = map(int, input().split())\naverage = total / people\nprint(f"{average:.2f}")',
+        hint: '把要固定的小數位數放進 f-string 的格式碼裡，兩位小數要寫成 .2f。',
+        checkpoint: '/ 和 // 的計算結果有什麼不同？就算答案剛好是整數，為什麼還是要用 f-string 固定小數位數？',
+        commonMistakes: ['只用 round() 導致 3.5 印成 3.5 而不是 3.50。', '把 // 用在需要小數的題目上，得到被截斷的整數。'],
+        tests: [{ input: '100 3', output: '33.33' }, { input: '100 4', output: '25.00' }, { input: '50 8', output: '6.25' }],
+        variants: [
+          {
+            title: '攝氏轉華氏',
+            mission: '輸入攝氏溫度（整數），換算成華氏溫度，輸出固定顯示小數點後一位。轉換公式是「華氏 = 攝氏 × 9 / 5 + 32」。',
+            sampleInput: '20', sampleOutput: '68.0',
+            allowedLanguages: ['python'],
+            starter: 'c = int(input())\nf = c * 9 / 5 + 32\nprint(f"{f:____}")',
+            solution: 'c = int(input())\nf = c * 9 / 5 + 32\nprint(f"{f:.1f}")',
+            hint: '公式是「攝氏 × 9 / 5 + 32」；輸出只要 1 位小數，格式碼要寫成 .1f。',
+            tests: [
+              { input: '20', output: '68.0' },
+              { input: '0', output: '32.0' },
+              { input: '37', output: '98.6' }
+            ]
+          },
+          {
+            title: '整除還是小數',
+            mission: '輸入兩個正整數 a 與 b（同一行、空白分隔）。第一行輸出 a // b 的整除結果，第二行輸出 a / b 的小數結果，固定顯示小數點後三位。',
+            sampleInput: '7 2', sampleOutput: '3\n3.500',
+            allowedLanguages: ['python'],
+            starter: 'a, b = map(int, input().split())\nprint(a ____ b)\nprint(f"{a / b:____}")',
+            solution: 'a, b = map(int, input().split())\nprint(a // b)\nprint(f"{a / b:.3f}")',
+            hint: '第一行直接印出 // 的結果；第二行把 a / b 放進 f-string，格式碼要寫成 .3f。',
+            tests: [
+              { input: '7 2', output: '3\n3.500' },
+              { input: '10 4', output: '2\n2.500' },
+              { input: '22 7', output: '3\n3.143' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 9,
         title: '比較與二選一',
         badge: 'if / else',
         kicker: 'MAKE A DECISION',
@@ -1707,7 +1854,7 @@
         ]
       },
       {
-        id: 7,
+        id: 10,
         title: '多種情況',
         badge: 'if / elif / else',
         kicker: 'MORE THAN TWO PATHS',
@@ -1756,7 +1903,55 @@
         ]
       },
       {
-        id: 8,
+        id: 11,
+        title: '布林值與 and / or / not',
+        badge: 'True / False · and / or / not',
+        kicker: 'YES OR NO IS A VALUE',
+        goal: '把「成立或不成立」本身當成一個值，並用 and、or、not 組合多個條件。',
+        concept: 'x > 5 這種比較，算出來的結果就是 True 或 False 兩個布林值之一，可以直接印出來、也可以存進變數。and 要兩邊都成立；or 任一邊成立就好；not 把真假反過來。',
+        mission: '判斷是否能搭乘遊樂設施。輸入身高與年齡（同一行、空白分隔），身高至少 120 公分且年齡至少 6 歲才能搭乘。直接輸出這個條件成立與否的布林值，不需要寫 if。',
+        sampleInput: '125 7',
+        sampleOutput: 'True',
+        predict: '身高 118、年齡 8。height >= 120 and age >= 6 是 True 還是 False？把 and 換成 or 呢？',
+        predictAnswer: 'and 時是 False，因為 height >= 120 不成立，兩邊必須都成立才行；換成 or 後是 True，因為 age >= 6 這一邊成立，or 只要有一邊成立就算成立。',
+        steps: ['讀入身高與年齡，並轉成整數。', '寫出比較式 height >= 120，再用 and 連接 age >= 6。', '直接 print() 這個比較式，讓 Python 自動印出 True 或 False。'],
+        starter: 'height, age = map(int, input().split())\nprint(height >= 120 ____ age >= 6)',
+        solution: 'height, age = map(int, input().split())\nprint(height >= 120 and age >= 6)',
+        hint: '兩個條件要同時成立才能搭乘，中間要用 and 連接；不需要 if，print() 可以直接輸出比較式的結果。',
+        checkpoint: '為什麼這一題不用寫 if 也能得到 True 或 False？and 和 or 的差別是什麼？',
+        commonMistakes: ['以為布林值一定要搭配 if 才能使用，多寫了不必要的判斷式。', '把 and 與 or 的意思用反，該兩者都成立卻只檢查其中一個。'],
+        tests: [{ input: '125 7', output: 'True' }, { input: '118 8', output: 'False' }, { input: '120 6', output: 'True' }, { input: '130 5', output: 'False' }],
+        variants: [
+          {
+            title: '是週末嗎',
+            mission: '輸入代表星期幾的整數（1 到 7，7 代表星期日），直接輸出這個數字是不是週末（6 或 7）的布林值。',
+            sampleInput: '6', sampleOutput: 'True',
+            starter: 'day = int(input())\nprint(day == 6 ____ day == 7)',
+            solution: 'day = int(input())\nprint(day == 6 or day == 7)',
+            hint: '只要符合其中一天就算週末，兩個條件要用 or 連接。',
+            tests: [
+              { input: '6', output: 'True' },
+              { input: '7', output: 'True' },
+              { input: '3', output: 'False' }
+            ]
+          },
+          {
+            title: '是不是不及格',
+            mission: '輸入一個分數，直接輸出這個分數是不是不及格（低於 60 分）的布林值，請用 not 對「及格」取反來寫出這個判斷式。',
+            sampleInput: '45', sampleOutput: 'True',
+            starter: 'score = int(input())\nprint(____ (score >= 60))',
+            solution: 'score = int(input())\nprint(not (score >= 60))',
+            hint: '先寫出「及格」的條件 score >= 60，再用 not 把結果反過來，就是「不及格」。',
+            tests: [
+              { input: '45', output: 'True' },
+              { input: '59', output: 'True' },
+              { input: '60', output: 'False' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 12,
         title: '指定次數重複',
         badge: 'for 迴圈',
         kicker: 'REPEAT SMARTER',
@@ -1802,8 +1997,7 @@
         ]
       },
       {
-        id: '8-5',
-        displayNumber: '8.5',
+        id: 13,
         title: '重複直到',
         badge: 'while 迴圈',
         kicker: 'REPEAT UNTIL THE GOAL',
@@ -1843,7 +2037,7 @@
         ]
       },
       {
-        id: 9,
+        id: 14,
         title: '計數器',
         badge: 'count += 1',
         kicker: 'COUNT WHAT MATCHES',
@@ -1889,7 +2083,7 @@
         ]
       },
       {
-        id: 10,
+        id: 15,
         title: '累加器',
         badge: 'total += value',
         kicker: 'BUILD A RUNNING TOTAL',
@@ -1942,10 +2136,11 @@
       shortName: 'LV.1',
       lessons: BEGINNER_LESSONS,
       storagePrefix: 'pyjudge_beginner',
-      progressVersion: 'v2',
-      legacyDrafts: true,
+      progressVersion: 'v3',
+      legacyDrafts: false,
+      skipLegacyProgress: true,
       finishTitle: 'LV.1 學習地圖完成！',
-      finishCopy: '你已經走過輸入、輸出、變數、條件、for、while、計數與累加。下一步是將這些方法用在字串與清單。',
+      finishCopy: '你已經走過輸入、輸出、變數、型別轉換、條件、整除與餘數、小數格式化、布林值、for、while、計數與累加。下一步是將這些方法用在字串與清單。',
       finishHref: 'beginner.html?course=intermediate',
       finishLink: '前往 LV.2 講義 →'
     };
@@ -2034,7 +2229,7 @@
     }
 
     function migrateLegacyProgress() {
-      if (localStorage.getItem(STORAGE_PROGRESS)) return;
+      if (COURSE.skipLegacyProgress || localStorage.getItem(STORAGE_PROGRESS)) return;
       const legacyCompleted = JSON.parse(localStorage.getItem(STORAGE_COMPLETED) || '[]');
       legacyCompleted.forEach(id => {
         taskProgress[id] = { core: true, a: false, b: false };
