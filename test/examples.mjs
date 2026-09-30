@@ -5,7 +5,7 @@ const start = () => node('start', 'start', '開始', 320, 60);
 const end = (y = 700) => node('end', 'end', '結束', 320, y);
 const input = (id, variable, prompt, x, y, inputType = 'number') => node(id, 'input', prompt, x, y, {variable, prompt, inputType});
 const process = (id, title, expression, x, y) => node(id, 'process', title, x, y, {expression});
-const output = (id, title, expression, x, y) => node(id, 'output', title, x, y, {expression});
+const output = (id, title, expression, x, y, outputMode = 'expression') => node(id, 'output', title, x, y, {expression, outputMode});
 const decision = (id, title, expression, x, y) => node(id, 'decision', title, x, y, {expression});
 
 export const EXAMPLES = [

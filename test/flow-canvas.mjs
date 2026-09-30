@@ -163,7 +163,7 @@ export class FlowCanvas {
       let attempt = 0;
       while (attempt++ < 15 && this.graph.nodes.some((node) => Math.abs(node.position.x - position.x) < 25 && Math.abs(node.position.y - position.y) < 25)) { position.x += 28; position.y += 28; }
     }
-    const defaults = { input: { variable: 'value', prompt: '請輸入數值', inputType: 'integer' }, output: { expression: 'value' }, process: { expression: 'value = 0' }, decision: { expression: 'value > 0' }, start: {}, end: {} };
+    const defaults = { input: { variable: 'value', prompt: '請輸入數值', inputType: 'integer' }, output: { expression: '{value}', outputMode: 'text' }, process: { expression: 'value = 0' }, decision: { expression: 'value > 0' }, start: {}, end: {} };
     const node = { id: uid(type), type, title: def.title, position: { x: Math.round(position.x), y: Math.round(position.y) }, data: defaults[type] };
     this.remember(true);
     this.graph.nodes.push(node);

@@ -9,6 +9,7 @@ function chain(steps) {
   return {version: 1, title: 'Test', nodes, edges: nodes.slice(1).map((node, index) => ({id: `e${index}`, source: nodes[index].id, target: node.id, branch: null})), viewport: {x: 0, y: 0, zoom: 1}};
 }
 const output = expression => ({type: 'output', data: {expression}});
+const outputText = expression => ({type: 'output', data: {expression, outputMode: 'text'}});
 const process = expression => ({type: 'process', data: {expression}});
 function run(graph, inputs = [], limits) {
   const execution = createExecution(graph, limits), events = []; let result;
@@ -129,6 +130,30 @@ test('execution and replay are deterministic, isolated from original graph mutat
   const events = []; for (const input of [undefined, 'Alice', undefined, undefined]) { const result = execution.step(input); if (result.event) events.push(result.event); }
   assert.equal(events.find(event => event.type === 'output').output, 'Alice，你好！');
   assert.deepEqual(run(EXAMPLES[0].graph, ['Bob']).events, run(EXAMPLES[0].graph, ['Bob']).events);
+});
+test('variables may be named in Chinese and mix with ASCII names', () => {
+  const graph = chain([{type: 'input', data: {variable: '分數', prompt: '請輸入分數', inputType: 'integer'}}, process('總分 = 分數 * 2'), output('總分')]);
+  assert.deepEqual(validateGraph(graph).errors, []);
+  assert.deepEqual(run(graph, ['40']).output, ['80']);
+  assert.equal(evaluateExpression('數量 * 價格', {數量: 3, 價格: 25}), 75);
+  assert.deepEqual(parseAssignment('平均 = 總分 / 3'), {variable: '平均', expression: {kind: 'binary', op: '/', left: {kind: 'variable', name: '總分'}, right: {kind: 'literal', value: 3}}});
+  for (const name of ['2分', '分 數', 'True', '__x', '分數。']) assert.equal(validateGraph(chain([{type: 'input', data: {variable: name, prompt: '', inputType: 'integer'}}])).errors.some(issue => issue.code === 'INVALID_VARIABLE'), true, name);
+  assert.equal(validateGraph(chain([output('總分（元）')])).errors[0].code, 'INVALID_TOKEN');
+  assert.match(validateGraph(chain([output('總分（元）')])).errors[0].message, /半形/);
+});
+test('text output prints literally and substitutes variables in braces', () => {
+  assert.deepEqual(run(chain([outputText('及格')])).output, ['及格']);
+  assert.deepEqual(run(chain([process('分數 = 87'), outputText('總分是 {分數} 分')])).output, ['總分是 87 分']);
+  assert.deepEqual(run(chain([process('x = 1'), outputText('{{x}} 是 {x}')])).output, ['{x} 是 1']);
+  assert.deepEqual(run(chain([process('ok = True'), process('rate = 0.5'), outputText('{ok} {rate}')])).output, ['True 0.5']);
+  assert.equal(validateGraph(chain([outputText('{沒有這個變數}')])).errors[0].code, 'UNDEFINED_VARIABLE');
+  for (const [expression, code] of [['', 'EMPTY_EXPRESSION'], ['{分數', 'SYNTAX_ERROR'], ['分數}', 'SYNTAX_ERROR'], ['{}', 'SYNTAX_ERROR'], ['{2分}', 'INVALID_VARIABLE']]) assert.equal(validateGraph(chain([outputText(expression)])).errors[0].code, code, expression);
+  // 文字模式只影響輸出節點；同一份檔案裡兩種寫法可以並存。
+  const mixed = chain([process('n = 3'), outputText('n = {n}'), output('n')]);
+  assert.deepEqual(run(mixed).output, ['n = 3', '3']);
+  assert.equal(normalizeGraph(mixed).nodes[2].data.outputMode, 'text');
+  assert.equal(normalizeGraph(mixed).nodes[3].data.outputMode, 'expression');
+  assert.throws(() => normalizeGraph({...mixed, nodes: mixed.nodes.map(node => node.type === 'output' ? {...node, data: {...node.data, outputMode: 'markdown'}} : node)}), {code: 'INVALID_FILE'});
 });
 test('portable graph round-trip keeps position, viewport, content and title', () => {
   const original = copy(EXAMPLES[0].graph); original.viewport = {x: -22, y: 700, zoom: 0.5}; original.nodes[0].position = {x: -50, y: 8};

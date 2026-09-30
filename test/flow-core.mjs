@@ -3,6 +3,9 @@ export const FORMAT_VERSION = 1;
 export const DEFAULT_LIMITS = Object.freeze({maxSteps: 10000, maxOutput: 65536, maxTraceBytes: 8 * 1024 * 1024, maxTimeMs: 3000, maxString: 8192, maxVariables: 128});
 const TYPES = new Set(['start', 'end', 'input', 'output', 'process', 'decision']);
 const INPUT_TYPES = new Set(['integer', 'number', 'text', 'boolean']);
+const OUTPUT_MODES = new Set(['expression', 'text']);
+// 變數名稱可用中文（漢字）、英文字母與底線開頭；長度以 UTF-16 碼元計算。
+const NAME = /^[A-Za-z_\p{Script=Han}][A-Za-z0-9_\p{Script=Han}]{0,63}$/u;
 const RESERVED = new Set(['True', 'False', 'true', 'false', 'and', 'or', 'not', 'None', 'null', 'undefined', 'NaN', 'Infinity', '__proto__', 'prototype', 'constructor', 'eval', 'Function', 'globalThis', 'window', 'document', 'self', 'import', 'new', 'this', 'return', 'let', 'var', 'const', 'function', 'while', 'for', 'if', 'else', 'class', 'delete', 'in', 'is', 'await', 'yield', 'toString', 'valueOf', 'hasOwnProperty']);
 Object.getOwnPropertyNames(Object.prototype).forEach(name => RESERVED.add(name));
 const own = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
@@ -15,8 +18,8 @@ export class FlowError extends Error {
 const fail = (message, code, nodeId) => { throw new FlowError(message, code, nodeId); };
 const record = value => value && typeof value === 'object' && !Array.isArray(value) && [Object.prototype, null].includes(Object.getPrototypeOf(value));
 const freeze = value => { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } return value; };
-export const isVariableName = name => typeof name === 'string' && /^[A-Za-z_][A-Za-z0-9_]{0,63}$/.test(name) && !RESERVED.has(name) && !name.startsWith('__');
-const requireVariable = name => { if (!isVariableName(name)) fail('變數名稱需以英文字母或底線開頭，只能包含英數字及底線，且不可使用保留字。', 'INVALID_VARIABLE'); return name; };
+export const isVariableName = name => typeof name === 'string' && NAME.test(name) && !RESERVED.has(name) && !name.startsWith('__');
+const requireVariable = name => { if (!isVariableName(name)) fail('變數名稱可用中文、英文字母或底線開頭，之後可接中文、英數字與底線，且不可使用保留字。', 'INVALID_VARIABLE'); return name; };
 
 /** Only copy the portable schema. Incomplete work is legal; execution validation is separate. */
 export function normalizeGraph(raw) {
@@ -54,7 +57,10 @@ export function normalizeGraph(raw) {
       data.variable = text(source.variable, '', 64); data.prompt = text(source.prompt, '');
       data.inputType = source.inputType ?? 'number';
       if (!INPUT_TYPES.has(data.inputType)) fail('輸入型別必須是 integer、number、text 或 boolean。', 'INVALID_FILE');
-    } else if (['output', 'process', 'decision'].includes(node.type)) data.expression = text(source.expression, '');
+    } else if (['output', 'process', 'decision'].includes(node.type)) {
+      data.expression = text(source.expression, '');
+      if (node.type === 'output') { data.outputMode = source.outputMode ?? 'expression'; if (!OUTPUT_MODES.has(data.outputMode)) fail('輸出模式必須是 text 或 expression。', 'INVALID_FILE'); }
+    }
     return {id: nodeId, type: node.type, title: text(node.title ?? source.title, '', 120), position: {x: coord(node.position?.x, 100), y: coord(node.position?.y, 100)}, data};
   });
   const edges = raw.edges.map(edge => {
@@ -95,7 +101,7 @@ function tokenize(source) {
     }
     const number = rest.match(/^(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?/);
     if (number) { const value = Number(number[0]); if (!Number.isFinite(value)) fail('數字超出可表示的範圍。', 'NUMBER_LIMIT'); tokens.push({type: 'literal', value}); offset += number[0].length; continue; }
-    const identifier = rest.match(/^[A-Za-z_][A-Za-z0-9_]*/);
+    const identifier = rest.match(/^[A-Za-z_\p{Script=Han}][A-Za-z0-9_\p{Script=Han}]*/u);
     if (identifier) {
       const value = identifier[0]; offset += value.length;
       if (value === 'True' || value === 'False') tokens.push({type: 'literal', value: value === 'True'});
@@ -103,7 +109,7 @@ function tokenize(source) {
       else { requireVariable(value); tokens.push({type: 'identifier', value}); } continue;
     }
     const operator = rest.match(/^(?:==|!=|<=|>=|\/\/|[+\-*/%<>()=])/);
-    if (!operator) fail(`不支援「${character}」；此語言不支援函式呼叫、屬性存取或原生程式碼。`, 'INVALID_TOKEN');
+    if (!operator) fail(`不支援「${character}」；${character.charCodeAt(0) > 127 ? '請改用半形符號，且' : ''}此語言不支援函式呼叫、屬性存取或原生程式碼。`, 'INVALID_TOKEN');
     tokens.push({type: operator[0]}); offset += operator[0].length;
   }
   tokens.push({type: 'eof'}); return tokens;
@@ -135,6 +141,38 @@ class Parser {
   }
 }
 export function parseExpression(source) { const parser = new Parser(source), result = parser.expression(); parser.require('eof'); return result; }
+/** 文字輸出：整段照字面輸出，{變數} 換成目前的值；要印出大括號本身請寫 {{ 或 }}。 */
+export function parseTextTemplate(source) {
+  if (typeof source !== 'string' || !source.trim()) fail('請輸入要輸出的文字。', 'EMPTY_EXPRESSION');
+  if (source.length > 4096) fail('輸出文字不可超過 4096 字。', 'EXPRESSION_LIMIT');
+  const parts = []; let literal = '', offset = 0;
+  const flush = () => { if (literal) { parts.push({kind: 'text', value: literal}); literal = ''; } };
+  while (offset < source.length) {
+    const character = source[offset];
+    if ((character === '{' || character === '}') && source[offset + 1] === character) { literal += character; offset += 2; continue; }
+    if (character === '}') fail('文字裡單獨的「}」請寫成 }}。', 'SYNTAX_ERROR');
+    if (character === '{') {
+      const end = source.indexOf('}', offset + 1);
+      if (end < 0) fail('文字裡的「{」少了對應的「}」。', 'SYNTAX_ERROR');
+      const name = source.slice(offset + 1, end).trim();
+      if (!name) fail('「{ }」裡請填入變數名稱。', 'SYNTAX_ERROR');
+      requireVariable(name); flush(); parts.push({kind: 'variable', name}); offset = end + 1;
+      if (parts.length > 256) fail('輸出文字太複雜，請拆成多個輸出節點。', 'EXPRESSION_LIMIT');
+      continue;
+    }
+    literal += character; offset++;
+  }
+  flush(); return parts;
+}
+function renderTemplate(parts, variables, limits) {
+  let text = '';
+  for (const part of parts) {
+    text += part.kind === 'text' ? part.value : formatValue(evaluate({kind: 'variable', name: part.name}, variables, limits));
+    if (text.length > limits.maxString) fail(`輸出文字超過 ${limits.maxString} 字的限制。`, 'STRING_LIMIT');
+  }
+  return text;
+}
+export function templateVariables(source) { return new Set(parseTextTemplate(source).filter(part => part.kind === 'variable').map(part => part.name)); }
 export function parseAssignment(source) {
   const parser = new Parser(source), variable = parser.require('identifier').value; parser.require('=');
   const expression = parser.expression(); parser.require('eof'); return {variable, expression};
@@ -198,7 +236,8 @@ export function validateGraph(raw) {
     try {
       if (node.type === 'input') { const variable = requireVariable(node.data.variable); writes.set(node.id, variable); allDefinitions.add(variable); }
       if (node.type === 'process') { const assignment = parseAssignment(node.data.expression); writes.set(node.id, assignment.variable); allDefinitions.add(assignment.variable); reads.set(node.id, references(assignment.expression)); }
-      if (node.type === 'output' || node.type === 'decision') reads.set(node.id, references(parseExpression(node.data.expression)));
+      if (node.type === 'output') reads.set(node.id, node.data.outputMode === 'text' ? templateVariables(node.data.expression) : references(parseExpression(node.data.expression)));
+      if (node.type === 'decision') reads.set(node.id, references(parseExpression(node.data.expression)));
     } catch (error) { issue(errors, error.message, error.code || 'INVALID_EXPRESSION', node.id); }
   }
   // Greatest fixed point of definitely assigned variables, anchored at the empty Start state.
@@ -250,7 +289,8 @@ export function createExecution(raw, options = {}) {
   for (const node of graph.nodes) {
     outgoing.set(node.id, graph.edges.filter(edge => edge.source === node.id));
     if (node.type === 'process') compiled.set(node.id, parseAssignment(node.data.expression));
-    else if (node.type === 'output' || node.type === 'decision') compiled.set(node.id, parseExpression(node.data.expression));
+    else if (node.type === 'output') compiled.set(node.id, node.data.outputMode === 'text' ? {template: parseTextTemplate(node.data.expression)} : parseExpression(node.data.expression));
+    else if (node.type === 'decision') compiled.set(node.id, parseExpression(node.data.expression));
   }
   let currentId = graph.nodes.find(node => node.type === 'start').id, variables = {}, step = 0, outputBytes = 0, traceBytes = 0, computeMs = 0, status = 'running';
   const execution = {
@@ -274,7 +314,7 @@ export function createExecution(raw, options = {}) {
         const after = {...before}; let result = null, addedOutputBytes = 0;
         if (node.type === 'input') { result = convertedInput; after[node.data.variable] = result; event.input = {variable: node.data.variable, value: result, raw: rawInput}; }
         if (node.type === 'process') { const assignment = compiled.get(node.id); result = evaluate(assignment.expression, before, limits); after[assignment.variable] = result; }
-        if (node.type === 'output') { result = evaluate(compiled.get(node.id), before, limits); event.output = formatValue(result); addedOutputBytes = byteLength(event.output + '\n'); if (outputBytes + addedOutputBytes > limits.maxOutput) fail(`輸出量超過 ${limits.maxOutput} 位元組，已停止執行。`, 'OUTPUT_LIMIT'); }
+        if (node.type === 'output') { const program = compiled.get(node.id); result = program.template ? renderTemplate(program.template, before, limits) : evaluate(program, before, limits); event.output = formatValue(result); addedOutputBytes = byteLength(event.output + '\n'); if (outputBytes + addedOutputBytes > limits.maxOutput) fail(`輸出量超過 ${limits.maxOutput} 位元組，已停止執行。`, 'OUTPUT_LIMIT'); }
         if (node.type === 'decision') result = boolean(evaluate(compiled.get(node.id), before, limits));
         if (Object.keys(after).length > limits.maxVariables) fail(`變數數量超過 ${limits.maxVariables} 個的限制。`, 'VARIABLE_LIMIT');
         event.result = result; event.variablesAfter = after;

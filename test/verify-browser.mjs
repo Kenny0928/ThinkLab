@@ -501,6 +501,50 @@ try {
     assert.ok((await state(page)).cursor < result.trace.length);
   });
 
+  await check('Chinese variables and the text output mode work in the real app', async page => {
+    const chinese = {
+      version: 1, title: '中文變數測試', viewport: { x: 0, y: 0, zoom: 1 },
+      nodes: [
+        { id: 'start', type: 'start', title: '開始', position: { x: 320, y: 60 }, data: {} },
+        { id: 'ask', type: 'input', title: '請輸入分數', position: { x: 320, y: 180 }, data: { variable: '分數', prompt: '請輸入分數', inputType: 'integer' } },
+        { id: 'twice', type: 'process', title: '加倍', position: { x: 320, y: 300 }, data: { expression: '總分 = 分數 * 2' } },
+        { id: 'say', type: 'output', title: '輸出總分', position: { x: 320, y: 420 }, data: { expression: '總分是 {總分} 分', outputMode: 'text' } },
+        { id: 'end', type: 'end', title: '結束', position: { x: 320, y: 540 }, data: {} }
+      ],
+      edges: [
+        { id: 'e0', source: 'start', target: 'ask', branch: null },
+        { id: 'e1', source: 'ask', target: 'twice', branch: null },
+        { id: 'e2', source: 'twice', target: 'say', branch: null },
+        { id: 'e3', source: 'say', target: 'end', branch: null }
+      ]
+    };
+    await page.evaluate(value => window.flowLab.loadGraph(value), chinese);
+    await page.locator('#input-data').fill('40');
+    assert.deepEqual((await state(page)).validation.errors, []);
+    await runToEnd(page);
+    assert.equal((await page.locator('#output-content').innerText()).trim(), '總分是 80 分');
+    assert.match(await page.locator('#variables-body').innerText(), /總分[\s\S]*80/);
+    // The panel round-trips the mode, and switching to expression makes the same text invalid.
+    await node(page, 'say').locator('.fc-shape').click();
+    assert.equal(await page.locator('#node-output-mode').inputValue(), 'text');
+    assert.equal(await page.locator('#expression-label').innerText(), '輸出文字');
+    await page.screenshot({ path: join(artifactDir, 'text-output-mode.png'), fullPage: true });
+    await page.locator('#node-output-mode').selectOption('expression');
+    assert.equal(await page.locator('#expression-label').innerText(), '輸出運算式');
+    await page.locator('#property-form .apply-button').click();
+    assert.ok((await state(page)).validation.errors.some(issue => issue.nodeId === 'say'));
+    await page.locator('#node-output-mode').selectOption('text');
+    await page.locator('#property-form .apply-button').click();
+    assert.deepEqual((await state(page)).validation.errors, []);
+    // A freshly dragged output node starts in text mode.
+    const area = await page.locator('#canvas').boundingBox();
+    await page.locator('.palette-node[data-node-type="output"]').dragTo(page.locator('#canvas'), { targetPosition: { x: area.width - 110, y: 150 } });
+    const added = (await graph(page)).nodes.find(item => !chinese.nodes.some(original => original.id === item.id));
+    assert.equal(added.data.outputMode, 'text');
+    await node(page, added.id).locator('.fc-shape').click();
+    assert.equal(await page.locator('#node-output-mode').inputValue(), 'text');
+  });
+
   await check('compact desktop remains usable without page overflow', async page => {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.equal(await page.locator('#run-btn').isVisible(), true);

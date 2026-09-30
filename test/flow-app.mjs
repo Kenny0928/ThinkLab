@@ -282,11 +282,20 @@ function renderProperties() {
   if(!node)return;
   $('property-type').textContent=`${labels[node.type]} / ${node.type}`;$('node-title').value=node.title;
   $('expression-fields').hidden=!['process','decision','output'].includes(node.type);
+  $('output-mode-field').hidden=node.type!=='output';
   $('input-fields').hidden=node.type!=='input';
   $('node-expression').value=node.data.expression||'';
-  $('expression-label').textContent=node.type==='process'?'指定運算式':node.type==='decision'?'判斷條件':'輸出運算式';
-  $('expression-hint').textContent=node.type==='process'?'例如：i = i + 1。每個節點只放一個指定。':node.type==='decision'?'例如：score >= 60。結果必須是 True 或 False。':'例如：total 或 name + "，你好"。每次輸出一行。';
+  if(node.type==='output')$('node-output-mode').value=node.data.outputMode||'expression';
+  describeExpressionField(node.type);
   $('node-variable').value=node.data.variable||'';$('node-input-type').value=node.data.inputType||'integer';$('node-prompt').value=node.data.prompt||'';
+}
+function describeExpressionField(type) {
+  const mode=$('node-output-mode').value;
+  $('expression-label').textContent=type==='process'?'指定運算式':type==='decision'?'判斷條件':mode==='text'?'輸出文字':'輸出運算式';
+  $('expression-hint').textContent=type==='process'?'例如：i = i + 1。每個節點只放一個指定。'
+    :type==='decision'?'例如：score >= 60。結果必須是 True 或 False。'
+    :mode==='text'?'照字面輸出一行，{變數} 會換成當下的值，例如：總分是 {總分} 分。要印出大括號請寫 {{ 或 }}。'
+    :'輸出計算結果，例如：total 或 name + "，你好"。每次輸出一行。';
 }
 async function confirmReplace(title,message) {
   $('confirm-title').textContent=title;$('confirm-message').textContent=message;$('confirm-dialog').showModal();
@@ -310,10 +319,11 @@ function loadGraph(raw,{fit=false,input=null}={}) {
 
 $('property-form').onsubmit=event=>{
   event.preventDefault();const node=selectedId&&getNode(selectedId);if(!node)return;
-  const data=node.type==='input'?{variable:$('node-variable').value.trim(),inputType:$('node-input-type').value,prompt:$('node-prompt').value}:['process','decision','output'].includes(node.type)?{expression:$('node-expression').value.trim()}:{};
+  const data=node.type==='input'?{variable:$('node-variable').value.trim(),inputType:$('node-input-type').value,prompt:$('node-prompt').value}:node.type==='output'?{expression:$('node-expression').value.trim(),outputMode:$('node-output-mode').value}:['process','decision'].includes(node.type)?{expression:$('node-expression').value.trim()}:{};
   canvas.updateNode(node.id,{title:$('node-title').value.trim()||labels[node.type],data});
   validate();toast('節點設定已套用。');
 };
+$('node-output-mode').onchange=()=>describeExpressionField(getNode(selectedId)?.type||'output');
 $('graph-title').onchange=()=>{
   const title=$('graph-title').value.trim()||'未命名流程圖';
   canvas.updateTitle(title);$('graph-title').value=title;
