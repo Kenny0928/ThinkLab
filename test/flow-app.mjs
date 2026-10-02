@@ -94,7 +94,7 @@ function validate(announce=false) {
     const button = element('button','diagnostic '+severity,issue.message);
     button.type = 'button';
     const node = issue.nodeId && getNode(issue.nodeId);
-    if (node) { button.append(element('small','',node.title || labels[node.type])); button.onclick=()=>{canvas.selectNode(node.id);}; }
+    if (node) { button.append(element('small','',node.title || labels[node.type])); button.onclick=()=>{canvas.selectNode(node.id);canvas.revealNode(node.id);}; }
     $('diagnostics').append(button);
   }
   if (announce) toast(errors.length ? `有 ${errors.length} 個問題需要修正，請查看節點上的標示。` : warnings.length ? '可以執行，另有提醒可在側邊查看。' : '流程結構與運算式檢查通過，可以執行。');
@@ -341,7 +341,7 @@ $('step-next-btn').onclick=()=>{
 };
 $('stop-btn').onclick=()=>{generation++;killWorker();engineStatus='stopped';playing=false;waiting=null;pendingSteps=0;pendingSeek=null;renderPlayback();toast('已停止，仍可回看已產生的執行紀錄。');};
 $('timeline').addEventListener('input',event=>seekTo(event.target.value));
-$('show-error-btn').onclick=()=>{seekTo(trace.length);if(runError?.nodeId){canvas.selectNode(runError.nodeId);showTab('observe');}};
+$('show-error-btn').onclick=()=>{seekTo(trace.length);if(runError?.nodeId){canvas.selectNode(runError.nodeId);canvas.revealNode(runError.nodeId);showTab('observe');}};
 $('speed').onchange=()=>{lastFrame=performance.now();};
 $('input-form').onsubmit=event=>{
   event.preventDefault();if(!waiting||cursor!==trace.length||!worker||engineStatus!=='waiting')return;

@@ -122,7 +122,7 @@ export class FlowCanvas {
     this.changed(false, 'edit-title');
   }
   setGraph(graph, { fit = false } = {}) {
-    this.pointerCancel();
+    this.stopReveal(); this.pointerCancel();
     this.cancelLink();
     this.graph = clone(graph);
     this.graph.viewport = { x: 0, y: 0, zoom: 1, ...graph.viewport };
@@ -233,6 +233,25 @@ export class FlowCanvas {
     if (this.nodeIndex.has(id)) this.selectedNodes.add(id);
     this.selectionChanged();
   }
+  // Pan (never zoom) so an off-screen node lands in the middle; nodes already in view stay put.
+  revealNode(id) {
+    const node = this.nodeIndex.get(id); if (!node) return;
+    const type = TYPES[node.type] ?? TYPES.process, rect = this.svg.getBoundingClientRect(), { x, y, zoom } = this.graph.viewport, margin = 24;
+    const left = x + node.position.x * zoom, top = y + node.position.y * zoom;
+    if (left >= margin && top >= margin && left + type.width * zoom <= rect.width - margin && top + type.height * zoom <= rect.height - margin) return;
+    const from = { x, y }, to = { x: rect.width / 2 - (node.position.x + type.width / 2) * zoom, y: rect.height / 2 - (node.position.y + type.height / 2) * zoom };
+    this.stopReveal();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { Object.assign(this.graph.viewport, to); this.updateViewport(); this.changed(false, 'reveal'); return; }
+    const start = performance.now(), duration = 320;
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / duration), ease = 1 - (1 - t) ** 3;
+      this.graph.viewport.x = from.x + (to.x - from.x) * ease; this.graph.viewport.y = from.y + (to.y - from.y) * ease;
+      this.updateViewport();
+      if (t < 1) this.revealFrame = requestAnimationFrame(step); else { this.revealFrame = null; this.changed(false, 'reveal'); }
+    };
+    this.revealFrame = requestAnimationFrame(step);
+  }
+  stopReveal() { if (this.revealFrame) { cancelAnimationFrame(this.revealFrame); this.revealFrame = null; } }
   clearSelection() { this.selectedNodes.clear(); this.selectedEdges.clear(); this.selectionChanged(); }
   setInteraction(mode) { this.mode = mode === 'pan' ? 'pan' : 'select'; this.updateCursor(); }
   updateCursor() { this.svg.classList.toggle('fc-mode-pan', this.mode === 'pan' || this.spaceDown); }
@@ -378,6 +397,7 @@ export class FlowCanvas {
     return { x: (clientX - rect.left - x) / zoom, y: (clientY - rect.top - y) / zoom };
   }
   zoomAt(factor, clientX, clientY) {
+    this.stopReveal();
     const point = this.toWorld(clientX, clientY), rect = this.svg.getBoundingClientRect();
     const viewport = this.graph.viewport;
     viewport.zoom = clamp(viewport.zoom * factor, .1, 4);
@@ -390,6 +410,7 @@ export class FlowCanvas {
     this.zoomAt(factor, rect.left + rect.width / 2, rect.top + rect.height / 2);
   }
   fit(notify = true) {
+    this.stopReveal();
     const rect = this.svg.getBoundingClientRect();
     if (!this.graph.nodes.length) this.graph.viewport = { x: 0, y: 0, zoom: 1 };
     else {
@@ -403,7 +424,7 @@ export class FlowCanvas {
     this.updateViewport(); if (notify) this.changed(false, 'fit');
   }
   wheel(event) {
-    event.preventDefault();
+    event.preventDefault(); this.stopReveal();
     if (event.shiftKey && !event.ctrlKey) {
       this.graph.viewport.x -= event.deltaY || event.deltaX;
       this.updateViewport(); this.scheduleLayoutChange('pan');
@@ -457,6 +478,7 @@ export class FlowCanvas {
   pointerDown(event) {
     if (event.button !== 0 && event.button !== 1) return;
     if (this.gesture) return;
+    this.stopReveal();
     const point = this.toWorld(event.clientX, event.clientY);
     const port = event.target.closest('.fc-port'), nodeEl = event.target.closest('.fc-node'), edgeEl = event.target.closest('.fc-edge');
     this.svg.focus({ preventScroll: true });
@@ -594,7 +616,7 @@ export class FlowCanvas {
     }
   }
   destroy() {
-    this.destroyed = true; clearTimeout(this.layoutTimer); this.pointerCancel();
+    this.destroyed = true; clearTimeout(this.layoutTimer); this.stopReveal(); this.pointerCancel();
     this.resizeObserver.disconnect();
     for (const [target, event, handler, options] of this.listeners) target.removeEventListener(event, handler, options);
     this.svg.remove();
