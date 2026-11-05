@@ -1358,6 +1358,22 @@
       overflow-y: auto;
     }
 
+    .error-summary {
+      margin-top: 10px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffb3bd;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .error-hint {
+      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
     .diff-block {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2097,7 +2113,8 @@
       document.getElementById('submit-hint').textContent = running ? '評測中…' : 'Ctrl / ⌘ + Enter 提交';
     }
 
-    // Each test receives fresh globals and an exact stdin stream.
+    // Each test receives fresh globals and an exact stdin stream. Errors are
+    // reported with only the student's frames, so Pyodide internals stay hidden.
     async function runPython(code, inputStr) {
       const runtime = await initPyodide();
       runtime.globals.set('_skilllab_code', code);
@@ -2105,13 +2122,19 @@
       const t0 = performance.now();
       try {
         await runtime.runPythonAsync(`
-import sys as _sl_sys, io as _sl_io
+import sys as _sl_sys, io as _sl_io, linecache as _sl_linecache, traceback as _sl_traceback
 _sl_old = (_sl_sys.stdin, _sl_sys.stdout, _sl_sys.stderr)
 _sl_out, _sl_err = _sl_io.StringIO(), _sl_io.StringIO()
 _sl_sys.stdin = _sl_io.StringIO(_skilllab_input)
 _sl_sys.stdout, _sl_sys.stderr = _sl_out, _sl_err
+_sl_linecache.cache['<student>'] = (len(_skilllab_code), None, _skilllab_code.splitlines(True), '<student>')
 try:
     exec(compile(_skilllab_code, '<student>', 'exec'), {'__name__': '__main__'})
+except Exception as _sl_error:
+    _sl_tb = _sl_error.__traceback__
+    while _sl_tb and _sl_tb.tb_frame.f_code.co_filename != '<student>':
+        _sl_tb = _sl_tb.tb_next
+    _sl_err.write(''.join(_sl_traceback.format_exception(type(_sl_error), _sl_error, _sl_tb)))
 finally:
     _sl_sys.stdin, _sl_sys.stdout, _sl_sys.stderr = _sl_old
 `);
@@ -2353,12 +2376,36 @@ finally:
       window._lastResultLabel = '測資';
     }
 
+    const PY_ERROR_HINTS = {
+      SyntaxError: '語法錯誤：寫法不符合 Python 規則，例如少了冒號或括號。',
+      IndentationError: '縮排錯誤：程式的空白縮排不一致。',
+      NameError: '名稱錯誤：用到還沒建立的變數或函式，或名字拼錯了。',
+      TypeError: '型別錯誤：資料型別不合，例如拿文字跟數字比大小或相加。',
+      ValueError: '數值錯誤：型別對了但內容不行，例如把「abc」轉成整數，或用空白文字當分隔符。',
+      IndexError: '索引錯誤：清單或文字的位置超出範圍，注意位置從 0 開始。',
+      KeyError: '鍵錯誤：字典裡沒有這個鍵。',
+      ZeroDivisionError: '除以零：除數或取餘數的除數是 0。',
+      EOFError: '輸入已讀完：程式讀取的次數比測資提供的資料還多。',
+      AttributeError: '屬性錯誤：這種資料沒有這個方法，例如對數字使用文字的方法。',
+      RecursionError: '遞迴太深：函式一直呼叫自己，沒有停下來。'
+    };
+
+    // The last traceback line names the error; show it first, with a plain-language hint.
+    function renderErrorDetail(error) {
+      const text = String(error || '未知錯誤').trimEnd();
+      const summary = text.split('\n').filter(line => line.trim()).pop() || '未知錯誤';
+      const hint = PY_ERROR_HINTS[(summary.match(/^([\w.]+)(?::|$)/)?.[1] || '').split('.').pop()];
+      return `<div class="error-summary">${escHtml(summary)}</div>`
+        + (hint ? `<div class="error-hint">${escHtml(hint)}</div>` : '')
+        + (text !== summary ? `<div class="error-block">${escHtml(text)}</div>` : '');
+    }
+
     function renderTcDetail(r, i, label = '測資') {
       let html = `<div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);">
     ── ${label} ${i + 1} 詳情 ──
   </div>`;
       if (r.status === 'RE' || r.error) {
-        html += `<div class="error-block">${escHtml(r.error || '未知錯誤')}</div>`;
+        html += renderErrorDetail(r.error);
       } else if (r.status === 'WA') {
         html += `<div class="diff-block">
       <div class="diff-side diff-expected">
