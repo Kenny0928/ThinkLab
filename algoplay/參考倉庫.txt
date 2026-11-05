@@ -1,1 +1,8 @@
 https://www.hello-algo.com/zh-hant/
+
+
+cd /Users/kenny_liao/Documents/web_JS_HTML/2026_02/thinklab/ThinkLab
+python3 -m http.server 8080
+
+
+http://localhost:8080/

@@ -318,6 +318,23 @@ test('Blockly standard I/O handles token whitespace, CRLF lines and exact output
   h.workspace.dispose();
 });
 
+test('Blockly number check returns booleans for text and numbers without raising', async () => {
+  const h = blocklyHarness();
+  const text = TEXT => ({ type: 'text', fields: { TEXT } });
+  const number = NUM => ({ type: 'math_number', fields: { NUM } });
+  const cases = [
+    ['NUMBER', text(' -3.5 '), 'True'], ['NUMBER', text('.5'), 'True'], ['NUMBER', text('2a'), 'False'], ['NUMBER', text(''), 'False'],
+    ['NUMBER', text('1e3'), 'False'], ['NUMBER', text('nan'), 'False'], ['INTEGER', text('+12'), 'True'], ['INTEGER', text('3.5'), 'False'],
+    ['NUMBER', number(7), 'True'], ['INTEGER', number(2.5), 'False'], ['NUMBER', { type: 'logic_boolean', fields: { BOOL: 'TRUE' } }, 'False']
+  ];
+  const blocks = cases.map(([KIND, value]) => ({ type: 'judge_print', fields: { END: 'SPACE' }, inputs: { VALUE: { block: { type: 'judge_is_number', fields: { KIND }, inputs: { VALUE: { block: value } } } } } }));
+  for (let i = 1; i < blocks.length; i++) blocks[i - 1].next = { block: blocks[i] };
+  await h.request('init', { state: { format: 'skilllab-blockly', version: 1, workspace: { blocks: { languageVersion: 0, blocks: [blocks[0]] } } } });
+  const code = (await h.request('snapshot')).code;
+  assert.equal(execute(code, ''), cases.map(item => item[2] + ' ').join(''));
+  h.workspace.dispose();
+});
+
 test('Blockly native prompt block maps directly to Python input without printing its hint', async () => {
   const h = blocklyHarness();
   assert.equal(h.workspace.options.oneBasedIndex, false, 'Blockly list indexes must match Python and start at 0');
