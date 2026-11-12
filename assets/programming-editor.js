@@ -193,7 +193,7 @@
     }
     async run(snapshot, input, timeLimit, pythonRunner) {
       if (snapshot.language !== 'scratch') {
-        const result = await pythonRunner(snapshot.code, input);
+        const result = await pythonRunner(snapshot.code, input, timeLimit);
         return { ...result, errout: result.errout ?? result.error ?? '' };
       }
       const frame = this.frames.get('scratch');

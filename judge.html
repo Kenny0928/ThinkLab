@@ -20,8 +20,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
 
-  <!-- Pyodide -->
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
   <link rel="stylesheet" href="assets/programming-editor.css">
   <script src="assets/programming-editor.js"></script>
   <script src="assets/problem-classification.js"></script>
@@ -2056,7 +2054,8 @@
     // ═══════════════════════════════════════════════
     //  STATE
     // ═══════════════════════════════════════════════
-    let pyodide = null;
+    let pyodideWorker = null;
+    let pythonRunId = 0;
     let editor = null;
     let programmingEditor = null;
     let pyodidePromise = null;
@@ -2072,15 +2071,27 @@
     // ═══════════════════════════════════════════════
     //  PYODIDE INIT
     // ═══════════════════════════════════════════════
-    async function initPyodide() {
-      if (pyodide) return pyodide;
+    // Pyodide lives in a Worker: a program that exceeds the time limit is
+    // stopped by terminating the Worker, and the next run starts a fresh one.
+    function initPyodide() {
       if (!pyodidePromise) {
         setBadge('loading');
-        pyodidePromise = loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/' })
-          .then(runtime => { pyodide = runtime; setBadge('ready'); return runtime; })
-          .catch(error => { pyodidePromise = null; setBadge('error'); throw error; });
+        const worker = new Worker(new URL('assets/python-runner-worker.js', location.href));
+        pyodidePromise = new Promise((resolve, reject) => {
+          worker.onmessage = event => {
+            if (event.data.event === 'ready') { setBadge('ready'); resolve(worker); }
+            else if (event.data.event === 'error') { stopPyodide(worker); setBadge('error'); reject(new Error(event.data.error)); }
+          };
+          worker.onerror = event => { stopPyodide(worker); setBadge('error'); reject(new Error('Python 環境錯誤：' + (event.message || '無法啟動 Worker'))); };
+        });
+        pyodideWorker = worker;
       }
       return pyodidePromise;
+    }
+
+    function stopPyodide(worker) {
+      worker.terminate();
+      if (pyodideWorker === worker) { pyodideWorker = null; pyodidePromise = null; }
     }
 
     function setBadge(state) {
@@ -2113,36 +2124,30 @@
       document.getElementById('submit-hint').textContent = running ? '評測中…' : 'Ctrl / ⌘ + Enter 提交';
     }
 
-    // Each test receives fresh globals and an exact stdin stream. Errors are
-    // reported with only the student's frames, so Pyodide internals stay hidden.
-    async function runPython(code, inputStr) {
-      const runtime = await initPyodide();
-      runtime.globals.set('_skilllab_code', code);
-      runtime.globals.set('_skilllab_input', inputStr);
-      const t0 = performance.now();
-      try {
-        await runtime.runPythonAsync(`
-import sys as _sl_sys, io as _sl_io, linecache as _sl_linecache, traceback as _sl_traceback
-_sl_old = (_sl_sys.stdin, _sl_sys.stdout, _sl_sys.stderr)
-_sl_out, _sl_err = _sl_io.StringIO(), _sl_io.StringIO()
-_sl_sys.stdin = _sl_io.StringIO(_skilllab_input)
-_sl_sys.stdout, _sl_sys.stderr = _sl_out, _sl_err
-_sl_linecache.cache['<student>'] = (len(_skilllab_code), None, _skilllab_code.splitlines(True), '<student>')
-try:
-    exec(compile(_skilllab_code, '<student>', 'exec'), {'__name__': '__main__'})
-except Exception as _sl_error:
-    _sl_tb = _sl_error.__traceback__
-    while _sl_tb and _sl_tb.tb_frame.f_code.co_filename != '<student>':
-        _sl_tb = _sl_tb.tb_next
-    _sl_err.write(''.join(_sl_traceback.format_exception(type(_sl_error), _sl_error, _sl_tb)))
-finally:
-    _sl_sys.stdin, _sl_sys.stdout, _sl_sys.stderr = _sl_old
-`);
-        return { output: runtime.runPython('_sl_out.getvalue()'), errout: runtime.runPython('_sl_err.getvalue()'), elapsed: performance.now() - t0 };
-      } finally {
-        runtime.globals.delete('_skilllab_code');
-        runtime.globals.delete('_skilllab_input');
-      }
+    async function runPython(code, inputStr, timeLimit) {
+      const worker = await initPyodide();
+      return new Promise(resolve => {
+        const id = ++pythonRunId;
+        let timer;
+        worker.onmessage = event => {
+          if (event.data.id !== id) return;
+          if (event.data.event === 'started') {
+            timer = setTimeout(() => {
+              stopPyodide(worker);
+              resolve({ output: '', errout: 'TLE：執行逾時，請檢查是否有無窮迴圈，或改用更快的演算法。', elapsed: timeLimit });
+            }, timeLimit + 250);
+          } else if (event.data.event === 'done') {
+            clearTimeout(timer);
+            resolve(event.data);
+          }
+        };
+        worker.onerror = event => {
+          clearTimeout(timer);
+          stopPyodide(worker);
+          resolve({ output: '', errout: 'Python 執行環境錯誤：' + (event.message || '程式意外中止'), elapsed: 0 });
+        };
+        worker.postMessage({ id, code, input: inputStr });
+      });
     }
 
     // ═══════════════════════════════════════════════
