@@ -1,0 +1,108 @@
+{
+  "id": 236,
+  "title": "奇緣蛋糕特賣",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "多分支條件",
+    "四則運算"
+  ],
+  "learningObjectives": [
+    "依數量區間選擇折扣",
+    "依折扣後金額判斷是否加收運費"
+  ],
+  "prerequisites": [
+    "if/elif/else",
+    "乘法"
+  ],
+  "description": "<p class='problem-lead'>依購買數量的折扣與運費規則，計算蛋糕訂單的總金額。</p><p>每個蛋糕原價 300 元，每筆訂單運費 80 元。購買 1～5 個打 9 折、6～10 個打 8 折、11～15 個打 7 折、16 個以上打 6 折（全部蛋糕都用同一個折扣）。</p><p>若折扣後金額達到 1200 元以上則免運費，否則加收 80 元。請輸出應付的總金額。</p>",
+  "inputFormat": "<p>一行一個整數 N，代表購買的蛋糕數量。</p>",
+  "outputFormat": "<p>輸出一個整數，代表應付的總金額。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 1000</li></ul>",
+  "hint": "<p>先算出折扣後金額，再判斷運費；300 乘以任何折扣都會是整數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4",
+      "output": "1160"
+    },
+    {
+      "input": "17",
+      "output": "3060"
+    },
+    {
+      "input": "1",
+      "output": "350"
+    }
+  ],
+  "sampleInput": "4",
+  "sampleOutput": "1160",
+  "testCases": [
+    {
+      "input": "4",
+      "output": "1160"
+    },
+    {
+      "input": "17",
+      "output": "3060"
+    },
+    {
+      "input": "1",
+      "output": "350"
+    },
+    {
+      "input": "5",
+      "output": "1350"
+    },
+    {
+      "input": "6",
+      "output": "1440"
+    },
+    {
+      "input": "10",
+      "output": "2400"
+    },
+    {
+      "input": "11",
+      "output": "2310"
+    },
+    {
+      "input": "15",
+      "output": "3150"
+    },
+    {
+      "input": "16",
+      "output": "2880"
+    },
+    {
+      "input": "1000",
+      "output": "180000"
+    },
+    {
+      "input": "8",
+      "output": "1920"
+    },
+    {
+      "input": "3",
+      "output": "890"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "24"
+    ],
+    "sourceTitle": "奇緣蛋糕特賣",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=24"
+    ],
+    "categories": [
+      "114/114年A縣市題目"
+    ],
+    "adaptation": "明定所有蛋糕套用同一折扣、滿 1200 元含剛好 1200 元免運，補上各區間端點測資。"
+  }
+}

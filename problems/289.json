@@ -1,0 +1,102 @@
+{
+  "id": 289,
+  "title": "卡住的鍵盤",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "字串",
+    "連段",
+    "最大值"
+  ],
+  "learningObjectives": [
+    "掃描字串並計算每段連續相同字元的長度",
+    "以嚴格大於更新，保留最先出現的最長段"
+  ],
+  "prerequisites": [
+    "字串索引",
+    "迴圈",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>找出字串中連續出現最多次的字母與次數。</p><p>給一個由大寫英文字母組成的字串，找出連續出現次數最多的字母，輸出該字母與連續次數。若有多段一樣長，輸出最先出現的那一段的字母。</p>",
+  "inputFormat": "<p>一行一個由大寫英文字母組成的字串。</p>",
+  "outputFormat": "<p>輸出字母與次數，中間以一個空白分隔，例如 <code>W 12</code>。</p>",
+  "constraints": "<ul><li>1 ≤ 字串長度 ≤ 1000</li></ul>",
+  "hint": "<p>和前一個字元相同就把目前長度加 1，否則重新從 1 開始。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "WWWWWWWWWWWWBBWW",
+      "output": "W 12"
+    },
+    {
+      "input": "AAABCCCC",
+      "output": "C 4"
+    },
+    {
+      "input": "RRRGGGBB",
+      "output": "R 3"
+    }
+  ],
+  "sampleInput": "WWWWWWWWWWWWBBWW",
+  "sampleOutput": "W 12",
+  "testCases": [
+    {
+      "input": "WWWWWWWWWWWWBBWW",
+      "output": "W 12"
+    },
+    {
+      "input": "AAABCCCC",
+      "output": "C 4"
+    },
+    {
+      "input": "RRRGGGBB",
+      "output": "R 3"
+    },
+    {
+      "input": "ABCDEFG",
+      "output": "A 1"
+    },
+    {
+      "input": "A",
+      "output": "A 1"
+    },
+    {
+      "input": "ZZ",
+      "output": "Z 2"
+    },
+    {
+      "input": "ABBA",
+      "output": "B 2"
+    },
+    {
+      "input": "BBAAA",
+      "output": "A 3"
+    },
+    {
+      "input": "AAABBBAAAA",
+      "output": "A 4"
+    },
+    {
+      "input": "QWQQWWW",
+      "output": "W 3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "88"
+    ],
+    "sourceTitle": "卡住的鍵盤",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=88"
+    ],
+    "categories": [
+      "114/114年花蓮縣國中"
+    ],
+    "adaptation": "統一輸出為字母與次數之間有一個空白，補上同字母分成多段與並列的測資。"
+  }
+}

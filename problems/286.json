@@ -1,0 +1,102 @@
+{
+  "id": 286,
+  "title": "最佳派對地點",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "枚舉",
+    "絕對值",
+    "最小值"
+  ],
+  "learningObjectives": [
+    "枚舉每個候選地點並計算距離總和",
+    "用絕對值計算一維距離並處理並列"
+  ],
+  "prerequisites": [
+    "巢狀迴圈",
+    "abs",
+    "最小值"
+  ],
+  "description": "<p class='problem-lead'>在朋友的家中選出讓所有人距離總和最小的派對地點。</p><p>N 個朋友住在同一條直線上，每家有一個整數座標。派對必須選在其中一人的家，請找出讓所有人走到派對地點的距離總和最小的地點。兩點距離為座標差的絕對值。若有多個地點總和一樣小，選座標較小的。</p>",
+  "inputFormat": "<p>第一行為朋友數 N。第二行有 N 個以空白分隔的整數座標。</p>",
+  "outputFormat": "<p>輸出兩個以空白分隔的整數：最佳地點的座標與最小距離總和。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>−1000 ≤ 座標 ≤ 1000</li></ul>",
+  "hint": "<p>試試每一家當派對地點，各算一次距離總和。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n2 10 5",
+      "output": "5 8"
+    },
+    {
+      "input": "3\n1 9 3",
+      "output": "3 8"
+    },
+    {
+      "input": "5\n10 20 30 40 50",
+      "output": "30 60"
+    }
+  ],
+  "sampleInput": "3\n2 10 5",
+  "sampleOutput": "5 8",
+  "testCases": [
+    {
+      "input": "3\n2 10 5",
+      "output": "5 8"
+    },
+    {
+      "input": "3\n1 9 3",
+      "output": "3 8"
+    },
+    {
+      "input": "5\n10 20 30 40 50",
+      "output": "30 60"
+    },
+    {
+      "input": "1\n7",
+      "output": "7 0"
+    },
+    {
+      "input": "2\n5 1",
+      "output": "1 4"
+    },
+    {
+      "input": "2\n-3 -3",
+      "output": "-3 0"
+    },
+    {
+      "input": "4\n1 2 3 4",
+      "output": "2 4"
+    },
+    {
+      "input": "4\n8 -2 6 0",
+      "output": "0 16"
+    },
+    {
+      "input": "5\n-1000 1000 0 0 1",
+      "output": "0 2001"
+    },
+    {
+      "input": "6\n3 3 3 9 9 9",
+      "output": "3 18"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "85"
+    ],
+    "sourceTitle": "最佳派對地點",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=85"
+    ],
+    "categories": [
+      "114/114年花蓮縣國小"
+    ],
+    "adaptation": "把積木提示改為通用說明，補上偶數人數並列、負座標與重複座標的測資。"
+  }
+}

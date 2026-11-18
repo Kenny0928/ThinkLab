@@ -1,0 +1,109 @@
+{
+  "id": 222,
+  "title": "班服投票",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "計數",
+    "條件判斷",
+    "最大值"
+  ],
+  "learningObjectives": [
+    "分別統計三種選項的票數",
+    "判斷最高票是否並列"
+  ],
+  "prerequisites": [
+    "計數器",
+    "多分支條件"
+  ],
+  "description": "<p class='problem-lead'>統計班服投票，輸出最高票的款式或要求重新投票。</p><p>班服有 1、2、3 三種款式，每張選票寫一個款式編號。請統計各款式得票數；若最高票只有一個款式，輸出該款式編號，若有兩個以上款式並列最高票，輸出 <code>請重新投票</code>。</p>",
+  "inputFormat": "<p>第一行為選票數 N。第二行有 N 個以空白分隔的整數，每個介於 1～3。</p>",
+  "outputFormat": "<p>輸出最高票的款式編號，或 <code>請重新投票</code>。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 50</li></ul>",
+  "hint": "<p>先找出最高票數，再數有幾個款式拿到這個票數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "8\n1 2 2 3 2 1 3 2",
+      "output": "2"
+    },
+    {
+      "input": "6\n1 2 3 1 2 3",
+      "output": "請重新投票"
+    },
+    {
+      "input": "5\n3 3 1 2 3",
+      "output": "3"
+    }
+  ],
+  "sampleInput": "8\n1 2 2 3 2 1 3 2",
+  "sampleOutput": "2",
+  "testCases": [
+    {
+      "input": "8\n1 2 2 3 2 1 3 2",
+      "output": "2"
+    },
+    {
+      "input": "6\n1 2 3 1 2 3",
+      "output": "請重新投票"
+    },
+    {
+      "input": "5\n3 3 1 2 3",
+      "output": "3"
+    },
+    {
+      "input": "1\n1",
+      "output": "1"
+    },
+    {
+      "input": "1\n3",
+      "output": "3"
+    },
+    {
+      "input": "2\n1 2",
+      "output": "請重新投票"
+    },
+    {
+      "input": "2\n3 3",
+      "output": "3"
+    },
+    {
+      "input": "4\n1 1 2 2",
+      "output": "請重新投票"
+    },
+    {
+      "input": "4\n2 3 3 2",
+      "output": "請重新投票"
+    },
+    {
+      "input": "5\n1 3 1 3 2",
+      "output": "請重新投票"
+    },
+    {
+      "input": "7\n2 2 2 1 1 1 3",
+      "output": "請重新投票"
+    },
+    {
+      "input": "50\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3",
+      "output": "請重新投票"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "10"
+    ],
+    "sourceTitle": "班服投票",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=10"
+    ],
+    "categories": [
+      "114/114桃園市國小"
+    ],
+    "adaptation": "整理原題格式，補上單張選票、兩款並列與零票款式的測資。"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": 216,
+  "title": "電影院找座位",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "迴圈",
+    "數學",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "推導長度 L 的空位段能放 K 人連坐的起點數為 L − K + 1",
+    "排除長度不足的空位段"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>計算一家 K 人在一排座位中連坐的方式數。</p><p>一排座位中已有部分有人坐，剩下的空位形成數段「連續空位」。給你每段連續空位的座位數，請計算一家 K 人可以坐在連續 K 個空位的方式總數。</p><p>兩種方式只要起始座位不同就算不同。長度不足 K 的空位段無法使用。</p>",
+  "inputFormat": "<p>第一行為家庭人數 K。第二行為空位段數 M。第三行有 M 個以空白分隔的正整數，代表每段連續空位的長度。</p>",
+  "outputFormat": "<p>輸出一個整數，代表可以坐下的方式總數。</p>",
+  "constraints": "<ul><li>1 ≤ K ≤ 100</li><li>1 ≤ M ≤ 100</li><li>1 ≤ 每段長度 ≤ 1000</li></ul>",
+  "hint": "<p>先數一段長度為 6 的空位能讓 3 人從哪幾個位置開始坐。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n2\n6 2",
+      "output": "4"
+    },
+    {
+      "input": "2\n3\n3 5 4",
+      "output": "9"
+    },
+    {
+      "input": "4\n1\n4",
+      "output": "1"
+    }
+  ],
+  "sampleInput": "3\n2\n6 2",
+  "sampleOutput": "4",
+  "testCases": [
+    {
+      "input": "3\n2\n6 2",
+      "output": "4"
+    },
+    {
+      "input": "2\n3\n3 5 4",
+      "output": "9"
+    },
+    {
+      "input": "4\n1\n4",
+      "output": "1"
+    },
+    {
+      "input": "5\n3\n1 3 4",
+      "output": "0"
+    },
+    {
+      "input": "1\n3\n1 2 3",
+      "output": "6"
+    },
+    {
+      "input": "1\n1\n1",
+      "output": "1"
+    },
+    {
+      "input": "100\n1\n1000",
+      "output": "901"
+    },
+    {
+      "input": "100\n2\n99 100",
+      "output": "1"
+    },
+    {
+      "input": "1000\n1\n1000",
+      "output": "1"
+    },
+    {
+      "input": "2\n5\n1 1 1 1 1",
+      "output": "0"
+    },
+    {
+      "input": "7\n4\n7 8 6 20",
+      "output": "17"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "3"
+    ],
+    "sourceTitle": "電影院找座位",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=3"
+    ],
+    "categories": [
+      "114/練習題"
+    ],
+    "adaptation": "補上原題省略的輸入格式，並說明長度不足的空位段不計。"
+  }
+}

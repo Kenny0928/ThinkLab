@@ -1,0 +1,102 @@
+{
+  "id": 274,
+  "title": "會員入場統計",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "字串",
+    "取餘數",
+    "計數"
+  ],
+  "learningObjectives": [
+    "驗證卡號檢查碼並分類計數",
+    "輸出所有並列最多的類別"
+  ],
+  "prerequisites": [
+    "字典",
+    "字串走訪",
+    "max"
+  ],
+  "description": "<p class='problem-lead'>驗證會員卡號，統計合法入場人數最多的會員類別。</p><p>卡號由 1 個英文字母、4 個數字與 1 個檢查碼共 6 碼組成。字母對應的數字為：普通會員 A=11、B=13、C=15；貴賓會員 V=17、I=19、P=21；學生會員 S=23、T=25、U=27。</p><p>總和值 = 字母對應數字 + 後面 5 個數字。總和值除以 10 的餘數為 0 或 1 的卡號才合法。請統計合法卡號中各類別的人數，輸出人數最多的類別；若並列最多，依「普通會員、貴賓會員、學生會員」的順序全部輸出。若沒有任何合法卡號，輸出 <code>無</code>。</p>",
+  "inputFormat": "<p>第一行為卡號數 N。第二行有 N 個以空白分隔的 6 碼卡號。</p>",
+  "outputFormat": "<p>輸出類別名稱，多個時以一個空白分隔；或輸出 <code>無</code>。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>卡號第一碼為上述 9 個字母之一，其餘為數字</li></ul>",
+  "hint": "<p>用字典記錄每個字母對應的數字與所屬類別。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "2\nS11114 T00007",
+      "output": "學生會員"
+    },
+    {
+      "input": "3\nA12347 V00003 S11113",
+      "output": "貴賓會員 學生會員"
+    },
+    {
+      "input": "1\nA00000",
+      "output": "普通會員"
+    }
+  ],
+  "sampleInput": "2\nS11114 T00007",
+  "sampleOutput": "學生會員",
+  "testCases": [
+    {
+      "input": "2\nS11114 T00007",
+      "output": "學生會員"
+    },
+    {
+      "input": "3\nA12347 V00003 S11113",
+      "output": "貴賓會員 學生會員"
+    },
+    {
+      "input": "1\nA00000",
+      "output": "普通會員"
+    },
+    {
+      "input": "1\nA00009",
+      "output": "普通會員"
+    },
+    {
+      "input": "3\nB00007 I00001 U00003",
+      "output": "普通會員 貴賓會員 學生會員"
+    },
+    {
+      "input": "2\nC00005 C00006",
+      "output": "普通會員"
+    },
+    {
+      "input": "4\nA00009 B00007 V00003 P00009",
+      "output": "普通會員 貴賓會員"
+    },
+    {
+      "input": "3\nT00005 S00007 U00004",
+      "output": "學生會員"
+    },
+    {
+      "input": "2\nA12345 V12345",
+      "output": "無"
+    },
+    {
+      "input": "5\nB00007 A00008 S11113 S11114 I00002",
+      "output": "學生會員"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "73"
+    ],
+    "sourceTitle": "會員入場統計",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=73"
+    ],
+    "categories": [
+      "114/114年新竹市國中"
+    ],
+    "adaptation": "補上沒有合法卡號時輸出「無」的規則，以及三類並列的測資。"
+  }
+}

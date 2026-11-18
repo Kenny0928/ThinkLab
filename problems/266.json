@@ -1,0 +1,105 @@
+{
+  "id": 266,
+  "title": "「一杯心情」飲料調製",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "排序",
+    "穩定排序",
+    "清單"
+  ],
+  "learningObjectives": [
+    "依數值由大到小排序成對資料",
+    "密度相同時保持原輸入順序（穩定排序）"
+  ],
+  "prerequisites": [
+    "清單",
+    "sort 與 key",
+    "tuple"
+  ],
+  "description": "<p class='problem-lead'>依密度把五種原料由杯底到杯口排好。</p><p>五層奶蓋茶的原料以代碼表示：B 黑糖糖漿、M 鮮奶、T 茶、F 奶蓋、J 果凍。每種原料有一個整數密度，密度大的沉在下層，密度小的浮在上層。</p><p>若有多種原料密度相同，保持它們在輸入中的先後順序（先輸入的在下層）。請輸出由杯底到杯口的原料代碼。</p>",
+  "inputFormat": "<p>一行 10 個以空白分隔的資料，每兩個一組為原料代碼與密度，共 5 組，代碼各不相同。</p>",
+  "outputFormat": "<p>輸出 5 個原料代碼，由杯底到杯口，以一個空白分隔。</p>",
+  "constraints": "<ul><li>代碼為 B、M、T、F、J 之一且不重複</li><li>1 ≤ 密度 ≤ 1000</li></ul>",
+  "hint": "<p>Python 的 sort 是穩定排序：鍵值相同時會保留原本的順序。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "B 120 J 120 T 110 M 110 F 90",
+      "output": "B J T M F"
+    },
+    {
+      "input": "F 100 M 110 T 110 J 110 B 120",
+      "output": "B M T J F"
+    },
+    {
+      "input": "B 100 M 110 T 120 F 130 J 140",
+      "output": "J F T M B"
+    }
+  ],
+  "sampleInput": "B 120 J 120 T 110 M 110 F 90",
+  "sampleOutput": "B J T M F",
+  "testCases": [
+    {
+      "input": "B 120 J 120 T 110 M 110 F 90",
+      "output": "B J T M F"
+    },
+    {
+      "input": "F 100 M 110 T 110 J 110 B 120",
+      "output": "B M T J F"
+    },
+    {
+      "input": "B 100 M 110 T 120 F 130 J 140",
+      "output": "J F T M B"
+    },
+    {
+      "input": "B 50 M 50 T 50 F 50 J 50",
+      "output": "B M T F J"
+    },
+    {
+      "input": "J 1 F 2 T 3 M 4 B 5",
+      "output": "B M T F J"
+    },
+    {
+      "input": "B 5 M 4 T 3 F 2 J 1",
+      "output": "B M T F J"
+    },
+    {
+      "input": "T 1000 F 1 M 1000 J 1 B 500",
+      "output": "T M B F J"
+    },
+    {
+      "input": "F 7 J 7 B 9 M 8 T 8",
+      "output": "B M T F J"
+    },
+    {
+      "input": "M 30 B 30 J 40 T 20 F 40",
+      "output": "J F M B T"
+    },
+    {
+      "input": "J 600 T 500 F 700 B 500 M 600",
+      "output": "F J M T B"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "59",
+      "66"
+    ],
+    "sourceTitle": "「一杯心情」飲料調製",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=59",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=66"
+    ],
+    "categories": [
+      "114/114年金門縣國中",
+      "114/114年金門縣國小"
+    ],
+    "adaptation": "合併國中版（五種原料、可同密度）與國小版（四種原料、密度不同）；依國中版資料採單行輸入。"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "id": 228,
+  "title": "檢查碼",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "字串",
+    "取餘數",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "逐字讀取字串並把數字字元轉為整數",
+    "以對照表取得英文字母代表的數值"
+  ],
+  "prerequisites": [
+    "字串索引",
+    "迴圈",
+    "取餘數"
+  ],
+  "description": "<p class='problem-lead'>判斷書店會員卡號是否正確。</p><p>會員卡號由 1 個英文字母、4 個數字與 1 位檢查碼組成，共 6 個字元。英文字母代表的數值為：A = 11、B = 13、C = 15、D = 17。</p><p>將字母代表的數值加上後面 5 個數字（含檢查碼）的總和，若除以 5 的餘數為 4，卡號正確，輸出 <code>yes</code>；否則輸出 <code>no</code>。例如 <code>B20135</code>：13 + 2 + 0 + 1 + 3 + 5 = 24，餘數為 4，是正確卡號。</p>",
+  "inputFormat": "<p>一行一個 6 字元的會員卡號。</p>",
+  "outputFormat": "<p>卡號正確輸出 <code>yes</code>，否則輸出 <code>no</code>（皆為小寫）。</p>",
+  "constraints": "<ul><li>第一個字元為 A、B、C 或 D</li><li>其餘 5 個字元皆為數字 0～9</li></ul>",
+  "hint": "<p>用 int() 把每個數字字元轉成整數再相加。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "C20351",
+      "output": "no"
+    },
+    {
+      "input": "D15713",
+      "output": "yes"
+    },
+    {
+      "input": "B20135",
+      "output": "yes"
+    }
+  ],
+  "sampleInput": "C20351",
+  "sampleOutput": "no",
+  "testCases": [
+    {
+      "input": "C20351",
+      "output": "no"
+    },
+    {
+      "input": "D15713",
+      "output": "yes"
+    },
+    {
+      "input": "B20135",
+      "output": "yes"
+    },
+    {
+      "input": "A15274",
+      "output": "no"
+    },
+    {
+      "input": "A00003",
+      "output": "yes"
+    },
+    {
+      "input": "A00000",
+      "output": "no"
+    },
+    {
+      "input": "B00001",
+      "output": "yes"
+    },
+    {
+      "input": "C00004",
+      "output": "yes"
+    },
+    {
+      "input": "D00002",
+      "output": "yes"
+    },
+    {
+      "input": "D99999",
+      "output": "no"
+    },
+    {
+      "input": "A99999",
+      "output": "no"
+    },
+    {
+      "input": "C12345",
+      "output": "no"
+    },
+    {
+      "input": "B54321",
+      "output": "no"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "16"
+    ],
+    "sourceTitle": "檢查碼",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=16"
+    ],
+    "categories": [
+      "114/114桃園市國中"
+    ],
+    "adaptation": "把題目中的計算範例整理為說明，補上四種字母與各種餘數的測資。"
+  }
+}

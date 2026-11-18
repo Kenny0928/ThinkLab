@@ -1,0 +1,102 @@
+{
+  "id": 261,
+  "title": "機器人行走軌跡",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "座標",
+    "字串解析"
+  ],
+  "learningObjectives": [
+    "解析「方向字母＋步數」的指令",
+    "每走一步檢查邊界，越界的那一步不移動"
+  ],
+  "prerequisites": [
+    "字串索引",
+    "迴圈",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>依指令移動機器人，輸出最終座標。</p><p>機器人從 (0, 0) 出發，只能在 0 ≤ x ≤ 10、0 ≤ y ≤ 10 的範圍內移動。指令由方向字母與步數組成：U 為 y 加 1、D 為 y 減 1、L 為 x 減 1、R 為 x 加 1，例如 <code>U5</code> 代表向上走 5 步。</p><p>機器人一步一步移動，若某一步會超出範圍，該步不移動，但仍繼續執行之後的步數與指令。</p>",
+  "inputFormat": "<p>第一行為指令數 N。第二行有 N 個以空白分隔的指令，每個指令為 U、D、L、R 之一後接 1～9 的步數。</p>",
+  "outputFormat": "<p>輸出 <code>(x,y)</code>，括號與逗號為半形，中間沒有空白。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li></ul>",
+  "hint": "<p>把每個指令拆成第一個字元（方向）與後面的數字（步數）。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\nU2 D3 D4 L5 R3",
+      "output": "(3,0)"
+    },
+    {
+      "input": "4\nR3 L2 U3 D1",
+      "output": "(1,2)"
+    },
+    {
+      "input": "1\nL1",
+      "output": "(0,0)"
+    }
+  ],
+  "sampleInput": "5\nU2 D3 D4 L5 R3",
+  "sampleOutput": "(3,0)",
+  "testCases": [
+    {
+      "input": "5\nU2 D3 D4 L5 R3",
+      "output": "(3,0)"
+    },
+    {
+      "input": "4\nR3 L2 U3 D1",
+      "output": "(1,2)"
+    },
+    {
+      "input": "1\nL1",
+      "output": "(0,0)"
+    },
+    {
+      "input": "1\nD9",
+      "output": "(0,0)"
+    },
+    {
+      "input": "2\nR9 R9",
+      "output": "(10,0)"
+    },
+    {
+      "input": "2\nU9 U9",
+      "output": "(0,10)"
+    },
+    {
+      "input": "4\nR9 R9 U9 U9",
+      "output": "(10,10)"
+    },
+    {
+      "input": "6\nR9 R9 U9 U9 L3 D4",
+      "output": "(7,6)"
+    },
+    {
+      "input": "3\nR5 U5 L9",
+      "output": "(0,5)"
+    },
+    {
+      "input": "8\nU1 R1 U1 R1 D1 L1 D1 L1",
+      "output": "(0,0)"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "54"
+    ],
+    "sourceTitle": "機器人行走軌跡",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=54"
+    ],
+    "categories": [
+      "114/114年新竹縣國中"
+    ],
+    "adaptation": "依原站範例明定起點為 (0,0)、逐步檢查邊界，並說明輸出格式。"
+  }
+}

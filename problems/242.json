@@ -1,0 +1,117 @@
+{
+  "id": 242,
+  "title": "我的健康小管家",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "四則運算",
+    "四捨五入",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "依公式計算含小數係數的數值",
+    "四捨五入後依區間分類"
+  ],
+  "prerequisites": [
+    "浮點數運算",
+    "round",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>以簡化公式計算基礎代謝率（BMR）並判斷能量等級。</p><p>簡化的 BMR 公式（年齡固定為 14 歲）為：BMR = 655 + 9.6 × 體重（公斤）+ 1.8 × 身高（公分）− 4.7 × 14。請將 BMR 四捨五入到整數，再依下列標準分類：</p><p>小於 1200 為 <code>極低能量</code>；1200～1499 為 <code>較低能量</code>；1500～1799 為 <code>標準能量</code>；1800～2099 為 <code>較高能量</code>；2100 以上為 <code>極高能量</code>。</p>",
+  "inputFormat": "<p>第一行為身高（公分），第二行為體重（公斤），皆為正整數。</p>",
+  "outputFormat": "<p>輸出四捨五入後的 BMR 與能量等級，中間以一個空白分隔。</p>",
+  "constraints": "<ul><li>120 ≤ 身高 ≤ 200</li><li>20 ≤ 體重 ≤ 160</li><li>測資不會出現 BMR 小數部分剛好為 0.5 的情況</li></ul>",
+  "hint": "<p>先算出 BMR，四捨五入成整數後再比較等級。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "170\n55",
+      "output": "1423 較低能量"
+    },
+    {
+      "input": "175\n70",
+      "output": "1576 標準能量"
+    },
+    {
+      "input": "120\n20",
+      "output": "997 極低能量"
+    }
+  ],
+  "sampleInput": "170\n55",
+  "sampleOutput": "1423 較低能量",
+  "testCases": [
+    {
+      "input": "170\n55",
+      "output": "1423 較低能量"
+    },
+    {
+      "input": "175\n70",
+      "output": "1576 標準能量"
+    },
+    {
+      "input": "120\n20",
+      "output": "997 極低能量"
+    },
+    {
+      "input": "200\n160",
+      "output": "2485 極高能量"
+    },
+    {
+      "input": "150\n40",
+      "output": "1243 較低能量"
+    },
+    {
+      "input": "160\n50",
+      "output": "1357 較低能量"
+    },
+    {
+      "input": "165\n60",
+      "output": "1462 較低能量"
+    },
+    {
+      "input": "180\n80",
+      "output": "1681 標準能量"
+    },
+    {
+      "input": "170\n100",
+      "output": "1855 較高能量"
+    },
+    {
+      "input": "190\n120",
+      "output": "2083 較高能量"
+    },
+    {
+      "input": "155\n45",
+      "output": "1300 較低能量"
+    },
+    {
+      "input": "185\n65",
+      "output": "1546 標準能量"
+    },
+    {
+      "input": "158\n52",
+      "output": "1373 較低能量"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "30",
+      "42"
+    ],
+    "sourceTitle": "我的健康小管家",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=30",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=42"
+    ],
+    "categories": [
+      "114/114年A縣市題目",
+      "114/114年新北市國中"
+    ],
+    "adaptation": "合併 A 縣市與新北市國中的同一題；兩站對取整方式說法不同，採新北市版的四捨五入，測資避開 .5 平手。"
+  }
+}

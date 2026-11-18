@@ -1,0 +1,106 @@
+{
+  "id": 217,
+  "title": "大富翁",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "餘數",
+    "清單"
+  ],
+  "learningObjectives": [
+    "用餘數處理環形棋盤的位置",
+    "在金額不足時將結果下限設為 0"
+  ],
+  "prerequisites": [
+    "清單索引",
+    "取餘數",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>模擬環形棋盤上的移動，求玩家最後的金額。</p><p>環形棋盤共有 N 格，每格標示金錢變化（正數獲得、負數失去、0 不變）。玩家一開始站在第 1 格，金額為 0；起始格不結算。</p><p>依序按照每次骰子點數往前移動，超過第 N 格時回到第 1 格繼續。每次移動後立即結算落點格的金錢變化；若需扣錢但金額不足，只扣到 0 元。</p>",
+  "inputFormat": "<p>第一行為格數 N。第二行有 N 個整數，依序為第 1 到第 N 格的金錢變化。第三行為骰子次數 M。第四行有 M 個整數，代表每次骰到的點數。</p>",
+  "outputFormat": "<p>輸出一個整數，代表玩家最後的金額。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>−1000 ≤ 金錢變化 ≤ 1000</li><li>1 ≤ M ≤ 100</li><li>1 ≤ 點數 ≤ 6</li></ul>",
+  "hint": "<p>把格子編成 0 到 N−1，新位置就是（目前位置 + 點數）除以 N 的餘數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n10 -5 0 20 -10\n3\n1 2 3",
+      "output": "15"
+    },
+    {
+      "input": "4\n50 -20 10 -5\n4\n4 1 1 1",
+      "output": "35"
+    },
+    {
+      "input": "3\n-10 5 -5\n2\n1 2",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "5\n10 -5 0 20 -10\n3\n1 2 3",
+  "sampleOutput": "15",
+  "testCases": [
+    {
+      "input": "5\n10 -5 0 20 -10\n3\n1 2 3",
+      "output": "15"
+    },
+    {
+      "input": "4\n50 -20 10 -5\n4\n4 1 1 1",
+      "output": "35"
+    },
+    {
+      "input": "3\n-10 5 -5\n2\n1 2",
+      "output": "0"
+    },
+    {
+      "input": "2\n50 -30\n2\n6 6",
+      "output": "100"
+    },
+    {
+      "input": "1\n7\n3\n1 2 3",
+      "output": "21"
+    },
+    {
+      "input": "1\n-5\n2\n6 6",
+      "output": "0"
+    },
+    {
+      "input": "6\n0 0 0 0 0 0\n2\n6 6",
+      "output": "0"
+    },
+    {
+      "input": "3\n0 -1000 1000\n3\n2 1 1",
+      "output": "0"
+    },
+    {
+      "input": "4\n-1 -1 -1 -1\n4\n1 2 3 4",
+      "output": "0"
+    },
+    {
+      "input": "5\n1000 1000 1000 1000 1000\n3\n5 5 5",
+      "output": "3000"
+    },
+    {
+      "input": "6\n10 20 -100 30 40 -5\n6\n1 1 1 1 1 1",
+      "output": "75"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "4"
+    ],
+    "sourceTitle": "大富翁",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=4"
+    ],
+    "categories": [
+      "114/練習題"
+    ],
+    "adaptation": "整理原題格式，補足單格棋盤、繞多圈與扣到 0 的測資。"
+  }
+}

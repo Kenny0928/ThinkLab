@@ -1,0 +1,102 @@
+{
+  "id": 260,
+  "title": "寶可夢訓練師",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "字典",
+    "計數",
+    "字串"
+  ],
+  "learningObjectives": [
+    "用字典依名稱累加數量",
+    "依第一次出現的順序輸出統計結果"
+  ],
+  "prerequisites": [
+    "字典",
+    "清單",
+    "迴圈"
+  ],
+  "description": "<p class='problem-lead'>統計各屬性寶可夢的數量，依第一次出現的順序輸出。</p><p>輸入 N 組「屬性名稱 數量」資料，同一屬性可能出現多次。請把同屬性的數量加總，依各屬性第一次出現的順序輸出「屬性 數量」，每個屬性只輸出一次。</p>",
+  "inputFormat": "<p>第一行為資料組數 N。第二行有 N 組資料，每組為屬性名稱與數量，全部以空白分隔。</p>",
+  "outputFormat": "<p>輸出一行，依序為各屬性的名稱與總數，全部以一個空白分隔，例如 <code>火 5 水 2</code>。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>0 ≤ 數量 ≤ 100</li><li>屬性名稱不含空白</li></ul>",
+  "hint": "<p>Python 3.7 以後的字典會保留鍵加入的順序。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n火 2 水 1 火 3 電 2 水 1",
+      "output": "火 5 水 2 電 2"
+    },
+    {
+      "input": "4\n草 1 草 2 毒 3 草 4",
+      "output": "草 7 毒 3"
+    },
+    {
+      "input": "1\n火 0",
+      "output": "火 0"
+    }
+  ],
+  "sampleInput": "5\n火 2 水 1 火 3 電 2 水 1",
+  "sampleOutput": "火 5 水 2 電 2",
+  "testCases": [
+    {
+      "input": "5\n火 2 水 1 火 3 電 2 水 1",
+      "output": "火 5 水 2 電 2"
+    },
+    {
+      "input": "4\n草 1 草 2 毒 3 草 4",
+      "output": "草 7 毒 3"
+    },
+    {
+      "input": "1\n火 0",
+      "output": "火 0"
+    },
+    {
+      "input": "1\n冰 100",
+      "output": "冰 100"
+    },
+    {
+      "input": "3\n水 1 水 2 水 3",
+      "output": "水 6"
+    },
+    {
+      "input": "3\n電 1 火 2 草 3",
+      "output": "電 1 火 2 草 3"
+    },
+    {
+      "input": "4\n火 0 水 0 火 0 水 5",
+      "output": "火 0 水 5"
+    },
+    {
+      "input": "6\n毒 1 冰 2 毒 3 冰 4 草 5 毒 6",
+      "output": "毒 10 冰 6 草 5"
+    },
+    {
+      "input": "2\n超能力 7 惡 8",
+      "output": "超能力 7 惡 8"
+    },
+    {
+      "input": "5\n龍 9 龍 1 妖精 2 龍 0 妖精 3",
+      "output": "龍 10 妖精 5"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "53"
+    ],
+    "sourceTitle": "寶可夢訓練師",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=53"
+    ],
+    "categories": [
+      "114/114年新竹縣國中"
+    ],
+    "adaptation": "明定輸出為單行、依第一次出現的順序，補上數量為 0 與多字屬性名稱的測資。"
+  }
+}

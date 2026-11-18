@@ -1,0 +1,102 @@
+{
+  "id": 243,
+  "title": "東台線上 3C 購物平台",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "哨兵迴圈",
+    "查表",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "用 while 迴圈讀到 -1 為止",
+    "以商品編號查詢價格並加總"
+  ],
+  "prerequisites": [
+    "while 迴圈",
+    "清單或字典",
+    "字串格式化"
+  ],
+  "description": "<p class='problem-lead'>模擬線上購物結帳，判斷電子錢包餘額是否足夠。</p><p>商品價格表：1 電競滑鼠 3490 元、2 電競鍵盤 7990 元、3 電腦椅 3990 元、4 電腦機殼 2590 元、5 電腦桌 6890 元、6 記憶體 16GB 3490 元、7 SSD 256GB 1490 元。</p><p>系統先讀入電子錢包餘額，再逐一讀入購買的商品編號（同一商品可買多次），讀到 <code>-1</code> 時結帳。餘額足夠（含剛好相等）輸出 <code>結帳成功，餘額剩X元</code>；不足則輸出 <code>餘額不足，請另外加值X元</code>。</p>",
+  "inputFormat": "<p>第一行為電子錢包餘額。接著每行一個商品編號，最後一行為 <code>-1</code>。</p>",
+  "outputFormat": "<p>輸出結帳結果，全形逗號，整行沒有空白。</p>",
+  "constraints": "<ul><li>0 ≤ 餘額 ≤ 1000000</li><li>商品編號為 1～7</li><li>購買件數 0～100</li></ul>",
+  "hint": "<p>把價格放進清單，用「編號 − 1」當索引查價格。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "10000\n1\n4\n-1",
+      "output": "結帳成功，餘額剩3920元"
+    },
+    {
+      "input": "5000\n3\n5\n-1",
+      "output": "餘額不足，請另外加值5880元"
+    },
+    {
+      "input": "0\n-1",
+      "output": "結帳成功，餘額剩0元"
+    }
+  ],
+  "sampleInput": "10000\n1\n4\n-1",
+  "sampleOutput": "結帳成功，餘額剩3920元",
+  "testCases": [
+    {
+      "input": "10000\n1\n4\n-1",
+      "output": "結帳成功，餘額剩3920元"
+    },
+    {
+      "input": "5000\n3\n5\n-1",
+      "output": "餘額不足，請另外加值5880元"
+    },
+    {
+      "input": "0\n-1",
+      "output": "結帳成功，餘額剩0元"
+    },
+    {
+      "input": "0\n7\n-1",
+      "output": "餘額不足，請另外加值1490元"
+    },
+    {
+      "input": "1490\n7\n-1",
+      "output": "結帳成功，餘額剩0元"
+    },
+    {
+      "input": "1489\n7\n-1",
+      "output": "餘額不足，請另外加值1元"
+    },
+    {
+      "input": "30000\n2\n2\n2\n-1",
+      "output": "結帳成功，餘額剩6030元"
+    },
+    {
+      "input": "23970\n2\n2\n2\n-1",
+      "output": "結帳成功，餘額剩0元"
+    },
+    {
+      "input": "1000000\n1\n2\n3\n4\n5\n6\n7\n-1",
+      "output": "結帳成功，餘額剩970070元"
+    },
+    {
+      "input": "100\n6\n6\n-1",
+      "output": "餘額不足，請另外加值6880元"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "31"
+    ],
+    "sourceTitle": "東台線上 3C 購物平台",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=31"
+    ],
+    "categories": [
+      "114/114年A縣市題目"
+    ],
+    "adaptation": "統一輸出為無空白格式，明定餘額剛好相等算結帳成功、可以不買任何商品。"
+  }
+}

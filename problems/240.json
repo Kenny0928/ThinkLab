@@ -1,0 +1,115 @@
+{
+  "id": 240,
+  "title": "魔法公車車票計算",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "條件判斷",
+    "邏輯運算"
+  ],
+  "learningObjectives": [
+    "判斷旅程是否跨越特定站點",
+    "依年齡套用半價優惠"
+  ],
+  "prerequisites": [
+    "if/else",
+    "and/or 運算"
+  ],
+  "description": "<p class='problem-lead'>依上下車站與年齡計算魔法公車的票價。</p><p>公車有 1～15 號站，10 號站是「魔法分隔站」。旅程若從 10 號站的一側坐到另一側（上下車站一個小於 10、一個大於 10），要買兩段票 20 元；否則買一段票 10 元。在 10 號站上車或下車不算跨越。</p><p>乘客未滿 12 歲（11 歲以下）可享半價。請輸出應付的票價。</p>",
+  "inputFormat": "<p>一行三個以空白分隔的整數：上車站號、下車站號、年齡。</p>",
+  "outputFormat": "<p>輸出一個整數，代表應付的票價。</p>",
+  "constraints": "<ul><li>1 ≤ 站號 ≤ 15，上下車站不同</li><li>1 ≤ 年齡 ≤ 120</li></ul>",
+  "hint": "<p>跨越 10 號站代表兩站中較小的 &lt; 10 且較大的 &gt; 10。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5 8 18",
+      "output": "10"
+    },
+    {
+      "input": "7 12 20",
+      "output": "20"
+    },
+    {
+      "input": "13 10 8",
+      "output": "5"
+    }
+  ],
+  "sampleInput": "5 8 18",
+  "sampleOutput": "10",
+  "testCases": [
+    {
+      "input": "5 8 18",
+      "output": "10"
+    },
+    {
+      "input": "7 12 20",
+      "output": "20"
+    },
+    {
+      "input": "13 10 8",
+      "output": "5"
+    },
+    {
+      "input": "14 5 30",
+      "output": "20"
+    },
+    {
+      "input": "14 5 11",
+      "output": "10"
+    },
+    {
+      "input": "14 5 12",
+      "output": "20"
+    },
+    {
+      "input": "10 15 40",
+      "output": "10"
+    },
+    {
+      "input": "1 10 5",
+      "output": "5"
+    },
+    {
+      "input": "9 11 12",
+      "output": "20"
+    },
+    {
+      "input": "11 9 11",
+      "output": "10"
+    },
+    {
+      "input": "1 15 1",
+      "output": "10"
+    },
+    {
+      "input": "12 15 70",
+      "output": "10"
+    },
+    {
+      "input": "3 4 120",
+      "output": "10"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "28",
+      "41"
+    ],
+    "sourceTitle": "魔法公車車票計算／航運費用計算",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=28",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=41"
+    ],
+    "categories": [
+      "114/114年A縣市題目",
+      "114/114年新北市國中"
+    ],
+    "adaptation": "依原站範例明定在 10 號站上下車不算跨越、12 歲以下指未滿 12 歲；新北市國中「航運費用計算」規則與範例相同（20 站、排水量未滿 12 半價），併入本題。"
+  }
+}

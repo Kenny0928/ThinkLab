@@ -1,0 +1,101 @@
+{
+  "id": 241,
+  "title": "幸運數字彩虹樂透",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "清單",
+    "計數",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "計算兩組號碼的相同個數",
+    "依區間規則對應獎金"
+  ],
+  "prerequisites": [
+    "in 判斷",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>計算彩虹樂透彩券對中的號碼個數與獎金。</p><p>本次開獎號碼為 10、18、29、31、35、36。彩券上有 6 個 1～49 的不同號碼，依對中個數領取獎金：</p><p>6 個 100000 元；5 個 10000 元；4 個 1000 元；3 個 100 元；2 個以下 0 元。</p>",
+  "inputFormat": "<p>一行 6 個以空白分隔、互不相同的整數。</p>",
+  "outputFormat": "<p>輸出 <code>猜中X個號碼，獎金Y元</code>，全形逗號，整行沒有空白。</p>",
+  "constraints": "<ul><li>1 ≤ 號碼 ≤ 49</li><li>6 個號碼互不相同</li></ul>",
+  "hint": "<p>2 個以下都是 0 元，最後一個 else 就能處理。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "10 18 29 31 35 36",
+      "output": "猜中6個號碼，獎金100000元"
+    },
+    {
+      "input": "1 2 3 4 5 6",
+      "output": "猜中0個號碼，獎金0元"
+    },
+    {
+      "input": "10 18 29 31 35 1",
+      "output": "猜中5個號碼，獎金10000元"
+    }
+  ],
+  "sampleInput": "10 18 29 31 35 36",
+  "sampleOutput": "猜中6個號碼，獎金100000元",
+  "testCases": [
+    {
+      "input": "10 18 29 31 35 36",
+      "output": "猜中6個號碼，獎金100000元"
+    },
+    {
+      "input": "1 2 3 4 5 6",
+      "output": "猜中0個號碼，獎金0元"
+    },
+    {
+      "input": "10 18 29 31 35 1",
+      "output": "猜中5個號碼，獎金10000元"
+    },
+    {
+      "input": "10 18 29 31 1 2",
+      "output": "猜中4個號碼，獎金1000元"
+    },
+    {
+      "input": "10 18 29 1 2 3",
+      "output": "猜中3個號碼，獎金100元"
+    },
+    {
+      "input": "10 18 1 2 3 4",
+      "output": "猜中2個號碼，獎金0元"
+    },
+    {
+      "input": "36 1 2 3 4 5",
+      "output": "猜中1個號碼，獎金0元"
+    },
+    {
+      "input": "49 48 47 46 45 44",
+      "output": "猜中0個號碼，獎金0元"
+    },
+    {
+      "input": "36 35 31 29 18 49",
+      "output": "猜中5個號碼，獎金10000元"
+    },
+    {
+      "input": "11 19 30 32 34 37",
+      "output": "猜中0個號碼，獎金0元"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "29"
+    ],
+    "sourceTitle": "幸運數字彩虹樂透",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=29"
+    ],
+    "categories": [
+      "114/114年A縣市題目"
+    ],
+    "adaptation": "整理獎項表，補上每種對中個數的測資。"
+  }
+}

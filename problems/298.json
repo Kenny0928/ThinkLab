@@ -1,0 +1,102 @@
+{
+  "id": 298,
+  "title": "運動會",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "前綴和",
+    "最小值",
+    "枚舉"
+  ],
+  "learningObjectives": [
+    "枚舉所有切分點並以累加計算兩側總和",
+    "找出兩群人數差最小的切法"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "累加",
+    "abs"
+  ],
+  "description": "<p class='problem-lead'>把連續的班級分成 A、B 兩群，使兩群人數最接近。</p><p>N 個班級依序排列，每班有一個參賽人數。請在某兩個相鄰班級之間切一刀，把班級分成前後兩群（每群至少一班），使兩群總人數的差最小。請先輸出人數較少的一群，再輸出人數較多的一群。例如 10 12 7 15 23 24 可分成 10+12+7+15 = 44 與 23+24 = 47。</p>",
+  "inputFormat": "<p>第一行為班級數 N。第二行有 N 個以空白分隔的非負整數，代表各班人數。</p>",
+  "outputFormat": "<p>輸出兩個以空白分隔的整數：較少的一群人數、較多的一群人數。</p>",
+  "constraints": "<ul><li>2 ≤ N ≤ 1000</li><li>0 ≤ 每班人數 ≤ 1000</li></ul>",
+  "hint": "<p>前面一群的人數可以邊走邊累加，後面一群就是總數減掉前面。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "6\n10 12 7 15 23 24",
+      "output": "44 47"
+    },
+    {
+      "input": "7\n12 0 2 8 2 3 0",
+      "output": "13 14"
+    },
+    {
+      "input": "2\n5 5",
+      "output": "5 5"
+    }
+  ],
+  "sampleInput": "6\n10 12 7 15 23 24",
+  "sampleOutput": "44 47",
+  "testCases": [
+    {
+      "input": "6\n10 12 7 15 23 24",
+      "output": "44 47"
+    },
+    {
+      "input": "7\n12 0 2 8 2 3 0",
+      "output": "13 14"
+    },
+    {
+      "input": "2\n5 5",
+      "output": "5 5"
+    },
+    {
+      "input": "2\n0 9",
+      "output": "0 9"
+    },
+    {
+      "input": "2\n1000 1",
+      "output": "1 1000"
+    },
+    {
+      "input": "3\n1 1 1",
+      "output": "1 2"
+    },
+    {
+      "input": "4\n0 0 0 0",
+      "output": "0 0"
+    },
+    {
+      "input": "5\n1 2 3 4 5",
+      "output": "6 9"
+    },
+    {
+      "input": "5\n100 1 1 1 1",
+      "output": "4 100"
+    },
+    {
+      "input": "6\n3 1 4 1 5 9",
+      "output": "9 14"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "102"
+    ],
+    "sourceTitle": "運動會",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=102"
+    ],
+    "categories": [
+      "114/114年度全國賽個人賽國小組題目"
+    ],
+    "adaptation": "原題以表格圖片說明，改以文字範例；補上每群至少一班與人數為 0 的測資。"
+  }
+}

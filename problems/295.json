@@ -1,0 +1,110 @@
+{
+  "id": 295,
+  "title": "闖關遊戲",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-8",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "環狀結構",
+    "取餘數"
+  ],
+  "learningObjectives": [
+    "用餘數在 12 個環狀房間中前後移動",
+    "每次離開房間後翻轉該房間數字的正負號"
+  ],
+  "prerequisites": [
+    "清單",
+    "取餘數",
+    "while 迴圈"
+  ],
+  "description": "<p class='problem-lead'>依房間螢幕的數字在環狀房間間移動，輸出闖關時依序進入的房間。</p><p>12 個房間依編號 1～12 順時鐘圍成一圈（12 的順時鐘下一間是 1）。三組起始設定中，房間 1～12 的螢幕數字依序為：A 組：+1 +2 +3 −1 −2 −3 +1 +2 +3 −3 −2 −1；B 組：−2 −2 −3 −2 −2 −3 −2 −2 −3 −2 −2 −3；C 組：+1 +2 −1 0 +1 −2 +2 +1 −1 +2 −2 0。</p><p>從指定房間開始（算第 1 次進入）。房間數字為 +i 時前往順時鐘方向第 i 間，為 −i 時前往逆時鐘方向第 i 間；離開房間後該房間的數字正負互換。當進入的房間數字為 0，或已累計進入 11 次時，闖關成功並結束。請輸出依序進入的房間編號。</p>",
+  "inputFormat": "<p>一行包含起始設定（<code>A</code>、<code>B</code> 或 <code>C</code>）與第一個進入的房間編號，以空白分隔。</p>",
+  "outputFormat": "<p>輸出依序進入的房間編號，以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ 房間編號 ≤ 12</li></ul>",
+  "hint": "<p>把房間編號換成 0～11 後，新位置 = (位置 + 數字) % 12；Python 的 % 對負數也會得到 0～11。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "A 2",
+      "output": "2 4 3 6 3 12 11 9 12 1 2"
+    },
+    {
+      "input": "B 12",
+      "output": "12 9 6 3 12 3 6 9 12 9 6"
+    },
+    {
+      "input": "C 5",
+      "output": "5 6 4"
+    }
+  ],
+  "sampleInput": "A 2",
+  "sampleOutput": "2 4 3 6 3 12 11 9 12 1 2",
+  "testCases": [
+    {
+      "input": "A 2",
+      "output": "2 4 3 6 3 12 11 9 12 1 2"
+    },
+    {
+      "input": "B 12",
+      "output": "12 9 6 3 12 3 6 9 12 9 6"
+    },
+    {
+      "input": "C 5",
+      "output": "5 6 4"
+    },
+    {
+      "input": "A 1",
+      "output": "1 2 4 3 6 3 12 11 9 12 1"
+    },
+    {
+      "input": "A 12",
+      "output": "12 11 9 12 1 2 4 3 6 3 12"
+    },
+    {
+      "input": "B 1",
+      "output": "1 11 9 6 3 12 9 12 3 6 9"
+    },
+    {
+      "input": "B 7",
+      "output": "7 5 3 12 9 6 3 6 9 12 3"
+    },
+    {
+      "input": "C 4",
+      "output": "4"
+    },
+    {
+      "input": "C 12",
+      "output": "12"
+    },
+    {
+      "input": "C 1",
+      "output": "1 2 4"
+    },
+    {
+      "input": "A 9",
+      "output": "9 12 11 9 6 3 6 9 12 1 2"
+    },
+    {
+      "input": "B 3",
+      "output": "3 12 9 6 3 6 9 12 3 12 9"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "94"
+    ],
+    "sourceTitle": "闖關遊戲",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=94"
+    ],
+    "categories": [
+      "114/114年度全國賽個人賽國中組題目"
+    ],
+    "adaptation": "原題以兩張圖提供房間排列與起始設定，改以文字列出；明定起始房間算第 1 次進入。"
+  }
+}

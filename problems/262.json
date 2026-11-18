@@ -1,0 +1,102 @@
+{
+  "id": 262,
+  "title": "學校運動會",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "排序",
+    "清單",
+    "四捨五入"
+  ],
+  "learningObjectives": [
+    "將名稱與分數配對後依分數排序",
+    "計算「前二分之一（四捨五入）」的班級數"
+  ],
+  "prerequisites": [
+    "sort 與 key",
+    "tuple",
+    "整數除法"
+  ],
+  "description": "<p class='problem-lead'>依總得分排序，輸出排名前二分之一的班級。</p><p>輸入 N 個班級的名稱與總得分（不會有相同分數）。請依總得分由高到低排序，輸出前 N ÷ 2（四捨五入取整數，例如 5 班取 3 班、3 班取 2 班）名的班級名稱。</p>",
+  "inputFormat": "<p>第一行為班級數 N。第二行有 N 組「班級名稱 總得分」，全部以空白分隔。</p>",
+  "outputFormat": "<p>依得分由高到低輸出班級名稱，以一個空白分隔。</p>",
+  "constraints": "<ul><li>3 ≤ N ≤ 50</li><li>0 ≤ 總得分 ≤ 1000</li><li>分數互不相同</li></ul>",
+  "hint": "<p>N ÷ 2 四捨五入取整數等於 (N + 1) // 2。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n一甲 85 二乙 92 三丙 78 四丁 95 五戊 88",
+      "output": "四丁 二乙 五戊"
+    },
+    {
+      "input": "3\n一甲 70 二乙 90 三丙 80",
+      "output": "二乙 三丙"
+    },
+    {
+      "input": "4\n甲 1 乙 2 丙 3 丁 4",
+      "output": "丁 丙"
+    }
+  ],
+  "sampleInput": "5\n一甲 85 二乙 92 三丙 78 四丁 95 五戊 88",
+  "sampleOutput": "四丁 二乙 五戊",
+  "testCases": [
+    {
+      "input": "5\n一甲 85 二乙 92 三丙 78 四丁 95 五戊 88",
+      "output": "四丁 二乙 五戊"
+    },
+    {
+      "input": "3\n一甲 70 二乙 90 三丙 80",
+      "output": "二乙 三丙"
+    },
+    {
+      "input": "4\n甲 1 乙 2 丙 3 丁 4",
+      "output": "丁 丙"
+    },
+    {
+      "input": "4\n甲 4 乙 3 丙 2 丁 1",
+      "output": "甲 乙"
+    },
+    {
+      "input": "3\n甲 0 乙 1000 丙 500",
+      "output": "乙 丙"
+    },
+    {
+      "input": "6\n一甲 10 一乙 60 二甲 30 二乙 50 三甲 20 三乙 40",
+      "output": "一乙 二乙 三乙"
+    },
+    {
+      "input": "7\nA 7 B 6 C 5 D 4 E 3 F 2 G 1",
+      "output": "A B C D"
+    },
+    {
+      "input": "8\n紅 3 橙 8 黃 1 綠 6 藍 5 靛 2 紫 7 白 4",
+      "output": "橙 紫 綠 藍"
+    },
+    {
+      "input": "3\n一甲 99 一乙 98 一丙 100",
+      "output": "一丙 一甲"
+    },
+    {
+      "input": "5\n忠 12 孝 34 仁 56 愛 78 信 90",
+      "output": "信 愛 仁"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "55"
+    ],
+    "sourceTitle": "學校運動會",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=55"
+    ],
+    "categories": [
+      "114/114年新竹縣國中"
+    ],
+    "adaptation": "說明四捨五入取整數的意義，補上偶數班級數與分數順序不同的測資。"
+  }
+}

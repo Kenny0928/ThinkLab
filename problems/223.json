@@ -1,0 +1,117 @@
+{
+  "id": 223,
+  "title": "棒球場的座位",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "整除與餘數",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "用整除與餘數把流水號換成排與位置",
+    "依區段先扣除前面各區的座位數"
+  ],
+  "prerequisites": [
+    "整數除法",
+    "取餘數",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>把棒球場的座位流水號換成區、排與位置。</p><p>棒球場共有 9000 個座位，分為三大區，每區 90 排。第一區與第三區為普通區，各 2250 席，每排 25 人；第二區為搖滾區，共 4500 席，每排 50 人。</p><p>座位由第一區開始編號，在每區內先由左至右、再由前至後，接著是第二、三區。請輸出座位所在的區、排與該排的第幾個位置。</p>",
+  "inputFormat": "<p>一行一個整數，代表座位號碼。</p>",
+  "outputFormat": "<p>輸出三個以空白分隔的整數：區、排、該排的第幾個位置。</p>",
+  "constraints": "<ul><li>1 ≤ 座位號碼 ≤ 9000</li></ul>",
+  "hint": "<p>先把號碼減 1 變成從 0 起算，再用整除求排、用餘數求位置。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "1881",
+      "output": "1 76 6"
+    },
+    {
+      "input": "3045",
+      "output": "2 16 45"
+    },
+    {
+      "input": "8241",
+      "output": "3 60 16"
+    }
+  ],
+  "sampleInput": "1881",
+  "sampleOutput": "1 76 6",
+  "testCases": [
+    {
+      "input": "1881",
+      "output": "1 76 6"
+    },
+    {
+      "input": "3045",
+      "output": "2 16 45"
+    },
+    {
+      "input": "8241",
+      "output": "3 60 16"
+    },
+    {
+      "input": "1",
+      "output": "1 1 1"
+    },
+    {
+      "input": "25",
+      "output": "1 1 25"
+    },
+    {
+      "input": "26",
+      "output": "1 2 1"
+    },
+    {
+      "input": "2250",
+      "output": "1 90 25"
+    },
+    {
+      "input": "2251",
+      "output": "2 1 1"
+    },
+    {
+      "input": "2300",
+      "output": "2 1 50"
+    },
+    {
+      "input": "2301",
+      "output": "2 2 1"
+    },
+    {
+      "input": "6750",
+      "output": "2 90 50"
+    },
+    {
+      "input": "6751",
+      "output": "3 1 1"
+    },
+    {
+      "input": "9000",
+      "output": "3 90 25"
+    },
+    {
+      "input": "4500",
+      "output": "2 45 50"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "11"
+    ],
+    "sourceTitle": "棒球場的座位",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=11"
+    ],
+    "categories": [
+      "114/114桃園市國小"
+    ],
+    "adaptation": "整理輸入輸出格式，補上每區第一席、最後一席與排的邊界測資。"
+  }
+}

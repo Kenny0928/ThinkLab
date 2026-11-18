@@ -1,0 +1,101 @@
+{
+  "id": 259,
+  "title": "猜數字",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "清單",
+    "比對",
+    "字串格式化"
+  ],
+  "learningObjectives": [
+    "逐位置比對兩組數字計算 A",
+    "計算數字相同但位置不同的個數 B"
+  ],
+  "prerequisites": [
+    "清單索引",
+    "in 判斷"
+  ],
+  "description": "<p class='problem-lead'>比對猜測與答案，以 XAYB 的形式輸出結果。</p><p>答案與猜測都是 N 個不重複的數字（0～9）。X 為數字與位置都正確的個數，Y 為數字出現在答案中但位置不正確的個數。請輸出 <code>XAYB</code>，例如 <code>1A2B</code>。</p>",
+  "inputFormat": "<p>第一行為 N。第二行為答案的 N 個數字，第三行為猜測的 N 個數字，皆以空白分隔。</p>",
+  "outputFormat": "<p>輸出一行 <code>XAYB</code>，中間沒有空白。</p>",
+  "constraints": "<ul><li>2 ≤ N ≤ 10</li><li>同一行的數字互不重複</li></ul>",
+  "hint": "<p>先算 A；猜測中出現在答案裡的數字總數減去 A 就是 B。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n4 7 1 9\n4 9 7 8",
+      "output": "1A2B"
+    },
+    {
+      "input": "3\n3 5 8\n5 3 8",
+      "output": "1A2B"
+    },
+    {
+      "input": "4\n1 2 3 4\n1 2 3 4",
+      "output": "4A0B"
+    }
+  ],
+  "sampleInput": "4\n4 7 1 9\n4 9 7 8",
+  "sampleOutput": "1A2B",
+  "testCases": [
+    {
+      "input": "4\n4 7 1 9\n4 9 7 8",
+      "output": "1A2B"
+    },
+    {
+      "input": "3\n3 5 8\n5 3 8",
+      "output": "1A2B"
+    },
+    {
+      "input": "4\n1 2 3 4\n1 2 3 4",
+      "output": "4A0B"
+    },
+    {
+      "input": "4\n1 2 3 4\n4 3 2 1",
+      "output": "0A4B"
+    },
+    {
+      "input": "4\n1 2 3 4\n5 6 7 8",
+      "output": "0A0B"
+    },
+    {
+      "input": "2\n0 9\n9 0",
+      "output": "0A2B"
+    },
+    {
+      "input": "2\n0 9\n0 8",
+      "output": "1A0B"
+    },
+    {
+      "input": "10\n0 1 2 3 4 5 6 7 8 9\n9 8 7 6 5 4 3 2 1 0",
+      "output": "0A10B"
+    },
+    {
+      "input": "5\n0 1 2 3 4\n0 2 1 5 6",
+      "output": "1A2B"
+    },
+    {
+      "input": "6\n5 3 9 0 2 8\n8 3 0 9 7 1",
+      "output": "1A3B"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "52"
+    ],
+    "sourceTitle": "猜數字",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=52"
+    ],
+    "categories": [
+      "114/114年新竹縣國中"
+    ],
+    "adaptation": "補上每個數字為 0～9 的單一數字與 N 的上限。"
+  }
+}

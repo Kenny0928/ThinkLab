@@ -1,0 +1,101 @@
+{
+  "id": 296,
+  "title": "火星探測車",
+  "stage": "Advanced",
+  "difficulty": "Medium",
+  "audienceLevel": "M-HS",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "動態規劃",
+    "0/1背包"
+  ],
+  "learningObjectives": [
+    "將任務選擇建模為容量 100 的 0/1 背包",
+    "以倒序更新避免同一任務被重複選取"
+  ],
+  "prerequisites": [
+    "清單",
+    "巢狀迴圈",
+    "max"
+  ],
+  "description": "<p class='problem-lead'>在 100 單位電力內挑選任務，使總科學價值最高。</p><p>探測車出發前充滿 100 單位電力。有 N 個任務，每個任務有電力需求與科學價值，每個任務最多執行一次。在電力需求總和不超過 100 的前提下，請輸出可獲得的最高總科學價值。</p>",
+  "inputFormat": "<p>第一行為任務數 N。接下來 N 行，每行兩個整數：電力需求與科學價值。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最高總科學價值。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>1 ≤ 電力需求 ≤ 100</li><li>0 ≤ 科學價值 ≤ 10000</li></ul>",
+  "hint": "<p>用 best[c] 表示「使用至多 c 單位電力」可得到的最高價值。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n20 50\n40 60\n30 70",
+      "output": "180"
+    },
+    {
+      "input": "2\n96 220\n51 113",
+      "output": "220"
+    },
+    {
+      "input": "4\n80 100\n50 60\n20 30\n10 10",
+      "output": "130"
+    }
+  ],
+  "sampleInput": "3\n20 50\n40 60\n30 70",
+  "sampleOutput": "180",
+  "testCases": [
+    {
+      "input": "3\n20 50\n40 60\n30 70",
+      "output": "180"
+    },
+    {
+      "input": "2\n96 220\n51 113",
+      "output": "220"
+    },
+    {
+      "input": "4\n80 100\n50 60\n20 30\n10 10",
+      "output": "130"
+    },
+    {
+      "input": "1\n100 5",
+      "output": "5"
+    },
+    {
+      "input": "1\n100 0",
+      "output": "0"
+    },
+    {
+      "input": "2\n50 10\n50 10",
+      "output": "20"
+    },
+    {
+      "input": "3\n51 100\n50 60\n50 60",
+      "output": "120"
+    },
+    {
+      "input": "5\n10 1\n20 2\n30 3\n40 4\n100 9",
+      "output": "10"
+    },
+    {
+      "input": "6\n1 1\n2 3\n3 5\n97 100\n98 101\n99 102",
+      "output": "105"
+    },
+    {
+      "input": "4\n34 40\n33 40\n33 40\n1 1",
+      "output": "120"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "95"
+    ],
+    "sourceTitle": "火星探測車",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=95"
+    ],
+    "categories": [
+      "114/114年度全國賽個人賽國中組題目"
+    ],
+    "adaptation": "補上輸入格式與每個任務最多執行一次的說明；oracle 以枚舉所有子集驗證。"
+  }
+}

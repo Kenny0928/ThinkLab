@@ -1,0 +1,113 @@
+{
+  "id": 255,
+  "title": "美味餐車三明治多重折扣與利潤計算",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "多分支條件",
+    "四捨五入",
+    "四則運算"
+  ],
+  "learningObjectives": [
+    "依時段選擇折扣並分兩次四捨五入",
+    "以整數運算實作「.5 進位」的四捨五入"
+  ],
+  "prerequisites": [
+    "整數除法",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>依時段折扣計算三明治的售價，判斷是賺還是賠。</p><p>三明治售價為成本加 50%，四捨五入到整數（小數 .5 進位）。11 點（含）到 12 點前打八折；12 點（含）以後打六折；11 點以前不打折。折扣以四捨五入後的售價計算，折扣後的價錢也四捨五入到整數。</p><p>實收價高於成本時輸出 <code>有利潤 賺 X 元</code>；否則輸出 <code>無利潤 賠 X 元</code>（X 為差額的絕對值，剛好打平時 X 為 0）。</p>",
+  "inputFormat": "<p>第一行為成本（正整數），第二行為時段（0～23 的整數小時）。</p>",
+  "outputFormat": "<p>輸出 <code>有利潤 賺 X 元</code> 或 <code>無利潤 賠 X 元</code>，各部分以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ 成本 ≤ 1000</li><li>0 ≤ 時段 ≤ 23</li></ul>",
+  "hint": "<p>Python 的 round(52.5) 會得到 52；本題的 .5 要進位，可用 (3 × 成本 + 1) // 2 計算售價。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "20\n11",
+      "output": "有利潤 賺 4 元"
+    },
+    {
+      "input": "35\n12",
+      "output": "無利潤 賠 3 元"
+    },
+    {
+      "input": "35\n10",
+      "output": "有利潤 賺 18 元"
+    }
+  ],
+  "sampleInput": "20\n11",
+  "sampleOutput": "有利潤 賺 4 元",
+  "testCases": [
+    {
+      "input": "20\n11",
+      "output": "有利潤 賺 4 元"
+    },
+    {
+      "input": "35\n12",
+      "output": "無利潤 賠 3 元"
+    },
+    {
+      "input": "35\n10",
+      "output": "有利潤 賺 18 元"
+    },
+    {
+      "input": "1\n0",
+      "output": "有利潤 賺 1 元"
+    },
+    {
+      "input": "1\n12",
+      "output": "無利潤 賠 0 元"
+    },
+    {
+      "input": "10\n11",
+      "output": "有利潤 賺 2 元"
+    },
+    {
+      "input": "5\n12",
+      "output": "無利潤 賠 0 元"
+    },
+    {
+      "input": "9\n12",
+      "output": "無利潤 賠 1 元"
+    },
+    {
+      "input": "100\n23",
+      "output": "無利潤 賠 10 元"
+    },
+    {
+      "input": "1000\n11",
+      "output": "有利潤 賺 200 元"
+    },
+    {
+      "input": "999\n12",
+      "output": "無利潤 賠 100 元"
+    },
+    {
+      "input": "33\n11",
+      "output": "有利潤 賺 7 元"
+    },
+    {
+      "input": "7\n10",
+      "output": "有利潤 賺 4 元"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "48"
+    ],
+    "sourceTitle": "美味餐車三明治多重折扣與利潤計算",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=48"
+    ],
+    "categories": [
+      "114/114年新竹縣國小"
+    ],
+    "adaptation": "依原站範例（成本 35 售價 53）確認 .5 進位；補上 11 點前不打折與打平時的輸出規則。"
+  }
+}

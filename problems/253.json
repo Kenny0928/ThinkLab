@@ -1,0 +1,110 @@
+{
+  "id": 253,
+  "title": "身體質量指數計算與健康判斷",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "浮點數",
+    "四捨五入",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "以公尺為單位的身高計算 BMI",
+    "四捨五入到兩位小數後判斷肥胖程度"
+  ],
+  "prerequisites": [
+    "float",
+    "round",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>計算 BMI（兩位小數）並判斷過輕、標準或過重。</p><p>BMI = 體重（公斤）÷（身高（公尺）× 身高（公尺））。請將 BMI 四捨五入到小數點後兩位，再用四捨五入後的值判斷：</p><p>BMI &lt; 18.5 為 <code>過輕</code>；18.5 ≤ BMI &lt; 24 為 <code>標準</code>；BMI ≥ 24 為 <code>過重</code>。</p>",
+  "inputFormat": "<p>第一行為體重（公斤，正整數）。第二行為身高（公尺，最多兩位小數）。</p>",
+  "outputFormat": "<p>輸出 BMI（固定兩位小數）與判斷結果，中間以一個空白分隔。</p>",
+  "constraints": "<ul><li>20 ≤ 體重 ≤ 120</li><li>1.20 ≤ 身高 ≤ 2.00</li><li>測資不會出現 BMI 第三位小數剛好接近 5 的情況</li></ul>",
+  "hint": "<p>注意本題輸入順序是先體重後身高，身高單位是公尺。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "60\n1.55",
+      "output": "24.97 過重"
+    },
+    {
+      "input": "38\n1.43",
+      "output": "18.58 標準"
+    },
+    {
+      "input": "45\n1.60",
+      "output": "17.58 過輕"
+    }
+  ],
+  "sampleInput": "60\n1.55",
+  "sampleOutput": "24.97 過重",
+  "testCases": [
+    {
+      "input": "60\n1.55",
+      "output": "24.97 過重"
+    },
+    {
+      "input": "38\n1.43",
+      "output": "18.58 標準"
+    },
+    {
+      "input": "45\n1.60",
+      "output": "17.58 過輕"
+    },
+    {
+      "input": "47\n1.60",
+      "output": "18.36 過輕"
+    },
+    {
+      "input": "48\n1.61",
+      "output": "18.52 標準"
+    },
+    {
+      "input": "61\n1.60",
+      "output": "23.83 標準"
+    },
+    {
+      "input": "62\n1.60",
+      "output": "24.22 過重"
+    },
+    {
+      "input": "20\n2.00",
+      "output": "5.00 過輕"
+    },
+    {
+      "input": "120\n1.20",
+      "output": "83.33 過重"
+    },
+    {
+      "input": "70\n1.75",
+      "output": "22.86 標準"
+    },
+    {
+      "input": "55\n1.72",
+      "output": "18.59 標準"
+    },
+    {
+      "input": "80\n1.80",
+      "output": "24.69 過重"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "46"
+    ],
+    "sourceTitle": "身體質量指數計算與健康判斷",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=46"
+    ],
+    "categories": [
+      "114/114年新竹縣國小"
+    ],
+    "adaptation": "補上輸入順序與單位（先體重後身高、身高以公尺計），明定以四捨五入後的值分類並避開浮點誤差的臨界值。"
+  }
+}

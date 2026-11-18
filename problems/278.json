@@ -1,0 +1,101 @@
+{
+  "id": 278,
+  "title": "智慧氣候監測系統：氣溫變動分析",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "最大值",
+    "最小值",
+    "清單"
+  ],
+  "learningObjectives": [
+    "找出一組資料的最大值與最小值",
+    "計算全距"
+  ],
+  "prerequisites": [
+    "清單",
+    "max/min 或迴圈比較"
+  ],
+  "description": "<p class='problem-lead'>計算一天氣溫資料的全距（最高溫減最低溫）。</p><p>感測器回傳 N 筆整數氣溫（可為正數、0 或負數）。請找出最高溫與最低溫，輸出兩者的差。</p>",
+  "inputFormat": "<p>第一行為資料筆數 N。第二行有 N 個以空白分隔的整數。</p>",
+  "outputFormat": "<p>輸出一個整數，代表全距。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 1000</li><li>−100 ≤ 氣溫 ≤ 100</li></ul>",
+  "hint": "<p>只有一筆資料時，最高溫與最低溫相同。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n10 50 30 20 40",
+      "output": "40"
+    },
+    {
+      "input": "6\n5 8 12 3 9 3",
+      "output": "9"
+    },
+    {
+      "input": "1\n7",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "5\n10 50 30 20 40",
+  "sampleOutput": "40",
+  "testCases": [
+    {
+      "input": "5\n10 50 30 20 40",
+      "output": "40"
+    },
+    {
+      "input": "6\n5 8 12 3 9 3",
+      "output": "9"
+    },
+    {
+      "input": "1\n7",
+      "output": "0"
+    },
+    {
+      "input": "1\n-100",
+      "output": "0"
+    },
+    {
+      "input": "2\n-100 100",
+      "output": "200"
+    },
+    {
+      "input": "3\n0 0 0",
+      "output": "0"
+    },
+    {
+      "input": "4\n-5 -1 -9 -3",
+      "output": "8"
+    },
+    {
+      "input": "5\n100 99 98 97 100",
+      "output": "3"
+    },
+    {
+      "input": "6\n-20 15 0 33 -7 8",
+      "output": "53"
+    },
+    {
+      "input": "3\n1 -1 0",
+      "output": "2"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "77"
+    ],
+    "sourceTitle": "智慧氣候監測系統 —— 氣溫變動分析",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=77"
+    ],
+    "categories": [
+      "114/114年新竹市國小"
+    ],
+    "adaptation": "刪去與解題無關的抽象化說明，補上負溫度與單筆資料的範圍與測資。"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "id": 224,
+  "title": "挑選喜歡的午餐區間",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "滑動視窗",
+    "計數",
+    "字串"
+  ],
+  "learningObjectives": [
+    "枚舉連續 K 天的區段並計數符合條件的項目",
+    "以「嚴格大於才更新」保留最早的區段"
+  ],
+  "prerequisites": [
+    "清單切片",
+    "in 判斷",
+    "最大值"
+  ],
+  "description": "<p class='problem-lead'>找出連續 K 天中最愛餐點出現最多次的區段。</p><p>學校提供 N 天的午餐，每天主餐以一個大寫字母表示。小虎有一種或多種最愛的餐點，他想挑連續 K 天，使最愛餐點出現的天數最多。</p><p>若有多段的次數相同，選起始日最早的一段。第一天為第 1 天。</p>",
+  "inputFormat": "<p>第一行為天數 N。第二行有 N 個以空白分隔的大寫字母。第三行為 K。第四行為一個或多個以空白分隔的最愛餐點字母。</p>",
+  "outputFormat": "<p>輸出兩個以空白分隔的整數：最愛餐點出現的天數、該區段的起始日。</p>",
+  "constraints": "<ul><li>1 ≤ K ≤ N ≤ 100</li></ul>",
+  "hint": "<p>次數相同時不要更新，這樣自然會保留最早的起始日。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "7\nA B A C A B A\n3\nA",
+      "output": "2 1"
+    },
+    {
+      "input": "10\nA B C D A B C C B A\n4\nA C",
+      "output": "3 5"
+    },
+    {
+      "input": "5\nA B C D E\n2\nA B C D E",
+      "output": "2 1"
+    }
+  ],
+  "sampleInput": "7\nA B A C A B A\n3\nA",
+  "sampleOutput": "2 1",
+  "testCases": [
+    {
+      "input": "7\nA B A C A B A\n3\nA",
+      "output": "2 1"
+    },
+    {
+      "input": "10\nA B C D A B C C B A\n4\nA C",
+      "output": "3 5"
+    },
+    {
+      "input": "5\nA B C D E\n2\nA B C D E",
+      "output": "2 1"
+    },
+    {
+      "input": "1\nA\n1\nA",
+      "output": "1 1"
+    },
+    {
+      "input": "1\nA\n1\nB",
+      "output": "0 1"
+    },
+    {
+      "input": "4\nB B B B\n2\nA",
+      "output": "0 1"
+    },
+    {
+      "input": "6\nA B A B A B\n6\nB",
+      "output": "3 1"
+    },
+    {
+      "input": "6\nC C A A C C\n2\nC",
+      "output": "2 1"
+    },
+    {
+      "input": "8\nA B B A A B A A\n3\nA",
+      "output": "2 3"
+    },
+    {
+      "input": "5\nD E D E D\n1\nE",
+      "output": "1 2"
+    },
+    {
+      "input": "9\nA A B B C C A A B\n3\nB C",
+      "output": "3 3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "12"
+    ],
+    "sourceTitle": "挑選喜歡的午餐區間",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=12"
+    ],
+    "categories": [
+      "114/114桃園市國小"
+    ],
+    "adaptation": "統一主角名稱，明定最愛餐點可有多種、次數為 0 時輸出第 1 天。"
+  }
+}

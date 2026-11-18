@@ -1,0 +1,117 @@
+{
+  "id": 237,
+  "title": "健康小管家",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "浮點數",
+    "四捨五入",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "將公分換算為公尺後計算 BMI",
+    "以四捨五入後的值判斷分類區間"
+  ],
+  "prerequisites": [
+    "除法",
+    "round 或格式化輸出",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>計算 BMI 並判斷所屬的分類等級。</p><p>BMI = 體重（公斤）÷（身高（公尺）× 身高（公尺））。請將 BMI 四捨五入到小數點後一位，再依下列標準分類：</p><p>小於 18.5 為 <code>體重過輕</code>；18.5～24.9 為 <code>正常範圍</code>；25.0～29.9 為 <code>體重過重</code>；30.0～34.9 為 <code>輕度肥胖</code>；35.0～39.9 為 <code>中度肥胖</code>；40.0 以上為 <code>重度肥胖</code>。例如身高 165 公分、體重 45 公斤，BMI = 16.52…，四捨五入為 16.5，屬於體重過輕。</p>",
+  "inputFormat": "<p>第一行為身高（公分），第二行為體重（公斤），皆為正整數。</p>",
+  "outputFormat": "<p>輸出 BMI（固定一位小數）與分類名稱，中間以一個空白分隔。</p>",
+  "constraints": "<ul><li>120 ≤ 身高 ≤ 200</li><li>20 ≤ 體重 ≤ 200</li><li>測資不會出現 BMI 第二位小數剛好接近 5 的情況</li></ul>",
+  "hint": "<p>用 <code>f\"{bmi:.1f}\"</code> 輸出一位小數，分類時要用四捨五入後的值比較。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "165\n45",
+      "output": "16.5 體重過輕"
+    },
+    {
+      "input": "180\n85",
+      "output": "26.2 體重過重"
+    },
+    {
+      "input": "160\n47",
+      "output": "18.4 體重過輕"
+    }
+  ],
+  "sampleInput": "165\n45",
+  "sampleOutput": "16.5 體重過輕",
+  "testCases": [
+    {
+      "input": "165\n45",
+      "output": "16.5 體重過輕"
+    },
+    {
+      "input": "180\n85",
+      "output": "26.2 體重過重"
+    },
+    {
+      "input": "160\n47",
+      "output": "18.4 體重過輕"
+    },
+    {
+      "input": "170\n53",
+      "output": "18.3 體重過輕"
+    },
+    {
+      "input": "170\n72",
+      "output": "24.9 正常範圍"
+    },
+    {
+      "input": "160\n64",
+      "output": "25.0 體重過重"
+    },
+    {
+      "input": "160\n77",
+      "output": "30.1 輕度肥胖"
+    },
+    {
+      "input": "150\n79",
+      "output": "35.1 中度肥胖"
+    },
+    {
+      "input": "150\n90",
+      "output": "40.0 重度肥胖"
+    },
+    {
+      "input": "150\n91",
+      "output": "40.4 重度肥胖"
+    },
+    {
+      "input": "200\n200",
+      "output": "50.0 重度肥胖"
+    },
+    {
+      "input": "120\n20",
+      "output": "13.9 體重過輕"
+    },
+    {
+      "input": "175\n70",
+      "output": "22.9 正常範圍"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "25",
+      "37"
+    ],
+    "sourceTitle": "健康小管家",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=25",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=37"
+    ],
+    "categories": [
+      "114/114年A縣市題目",
+      "114/114年新北市國小"
+    ],
+    "adaptation": "合併 A 縣市與新北市國小的同一題；明定四捨五入並以四捨五入後的值分類，測資避開浮點誤差的臨界值。"
+  }
+}

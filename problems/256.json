@@ -1,0 +1,106 @@
+{
+  "id": 256,
+  "title": "雲端資料備份硬碟統計",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "迴圈",
+    "累加",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "依序累加容量直到可容納全部資料",
+    "先檢查總容量是否足夠"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "sum",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>計算備份資料依序用了幾個雲端硬碟。</p><p>系統依序把資料存入雲端硬碟：第一個硬碟滿了才用第二個，依此類推。請輸出總共用了幾個硬碟；待備份資料為 0 MB 時用了 0 個。</p><p>若待備份總量超過所有硬碟容量的總和，輸出 <code>待備份檔案總容量超過雲端硬碟總空間，無法完整備份，請重新輸入。</code>（全形逗號與句號）。</p>",
+  "inputFormat": "<p>第一行為待備份資料量（MB）。第二行為硬碟數 N。第三行有 N 個以空白分隔的正整數，依序為每個硬碟的容量（MB）。</p>",
+  "outputFormat": "<p>輸出使用的硬碟數，或容量不足的訊息。</p>",
+  "constraints": "<ul><li>0 ≤ 資料量 ≤ 100000</li><li>1 ≤ N ≤ 100</li><li>1 ≤ 容量 ≤ 10000</li></ul>",
+  "hint": "<p>先用 sum 判斷總容量夠不夠，夠的話再一個一個累加。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "50\n2\n100 50",
+      "output": "1"
+    },
+    {
+      "input": "800\n3\n500 200 300",
+      "output": "3"
+    },
+    {
+      "input": "0\n1\n10",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "50\n2\n100 50",
+  "sampleOutput": "1",
+  "testCases": [
+    {
+      "input": "50\n2\n100 50",
+      "output": "1"
+    },
+    {
+      "input": "800\n3\n500 200 300",
+      "output": "3"
+    },
+    {
+      "input": "0\n1\n10",
+      "output": "0"
+    },
+    {
+      "input": "1\n1\n1",
+      "output": "1"
+    },
+    {
+      "input": "2\n1\n1",
+      "output": "待備份檔案總容量超過雲端硬碟總空間，無法完整備份，請重新輸入。"
+    },
+    {
+      "input": "100\n2\n100 50",
+      "output": "1"
+    },
+    {
+      "input": "101\n2\n100 50",
+      "output": "2"
+    },
+    {
+      "input": "150\n2\n100 50",
+      "output": "2"
+    },
+    {
+      "input": "151\n2\n100 50",
+      "output": "待備份檔案總容量超過雲端硬碟總空間，無法完整備份，請重新輸入。"
+    },
+    {
+      "input": "100000\n10\n10000 10000 10000 10000 10000 10000 10000 10000 10000 10000",
+      "output": "10"
+    },
+    {
+      "input": "30\n4\n10 10 10 10",
+      "output": "3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "49"
+    ],
+    "sourceTitle": "雲端資料備份硬碟統計",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=49"
+    ],
+    "categories": [
+      "114/114年新竹縣國小"
+    ],
+    "adaptation": "明定資料量與容量為整數、資料量為 0 時輸出 0，並統一容量不足訊息的標點。"
+  }
+}

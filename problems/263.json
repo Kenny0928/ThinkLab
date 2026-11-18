@@ -1,0 +1,110 @@
+{
+  "id": 263,
+  "title": "機器人跳樓梯",
+  "stage": "Advanced",
+  "difficulty": "Easy",
+  "audienceLevel": "M-HS",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "動態規劃",
+    "遞推",
+    "計數"
+  ],
+  "learningObjectives": [
+    "以「最後一跳跳幾階」拆解問題並建立遞推式",
+    "用陣列由小到大累積方法數"
+  ],
+  "prerequisites": [
+    "清單",
+    "巢狀迴圈",
+    "遞推"
+  ],
+  "description": "<p class='problem-lead'>計算機器人一次跳 1～K 階、剛好到達第 N 階的跳法總數。</p><p>機器人每次可以往上跳 1 到 K 階。跳的階數順序不同視為不同跳法，例如 N = 4、K = 2 時有 1+1+1+1、1+1+2、1+2+1、2+1+1、2+2 共 5 種。請輸出剛好到達第 N 階的跳法總數。</p>",
+  "inputFormat": "<p>第一行為樓梯階數 N，第二行為一次最多可跳的階數 K。</p>",
+  "outputFormat": "<p>輸出一個整數，代表跳法總數。</p>",
+  "constraints": "<ul><li>1 ≤ K ≤ N ≤ 30</li></ul>",
+  "hint": "<p>到達第 i 階的最後一跳可能是 1、2、…、K 階，所以方法數是前 K 階方法數的總和。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n2",
+      "output": "5"
+    },
+    {
+      "input": "4\n3",
+      "output": "7"
+    },
+    {
+      "input": "1\n1",
+      "output": "1"
+    }
+  ],
+  "sampleInput": "4\n2",
+  "sampleOutput": "5",
+  "testCases": [
+    {
+      "input": "4\n2",
+      "output": "5"
+    },
+    {
+      "input": "4\n3",
+      "output": "7"
+    },
+    {
+      "input": "1\n1",
+      "output": "1"
+    },
+    {
+      "input": "2\n1",
+      "output": "1"
+    },
+    {
+      "input": "2\n2",
+      "output": "2"
+    },
+    {
+      "input": "5\n5",
+      "output": "16"
+    },
+    {
+      "input": "10\n2",
+      "output": "89"
+    },
+    {
+      "input": "30\n1",
+      "output": "1"
+    },
+    {
+      "input": "30\n2",
+      "output": "1346269"
+    },
+    {
+      "input": "30\n30",
+      "output": "536870912"
+    },
+    {
+      "input": "30\n3",
+      "output": "53798080"
+    },
+    {
+      "input": "12\n4",
+      "output": "1490"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "56"
+    ],
+    "sourceTitle": "機器人跳樓梯",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=56"
+    ],
+    "categories": [
+      "114/114年新竹縣國中"
+    ],
+    "adaptation": "補上跳法順序不同即視為不同的說明與範例；oracle 在小範圍以遞迴枚舉驗證。"
+  }
+}

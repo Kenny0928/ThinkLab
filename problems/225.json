@@ -1,0 +1,106 @@
+{
+  "id": 225,
+  "title": "綠能任務挑戰",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "餘數",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "在環形地圖上以餘數移動",
+    "依上下限規則修正數值並追蹤最大值"
+  ],
+  "prerequisites": [
+    "清單索引",
+    "取餘數",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>模擬環形地圖上的能量變化，輸出最終能量與最高能量。</p><p>地圖共有 N 個地點，每個地點有能量變化值（正、負或 0）。玩家從第 1 個地點出發，初始能量為 0，出發點不計算能量。</p><p>每次依骰子點數往前移動，超過第 N 個地點時回到第 1 個，抵達後計入該地點的能量變化。若總能量超過 50，會維持為 50；若總能量小於或等於 0，會自動補助為 5。最高能量指每次修正後的能量中最大的值。</p>",
+  "inputFormat": "<p>第一行為地點數 N。第二行有 N 個整數，依序為每個地點的能量變化值。第三行為骰子次數 M。第四行有 M 個整數，代表每次骰到的點數。</p>",
+  "outputFormat": "<p>輸出兩個以空白分隔的整數：最終能量值與過程中的最高能量值。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>−100 ≤ 能量變化 ≤ 100</li><li>1 ≤ M ≤ 100</li><li>1 ≤ 點數 ≤ 6</li></ul>",
+  "hint": "<p>每次移動後先加上能量變化，再依規則修正，最後才更新最高值。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n25 10 30 -5\n4\n1 1 2 1",
+      "output": "50 50"
+    },
+    {
+      "input": "5\n10 -5 0 20 -10\n3\n1 2 3",
+      "output": "20 25"
+    },
+    {
+      "input": "5\n-10 -20 10 0 30\n5\n1 1 1 1 1",
+      "output": "35 45"
+    }
+  ],
+  "sampleInput": "4\n25 10 30 -5\n4\n1 1 2 1",
+  "sampleOutput": "50 50",
+  "testCases": [
+    {
+      "input": "4\n25 10 30 -5\n4\n1 1 2 1",
+      "output": "50 50"
+    },
+    {
+      "input": "5\n10 -5 0 20 -10\n3\n1 2 3",
+      "output": "20 25"
+    },
+    {
+      "input": "5\n-10 -20 10 0 30\n5\n1 1 1 1 1",
+      "output": "35 45"
+    },
+    {
+      "input": "1\n0\n1\n3",
+      "output": "5 5"
+    },
+    {
+      "input": "1\n100\n2\n1 1",
+      "output": "50 50"
+    },
+    {
+      "input": "1\n-100\n2\n6 6",
+      "output": "5 5"
+    },
+    {
+      "input": "3\n0 45 -40\n2\n1 1",
+      "output": "5 45"
+    },
+    {
+      "input": "3\n0 5 -10\n2\n1 1",
+      "output": "5 5"
+    },
+    {
+      "input": "2\n50 1\n2\n1 1",
+      "output": "50 50"
+    },
+    {
+      "input": "4\n10 10 10 10\n6\n4 4 4 4 4 4",
+      "output": "50 50"
+    },
+    {
+      "input": "6\n-3 7 -8 20 31 -100\n6\n1 2 3 4 5 6",
+      "output": "50 50"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "13"
+    ],
+    "sourceTitle": "綠能任務挑戰",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=13"
+    ],
+    "categories": [
+      "114/114桃園市國小"
+    ],
+    "adaptation": "明定最高能量以修正後的值計算，並修正原題輸出格式說明中的範例數字。"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "id": 265,
+  "title": "台灣星鏈衛星佈署計畫",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "整數除法",
+    "多分支條件",
+    "植樹問題"
+  ],
+  "learningObjectives": [
+    "用整數除法求間隔數",
+    "依端點是否放置推導數量公式"
+  ],
+  "prerequisites": [
+    "整數除法",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>依佈署模式計算一段軌道需要幾顆衛星。</p><p>沿長度 L 公里的路段，每隔 D 公里佈署一顆衛星。先求間隔數 q = L ÷ D 的整數商（不足一個間隔的剩餘距離不佈署）。</p><p>模式 1（全線覆蓋）：起點與終點都佈署，共 q + 1 顆。模式 2（銜接佈署）：只有起點佈署，共 q 顆。模式 3（受限區域）：起點與終點都不佈署，共 q − 1 顆。模式 4（環繞軌道）：首尾相接的圓形軌道，共 q 顆。</p>",
+  "inputFormat": "<p>第一行為路段長度 L，第二行為間隔 D，第三行為模式 M（1～4）。</p>",
+  "outputFormat": "<p>輸出一個整數，代表衛星總數。</p>",
+  "constraints": "<ul><li>1 ≤ D ≤ L ≤ 100000</li><li>M 為 1、2、3、4 之一</li></ul>",
+  "hint": "<p>先畫一條線段，數數看「點」和「間隔」的數量關係。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "1000\n200\n1",
+      "output": "6"
+    },
+    {
+      "input": "1000\n200\n3",
+      "output": "4"
+    },
+    {
+      "input": "1050\n200\n2",
+      "output": "5"
+    }
+  ],
+  "sampleInput": "1000\n200\n1",
+  "sampleOutput": "6",
+  "testCases": [
+    {
+      "input": "1000\n200\n1",
+      "output": "6"
+    },
+    {
+      "input": "1000\n200\n3",
+      "output": "4"
+    },
+    {
+      "input": "1050\n200\n2",
+      "output": "5"
+    },
+    {
+      "input": "800\n200\n4",
+      "output": "4"
+    },
+    {
+      "input": "1000\n250\n2",
+      "output": "4"
+    },
+    {
+      "input": "1\n1\n1",
+      "output": "2"
+    },
+    {
+      "input": "1\n1\n3",
+      "output": "0"
+    },
+    {
+      "input": "5\n3\n1",
+      "output": "2"
+    },
+    {
+      "input": "5\n3\n3",
+      "output": "0"
+    },
+    {
+      "input": "100000\n1\n4",
+      "output": "100000"
+    },
+    {
+      "input": "100000\n99999\n1",
+      "output": "2"
+    },
+    {
+      "input": "999\n100\n3",
+      "output": "8"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "58",
+      "65"
+    ],
+    "sourceTitle": "台灣星鏈 (T-Starlink) 衛星佈署計畫",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=58",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=65"
+    ],
+    "categories": [
+      "114/114年金門縣國中",
+      "114/114年金門縣國小"
+    ],
+    "adaptation": "合併國中版（四種模式、可有餘數）與國小版（兩種模式、整除）；明確寫出各模式公式並限制 D ≤ L。"
+  }
+}

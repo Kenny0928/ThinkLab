@@ -1,6 +1,6 @@
 # 🧪 ThinkLab — 從程式學習到實作專題的能力實驗室
 
-ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 45 關、135 題講義，以及 Judge 題庫 214 題（LV.1 56 題、LV.2 110 題、LV.3 37 題、挑戰 11 題）。除LV.1「小數與格式化輸出」、LV.2「讀懂錯誤訊息與自訂測資」、LV.3 H01、H04 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
+ThinkLab 是一個面向國小、國高中、大專到社會人士的程式與實作學習平台，可直接部署到 **GitHub Pages**。目前已開放LV.1、LV.2、LV.3共 45 關、135 題講義，以及 Judge 題庫 299 題（LV.1 76 題、LV.2 170 題、LV.3 42 題、挑戰 11 題）。除LV.1「小數與格式化輸出」、LV.2「讀懂錯誤訊息與自訂測資」、LV.3 H01、H04 限用 Python 外，講義題都能自由選用 **Scratch、Blockly 或 Python** 作答。
 
 三階段講義依照「讀懂任務 → 先猜結果 → 拆解步驟 → 動手測試」組成連續學習路徑：LV.1 15 關、LV.2 14 關、LV.3 16 關。每關包含 1 題核心題與 2 題變體；各作答方式共用題目、測資與通關紀錄，每題、每種語言的草稿則分別保存。
 
@@ -96,11 +96,13 @@ ThinkLab/
 │
 ├── for_AI/
 │   ├── AI_AGENT_工作流與開發規範.md ← AI Agent 題庫與網頁維護最高規約 (SOP)
-│   └── google-sites題庫匯入/       ← Google Sites 題庫目錄與已審匯入紀錄
+│   ├── google-sites題庫匯入/       ← Google Sites 題庫目錄與已審匯入紀錄
+│   └── bdesigner題庫匯入/          ← bDesigner 縣市賽題目改編匯入紀錄（Judge 214–298）
 │
 ├── scripts/
 │   ├── verify_problems.py      ← 自動化題庫與測資全量檢核工具
 │   ├── problem_expansion_154_213/ ← 原創 60 題規格、獨立解法對拍與重建工具
+│   ├── bdesigner_import/       ← bDesigner 縣市賽 85 題改編規格、原站核對與對拍工具
 │   ├── verify_courses.mjs      ← 三階段講義結構、測資與參考解答檢核
 │   ├── sync_google_sites_catalog.py ← 整理封存題庫並偵測已匯入來源變更
 │   ├── verify_editors.cjs       ← 編輯器草稿、切換與 Blockly 生成程式測試

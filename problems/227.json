@@ -1,0 +1,110 @@
+{
+  "id": 227,
+  "title": "攻擊防禦力平衡",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "枚舉",
+    "組合",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "依使用數量由少到多枚舉道具組合",
+    "以固定順序處理數量相同的多種解"
+  ],
+  "prerequisites": [
+    "巢狀迴圈",
+    "清單",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>用最少件道具讓角色的攻擊力等於防禦力。</p><p>角色有初始攻擊力與防禦力，另有 3 件道具，每件同時增加攻擊力與防禦力，每件最多使用一次，效果可疊加。請找出使攻擊力等於防禦力時，使用件數最少的道具組合。</p><p>若同樣件數有多種組合，依編號由小到大比較，選字典序最小的組合（例如 <code>1 3</code> 優先於 <code>2 3</code>）。至少要使用 1 件道具；若任何組合都無法達成，輸出 <code>0</code>。</p>",
+  "inputFormat": "<p>第一行為初始攻擊力，第二行為初始防禦力。第三行有 6 個整數：先依序為第 1、2、3 件道具的攻擊力加成，再依序為第 1、2、3 件道具的防禦力加成。</p>",
+  "outputFormat": "<p>輸出使用的道具編號，由小到大以一個空白分隔；無法達成時輸出 <code>0</code>。</p>",
+  "constraints": "<ul><li>0 ≤ 初始攻擊力、初始防禦力 ≤ 1000</li><li>0 ≤ 道具加成 ≤ 1000</li></ul>",
+  "hint": "<p>先試只用 1 件的 3 種情況，再試 2 件的 3 種情況，最後才試全部 3 件。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "15\n20\n20 5 10 10 15 5",
+      "output": "3"
+    },
+    {
+      "input": "10\n15\n5 20 15 10 10 25",
+      "output": "1 2"
+    },
+    {
+      "input": "10\n25\n15 10 15 10 5 20",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "15\n20\n20 5 10 10 15 5",
+  "sampleOutput": "3",
+  "testCases": [
+    {
+      "input": "15\n20\n20 5 10 10 15 5",
+      "output": "3"
+    },
+    {
+      "input": "10\n15\n5 20 15 10 10 25",
+      "output": "1 2"
+    },
+    {
+      "input": "10\n25\n15 10 15 10 5 20",
+      "output": "0"
+    },
+    {
+      "input": "0\n0\n0 0 0 0 0 0",
+      "output": "1"
+    },
+    {
+      "input": "5\n5\n1 2 3 1 2 3",
+      "output": "1"
+    },
+    {
+      "input": "0\n10\n0 0 10 0 0 0",
+      "output": "3"
+    },
+    {
+      "input": "0\n10\n4 3 3 0 0 0",
+      "output": "1 2 3"
+    },
+    {
+      "input": "0\n10\n5 5 0 0 0 0",
+      "output": "1 2"
+    },
+    {
+      "input": "0\n10\n6 4 5 0 0 1",
+      "output": "1 2"
+    },
+    {
+      "input": "1000\n0\n0 0 0 1000 0 0",
+      "output": "1"
+    },
+    {
+      "input": "7\n3\n0 0 0 1 1 1",
+      "output": "0"
+    },
+    {
+      "input": "20\n10\n1 2 3 4 5 6",
+      "output": "0"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "15"
+    ],
+    "sourceTitle": "攻擊防禦力平衡",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=15"
+    ],
+    "categories": [
+      "114/114桃園市國中"
+    ],
+    "adaptation": "原題未定義同件數多解與初始已相等的情形，明定至少使用 1 件並以字典序最小者為答案。"
+  }
+}

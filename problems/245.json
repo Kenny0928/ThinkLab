@@ -1,0 +1,102 @@
+{
+  "id": 245,
+  "title": "超市採購即時通",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "累加",
+    "迴圈",
+    "乘法"
+  ],
+  "learningObjectives": [
+    "每讀一組資料就更新累積總和",
+    "以清單收集並一次輸出所有中間結果"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "乘法",
+    "清單"
+  ],
+  "description": "<p class='problem-lead'>每拿一種商品就輸出一次目前的累積金額。</p><p>小華依序拿了 N 種商品，每種有數量 Q 與單價 P。每拿一種商品，就把 Q × P 加入累積總金額，並記下當時的累積總金額。請依序輸出這 N 個累積總金額。</p>",
+  "inputFormat": "<p>第一行為商品種類數 N。第二行有 2N 個以空白分隔的整數，依序為第 1 種的 Q、P，第 2 種的 Q、P……</p>",
+  "outputFormat": "<p>輸出一行 N 個整數，以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>0 ≤ Q ≤ 100</li><li>0 ≤ P ≤ 10000</li></ul>",
+  "hint": "<p>第 i 種商品的數量與單價在清單中的位置是 2i 與 2i+1（i 從 0 起算）。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "2\n3 10 2 50",
+      "output": "30 130"
+    },
+    {
+      "input": "3\n4 5 3 30 1 100",
+      "output": "20 110 210"
+    },
+    {
+      "input": "1\n0 100",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "2\n3 10 2 50",
+  "sampleOutput": "30 130",
+  "testCases": [
+    {
+      "input": "2\n3 10 2 50",
+      "output": "30 130"
+    },
+    {
+      "input": "3\n4 5 3 30 1 100",
+      "output": "20 110 210"
+    },
+    {
+      "input": "1\n0 100",
+      "output": "0"
+    },
+    {
+      "input": "1\n5 0",
+      "output": "0"
+    },
+    {
+      "input": "1\n100 10000",
+      "output": "1000000"
+    },
+    {
+      "input": "3\n1 1 1 1 1 1",
+      "output": "1 2 3"
+    },
+    {
+      "input": "4\n2 3 0 9 4 1 1 7",
+      "output": "6 6 10 17"
+    },
+    {
+      "input": "2\n100 10000 100 10000",
+      "output": "1000000 2000000"
+    },
+    {
+      "input": "5\n1 2 3 4 5 6 7 8 9 10",
+      "output": "2 14 44 100 190"
+    },
+    {
+      "input": "3\n0 0 0 0 0 0",
+      "output": "0 0 0"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "33"
+    ],
+    "sourceTitle": "超市採購即時通",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=33"
+    ],
+    "categories": [
+      "114/114A校校內評選"
+    ],
+    "adaptation": "明定所有累積金額輸出於同一行，補上數量或單價為 0 的測資。"
+  }
+}

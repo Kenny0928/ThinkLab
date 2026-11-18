@@ -1,0 +1,110 @@
+{
+  "id": 248,
+  "title": "糖尿病血糖趨勢與預警分析",
+  "stage": "Intermediate",
+  "difficulty": "Hard",
+  "audienceLevel": "M-8",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "狀態轉移",
+    "連段"
+  ],
+  "learningObjectives": [
+    "比較前後狀態以偵測「進入新區間」的事件",
+    "追蹤同方向連續變化的累計量並取最大值"
+  ],
+  "prerequisites": [
+    "函式",
+    "if/elif",
+    "迴圈"
+  ],
+  "description": "<p class='problem-lead'>統計血糖進入異常區間的次數，並找出最大的連續同向變化量。</p><p>血糖值分三區：低血糖區（&lt; 70）、正常區（70～180）、高血糖區（&gt; 180）。血糖從起始值 S 開始，依序加上 N 次變化量。起始值本身不算事件。</p><p>每次變化後，若血糖從其他區進入低血糖區，低血糖事件加 1；從其他區進入高血糖區，高血糖事件加 1；停留在同一區不重複計算（由高直接跳到低也算進入低血糖區）。另外，連續同方向（持續上升或持續下降）的變化量總和的絕對值稱為一段趨勢，方向改變時重新累計；請求出最大的趨勢值。</p>",
+  "inputFormat": "<p>第一行為觀察次數 N。第二行為起始血糖 S。第三行有 N 個以空白分隔的非零整數，依序為每次的變化量。</p>",
+  "outputFormat": "<p>輸出三個以空白分隔的整數：低血糖事件次數、高血糖事件次數、最大趨勢值。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>0 ≤ S ≤ 400</li><li>變化量為非零整數，且過程中血糖皆介於 0～600</li></ul>",
+  "hint": "<p>寫一個把血糖值轉成區名的函式，每次變化前後各呼叫一次再比較。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n100\n110 -160 220",
+      "output": "1 2 220"
+    },
+    {
+      "input": "6\n100\n40 50 -20 -30 -80 -10",
+      "output": "1 1 140"
+    },
+    {
+      "input": "1\n100\n5",
+      "output": "0 0 5"
+    }
+  ],
+  "sampleInput": "3\n100\n110 -160 220",
+  "sampleOutput": "1 2 220",
+  "testCases": [
+    {
+      "input": "3\n100\n110 -160 220",
+      "output": "1 2 220"
+    },
+    {
+      "input": "6\n100\n40 50 -20 -30 -80 -10",
+      "output": "1 1 140"
+    },
+    {
+      "input": "1\n100\n5",
+      "output": "0 0 5"
+    },
+    {
+      "input": "1\n60\n-10",
+      "output": "0 0 10"
+    },
+    {
+      "input": "1\n180\n1",
+      "output": "0 1 1"
+    },
+    {
+      "input": "1\n70\n-1",
+      "output": "1 0 1"
+    },
+    {
+      "input": "2\n200\n-140 200",
+      "output": "1 1 200"
+    },
+    {
+      "input": "4\n100\n90 -10 -20 50",
+      "output": "0 2 90"
+    },
+    {
+      "input": "5\n69\n1 -1 1 -1 1",
+      "output": "2 0 1"
+    },
+    {
+      "input": "5\n181\n-1 1 -1 1 -1",
+      "output": "0 2 1"
+    },
+    {
+      "input": "3\n100\n100 100 100",
+      "output": "0 1 300"
+    },
+    {
+      "input": "4\n300\n-50 -50 -50 -50",
+      "output": "0 0 200"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "36"
+    ],
+    "sourceTitle": "糖尿病血糖趨勢與預警分析",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=36"
+    ],
+    "categories": [
+      "114/114A校校內評選"
+    ],
+    "adaptation": "明定起始值不算事件、變化量不為 0，並以「連續同號變化量總和」定義趨勢值。"
+  }
+}

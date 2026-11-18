@@ -2743,5 +2743,1101 @@
       "動態規劃",
       "狀態設計"
     ]
+  },
+  {
+    "id": 214,
+    "title": "臨時屋",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "迴圈",
+      "累加",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 215,
+    "title": "超商收銀結帳",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "累加",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 216,
+    "title": "電影院找座位",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "迴圈",
+      "數學",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 217,
+    "title": "大富翁",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "模擬",
+      "餘數",
+      "清單"
+    ]
+  },
+  {
+    "id": 218,
+    "title": "可口便當",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "清單",
+      "排序",
+      "巢狀迴圈"
+    ]
+  },
+  {
+    "id": 219,
+    "title": "短片欣賞",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "滑動視窗",
+      "字串",
+      "計數"
+    ]
+  },
+  {
+    "id": 220,
+    "title": "傳球遊戲",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "模擬",
+      "餘數",
+      "迴圈"
+    ]
+  },
+  {
+    "id": 221,
+    "title": "找零錢計算",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "貪心",
+      "整除",
+      "模擬"
+    ]
+  },
+  {
+    "id": 222,
+    "title": "班服投票",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "計數",
+      "條件判斷",
+      "最大值"
+    ]
+  },
+  {
+    "id": 223,
+    "title": "棒球場的座位",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "整除與餘數",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 224,
+    "title": "挑選喜歡的午餐區間",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "滑動視窗",
+      "計數",
+      "字串"
+    ]
+  },
+  {
+    "id": 225,
+    "title": "綠能任務挑戰",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "餘數",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 226,
+    "title": "購買紀念品",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "貪心",
+      "排序",
+      "模擬"
+    ]
+  },
+  {
+    "id": 227,
+    "title": "攻擊防禦力平衡",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "枚舉",
+      "組合",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 228,
+    "title": "檢查碼",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "字串",
+      "取餘數",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 229,
+    "title": "校園販賣機自動補貨",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "迴圈",
+      "累加",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 230,
+    "title": "偶數和",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "迴圈",
+      "累加",
+      "取餘數"
+    ]
+  },
+  {
+    "id": 231,
+    "title": "三角形",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "條件判斷",
+      "邏輯運算"
+    ]
+  },
+  {
+    "id": 232,
+    "title": "刮刮樂",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "字串",
+      "計數",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 233,
+    "title": "遊樂場",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "數學",
+      "最小值",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 234,
+    "title": "歌唱比賽",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "排序",
+      "平均",
+      "四捨五入"
+    ]
+  },
+  {
+    "id": 235,
+    "title": "質數和",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "質數",
+      "巢狀迴圈",
+      "累加"
+    ]
+  },
+  {
+    "id": 236,
+    "title": "奇緣蛋糕特賣",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "多分支條件",
+      "四則運算"
+    ]
+  },
+  {
+    "id": 237,
+    "title": "健康小管家",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "浮點數",
+      "四捨五入",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 238,
+    "title": "鋼琴小天才計分挑戰",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "最大值",
+      "最小值",
+      "小數"
+    ]
+  },
+  {
+    "id": 239,
+    "title": "幸運號碼大樂透",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "清單",
+      "計數",
+      "字串格式化"
+    ]
+  },
+  {
+    "id": 240,
+    "title": "魔法公車車票計算",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "條件判斷",
+      "邏輯運算"
+    ]
+  },
+  {
+    "id": 241,
+    "title": "幸運數字彩虹樂透",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "清單",
+      "計數",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 242,
+    "title": "我的健康小管家",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "四則運算",
+      "四捨五入",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 243,
+    "title": "東台線上 3C 購物平台",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "哨兵迴圈",
+      "查表",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 244,
+    "title": "程式設計師阿倫",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "遞推",
+      "迴圈",
+      "數列"
+    ]
+  },
+  {
+    "id": 245,
+    "title": "超市採購即時通",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "累加",
+      "迴圈",
+      "乘法"
+    ]
+  },
+  {
+    "id": 246,
+    "title": "金門小三通春運調度",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "條件判斷",
+      "累加"
+    ]
+  },
+  {
+    "id": 247,
+    "title": "數位能量方塊實驗",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "模擬",
+      "多分支條件",
+      "狀態管理"
+    ]
+  },
+  {
+    "id": 248,
+    "title": "糖尿病血糖趨勢與預警分析",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "模擬",
+      "狀態轉移",
+      "連段"
+    ]
+  },
+  {
+    "id": 249,
+    "title": "小隊長的奇數號碼",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "迴圈",
+      "累加",
+      "取餘數"
+    ]
+  },
+  {
+    "id": 250,
+    "title": "智慧倉儲",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "模擬",
+      "多分支條件",
+      "貪心"
+    ]
+  },
+  {
+    "id": 251,
+    "title": "王牌教練",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "枚舉",
+      "排列",
+      "最小值"
+    ]
+  },
+  {
+    "id": 252,
+    "title": "圓柱體積計算",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "數學",
+      "四則運算",
+      "格式化輸出"
+    ]
+  },
+  {
+    "id": 253,
+    "title": "身體質量指數計算與健康判斷",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "浮點數",
+      "四捨五入",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 254,
+    "title": "房間磁磚的購買計算",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "數學",
+      "無條件進位",
+      "單位換算"
+    ]
+  },
+  {
+    "id": 255,
+    "title": "美味餐車三明治多重折扣與利潤計算",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "多分支條件",
+      "四捨五入",
+      "四則運算"
+    ]
+  },
+  {
+    "id": 256,
+    "title": "雲端資料備份硬碟統計",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "迴圈",
+      "累加",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 257,
+    "title": "綠色節能競賽：電價分段計費與成本分析",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "累進計算",
+      "最大值",
+      "最小值"
+    ]
+  },
+  {
+    "id": 258,
+    "title": "射箭比賽成績計算",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "多分支條件",
+      "前後比較"
+    ]
+  },
+  {
+    "id": 259,
+    "title": "猜數字",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "清單",
+      "比對",
+      "字串格式化"
+    ]
+  },
+  {
+    "id": 260,
+    "title": "寶可夢訓練師",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字典",
+      "計數",
+      "字串"
+    ]
+  },
+  {
+    "id": 261,
+    "title": "機器人行走軌跡",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "座標",
+      "字串解析"
+    ]
+  },
+  {
+    "id": 262,
+    "title": "學校運動會",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "排序",
+      "清單",
+      "四捨五入"
+    ]
+  },
+  {
+    "id": 263,
+    "title": "機器人跳樓梯",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "動態規劃",
+      "遞推",
+      "計數"
+    ]
+  },
+  {
+    "id": 264,
+    "title": "資訊競賽獎勵統計",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "多分支條件",
+      "計數"
+    ]
+  },
+  {
+    "id": 265,
+    "title": "台灣星鏈衛星佈署計畫",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "整數除法",
+      "多分支條件",
+      "植樹問題"
+    ]
+  },
+  {
+    "id": 266,
+    "title": "「一杯心情」飲料調製",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "排序",
+      "穩定排序",
+      "清單"
+    ]
+  },
+  {
+    "id": 267,
+    "title": "猜數字小幫手",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "二分搜尋",
+      "模擬",
+      "while 迴圈"
+    ]
+  },
+  {
+    "id": 268,
+    "title": "風獅爺排排隊",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "氣泡排序",
+      "巢狀迴圈",
+      "模擬"
+    ]
+  },
+  {
+    "id": 269,
+    "title": "金門坑道參觀系統",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "狀態機",
+      "模擬",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 270,
+    "title": "金門坑道開關管理",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "布林變數",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 271,
+    "title": "貨物重量計費",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "累進計算",
+      "多分支條件"
+    ]
+  },
+  {
+    "id": 272,
+    "title": "想去遊樂園",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "多分支條件",
+      "計數",
+      "比較"
+    ]
+  },
+  {
+    "id": 273,
+    "title": "我是神箭手",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "整數除法",
+      "正負數",
+      "座標"
+    ]
+  },
+  {
+    "id": 274,
+    "title": "會員入場統計",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字串",
+      "取餘數",
+      "計數"
+    ]
+  },
+  {
+    "id": 275,
+    "title": "買五送一",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "排序",
+      "取餘數",
+      "累加"
+    ]
+  },
+  {
+    "id": 276,
+    "title": "歡樂抽獎",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "枚舉",
+      "組合",
+      "取餘數"
+    ]
+  },
+  {
+    "id": 277,
+    "title": "考試座位安排",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "整除與餘數",
+      "座標"
+    ]
+  },
+  {
+    "id": 278,
+    "title": "智慧氣候監測系統：氣溫變動分析",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "最大值",
+      "最小值",
+      "清單"
+    ]
+  },
+  {
+    "id": 279,
+    "title": "快遞物流中心分類系統",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "排序",
+      "取餘數",
+      "清單"
+    ]
+  },
+  {
+    "id": 280,
+    "title": "寶可夢聯盟大挑戰",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "多分支條件",
+      "排序",
+      "第二大值"
+    ]
+  },
+  {
+    "id": 281,
+    "title": "省電大作戰",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "貪心",
+      "連段",
+      "模擬"
+    ]
+  },
+  {
+    "id": 282,
+    "title": "數位顯示器",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "枚舉",
+      "查表",
+      "最大值"
+    ]
+  },
+  {
+    "id": 283,
+    "title": "零用錢是否足夠",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "迴圈",
+      "條件判斷",
+      "提前結束"
+    ]
+  },
+  {
+    "id": 284,
+    "title": "機器人戰鬥力比對",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "巢狀迴圈",
+      "比較",
+      "計數"
+    ]
+  },
+  {
+    "id": 285,
+    "title": "字串內的秘密數字",
+    "stage": "Beginner",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "字串",
+      "累加",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 286,
+    "title": "最佳派對地點",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "枚舉",
+      "絕對值",
+      "最小值"
+    ]
+  },
+  {
+    "id": 287,
+    "title": "公車時刻表",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "時間換算",
+      "取餘數",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 288,
+    "title": "連續成績進步分析",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "連段",
+      "前後比較",
+      "最大值"
+    ]
+  },
+  {
+    "id": 289,
+    "title": "卡住的鍵盤",
+    "stage": "Intermediate",
+    "audienceLevel": "M-7",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "字串",
+      "連段",
+      "最大值"
+    ]
+  },
+  {
+    "id": 290,
+    "title": "外送員的接單策略",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "貪心",
+      "排序",
+      "區間排程"
+    ]
+  },
+  {
+    "id": 291,
+    "title": "小島越野賽",
+    "stage": "Advanced",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Easy",
+    "tags": [
+      "動態規劃",
+      "最短路徑",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 292,
+    "title": "基地台訊號覆蓋",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "二維清單",
+      "曼哈頓距離",
+      "巢狀迴圈"
+    ]
+  },
+  {
+    "id": 293,
+    "title": "考試獎勵",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "累加",
+      "條件判斷"
+    ]
+  },
+  {
+    "id": 294,
+    "title": "簽唱會門票",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "排序",
+      "分組",
+      "貪心"
+    ]
+  },
+  {
+    "id": 295,
+    "title": "闖關遊戲",
+    "stage": "Intermediate",
+    "audienceLevel": "M-8",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "模擬",
+      "環狀結構",
+      "取餘數"
+    ]
+  },
+  {
+    "id": 296,
+    "title": "火星探測車",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "動態規劃",
+      "0/1背包"
+    ]
+  },
+  {
+    "id": 297,
+    "title": "熱浪區間",
+    "stage": "Advanced",
+    "audienceLevel": "M-HS",
+    "apcsLevel": null,
+    "difficulty": "Hard",
+    "tags": [
+      "動態規劃",
+      "最長遞增子序列",
+      "多重排序條件"
+    ]
+  },
+  {
+    "id": 298,
+    "title": "運動會",
+    "stage": "Intermediate",
+    "audienceLevel": "E-UPPER",
+    "apcsLevel": null,
+    "difficulty": "Medium",
+    "tags": [
+      "前綴和",
+      "最小值",
+      "枚舉"
+    ]
   }
 ]

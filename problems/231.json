@@ -1,0 +1,108 @@
+{
+  "id": 231,
+  "title": "三角形",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "條件判斷",
+    "邏輯運算"
+  ],
+  "learningObjectives": [
+    "用三個不等式判斷能否組成三角形",
+    "以 and 組合多個條件"
+  ],
+  "prerequisites": [
+    "條件判斷",
+    "and 運算"
+  ],
+  "description": "<p class='problem-lead'>判斷三個邊長能否組成一個三角形。</p><p>三角形任意兩邊的和必定大於第三邊。輸入三個正整數邊長，能組成三角形輸出 <code>yes</code>，否則輸出 <code>no</code>。兩邊和剛好等於第三邊時不能組成三角形。</p>",
+  "inputFormat": "<p>第一行固定為 3。第二行有三個以空白分隔的正整數，代表三個邊長。</p>",
+  "outputFormat": "<p>輸出 <code>yes</code> 或 <code>no</code>（皆為小寫）。</p>",
+  "constraints": "<ul><li>1 ≤ 邊長 ≤ 1000</li></ul>",
+  "hint": "<p>三組「兩邊和 &gt; 第三邊」必須同時成立。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n9 6 8",
+      "output": "yes"
+    },
+    {
+      "input": "3\n1 2 3",
+      "output": "no"
+    },
+    {
+      "input": "3\n1 1 1",
+      "output": "yes"
+    }
+  ],
+  "sampleInput": "3\n9 6 8",
+  "sampleOutput": "yes",
+  "testCases": [
+    {
+      "input": "3\n9 6 8",
+      "output": "yes"
+    },
+    {
+      "input": "3\n1 2 3",
+      "output": "no"
+    },
+    {
+      "input": "3\n1 1 1",
+      "output": "yes"
+    },
+    {
+      "input": "3\n1 1 2",
+      "output": "no"
+    },
+    {
+      "input": "3\n2 2 3",
+      "output": "yes"
+    },
+    {
+      "input": "3\n3 1 2",
+      "output": "no"
+    },
+    {
+      "input": "3\n2 3 1",
+      "output": "no"
+    },
+    {
+      "input": "3\n1000 1000 1",
+      "output": "yes"
+    },
+    {
+      "input": "3\n1 1000 1000",
+      "output": "yes"
+    },
+    {
+      "input": "3\n1000 1 1",
+      "output": "no"
+    },
+    {
+      "input": "3\n5 12 13",
+      "output": "yes"
+    },
+    {
+      "input": "3\n10 4 5",
+      "output": "no"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "19"
+    ],
+    "sourceTitle": "三角形 (Triangle)",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=19"
+    ],
+    "categories": [
+      "114/114年台南市國小"
+    ],
+    "adaptation": "保留原題第一行固定為 3 的輸入格式，明定兩邊和等於第三邊時輸出 no。"
+  }
+}

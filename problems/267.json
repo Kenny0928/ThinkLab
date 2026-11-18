@@ -1,0 +1,113 @@
+{
+  "id": 267,
+  "title": "猜數字小幫手",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "二分搜尋",
+    "模擬",
+    "while 迴圈"
+  ],
+  "learningObjectives": [
+    "模擬二分搜尋縮小範圍的過程",
+    "記錄每次猜測並計算次數"
+  ],
+  "prerequisites": [
+    "while 迴圈",
+    "整數除法",
+    "清單"
+  ],
+  "description": "<p class='problem-lead'>模擬用二分法猜 1～100 之間的數字，輸出每次猜的數與總次數。</p><p>一開始範圍是 L = 1、R = 100。每次猜 mid = (L + R) ÷ 2（無條件捨去）。若 mid 小於答案 X，令 L = mid + 1；若 mid 大於 X，令 R = mid − 1；若 mid 等於 X 就停止。</p><p>請依序輸出每次猜的數字，以及總共猜了幾次。</p>",
+  "inputFormat": "<p>一行一個整數 X，代表正確答案。</p>",
+  "outputFormat": "<p>第一行依序輸出每次猜的數字，以一個空白分隔；第二行輸出總猜測次數。</p>",
+  "constraints": "<ul><li>1 ≤ X ≤ 100</li></ul>",
+  "hint": "<p>用 while True 重複猜，猜中時 break。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "75",
+      "output": "50 75\n2"
+    },
+    {
+      "input": "10",
+      "output": "50 25 12 6 9 10\n6"
+    },
+    {
+      "input": "50",
+      "output": "50\n1"
+    }
+  ],
+  "sampleInput": "75",
+  "sampleOutput": "50 75\n2",
+  "testCases": [
+    {
+      "input": "75",
+      "output": "50 75\n2"
+    },
+    {
+      "input": "10",
+      "output": "50 25 12 6 9 10\n6"
+    },
+    {
+      "input": "50",
+      "output": "50\n1"
+    },
+    {
+      "input": "1",
+      "output": "50 25 12 6 3 1\n6"
+    },
+    {
+      "input": "100",
+      "output": "50 75 88 94 97 99 100\n7"
+    },
+    {
+      "input": "25",
+      "output": "50 25\n2"
+    },
+    {
+      "input": "99",
+      "output": "50 75 88 94 97 99\n6"
+    },
+    {
+      "input": "51",
+      "output": "50 75 62 56 53 51\n6"
+    },
+    {
+      "input": "49",
+      "output": "50 25 37 43 46 48 49\n7"
+    },
+    {
+      "input": "2",
+      "output": "50 25 12 6 3 1 2\n7"
+    },
+    {
+      "input": "63",
+      "output": "50 75 62 68 65 63\n6"
+    },
+    {
+      "input": "37",
+      "output": "50 25 37\n3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "60",
+      "67"
+    ],
+    "sourceTitle": "猜數字小幫手",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=60",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=67"
+    ],
+    "categories": [
+      "114/114年金門縣國中",
+      "114/114年金門縣國小"
+    ],
+    "adaptation": "合併國中版（輸出猜測過程與次數）與國小版（只輸出次數），採國中版並把猜測過程與次數分成兩行。"
+  }
+}

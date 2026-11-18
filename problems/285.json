@@ -1,0 +1,101 @@
+{
+  "id": 285,
+  "title": "字串內的秘密數字",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "字串",
+    "累加",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "逐字檢查字串中的字元",
+    "判斷字元是否為數字並轉成整數相加"
+  ],
+  "prerequisites": [
+    "字串走訪",
+    "isdigit 或比較字元"
+  ],
+  "description": "<p class='problem-lead'>把字串中所有數字字元當作個位數加總。</p><p>輸入一個包含英文字母、數字與符號的字串。請把其中每個數字字元（0～9）視為個位數相加（例如 <code>12</code> 代表 1 加 2），忽略其他字元，輸出總和。沒有數字時輸出 0。</p>",
+  "inputFormat": "<p>一行一個不含空白的字串。</p>",
+  "outputFormat": "<p>輸出一個整數，代表數字的總和。</p>",
+  "constraints": "<ul><li>1 ≤ 字串長度 ≤ 100</li></ul>",
+  "hint": "<p>字元 c 是數字時，int(c) 可以把它變成整數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "A1B2C3",
+      "output": "6"
+    },
+    {
+      "input": "Key5Word2",
+      "output": "7"
+    },
+    {
+      "input": "Agent007",
+      "output": "7"
+    }
+  ],
+  "sampleInput": "A1B2C3",
+  "sampleOutput": "6",
+  "testCases": [
+    {
+      "input": "A1B2C3",
+      "output": "6"
+    },
+    {
+      "input": "Key5Word2",
+      "output": "7"
+    },
+    {
+      "input": "Agent007",
+      "output": "7"
+    },
+    {
+      "input": "12345",
+      "output": "15"
+    },
+    {
+      "input": "abc",
+      "output": "0"
+    },
+    {
+      "input": "0",
+      "output": "0"
+    },
+    {
+      "input": "9999999999",
+      "output": "90"
+    },
+    {
+      "input": "a!b@c#9",
+      "output": "9"
+    },
+    {
+      "input": "X0Y0Z0",
+      "output": "0"
+    },
+    {
+      "input": "1a2b3c4d5e6f7g8h9i",
+      "output": "45"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "84"
+    ],
+    "sourceTitle": "字串內的秘密數字",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=84"
+    ],
+    "categories": [
+      "114/114年花蓮縣國小"
+    ],
+    "adaptation": "把「讓角色說出」改為標準輸出，補上沒有數字與含符號的測資。"
+  }
+}

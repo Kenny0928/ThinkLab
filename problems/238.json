@@ -1,0 +1,105 @@
+{
+  "id": 238,
+  "title": "鋼琴小天才計分挑戰",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "最大值",
+    "最小值",
+    "小數"
+  ],
+  "learningObjectives": [
+    "去掉一個最高分與一個最低分後加總",
+    "依結果是否為整數決定輸出格式"
+  ],
+  "prerequisites": [
+    "清單",
+    "max/min",
+    "浮點數"
+  ],
+  "description": "<p class='problem-lead'>去掉最高與最低分後，計算鋼琴比賽選手的總成績。</p><p>7 位評審各給一個 1～10 分的分數，分數是 0.5 的倍數（例如 8、9.5）。計算總成績時，扣除一個最高分與一個最低分，剩下 5 個分數的總和就是總成績。</p><p>若總成績是整數，輸出整數（例如 <code>41</code>）；否則輸出到小數點後一位（例如 <code>22.5</code>）。</p>",
+  "inputFormat": "<p>一行 7 個以空白分隔的分數，整數分數不含小數點。</p>",
+  "outputFormat": "<p>輸出選手的總成績。</p>",
+  "constraints": "<ul><li>1 ≤ 分數 ≤ 10</li><li>分數皆為 0.5 的倍數</li></ul>",
+  "hint": "<p>總和減掉最大值與最小值即可；0.5 的倍數相加不會產生浮點誤差。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "8 9 7 9 8 10 7",
+      "output": "41"
+    },
+    {
+      "input": "1.5 2.5 3.5 4.5 5.5 6.5 7.5",
+      "output": "22.5"
+    },
+    {
+      "input": "1 1 1 1 1 1 1",
+      "output": "5"
+    }
+  ],
+  "sampleInput": "8 9 7 9 8 10 7",
+  "sampleOutput": "41",
+  "testCases": [
+    {
+      "input": "8 9 7 9 8 10 7",
+      "output": "41"
+    },
+    {
+      "input": "1.5 2.5 3.5 4.5 5.5 6.5 7.5",
+      "output": "22.5"
+    },
+    {
+      "input": "1 1 1 1 1 1 1",
+      "output": "5"
+    },
+    {
+      "input": "10 10 10 10 10 10 10",
+      "output": "50"
+    },
+    {
+      "input": "1 10 5 5 5 5 5",
+      "output": "25"
+    },
+    {
+      "input": "9.5 9.5 9 8.5 10 1 7",
+      "output": "43.5"
+    },
+    {
+      "input": "2 3 4 5 6 7 8.5",
+      "output": "25"
+    },
+    {
+      "input": "1.5 1 1 1 1 1 10",
+      "output": "5.5"
+    },
+    {
+      "input": "6 6.5 7 7.5 8 8.5 9",
+      "output": "37.5"
+    },
+    {
+      "input": "10 9.5 1 1.5 5 5 5",
+      "output": "26"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "26",
+      "38"
+    ],
+    "sourceTitle": "鋼琴音樂小才子計分挑戰／鋼琴小天才計分挑戰",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=26",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=38"
+    ],
+    "categories": [
+      "114/114年A縣市題目",
+      "114/114年新北市國小"
+    ],
+    "adaptation": "合併兩縣市的同一題；原題範例含小數分數，明定分數為 0.5 的倍數以避免浮點誤差，並明定整數與小數的輸出格式。"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "id": 258,
+  "title": "射箭比賽成績計算",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "多分支條件",
+    "前後比較"
+  ],
+  "learningObjectives": [
+    "比較每一箭與前一箭的分數決定倍率",
+    "優先處理「連續滿分」的特例"
+  ],
+  "prerequisites": [
+    "清單",
+    "迴圈",
+    "if/elif"
+  ],
+  "description": "<p class='problem-lead'>依每一箭與前一箭的比較規則，計算射箭選手的總成績。</p><p>第一箭直接採原始分數。從第二箭起，與前一箭的原始分數比較：連續兩箭皆為 10 分時，本箭成績為原始分數的 3 倍；否則若本箭低於前一箭，採原始分數；與前一箭相同，為 2 倍；高於前一箭，為 3 倍。</p><p>請輸出所有箭成績的總和。</p>",
+  "inputFormat": "<p>第一行為箭數 N。第二行有 N 個以空白分隔的整數，依序為每箭的原始分數。</p>",
+  "outputFormat": "<p>輸出一個整數，代表總成績。</p>",
+  "constraints": "<ul><li>5 ≤ N ≤ 10</li><li>0 ≤ 分數 ≤ 10</li></ul>",
+  "hint": "<p>先判斷是否連續兩次滿分，再判斷低於、相同、高於。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n7 7 9 10 10",
+      "output": "108"
+    },
+    {
+      "input": "7\n5 3 3 4 10 0 3",
+      "output": "65"
+    },
+    {
+      "input": "5\n0 0 0 0 0",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "5\n7 7 9 10 10",
+  "sampleOutput": "108",
+  "testCases": [
+    {
+      "input": "5\n7 7 9 10 10",
+      "output": "108"
+    },
+    {
+      "input": "7\n5 3 3 4 10 0 3",
+      "output": "65"
+    },
+    {
+      "input": "5\n0 0 0 0 0",
+      "output": "0"
+    },
+    {
+      "input": "5\n10 10 10 10 10",
+      "output": "130"
+    },
+    {
+      "input": "10\n10 10 10 10 10 10 10 10 10 10",
+      "output": "280"
+    },
+    {
+      "input": "5\n10 9 8 7 6",
+      "output": "40"
+    },
+    {
+      "input": "5\n1 2 3 4 5",
+      "output": "43"
+    },
+    {
+      "input": "6\n9 9 10 10 9 9",
+      "output": "114"
+    },
+    {
+      "input": "8\n0 10 0 10 0 10 10 0",
+      "output": "120"
+    },
+    {
+      "input": "5\n5 5 5 5 5",
+      "output": "45"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "51"
+    ],
+    "sourceTitle": "射箭比賽成績計算",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=51"
+    ],
+    "categories": [
+      "114/114年新竹縣國中"
+    ],
+    "adaptation": "整理規則順序，明定連續滿分優先判斷，補上全 0 分與全滿分的測資。"
+  }
+}

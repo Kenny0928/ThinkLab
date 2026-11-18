@@ -1,0 +1,105 @@
+{
+  "id": 244,
+  "title": "程式設計師阿倫",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "遞推",
+    "迴圈",
+    "數列"
+  ],
+  "learningObjectives": [
+    "用兩個變數滾動計算遞推數列",
+    "正確處理第 1、2 項的邊界"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "多重指派"
+  ],
+  "description": "<p class='problem-lead'>依「每天等於前兩天總和」的規則，求第 N 天寫的程式數量。</p><p>阿倫第 1 天寫了 A 個程式、第 2 天寫了 B 個。從第 3 天起，每天寫的數量等於前 2 天的總和。請輸出第 N 天寫了幾個程式。</p>",
+  "inputFormat": "<p>一行三個以空白分隔的整數 N、A、B。</p>",
+  "outputFormat": "<p>輸出一個整數，代表第 N 天寫的程式數量。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 40</li><li>0 ≤ A、B ≤ 100</li></ul>",
+  "hint": "<p>只需要記住最近兩天的數量，就能算出下一天。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4 1 2",
+      "output": "5"
+    },
+    {
+      "input": "1 1 1",
+      "output": "1"
+    },
+    {
+      "input": "10 1 1",
+      "output": "55"
+    }
+  ],
+  "sampleInput": "4 1 2",
+  "sampleOutput": "5",
+  "testCases": [
+    {
+      "input": "4 1 2",
+      "output": "5"
+    },
+    {
+      "input": "1 1 1",
+      "output": "1"
+    },
+    {
+      "input": "10 1 1",
+      "output": "55"
+    },
+    {
+      "input": "2 3 7",
+      "output": "7"
+    },
+    {
+      "input": "1 9 0",
+      "output": "9"
+    },
+    {
+      "input": "3 0 0",
+      "output": "0"
+    },
+    {
+      "input": "40 100 100",
+      "output": "10233415500"
+    },
+    {
+      "input": "40 1 0",
+      "output": "39088169"
+    },
+    {
+      "input": "5 0 1",
+      "output": "3"
+    },
+    {
+      "input": "6 2 5",
+      "output": "31"
+    },
+    {
+      "input": "20 3 4",
+      "output": "24476"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "32"
+    ],
+    "sourceTitle": "程式設計師阿倫",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=32"
+    ],
+    "categories": [
+      "114/114A校校內評選"
+    ],
+    "adaptation": "原題寫「輸入為 2 行」但實為一行三個整數，依範例修正；加上 N 的範圍限制。"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "id": 271,
+  "title": "貨物重量計費",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "累進計算",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "把重量拆成不同級距分段計費",
+    "處理剛好在級距邊界的重量"
+  ],
+  "prerequisites": [
+    "if/elif",
+    "四則運算"
+  ],
+  "description": "<p class='problem-lead'>依累進費率計算寄送貨物的運費。</p><p>運費採累進計算：前 10 公斤每公斤 30 元；超過 10 公斤到 30 公斤的部分每公斤 25 元；超過 30 公斤到 50 公斤的部分每公斤 20 元；超過 50 公斤的部分每公斤 15 元。例如 32 公斤的運費為 10 × 30 + 20 × 25 + 2 × 20 = 840 元。</p>",
+  "inputFormat": "<p>一行一個整數 w，代表貨物重量（公斤）。</p>",
+  "outputFormat": "<p>輸出一個整數，代表運費（元）。</p>",
+  "constraints": "<ul><li>0 ≤ w ≤ 10000</li></ul>",
+  "hint": "<p>從最高級距開始扣：超過 50 的部分先算，再把重量設為 50，依此類推。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "6",
+      "output": "180"
+    },
+    {
+      "input": "32",
+      "output": "840"
+    },
+    {
+      "input": "0",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "6",
+  "sampleOutput": "180",
+  "testCases": [
+    {
+      "input": "6",
+      "output": "180"
+    },
+    {
+      "input": "32",
+      "output": "840"
+    },
+    {
+      "input": "0",
+      "output": "0"
+    },
+    {
+      "input": "1",
+      "output": "30"
+    },
+    {
+      "input": "10",
+      "output": "300"
+    },
+    {
+      "input": "11",
+      "output": "325"
+    },
+    {
+      "input": "30",
+      "output": "800"
+    },
+    {
+      "input": "31",
+      "output": "820"
+    },
+    {
+      "input": "50",
+      "output": "1200"
+    },
+    {
+      "input": "51",
+      "output": "1215"
+    },
+    {
+      "input": "10000",
+      "output": "150450"
+    },
+    {
+      "input": "45",
+      "output": "1100"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "70"
+    ],
+    "sourceTitle": "貨物重量計費",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=70"
+    ],
+    "categories": [
+      "114/114年新竹市國中"
+    ],
+    "adaptation": "以計算範例說明累進方式，補上各級距端點與 0 公斤的測資。"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": 239,
+  "title": "幸運號碼大樂透",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "清單",
+    "計數",
+    "字串格式化"
+  ],
+  "learningObjectives": [
+    "判斷每個號碼是否在幸運號碼清單中",
+    "依對中個數查表並組合輸出字串"
+  ],
+  "prerequisites": [
+    "in 判斷",
+    "清單索引",
+    "字串組合"
+  ],
+  "description": "<p class='problem-lead'>計算樂透彩券對中的號碼個數與獎金。</p><p>本期 10 個幸運號碼是 7、24、31、42、45、56、63、78、80、99。玩家從 1～99 中挑選 5 個不同號碼，依對中個數領取獎金：</p><p>5 個 100000 元；4 個 10000 元；3 個 2000 元；2 個 500 元；1 個 200 元；0 個 0 元。</p>",
+  "inputFormat": "<p>一行 5 個以空白分隔、互不相同的整數。</p>",
+  "outputFormat": "<p>輸出 <code>猜中X個號碼，獎金Y元</code>，X、Y 為整數，全形逗號，整行沒有空白。</p>",
+  "constraints": "<ul><li>1 ≤ 號碼 ≤ 99</li><li>5 個號碼互不相同</li></ul>",
+  "hint": "<p>把獎金依對中個數 0～5 放進清單，就能直接用個數當索引。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "7 18 29 31 35",
+      "output": "猜中2個號碼，獎金500元"
+    },
+    {
+      "input": "1 2 3 4 5",
+      "output": "猜中0個號碼，獎金0元"
+    },
+    {
+      "input": "7 24 31 42 45",
+      "output": "猜中5個號碼，獎金100000元"
+    }
+  ],
+  "sampleInput": "7 18 29 31 35",
+  "sampleOutput": "猜中2個號碼，獎金500元",
+  "testCases": [
+    {
+      "input": "7 18 29 31 35",
+      "output": "猜中2個號碼，獎金500元"
+    },
+    {
+      "input": "1 2 3 4 5",
+      "output": "猜中0個號碼，獎金0元"
+    },
+    {
+      "input": "7 24 31 42 45",
+      "output": "猜中5個號碼，獎金100000元"
+    },
+    {
+      "input": "56 63 78 80 99",
+      "output": "猜中5個號碼，獎金100000元"
+    },
+    {
+      "input": "7 24 31 42 1",
+      "output": "猜中4個號碼，獎金10000元"
+    },
+    {
+      "input": "99 80 78 2 3",
+      "output": "猜中3個號碼，獎金2000元"
+    },
+    {
+      "input": "24 1 2 3 4",
+      "output": "猜中1個號碼，獎金200元"
+    },
+    {
+      "input": "6 8 23 25 98",
+      "output": "猜中0個號碼，獎金0元"
+    },
+    {
+      "input": "45 46 63 64 7",
+      "output": "猜中3個號碼，獎金2000元"
+    },
+    {
+      "input": "99 1 98 2 97",
+      "output": "猜中1個號碼，獎金200元"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "27",
+      "39"
+    ],
+    "sourceTitle": "幸運號碼大樂透",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=27",
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=39"
+    ],
+    "categories": [
+      "114/114年A縣市題目",
+      "114/114年新北市國小"
+    ],
+    "adaptation": "合併 A 縣市與新北市國小的同一題；兩站輸出格式的空白與逗號不同，統一為無空白、含全形逗號的格式。"
+  }
+}

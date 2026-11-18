@@ -1,0 +1,102 @@
+{
+  "id": 281,
+  "title": "省電大作戰",
+  "stage": "Intermediate",
+  "difficulty": "Hard",
+  "audienceLevel": "M-8",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "貪心",
+    "連段",
+    "模擬"
+  ],
+  "learningObjectives": [
+    "分析兩段使用時間之間的空檔該關機或保持開機",
+    "以 min(空檔長度, 5) 比較兩種成本"
+  ],
+  "prerequisites": [
+    "清單",
+    "迴圈",
+    "min 函式"
+  ],
+  "description": "<p class='problem-lead'>安排冷氣開關，在需要時都有冷氣的前提下，求一天最少耗電。</p><p>一天有 N 個小時，1 代表該小時小明在房間、冷氣必須開著；0 代表不在房間，可關機也可保持開機。冷氣開著的每個小時耗 1 度電；每次從關機變成開機需額外耗 5 度電；關機不耗電。一開始冷氣是關著的。</p><p>請計算在所有標示 1 的小時都開著冷氣的情況下，一整天最少耗多少度電。</p>",
+  "inputFormat": "<p>第一行為時數 N。第二行有 N 個以空白分隔的 0 或 1。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最少耗電度數。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li></ul>",
+  "hint": "<p>兩段 1 之間有 g 個 0：保持開機要多花 g 度，關掉再開要多花 5 度。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n1 1 1 1 1",
+      "output": "10"
+    },
+    {
+      "input": "8\n1 0 0 1 0 1 0 0",
+      "output": "11"
+    },
+    {
+      "input": "1\n0",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "5\n1 1 1 1 1",
+  "sampleOutput": "10",
+  "testCases": [
+    {
+      "input": "5\n1 1 1 1 1",
+      "output": "10"
+    },
+    {
+      "input": "8\n1 0 0 1 0 1 0 0",
+      "output": "11"
+    },
+    {
+      "input": "1\n0",
+      "output": "0"
+    },
+    {
+      "input": "1\n1",
+      "output": "6"
+    },
+    {
+      "input": "5\n0 0 0 0 0",
+      "output": "0"
+    },
+    {
+      "input": "7\n1 0 0 0 0 0 1",
+      "output": "12"
+    },
+    {
+      "input": "8\n1 0 0 0 0 0 0 1",
+      "output": "12"
+    },
+    {
+      "input": "9\n0 1 0 0 0 0 1 0 0",
+      "output": "11"
+    },
+    {
+      "input": "12\n1 0 1 0 0 0 0 0 0 0 1 1",
+      "output": "15"
+    },
+    {
+      "input": "6\n0 0 1 0 0 0",
+      "output": "6"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "80"
+    ],
+    "sourceTitle": "省電大作戰",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=80"
+    ],
+    "categories": [
+      "114/114年新竹市國小"
+    ],
+    "adaptation": "明定冷氣一開始為關機；oracle 以開／關兩種狀態的動態規劃驗證貪心解。"
+  }
+}

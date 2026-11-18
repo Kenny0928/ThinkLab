@@ -1,0 +1,110 @@
+{
+  "id": 276,
+  "title": "歡樂抽獎",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "枚舉",
+    "組合",
+    "取餘數"
+  ],
+  "learningObjectives": [
+    "依使用球數由少到多枚舉所有組合",
+    "以取餘數判斷 7 的倍數"
+  ],
+  "prerequisites": [
+    "巢狀迴圈",
+    "取餘數",
+    "布林旗標"
+  ],
+  "description": "<p class='problem-lead'>判斷紅球搭配白球能否湊出 7 的倍數，以及能得到的最高獎項。</p><p>每位同學有 1 顆紅球與 3 顆白球，球上各有一個 0～9 的整數。紅球一定要使用，白球可選 0～3 顆，所選球的數字總和為 7 的倍數即中獎（0 也是 7 的倍數）。</p><p>使用的白球越少獎項越好：不用白球為 <code>特獎</code>、1 顆為 <code>頭獎</code>、2 顆為 <code>二獎</code>、3 顆為 <code>三獎</code>；都無法組成則為 <code>未中獎</code>。請輸出能得到的最好獎項。</p>",
+  "inputFormat": "<p>第一行為紅球數字 R。第二行為三顆白球的數字，以空白分隔。</p>",
+  "outputFormat": "<p>輸出 <code>特獎</code>、<code>頭獎</code>、<code>二獎</code>、<code>三獎</code> 或 <code>未中獎</code>。</p>",
+  "constraints": "<ul><li>0 ≤ 每顆球的數字 ≤ 9</li></ul>",
+  "hint": "<p>1 顆白球有 3 種選法、2 顆白球也有 3 種選法，3 顆只有 1 種。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "2\n6 4 2",
+      "output": "三獎"
+    },
+    {
+      "input": "8\n3 2 5",
+      "output": "未中獎"
+    },
+    {
+      "input": "0\n1 1 1",
+      "output": "特獎"
+    }
+  ],
+  "sampleInput": "2\n6 4 2",
+  "sampleOutput": "三獎",
+  "testCases": [
+    {
+      "input": "2\n6 4 2",
+      "output": "三獎"
+    },
+    {
+      "input": "8\n3 2 5",
+      "output": "未中獎"
+    },
+    {
+      "input": "0\n1 1 1",
+      "output": "特獎"
+    },
+    {
+      "input": "7\n1 2 3",
+      "output": "特獎"
+    },
+    {
+      "input": "1\n6 1 1",
+      "output": "頭獎"
+    },
+    {
+      "input": "1\n2 2 4",
+      "output": "二獎"
+    },
+    {
+      "input": "1\n9 1 1",
+      "output": "未中獎"
+    },
+    {
+      "input": "3\n1 1 2",
+      "output": "三獎"
+    },
+    {
+      "input": "9\n9 9 9",
+      "output": "未中獎"
+    },
+    {
+      "input": "5\n1 1 1",
+      "output": "二獎"
+    },
+    {
+      "input": "4\n2 2 2",
+      "output": "未中獎"
+    },
+    {
+      "input": "6\n0 0 0",
+      "output": "未中獎"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "75"
+    ],
+    "sourceTitle": "歡樂抽獎",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=75"
+    ],
+    "categories": [
+      "114/114年新竹市國中"
+    ],
+    "adaptation": "明定 0 為 7 的倍數，補上各種獎項與數字 0 的測資。"
+  }
+}

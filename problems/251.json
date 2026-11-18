@@ -1,0 +1,106 @@
+{
+  "id": 251,
+  "title": "王牌教練",
+  "stage": "Intermediate",
+  "difficulty": "Hard",
+  "audienceLevel": "M-8",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "枚舉",
+    "排列",
+    "最小值"
+  ],
+  "learningObjectives": [
+    "枚舉所有選人與棒次的排列",
+    "依題意計算每種排列的總時間並取最小值"
+  ],
+  "prerequisites": [
+    "巢狀迴圈",
+    "清單",
+    "itertools.permutations（選用）"
+  ],
+  "description": "<p class='problem-lead'>從 4 或 5 名選手中安排接力棒次，使總時間最短。</p><p>接力賽需 4 名選手上場。每位選手有跑完全程的時間 r 與接棒動作時間 b（秒）。若有 5 名選手，其中 1 人當替補不上場。</p><p>總時間 = 上場 4 人的 r 總和 + 3 次接棒時間。第 1→2、2→3、3→4 棒各接棒一次，每次接棒時間為這兩位選手 b 值中較大者。請選出上場的人並安排棒次，輸出最短總時間。</p>",
+  "inputFormat": "<p>第一行為選手人數 N。第二行有 2N 個正整數，每兩個一組為一位選手的 r 與 b。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最短總時間。</p>",
+  "constraints": "<ul><li>4 ≤ N ≤ 5</li><li>1 ≤ r ≤ 100</li><li>1 ≤ b ≤ 100</li></ul>",
+  "hint": "<p>5 人選 4 人再排順序也只有 120 種，可以全部試一次。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n10 1 10 1 10 1 10 1",
+      "output": "43"
+    },
+    {
+      "input": "4\n13 1 9 4 12 2 11 3",
+      "output": "54"
+    },
+    {
+      "input": "5\n12 3 15 4 13 2 11 6 11 1",
+      "output": "58"
+    }
+  ],
+  "sampleInput": "4\n10 1 10 1 10 1 10 1",
+  "sampleOutput": "43",
+  "testCases": [
+    {
+      "input": "4\n10 1 10 1 10 1 10 1",
+      "output": "43"
+    },
+    {
+      "input": "4\n13 1 9 4 12 2 11 3",
+      "output": "54"
+    },
+    {
+      "input": "5\n12 3 15 4 13 2 11 6 11 1",
+      "output": "58"
+    },
+    {
+      "input": "4\n1 1 1 1 1 1 1 1",
+      "output": "7"
+    },
+    {
+      "input": "4\n100 100 100 100 100 100 100 100",
+      "output": "700"
+    },
+    {
+      "input": "4\n10 9 10 1 10 1 10 9",
+      "output": "59"
+    },
+    {
+      "input": "5\n10 1 10 1 10 1 10 1 1 100",
+      "output": "43"
+    },
+    {
+      "input": "5\n50 1 10 1 10 1 10 1 10 1",
+      "output": "43"
+    },
+    {
+      "input": "4\n5 10 6 1 7 2 8 3",
+      "output": "41"
+    },
+    {
+      "input": "5\n20 5 20 4 20 3 20 2 20 1",
+      "output": "89"
+    },
+    {
+      "input": "5\n1 1 2 2 3 3 4 4 100 1",
+      "output": "19"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "44"
+    ],
+    "sourceTitle": "王牌教練",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=44"
+    ],
+    "categories": [
+      "114/114年新北市國中"
+    ],
+    "adaptation": "整理題意與輸入格式，補上替補選手明顯較快或較慢的測資。"
+  }
+}

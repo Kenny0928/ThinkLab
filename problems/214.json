@@ -1,0 +1,114 @@
+{
+  "id": 214,
+  "title": "臨時屋",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "迴圈",
+    "累加",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "依序累加容量直到足以容納所有人",
+    "在人數為 0 或容量不足時正確停止"
+  ],
+  "prerequisites": [
+    "變數",
+    "迴圈",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>計算防災演習中依序開放了幾間臨時屋。</p><p>收容所有 N 間臨時屋，依編號順序開放：前一間住滿後才開放下一間。給定需要安置的人數與每間臨時屋的容量，請輸出開放了幾間。</p><p>若人數為 0，不需要開放任何一間；若所有臨時屋都開放仍不足以容納全部人數，則全部 N 間都算已開放。</p>",
+  "inputFormat": "<p>第一行為需要安置的人數 P。第二行為臨時屋數量 N。第三行有 N 個以空白分隔的正整數，依序為每間臨時屋的容量。</p>",
+  "outputFormat": "<p>輸出一個整數，代表開放的臨時屋數量。</p>",
+  "constraints": "<ul><li>0 ≤ P ≤ 1000</li><li>1 ≤ N ≤ 12</li><li>1 ≤ 每間容量 ≤ 100</li></ul>",
+  "hint": "<p>用一個變數記錄目前已開放的總容量，還不夠時再開放下一間。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "50\n4\n30 20 15 55",
+      "output": "2"
+    },
+    {
+      "input": "9\n3\n10 5 15",
+      "output": "1"
+    },
+    {
+      "input": "0\n2\n30 20",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "50\n4\n30 20 15 55",
+  "sampleOutput": "2",
+  "testCases": [
+    {
+      "input": "50\n4\n30 20 15 55",
+      "output": "2"
+    },
+    {
+      "input": "9\n3\n10 5 15",
+      "output": "1"
+    },
+    {
+      "input": "0\n2\n30 20",
+      "output": "0"
+    },
+    {
+      "input": "37\n2\n10 20",
+      "output": "2"
+    },
+    {
+      "input": "30\n3\n30 10 10",
+      "output": "1"
+    },
+    {
+      "input": "31\n3\n30 10 10",
+      "output": "2"
+    },
+    {
+      "input": "1\n1\n1",
+      "output": "1"
+    },
+    {
+      "input": "0\n1\n5",
+      "output": "0"
+    },
+    {
+      "input": "1000\n12\n100 100 100 100 100 100 100 100 100 100 100 100",
+      "output": "10"
+    },
+    {
+      "input": "1000\n12\n50 50 50 50 50 50 50 50 50 50 50 50",
+      "output": "12"
+    },
+    {
+      "input": "100\n5\n1 1 1 1 96",
+      "output": "5"
+    },
+    {
+      "input": "99\n5\n1 1 1 1 96",
+      "output": "5"
+    },
+    {
+      "input": "60\n3\n20 20 20",
+      "output": "3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "1"
+    ],
+    "sourceTitle": "臨時屋",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=1"
+    ],
+    "categories": [
+      "114/練習題"
+    ],
+    "adaptation": "補上原題省略的輸入格式，明定人數為 0 與容量不足時的輸出。"
+  }
+}

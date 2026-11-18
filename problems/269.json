@@ -1,0 +1,102 @@
+{
+  "id": 269,
+  "title": "金門坑道參觀系統",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "狀態機",
+    "模擬",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "用變數記錄目前狀態並依指令轉換",
+    "在結束狀態後忽略之後的指令"
+  ],
+  "prerequisites": [
+    "字串比較",
+    "if/elif",
+    "break"
+  ],
+  "description": "<p class='problem-lead'>依指令模擬坑道參觀系統的狀態轉換，輸出最終狀態與開放次數。</p><p>系統有四種狀態：<code>IDLE</code>（未開放，起始狀態）、<code>OPEN</code>（參觀中）、<code>PAUSED</code>（暫停）、<code>END</code>（已結束）。指令有 S（開始）、P（暫停）、R（恢復）、E（結束）。</p><p>IDLE 收到 S 轉為 OPEN，並記一次開放參觀；OPEN 收到 P 轉為 PAUSED，收到 E 轉為 END；PAUSED 收到 R 轉為 OPEN，收到 E 轉為 END。其他情況狀態不變。進入 END 後，後續指令都不處理。</p>",
+  "inputFormat": "<p>第一行為指令數 N。第二行有 N 個以空白分隔的大寫字母（S、P、R、E）。</p>",
+  "outputFormat": "<p>輸出最終狀態與開放次數，以一個空白分隔，例如 <code>END 1</code>。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li></ul>",
+  "hint": "<p>IDLE 狀態下收到 E 不會結束，因為規則只允許 OPEN 或 PAUSED 收到 E 時結束。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\nS P R P E",
+      "output": "END 1"
+    },
+    {
+      "input": "6\nP S S P R E",
+      "output": "END 1"
+    },
+    {
+      "input": "1\nE",
+      "output": "IDLE 0"
+    }
+  ],
+  "sampleInput": "5\nS P R P E",
+  "sampleOutput": "END 1",
+  "testCases": [
+    {
+      "input": "5\nS P R P E",
+      "output": "END 1"
+    },
+    {
+      "input": "6\nP S S P R E",
+      "output": "END 1"
+    },
+    {
+      "input": "1\nE",
+      "output": "IDLE 0"
+    },
+    {
+      "input": "1\nS",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "2\nS P",
+      "output": "PAUSED 1"
+    },
+    {
+      "input": "3\nS P R",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "3\nE S E",
+      "output": "END 1"
+    },
+    {
+      "input": "4\nS E S P",
+      "output": "END 1"
+    },
+    {
+      "input": "5\nR P E R S",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "6\nS P P R R P",
+      "output": "PAUSED 1"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "62"
+    ],
+    "sourceTitle": "金門坑道參觀系統",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=62"
+    ],
+    "categories": [
+      "114/114年金門縣國中"
+    ],
+    "adaptation": "整理狀態轉換規則，補上 IDLE 收到 E、結束後仍有指令等測資。"
+  }
+}

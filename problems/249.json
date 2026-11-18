@@ -1,0 +1,105 @@
+{
+  "id": 249,
+  "title": "小隊長的奇數號碼",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "迴圈",
+    "累加",
+    "取餘數"
+  ],
+  "learningObjectives": [
+    "在指定範圍內篩選奇數並累加",
+    "正確包含範圍的兩個端點"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "取餘數"
+  ],
+  "description": "<p class='problem-lead'>計算兩個號碼之間（含兩端）所有奇數的總和。</p><p>老師給小隊長一個起始號碼 A 與結束號碼 B（A ≤ B）。請找出 A 到 B 之間（包含 A 與 B）所有奇數，輸出它們的總和；若沒有奇數則輸出 0。</p>",
+  "inputFormat": "<p>第一行為起始號碼 A，第二行為結束號碼 B。</p>",
+  "outputFormat": "<p>輸出一個整數，代表奇數的總和。</p>",
+  "constraints": "<ul><li>1 ≤ A ≤ B ≤ 10000</li></ul>",
+  "hint": "<p>除以 2 的餘數為 1 的數就是奇數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "10\n20",
+      "output": "75"
+    },
+    {
+      "input": "31\n39",
+      "output": "175"
+    },
+    {
+      "input": "1\n1",
+      "output": "1"
+    }
+  ],
+  "sampleInput": "10\n20",
+  "sampleOutput": "75",
+  "testCases": [
+    {
+      "input": "10\n20",
+      "output": "75"
+    },
+    {
+      "input": "31\n39",
+      "output": "175"
+    },
+    {
+      "input": "1\n1",
+      "output": "1"
+    },
+    {
+      "input": "2\n2",
+      "output": "0"
+    },
+    {
+      "input": "1\n2",
+      "output": "1"
+    },
+    {
+      "input": "2\n3",
+      "output": "3"
+    },
+    {
+      "input": "1\n10000",
+      "output": "25000000"
+    },
+    {
+      "input": "9999\n10000",
+      "output": "9999"
+    },
+    {
+      "input": "10000\n10000",
+      "output": "0"
+    },
+    {
+      "input": "4\n8",
+      "output": "12"
+    },
+    {
+      "input": "7\n7",
+      "output": "7"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "40"
+    ],
+    "sourceTitle": "小隊長的奇數號碼",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=40"
+    ],
+    "categories": [
+      "114/114年新北市國小"
+    ],
+    "adaptation": "明定範圍包含兩端點，補上端點為偶數與只有單一號碼的測資。"
+  }
+}

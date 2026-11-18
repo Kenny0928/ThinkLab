@@ -1,0 +1,106 @@
+{
+  "id": 290,
+  "title": "外送員的接單策略",
+  "stage": "Advanced",
+  "difficulty": "Medium",
+  "audienceLevel": "M-HS",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "貪心",
+    "排序",
+    "區間排程"
+  ],
+  "learningObjectives": [
+    "理解「優先選最早結束的訂單」為何能使數量最多",
+    "依結束時間排序後做區間選擇"
+  ],
+  "prerequisites": [
+    "sort 與 key",
+    "tuple",
+    "迴圈"
+  ],
+  "description": "<p class='problem-lead'>在時間不衝突的情況下，求外送員最多能接幾張訂單。</p><p>共有 N 張訂單，每張有開始時間與結束時間。外送員同一時間只能執行一張訂單；若一張的結束時間剛好等於另一張的開始時間，可以銜接，不算衝突。</p><p>請輸出最多能接下的訂單數量（目標是張數最多，不是總時長最長）。輸入的訂單沒有排序。</p>",
+  "inputFormat": "<p>第一行為訂單數 N。第二行有 2N 個以空白分隔的整數，每兩個一組為一張訂單的開始與結束時間。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最多可接的訂單數。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 50</li><li>0 ≤ 開始時間 ≤ 結束時間 ≤ 100</li></ul>",
+  "hint": "<p>每次都選「結束時間最早、且不與已選訂單衝突」的訂單。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n1 3 2 4 3 5 5 7",
+      "output": "3"
+    },
+    {
+      "input": "3\n1 10 10 20 20 30",
+      "output": "3"
+    },
+    {
+      "input": "3\n1 10 2 3 4 5",
+      "output": "2"
+    }
+  ],
+  "sampleInput": "4\n1 3 2 4 3 5 5 7",
+  "sampleOutput": "3",
+  "testCases": [
+    {
+      "input": "4\n1 3 2 4 3 5 5 7",
+      "output": "3"
+    },
+    {
+      "input": "3\n1 10 10 20 20 30",
+      "output": "3"
+    },
+    {
+      "input": "3\n1 10 2 3 4 5",
+      "output": "2"
+    },
+    {
+      "input": "3\n20 30 0 10 10 20",
+      "output": "3"
+    },
+    {
+      "input": "1\n0 0",
+      "output": "1"
+    },
+    {
+      "input": "1\n0 100",
+      "output": "1"
+    },
+    {
+      "input": "3\n3 3 1 3 3 5",
+      "output": "3"
+    },
+    {
+      "input": "4\n0 10 1 2 2 3 3 4",
+      "output": "3"
+    },
+    {
+      "input": "5\n1 4 3 5 0 6 5 7 8 9",
+      "output": "3"
+    },
+    {
+      "input": "4\n5 6 5 6 5 6 5 6",
+      "output": "1"
+    },
+    {
+      "input": "6\n0 2 1 3 2 4 3 5 4 6 5 7",
+      "output": "3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "89"
+    ],
+    "sourceTitle": "外送員的接單策略",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=89"
+    ],
+    "categories": [
+      "114/114年花蓮縣國中"
+    ],
+    "adaptation": "依原站資料採單行輸入所有時間；oracle 以枚舉所有子集驗證貪心解，並涵蓋開始等於結束的零長度訂單。"
+  }
+}

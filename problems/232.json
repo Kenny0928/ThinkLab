@@ -1,0 +1,109 @@
+{
+  "id": 232,
+  "title": "刮刮樂",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "字串",
+    "計數",
+    "多分支條件"
+  ],
+  "learningObjectives": [
+    "逐字檢查字串並計數指定字元",
+    "依計數結果對應獎金"
+  ],
+  "prerequisites": [
+    "字串走訪",
+    "條件判斷"
+  ],
+  "description": "<p class='problem-lead'>依刮刮樂上 6 的個數計算獎金。</p><p>刮刮樂上有三個 0～9 的數字。出現一個 6 得 100 元，兩個 6 得 200 元，三個 6 得 500 元，沒有 6 得 0 元。請輸出可以得到的獎金。</p>",
+  "inputFormat": "<p>一行三個連續的數字字元，例如 <code>266</code>。</p>",
+  "outputFormat": "<p>輸出一個整數，代表獎金。</p>",
+  "constraints": "<ul><li>每個字元皆為 0～9</li></ul>",
+  "hint": "<p>先數出有幾個 6，再決定獎金。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "666",
+      "output": "500"
+    },
+    {
+      "input": "600",
+      "output": "100"
+    },
+    {
+      "input": "266",
+      "output": "200"
+    }
+  ],
+  "sampleInput": "666",
+  "sampleOutput": "500",
+  "testCases": [
+    {
+      "input": "666",
+      "output": "500"
+    },
+    {
+      "input": "600",
+      "output": "100"
+    },
+    {
+      "input": "266",
+      "output": "200"
+    },
+    {
+      "input": "123",
+      "output": "0"
+    },
+    {
+      "input": "000",
+      "output": "0"
+    },
+    {
+      "input": "006",
+      "output": "100"
+    },
+    {
+      "input": "060",
+      "output": "100"
+    },
+    {
+      "input": "660",
+      "output": "200"
+    },
+    {
+      "input": "606",
+      "output": "200"
+    },
+    {
+      "input": "999",
+      "output": "0"
+    },
+    {
+      "input": "616",
+      "output": "200"
+    },
+    {
+      "input": "565",
+      "output": "100"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "20"
+    ],
+    "sourceTitle": "刮刮樂 (Scratch Card)",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=20"
+    ],
+    "categories": [
+      "114/114年台南市國小"
+    ],
+    "adaptation": "整理輸入格式，補上 6 出現在不同位置的測資。"
+  }
+}

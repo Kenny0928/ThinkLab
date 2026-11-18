@@ -1,0 +1,105 @@
+{
+  "id": 230,
+  "title": "偶數和",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "迴圈",
+    "累加",
+    "取餘數"
+  ],
+  "learningObjectives": [
+    "用計數迴圈走訪一段整數範圍",
+    "以除以 2 的餘數判斷偶數"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "取餘數"
+  ],
+  "description": "<p class='problem-lead'>計算兩個正整數之間（含兩端）所有偶數的和。</p><p>輸入兩個由小到大的正整數 A 與 B，請計算 A 到 B 之間所有偶數的總和，A 與 B 本身若是偶數也要算進去。</p>",
+  "inputFormat": "<p>第一行為 A，第二行為 B。</p>",
+  "outputFormat": "<p>輸出一個整數，代表偶數的總和。</p>",
+  "constraints": "<ul><li>1 ≤ A ≤ B ≤ 10000</li></ul>",
+  "hint": "<p>一個數除以 2 的餘數為 0 時就是偶數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "10\n20",
+      "output": "90"
+    },
+    {
+      "input": "31\n39",
+      "output": "140"
+    },
+    {
+      "input": "1\n1",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "10\n20",
+  "sampleOutput": "90",
+  "testCases": [
+    {
+      "input": "10\n20",
+      "output": "90"
+    },
+    {
+      "input": "31\n39",
+      "output": "140"
+    },
+    {
+      "input": "1\n1",
+      "output": "0"
+    },
+    {
+      "input": "2\n2",
+      "output": "2"
+    },
+    {
+      "input": "1\n2",
+      "output": "2"
+    },
+    {
+      "input": "3\n3",
+      "output": "0"
+    },
+    {
+      "input": "1\n10000",
+      "output": "25005000"
+    },
+    {
+      "input": "9999\n10000",
+      "output": "10000"
+    },
+    {
+      "input": "5\n6",
+      "output": "6"
+    },
+    {
+      "input": "7\n9",
+      "output": "8"
+    },
+    {
+      "input": "100\n101",
+      "output": "100"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "18"
+    ],
+    "sourceTitle": "偶數和 (Even Sum)",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=18"
+    ],
+    "categories": [
+      "114/114年台南市國小"
+    ],
+    "adaptation": "明定範圍包含兩端點，補上單一數字與沒有偶數的測資。"
+  }
+}

@@ -1,0 +1,1617 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "site": "bdesigner",
+    "url": "https://bdesigner.star-kids.info/blockly2/index.php",
+    "year": 114,
+    "archive": "selenium/output/normalized（bDesigner 102 題）"
+  },
+  "imports": [
+    {
+      "pyjudgeId": 214,
+      "title": "臨時屋",
+      "sourceIds": [
+        "1"
+      ],
+      "sourceTitles": [
+        "臨時屋"
+      ],
+      "categories": [
+        "114/練習題"
+      ],
+      "sourceContentHash": {
+        "1": "6c4db21d66906ce5fc6c4bbbdabd8800248aa3b289eb8e25d5d3a64160a37519"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上原題省略的輸入格式，明定人數為 0 與容量不足時的輸出。"
+    },
+    {
+      "pyjudgeId": 215,
+      "title": "超商收銀結帳",
+      "sourceIds": [
+        "2"
+      ],
+      "sourceTitles": [
+        "超商收銀結帳"
+      ],
+      "categories": [
+        "114/練習題"
+      ],
+      "sourceContentHash": {
+        "2": "a09a160bd544d93dd68108853bcd76232b49a2293c13eda52c82bab7d7ef507d"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理原題輸入輸出格式，補足剛好付清、單件商品與極大值測資。"
+    },
+    {
+      "pyjudgeId": 216,
+      "title": "電影院找座位",
+      "sourceIds": [
+        "3"
+      ],
+      "sourceTitles": [
+        "電影院找座位"
+      ],
+      "categories": [
+        "114/練習題"
+      ],
+      "sourceContentHash": {
+        "3": "58d018fd9d4cbfaae2d6f29a2b26ccbd24e14f7b0961e6d4eb11c6e6a376cf1f"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上原題省略的輸入格式，並說明長度不足的空位段不計。"
+    },
+    {
+      "pyjudgeId": 217,
+      "title": "大富翁",
+      "sourceIds": [
+        "4"
+      ],
+      "sourceTitles": [
+        "大富翁"
+      ],
+      "categories": [
+        "114/練習題"
+      ],
+      "sourceContentHash": {
+        "4": "7c397be03f8b66adc961e69ba6538a31f1b4770acd2c576f984c03293ddfcf72"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理原題格式，補足單格棋盤、繞多圈與扣到 0 的測資。"
+    },
+    {
+      "pyjudgeId": 218,
+      "title": "可口便當",
+      "sourceIds": [
+        "5",
+        "63"
+      ],
+      "sourceTitles": [
+        "可口便當",
+        "金門粥糜採購任務"
+      ],
+      "categories": [
+        "114/師大題目",
+        "114/114年金門縣國中"
+      ],
+      "sourceContentHash": {
+        "5": "1ff56923d7d32234c89f035a3f6c1293c4a522d67e9e3dce6a6aed970b391533",
+        "63": "91d33dddb7d48e19c68c47af7e135c8fe59c37794b39fb448bb83ed112f71440"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上原題省略的輸入格式，明定順序清單可包含未點的套餐；金門縣國中「金門粥糜採購任務」規則與範例相同，併入本題。"
+    },
+    {
+      "pyjudgeId": 219,
+      "title": "短片欣賞",
+      "sourceIds": [
+        "6"
+      ],
+      "sourceTitles": [
+        "短片欣賞"
+      ],
+      "categories": [
+        "114/師大題目"
+      ],
+      "sourceContentHash": {
+        "6": "8fe2bcee82a1a0a2bea44e4c8d157a513ce6e976bc8d9a24256e2c697bc6f288"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題以圖片說明範例，改以文字敘述；補上輸入格式與 K ≤ N 的限制。"
+    },
+    {
+      "pyjudgeId": 220,
+      "title": "傳球遊戲",
+      "sourceIds": [
+        "8"
+      ],
+      "sourceTitles": [
+        "傳球遊戲"
+      ],
+      "categories": [
+        "114/練習題"
+      ],
+      "sourceContentHash": {
+        "8": "48d7682b343c9506a2087dc361d5ba392a4494e33faf7aff9c8218fb55f150f9"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "把原題「隔 K 個人」改寫為「往前 K 人」以免歧義，並補上 K 為 N 倍數的邊界。"
+    },
+    {
+      "pyjudgeId": 221,
+      "title": "找零錢計算",
+      "sourceIds": [
+        "9"
+      ],
+      "sourceTitles": [
+        "找零錢計算"
+      ],
+      "categories": [
+        "114/練習題"
+      ],
+      "sourceContentHash": {
+        "9": "20fa81539a83bd4012a6492047af221d909536248e59b7ff45a0bcd6d1d516cc"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定付款不小於購物金額；以暴力枚舉 oracle 確認由大到小找零在此面額下即為最少枚數。"
+    },
+    {
+      "pyjudgeId": 222,
+      "title": "班服投票",
+      "sourceIds": [
+        "10"
+      ],
+      "sourceTitles": [
+        "班服投票"
+      ],
+      "categories": [
+        "114/114桃園市國小"
+      ],
+      "sourceContentHash": {
+        "10": "b280ae623915431a38efea3b0a5e496a898194ff457b9acba740a02d1d129716"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理原題格式，補上單張選票、兩款並列與零票款式的測資。"
+    },
+    {
+      "pyjudgeId": 223,
+      "title": "棒球場的座位",
+      "sourceIds": [
+        "11"
+      ],
+      "sourceTitles": [
+        "棒球場的座位"
+      ],
+      "categories": [
+        "114/114桃園市國小"
+      ],
+      "sourceContentHash": {
+        "11": "715528c1672f4bc013813e6114249efd8df1e658c49aa608b16c34f520833f9c"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理輸入輸出格式，補上每區第一席、最後一席與排的邊界測資。"
+    },
+    {
+      "pyjudgeId": 224,
+      "title": "挑選喜歡的午餐區間",
+      "sourceIds": [
+        "12"
+      ],
+      "sourceTitles": [
+        "挑選喜歡的午餐區間"
+      ],
+      "categories": [
+        "114/114桃園市國小"
+      ],
+      "sourceContentHash": {
+        "12": "5c4943773e9937ff81a4b315d2736e70c60e3ba57c2d730727d457c4450ec46d"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "統一主角名稱，明定最愛餐點可有多種、次數為 0 時輸出第 1 天。"
+    },
+    {
+      "pyjudgeId": 225,
+      "title": "綠能任務挑戰",
+      "sourceIds": [
+        "13"
+      ],
+      "sourceTitles": [
+        "綠能任務挑戰"
+      ],
+      "categories": [
+        "114/114桃園市國小"
+      ],
+      "sourceContentHash": {
+        "13": "2b0926bb33b270215f211b10f1a5ec2826d5f3f548c34ea581ac3fb873791f34"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定最高能量以修正後的值計算，並修正原題輸出格式說明中的範例數字。"
+    },
+    {
+      "pyjudgeId": 226,
+      "title": "購買紀念品",
+      "sourceIds": [
+        "14"
+      ],
+      "sourceTitles": [
+        "購買紀念品"
+      ],
+      "categories": [
+        "114/114桃園市國中"
+      ],
+      "sourceContentHash": {
+        "14": "2b338eeedd8cf5f632cfe163575b4eed6839ba621f48f5cf40fa6a181b1324ca"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題「盡量花完」與「件數最多」語意衝突，依原站答案改為只求件數最多；oracle 以有界背包驗證貪心。"
+    },
+    {
+      "pyjudgeId": 227,
+      "title": "攻擊防禦力平衡",
+      "sourceIds": [
+        "15"
+      ],
+      "sourceTitles": [
+        "攻擊防禦力平衡"
+      ],
+      "categories": [
+        "114/114桃園市國中"
+      ],
+      "sourceContentHash": {
+        "15": "5977d8f420f07c836d482c0a2335a78bdb3c0ed5bcbba2c2744af458fa88964d"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題未定義同件數多解與初始已相等的情形，明定至少使用 1 件並以字典序最小者為答案。"
+    },
+    {
+      "pyjudgeId": 228,
+      "title": "檢查碼",
+      "sourceIds": [
+        "16"
+      ],
+      "sourceTitles": [
+        "檢查碼"
+      ],
+      "categories": [
+        "114/114桃園市國中"
+      ],
+      "sourceContentHash": {
+        "16": "a7e7a11e6caa4e9a50172eab1c367ed86b8cce78c8e7a83f85acba194340b130"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "把題目中的計算範例整理為說明，補上四種字母與各種餘數的測資。"
+    },
+    {
+      "pyjudgeId": 229,
+      "title": "校園販賣機自動補貨",
+      "sourceIds": [
+        "17"
+      ],
+      "sourceTitles": [
+        "校園販賣機自動補貨"
+      ],
+      "categories": [
+        "114/114桃園市國中"
+      ],
+      "sourceContentHash": {
+        "17": "8196688b5799a2ba788ff4580e6d3e71bfeb6c92a422bca035221fcea882dec3"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理原題格式，補上庫存 9、10 的門檻與全部補貨的測資。"
+    },
+    {
+      "pyjudgeId": 230,
+      "title": "偶數和",
+      "sourceIds": [
+        "18"
+      ],
+      "sourceTitles": [
+        "偶數和 (Even Sum)"
+      ],
+      "categories": [
+        "114/114年台南市國小"
+      ],
+      "sourceContentHash": {
+        "18": "ab942a678a75f0ee0ee2466fa0cba44c25497c333e20d17c931d7ed22a161b97"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定範圍包含兩端點，補上單一數字與沒有偶數的測資。"
+    },
+    {
+      "pyjudgeId": 231,
+      "title": "三角形",
+      "sourceIds": [
+        "19"
+      ],
+      "sourceTitles": [
+        "三角形 (Triangle)"
+      ],
+      "categories": [
+        "114/114年台南市國小"
+      ],
+      "sourceContentHash": {
+        "19": "c20a75294f3ee510f259e36d4838a0d534b9dc54371630037b47b2f8aa7cd212"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "保留原題第一行固定為 3 的輸入格式，明定兩邊和等於第三邊時輸出 no。"
+    },
+    {
+      "pyjudgeId": 232,
+      "title": "刮刮樂",
+      "sourceIds": [
+        "20"
+      ],
+      "sourceTitles": [
+        "刮刮樂 (Scratch Card)"
+      ],
+      "categories": [
+        "114/114年台南市國小"
+      ],
+      "sourceContentHash": {
+        "20": "ecb73ce5a78583fcbb93458a5374857f0ef6770237119f9154dd505dcef25b3d"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理輸入格式，補上 6 出現在不同位置的測資。"
+    },
+    {
+      "pyjudgeId": 233,
+      "title": "遊樂場",
+      "sourceIds": [
+        "21"
+      ],
+      "sourceTitles": [
+        "遊樂場 (Amusement Park)"
+      ],
+      "categories": [
+        "114/114年台南市國中"
+      ],
+      "sourceContentHash": {
+        "21": "814a8192efc629b12b75034b0db1b97ab7697d95bcf356ccaa7644282dd9f0a1"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入順序（先兒童後成人）與人數為 0 的測資。"
+    },
+    {
+      "pyjudgeId": 234,
+      "title": "歌唱比賽",
+      "sourceIds": [
+        "22"
+      ],
+      "sourceTitles": [
+        "歌唱比賽 (Singing Contest)"
+      ],
+      "categories": [
+        "114/114年台南市國中"
+      ],
+      "sourceContentHash": {
+        "22": "602972aa9936099a02a8eac589c9a3df4f7d0a3f45df9444268e4000a586699e"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題未說明平均非整數時的處理方式，明定四捨五入到整數（不會出現 .5 平手）。"
+    },
+    {
+      "pyjudgeId": 235,
+      "title": "質數和",
+      "sourceIds": [
+        "23"
+      ],
+      "sourceTitles": [
+        "質數和 (Prime Sum)"
+      ],
+      "categories": [
+        "114/114年台南市國中"
+      ],
+      "sourceContentHash": {
+        "23": "b058c9ac85301b36c4c2e4c9ff1dbbdfeb5c189757f75ef0068d4ea2a35ce3e9"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "將埃拉托賽尼篩法的說明改為質數定義，明定範圍包含兩端與 1 不是質數。"
+    },
+    {
+      "pyjudgeId": 236,
+      "title": "奇緣蛋糕特賣",
+      "sourceIds": [
+        "24"
+      ],
+      "sourceTitles": [
+        "奇緣蛋糕特賣"
+      ],
+      "categories": [
+        "114/114年A縣市題目"
+      ],
+      "sourceContentHash": {
+        "24": "f17335e0747d6d43d4954ae95ab64086ce3ffdd182a2a5a17c831fe49397d0aa"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定所有蛋糕套用同一折扣、滿 1200 元含剛好 1200 元免運，補上各區間端點測資。"
+    },
+    {
+      "pyjudgeId": 237,
+      "title": "健康小管家",
+      "sourceIds": [
+        "25",
+        "37"
+      ],
+      "sourceTitles": [
+        "健康小管家",
+        "健康小管家"
+      ],
+      "categories": [
+        "114/114年A縣市題目",
+        "114/114年新北市國小"
+      ],
+      "sourceContentHash": {
+        "25": "9673bb77520f52fccf3781216d7a6da6b6b3cf6d783d663a1007843825ca3146",
+        "37": "0bdc2f4750b75bbcaec1076eecad30d16defe79b6cf76dfacbc1b767f2c1baad"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併 A 縣市與新北市國小的同一題；明定四捨五入並以四捨五入後的值分類，測資避開浮點誤差的臨界值。"
+    },
+    {
+      "pyjudgeId": 238,
+      "title": "鋼琴小天才計分挑戰",
+      "sourceIds": [
+        "26",
+        "38"
+      ],
+      "sourceTitles": [
+        "鋼琴音樂小才子計分挑戰",
+        "鋼琴小天才計分挑戰"
+      ],
+      "categories": [
+        "114/114年A縣市題目",
+        "114/114年新北市國小"
+      ],
+      "sourceContentHash": {
+        "26": "6073c370020703aa45bc8ae14caef3a7b92bb3d0fee5df46d35a0f9ba4280655",
+        "38": "289030988274866394ccf2bcd164196633aea1da48435459a336ef0e99bc4846"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併兩縣市的同一題；原題範例含小數分數，明定分數為 0.5 的倍數以避免浮點誤差，並明定整數與小數的輸出格式。"
+    },
+    {
+      "pyjudgeId": 239,
+      "title": "幸運號碼大樂透",
+      "sourceIds": [
+        "27",
+        "39"
+      ],
+      "sourceTitles": [
+        "幸運號碼大樂透",
+        "幸運號碼大樂透"
+      ],
+      "categories": [
+        "114/114年A縣市題目",
+        "114/114年新北市國小"
+      ],
+      "sourceContentHash": {
+        "27": "d9c51ee4f34b4b79fcb9cc59e5a413ed9145b78bb38e486555890694c84bdac7",
+        "39": "3dff726b0160c1eced2cf37423c4ecdeb9c2bf939f15973850d0c1cd91de3c5f"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併 A 縣市與新北市國小的同一題；兩站輸出格式的空白與逗號不同，統一為無空白、含全形逗號的格式。"
+    },
+    {
+      "pyjudgeId": 240,
+      "title": "魔法公車車票計算",
+      "sourceIds": [
+        "28",
+        "41"
+      ],
+      "sourceTitles": [
+        "魔法公車車票計算",
+        "航運費用計算"
+      ],
+      "categories": [
+        "114/114年A縣市題目",
+        "114/114年新北市國中"
+      ],
+      "sourceContentHash": {
+        "28": "7b12c8ac11b9603c695200ade16ae3be77a6d78fb0e4b9006973707c4b36b9f9",
+        "41": "2d9d36d0180d377da74b31e6cfcbbc6422607221757879c17dc5e0f9223f0f36"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依原站範例明定在 10 號站上下車不算跨越、12 歲以下指未滿 12 歲；新北市國中「航運費用計算」規則與範例相同（20 站、排水量未滿 12 半價），併入本題。"
+    },
+    {
+      "pyjudgeId": 241,
+      "title": "幸運數字彩虹樂透",
+      "sourceIds": [
+        "29"
+      ],
+      "sourceTitles": [
+        "幸運數字彩虹樂透"
+      ],
+      "categories": [
+        "114/114年A縣市題目"
+      ],
+      "sourceContentHash": {
+        "29": "c89d92693442c7e6bb5faecf333d45b6614c6eaf2b3c808852146223e3efc1d8"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理獎項表，補上每種對中個數的測資。"
+    },
+    {
+      "pyjudgeId": 242,
+      "title": "我的健康小管家",
+      "sourceIds": [
+        "30",
+        "42"
+      ],
+      "sourceTitles": [
+        "我的健康小管家",
+        "我的健康小管家"
+      ],
+      "categories": [
+        "114/114年A縣市題目",
+        "114/114年新北市國中"
+      ],
+      "sourceContentHash": {
+        "30": "b3dd82825446a5efcf7a659f67a63d5959eb014c1b3f5672bea0e1d1f832ad26",
+        "42": "686d7966200c29c488cd66d49083b99463e3f6e03a9813ead6360a61ea44c00e"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併 A 縣市與新北市國中的同一題；兩站對取整方式說法不同，採新北市版的四捨五入，測資避開 .5 平手。"
+    },
+    {
+      "pyjudgeId": 243,
+      "title": "東台線上 3C 購物平台",
+      "sourceIds": [
+        "31"
+      ],
+      "sourceTitles": [
+        "東台線上 3C 購物平台"
+      ],
+      "categories": [
+        "114/114年A縣市題目"
+      ],
+      "sourceContentHash": {
+        "31": "7d023c76540d1cfece5b2e555b5eaaf522b220d940e51f6a9e74ee81258222a6"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "統一輸出為無空白格式，明定餘額剛好相等算結帳成功、可以不買任何商品。"
+    },
+    {
+      "pyjudgeId": 244,
+      "title": "程式設計師阿倫",
+      "sourceIds": [
+        "32"
+      ],
+      "sourceTitles": [
+        "程式設計師阿倫"
+      ],
+      "categories": [
+        "114/114A校校內評選"
+      ],
+      "sourceContentHash": {
+        "32": "67977052b647a9a835d87817276dfb9ded5c640f2f0c9b468193b44182d67e50"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題寫「輸入為 2 行」但實為一行三個整數，依範例修正；加上 N 的範圍限制。"
+    },
+    {
+      "pyjudgeId": 245,
+      "title": "超市採購即時通",
+      "sourceIds": [
+        "33"
+      ],
+      "sourceTitles": [
+        "超市採購即時通"
+      ],
+      "categories": [
+        "114/114A校校內評選"
+      ],
+      "sourceContentHash": {
+        "33": "b9e9b0f214db357f62c1e6efb9bf2db6da4c91869cc3c615c8c7192cedaa5d70"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定所有累積金額輸出於同一行，補上數量或單價為 0 的測資。"
+    },
+    {
+      "pyjudgeId": 246,
+      "title": "金門小三通春運調度",
+      "sourceIds": [
+        "34"
+      ],
+      "sourceTitles": [
+        "金門小三通春運調度"
+      ],
+      "categories": [
+        "114/114A校校內評選"
+      ],
+      "sourceContentHash": {
+        "34": "b77f0ba4ff48cf0d0b33bb0e319a70663288153e22e36a5634cd017769b7d41e"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依原站資料改為每小時人數各占一行；補上剛好剩 50 人、整天無人與大量積壓跨小時的測資。"
+    },
+    {
+      "pyjudgeId": 247,
+      "title": "數位能量方塊實驗",
+      "sourceIds": [
+        "35"
+      ],
+      "sourceTitles": [
+        "數位能量方塊實驗"
+      ],
+      "categories": [
+        "114/114A校校內評選"
+      ],
+      "sourceContentHash": {
+        "35": "9218aa85a1485f0e597f1babe774c45fe2ba5033ee4062bc49042ffe80a081e0"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定有效一輪會重設連續無效次數、歸零後重新計算，並說明兩同時加上的是不同的那一顆。"
+    },
+    {
+      "pyjudgeId": 248,
+      "title": "糖尿病血糖趨勢與預警分析",
+      "sourceIds": [
+        "36"
+      ],
+      "sourceTitles": [
+        "糖尿病血糖趨勢與預警分析"
+      ],
+      "categories": [
+        "114/114A校校內評選"
+      ],
+      "sourceContentHash": {
+        "36": "30b57af6f5b80fdd26d16a9a232e8ad482b03cfec9c8af824cacef99ff495b6c"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定起始值不算事件、變化量不為 0，並以「連續同號變化量總和」定義趨勢值。"
+    },
+    {
+      "pyjudgeId": 249,
+      "title": "小隊長的奇數號碼",
+      "sourceIds": [
+        "40"
+      ],
+      "sourceTitles": [
+        "小隊長的奇數號碼"
+      ],
+      "categories": [
+        "114/114年新北市國小"
+      ],
+      "sourceContentHash": {
+        "40": "73d760baf63fea03dba13063c80e9370f85cddc55f0d99599f1da39c71fd6f3d"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定範圍包含兩端點，補上端點為偶數與只有單一號碼的測資。"
+    },
+    {
+      "pyjudgeId": 250,
+      "title": "智慧倉儲",
+      "sourceIds": [
+        "43"
+      ],
+      "sourceTitles": [
+        "智慧倉儲"
+      ],
+      "categories": [
+        "114/114年新北市國中"
+      ],
+      "sourceContentHash": {
+        "43": "1cb21c3072923ed20fda693ad55fd0a6a92204fada6dbc68a4f3d2bc713562dc"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題對 30 與 80 公分的邊界前後敘述不一致，依原站範例統一為「不超過 30」「不超過 80」。"
+    },
+    {
+      "pyjudgeId": 251,
+      "title": "王牌教練",
+      "sourceIds": [
+        "44"
+      ],
+      "sourceTitles": [
+        "王牌教練"
+      ],
+      "categories": [
+        "114/114年新北市國中"
+      ],
+      "sourceContentHash": {
+        "44": "375620c0b665632082abbf90b147fbf935f40e251043c151e3a444303bcff81c"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理題意與輸入格式，補上替補選手明顯較快或較慢的測資。"
+    },
+    {
+      "pyjudgeId": 252,
+      "title": "圓柱體積計算",
+      "sourceIds": [
+        "45"
+      ],
+      "sourceTitles": [
+        "圓柱體積計算"
+      ],
+      "categories": [
+        "114/114年新竹縣國小"
+      ],
+      "sourceContentHash": {
+        "45": "b0d9b3a9ef74cc018814e3f6c26b5623dcf25a850928d5c35a777ef4702a668b"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入順序（先半徑後高）與整數範圍，以整數運算的 oracle 確認兩位小數輸出。"
+    },
+    {
+      "pyjudgeId": 253,
+      "title": "身體質量指數計算與健康判斷",
+      "sourceIds": [
+        "46"
+      ],
+      "sourceTitles": [
+        "身體質量指數計算與健康判斷"
+      ],
+      "categories": [
+        "114/114年新竹縣國小"
+      ],
+      "sourceContentHash": {
+        "46": "680599e3cf4725392b82241916bf4af20cd904fd4770abaaeafc34afd5a8bd57"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入順序與單位（先體重後身高、身高以公尺計），明定以四捨五入後的值分類並避開浮點誤差的臨界值。"
+    },
+    {
+      "pyjudgeId": 254,
+      "title": "房間磁磚的購買計算",
+      "sourceIds": [
+        "47"
+      ],
+      "sourceTitles": [
+        "房間磁磚的購買計算"
+      ],
+      "categories": [
+        "114/114年新竹縣國小"
+      ],
+      "sourceContentHash": {
+        "47": "32cd66283253f8042e1feed20da61390c50f100d34c72caf117931e8b8453fef"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入單位與小數位數，提示以公分整數計算；測資避開面積剛好整除時浮點誤差的情況。"
+    },
+    {
+      "pyjudgeId": 255,
+      "title": "美味餐車三明治多重折扣與利潤計算",
+      "sourceIds": [
+        "48"
+      ],
+      "sourceTitles": [
+        "美味餐車三明治多重折扣與利潤計算"
+      ],
+      "categories": [
+        "114/114年新竹縣國小"
+      ],
+      "sourceContentHash": {
+        "48": "8d89030f1d2bacc44381eea5ec1b3a529eaa1b5da8d829daa2897bfa244b1ce8"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依原站範例（成本 35 售價 53）確認 .5 進位；補上 11 點前不打折與打平時的輸出規則。"
+    },
+    {
+      "pyjudgeId": 256,
+      "title": "雲端資料備份硬碟統計",
+      "sourceIds": [
+        "49"
+      ],
+      "sourceTitles": [
+        "雲端資料備份硬碟統計"
+      ],
+      "categories": [
+        "114/114年新竹縣國小"
+      ],
+      "sourceContentHash": {
+        "49": "e6342a431c63e116d1c20d9859fb663001f8521b02bcaa723e09c083f1a89656"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定資料量與容量為整數、資料量為 0 時輸出 0，並統一容量不足訊息的標點。"
+    },
+    {
+      "pyjudgeId": 257,
+      "title": "綠色節能競賽：電價分段計費與成本分析",
+      "sourceIds": [
+        "50"
+      ],
+      "sourceTitles": [
+        "綠色節能競賽:電價分段計費與成本分析"
+      ],
+      "categories": [
+        "114/114年新竹縣國小"
+      ],
+      "sourceContentHash": {
+        "50": "6eb2ccae3a83c90f6a5288b9e15f675377d207784ecd1f98b429df8f26accdb1"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入輸出格式與並列時取編號較小者的規則，測資避開 x.50 元的四捨五入平手。"
+    },
+    {
+      "pyjudgeId": 258,
+      "title": "射箭比賽成績計算",
+      "sourceIds": [
+        "51"
+      ],
+      "sourceTitles": [
+        "射箭比賽成績計算"
+      ],
+      "categories": [
+        "114/114年新竹縣國中"
+      ],
+      "sourceContentHash": {
+        "51": "194bc9e970ddc02db609676c3b814a5a59635768a86ad83621be53fb1d23af19"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理規則順序，明定連續滿分優先判斷，補上全 0 分與全滿分的測資。"
+    },
+    {
+      "pyjudgeId": 259,
+      "title": "猜數字",
+      "sourceIds": [
+        "52"
+      ],
+      "sourceTitles": [
+        "猜數字"
+      ],
+      "categories": [
+        "114/114年新竹縣國中"
+      ],
+      "sourceContentHash": {
+        "52": "9a516458aa686a0ba2eb8849b66301747bfc2a64512869916bd7712128d777a0"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上每個數字為 0～9 的單一數字與 N 的上限。"
+    },
+    {
+      "pyjudgeId": 260,
+      "title": "寶可夢訓練師",
+      "sourceIds": [
+        "53"
+      ],
+      "sourceTitles": [
+        "寶可夢訓練師"
+      ],
+      "categories": [
+        "114/114年新竹縣國中"
+      ],
+      "sourceContentHash": {
+        "53": "da1f5d096da9d2fa4c162a33df324c3ea64d6532d68f52ad9691c9a13eefc71a"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定輸出為單行、依第一次出現的順序，補上數量為 0 與多字屬性名稱的測資。"
+    },
+    {
+      "pyjudgeId": 261,
+      "title": "機器人行走軌跡",
+      "sourceIds": [
+        "54"
+      ],
+      "sourceTitles": [
+        "機器人行走軌跡"
+      ],
+      "categories": [
+        "114/114年新竹縣國中"
+      ],
+      "sourceContentHash": {
+        "54": "7824bedad543ca583ca2c232ca5be2f24243ae7c18f6b0bff40f8fd6acb0ad98"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依原站範例明定起點為 (0,0)、逐步檢查邊界，並說明輸出格式。"
+    },
+    {
+      "pyjudgeId": 262,
+      "title": "學校運動會",
+      "sourceIds": [
+        "55"
+      ],
+      "sourceTitles": [
+        "學校運動會"
+      ],
+      "categories": [
+        "114/114年新竹縣國中"
+      ],
+      "sourceContentHash": {
+        "55": "88a84ca622ac1a18feb7abb3c400ecda9430901c71d804581237133902500ed6"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "說明四捨五入取整數的意義，補上偶數班級數與分數順序不同的測資。"
+    },
+    {
+      "pyjudgeId": 263,
+      "title": "機器人跳樓梯",
+      "sourceIds": [
+        "56"
+      ],
+      "sourceTitles": [
+        "機器人跳樓梯"
+      ],
+      "categories": [
+        "114/114年新竹縣國中"
+      ],
+      "sourceContentHash": {
+        "56": "60bf37e41b6cb4f967d9c5eb1bd02718ed2204a2a17ae7fbe089360eb25386fc"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上跳法順序不同即視為不同的說明與範例；oracle 在小範圍以遞迴枚舉驗證。"
+    },
+    {
+      "pyjudgeId": 264,
+      "title": "資訊競賽獎勵統計",
+      "sourceIds": [
+        "57",
+        "64"
+      ],
+      "sourceTitles": [
+        "資訊競賽獎勵統計",
+        "資訊競賽獎勵統計"
+      ],
+      "categories": [
+        "114/114年金門縣國中",
+        "114/114年金門縣國小"
+      ],
+      "sourceContentHash": {
+        "57": "83b556bbcc29f5689585bfeb391ccbb1e05746387cf89528427f029267d32a71",
+        "64": "83b556bbcc29f5689585bfeb391ccbb1e05746387cf89528427f029267d32a71"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併金門縣國中與國小的同一題；依原站資料改為所有得分在同一行，補上各級距端點測資。"
+    },
+    {
+      "pyjudgeId": 265,
+      "title": "台灣星鏈衛星佈署計畫",
+      "sourceIds": [
+        "58",
+        "65"
+      ],
+      "sourceTitles": [
+        "台灣星鏈 (T-Starlink) 衛星佈署計畫",
+        "台灣星鏈 (T-Starlink) 衛星佈署計畫"
+      ],
+      "categories": [
+        "114/114年金門縣國中",
+        "114/114年金門縣國小"
+      ],
+      "sourceContentHash": {
+        "58": "8d3a7b9b09175bddd9a74ccfd4082ad7330b4a747aeea0dd1e634b82af7b5b54",
+        "65": "b1d731ad4a49e24c107ca0096fc0bcf939db2357d56779a2c4a9485e8297fd71"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併國中版（四種模式、可有餘數）與國小版（兩種模式、整除）；明確寫出各模式公式並限制 D ≤ L。"
+    },
+    {
+      "pyjudgeId": 266,
+      "title": "「一杯心情」飲料調製",
+      "sourceIds": [
+        "59",
+        "66"
+      ],
+      "sourceTitles": [
+        "「一杯心情」飲料調製",
+        "「一杯心情」飲料調製"
+      ],
+      "categories": [
+        "114/114年金門縣國中",
+        "114/114年金門縣國小"
+      ],
+      "sourceContentHash": {
+        "59": "916cb60f7cbbdc1d559e38ff6cea54dee12cdc2427c8646d63601e1265cd24c9",
+        "66": "b91a26fc6f0e61f6a6b21649707b0063cf3de883a95122d1f0ecd77ced759ffd"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併國中版（五種原料、可同密度）與國小版（四種原料、密度不同）；依國中版資料採單行輸入。"
+    },
+    {
+      "pyjudgeId": 267,
+      "title": "猜數字小幫手",
+      "sourceIds": [
+        "60",
+        "67"
+      ],
+      "sourceTitles": [
+        "猜數字小幫手",
+        "猜數字小幫手"
+      ],
+      "categories": [
+        "114/114年金門縣國中",
+        "114/114年金門縣國小"
+      ],
+      "sourceContentHash": {
+        "60": "6a1a067d5aa9369e216148dd47d4b2b29166f637d0065bb31b3496d507f4f31d",
+        "67": "3f41d4c81ff73b84e63d033ba445a68f463ada07931db0675a1e294c40e27c63"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併國中版（輸出猜測過程與次數）與國小版（只輸出次數），採國中版並把猜測過程與次數分成兩行。"
+    },
+    {
+      "pyjudgeId": 268,
+      "title": "風獅爺排排隊",
+      "sourceIds": [
+        "61",
+        "68"
+      ],
+      "sourceTitles": [
+        "風獅爺排排隊",
+        "風獅爺排排隊"
+      ],
+      "categories": [
+        "114/114年金門縣國中",
+        "114/114年金門縣國小"
+      ],
+      "sourceContentHash": {
+        "61": "62b086098e97ae2b30996eeb1801d7d93149c7de0f82719fe563a22368c8153e",
+        "68": "d97fd47223e8d8296a596a006c3853c74162c59559dfedbb0141ebf0cb3bdb28"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "合併國中版（輸出每一輪結果）與國小版（只輸出排序結果與交換次數），採國中版；國小版兩組範例的最終序列與交換次數（6、2）與本題最後兩行一致，並收入測資。"
+    },
+    {
+      "pyjudgeId": 269,
+      "title": "金門坑道參觀系統",
+      "sourceIds": [
+        "62"
+      ],
+      "sourceTitles": [
+        "金門坑道參觀系統"
+      ],
+      "categories": [
+        "114/114年金門縣國中"
+      ],
+      "sourceContentHash": {
+        "62": "990b2f54ff87958c5d705895d16c43d3a2302a5bbaf3716d30f674920bdb2716"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理狀態轉換規則，補上 IDLE 收到 E、結束後仍有指令等測資。"
+    },
+    {
+      "pyjudgeId": 270,
+      "title": "金門坑道開關管理",
+      "sourceIds": [
+        "69"
+      ],
+      "sourceTitles": [
+        "金門坑道開關管理"
+      ],
+      "categories": [
+        "114/114年金門縣國小"
+      ],
+      "sourceContentHash": {
+        "69": "2bedda39d0a5d917987fec97b1c6c07711032505138161236ee545a325c6b7f1"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理狀態轉換規則，補上最終為開啟、連續重複指令的測資。"
+    },
+    {
+      "pyjudgeId": 271,
+      "title": "貨物重量計費",
+      "sourceIds": [
+        "70"
+      ],
+      "sourceTitles": [
+        "貨物重量計費"
+      ],
+      "categories": [
+        "114/114年新竹市國中"
+      ],
+      "sourceContentHash": {
+        "70": "7312d700fa1fc9fed48774c7c9ccf7c5dbe67400436c70320e4e715ce0fb20cd"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "以計算範例說明累進方式，補上各級距端點與 0 公斤的測資。"
+    },
+    {
+      "pyjudgeId": 272,
+      "title": "想去遊樂園",
+      "sourceIds": [
+        "71"
+      ],
+      "sourceTitles": [
+        "想去遊樂園"
+      ],
+      "categories": [
+        "114/114年新竹市國中"
+      ],
+      "sourceContentHash": {
+        "71": "2d93fb0e0f820560694d92b344bdc5a03a5871cdd55f3c5dbfc8ff366d1277ea"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定各票種年齡界線、祖孫樂為一對一配對，並補上兩園同價時的輸出。"
+    },
+    {
+      "pyjudgeId": 273,
+      "title": "我是神箭手",
+      "sourceIds": [
+        "72"
+      ],
+      "sourceTitles": [
+        "我是神箭手"
+      ],
+      "categories": [
+        "114/114年新竹市國中"
+      ],
+      "sourceContentHash": {
+        "72": "4ccabd797f9a07e8d721fe9f1c6a33dba6394435e57d6922054c5b3626485ca3"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "說明瞄準點是抵銷偏移的方向，補上風速為 0、負風速與未滿 8／10 公尺的測資。"
+    },
+    {
+      "pyjudgeId": 274,
+      "title": "會員入場統計",
+      "sourceIds": [
+        "73"
+      ],
+      "sourceTitles": [
+        "會員入場統計"
+      ],
+      "categories": [
+        "114/114年新竹市國中"
+      ],
+      "sourceContentHash": {
+        "73": "5925b7e81ea66e4e2570639a06c1434b502199e1d3c280e7dddd8c1259ee5e9e"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上沒有合法卡號時輸出「無」的規則，以及三類並列的測資。"
+    },
+    {
+      "pyjudgeId": 275,
+      "title": "買五送一",
+      "sourceIds": [
+        "74"
+      ],
+      "sourceTitles": [
+        "買五送一"
+      ],
+      "categories": [
+        "114/114年新竹市國中"
+      ],
+      "sourceContentHash": {
+        "74": "c868d93bbb2f34df43f75dca3fe68675f9a934c968d6068639627dda82d11ee0"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理題意，補上不足 6 杯、剛好 12 杯與輸入未排序的測資。"
+    },
+    {
+      "pyjudgeId": 276,
+      "title": "歡樂抽獎",
+      "sourceIds": [
+        "75"
+      ],
+      "sourceTitles": [
+        "歡樂抽獎"
+      ],
+      "categories": [
+        "114/114年新竹市國中"
+      ],
+      "sourceContentHash": {
+        "75": "7b640555adcaf2bb10569f55456838d8394323620782eb31472be79587048e0c"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定 0 為 7 的倍數，補上各種獎項與數字 0 的測資。"
+    },
+    {
+      "pyjudgeId": 277,
+      "title": "考試座位安排",
+      "sourceIds": [
+        "76"
+      ],
+      "sourceTitles": [
+        "考試座位安排"
+      ],
+      "categories": [
+        "114/114年新竹市國小"
+      ],
+      "sourceContentHash": {
+        "76": "4172474243a466057461c96a68dbb38c20c40ab55dd803bcb7d2257d41384f41"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理題意，補上單排、單欄與每排最後一個位子的測資。"
+    },
+    {
+      "pyjudgeId": 278,
+      "title": "智慧氣候監測系統：氣溫變動分析",
+      "sourceIds": [
+        "77"
+      ],
+      "sourceTitles": [
+        "智慧氣候監測系統 —— 氣溫變動分析"
+      ],
+      "categories": [
+        "114/114年新竹市國小"
+      ],
+      "sourceContentHash": {
+        "77": "ac85ef89d2fd1710527425dd5d46adecf57d86a1343abf909a01c3639dcf9361"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "刪去與解題無關的抽象化說明，補上負溫度與單筆資料的範圍與測資。"
+    },
+    {
+      "pyjudgeId": 279,
+      "title": "快遞物流中心分類系統",
+      "sourceIds": [
+        "78"
+      ],
+      "sourceTitles": [
+        "快遞物流中心分類系統"
+      ],
+      "categories": [
+        "114/114年新竹市國小"
+      ],
+      "sourceContentHash": {
+        "78": "84a3a48f6a4fd93f971f4b17b37fcb5972832da0b90ccd2c1cc1426ea1d29aaf"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "精簡題意，明定 0 屬於偶數，補上全奇、全偶與重複重量的測資。"
+    },
+    {
+      "pyjudgeId": 280,
+      "title": "寶可夢聯盟大挑戰",
+      "sourceIds": [
+        "79"
+      ],
+      "sourceTitles": [
+        "寶可夢聯盟大挑戰"
+      ],
+      "categories": [
+        "114/114年新竹市國小"
+      ],
+      "sourceContentHash": {
+        "79": "f65ba9dcc22b0cfac81f07e56d88f6bd063c6af12a81ff1c29abbd59a6dffe67"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依題目說明採每行一隻寶可夢的輸入，將 N 下限改為 2 以確保有第二名；原站單行資料以同一份解答核對。"
+    },
+    {
+      "pyjudgeId": 281,
+      "title": "省電大作戰",
+      "sourceIds": [
+        "80"
+      ],
+      "sourceTitles": [
+        "省電大作戰"
+      ],
+      "categories": [
+        "114/114年新竹市國小"
+      ],
+      "sourceContentHash": {
+        "80": "879c7095a26c13d66ffdd1aa6b97fc5bc798a0278da0eba897ba3972dc328001"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "明定冷氣一開始為關機；oracle 以開／關兩種狀態的動態規劃驗證貪心解。"
+    },
+    {
+      "pyjudgeId": 282,
+      "title": "數位顯示器",
+      "sourceIds": [
+        "81"
+      ],
+      "sourceTitles": [
+        "數位顯示器"
+      ],
+      "categories": [
+        "114/114年新竹市國小"
+      ],
+      "sourceContentHash": {
+        "81": "fd8d929862e679aa2119b218bad9a3e81ce71869015c0470ce76663f1031dfef"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題以圖片提供燈條數表，改以文字列出；明定兩位數的兩個數字不可相同。"
+    },
+    {
+      "pyjudgeId": 283,
+      "title": "零用錢是否足夠",
+      "sourceIds": [
+        "82"
+      ],
+      "sourceTitles": [
+        "零用錢是否足夠"
+      ],
+      "categories": [
+        "114/114年花蓮縣國小"
+      ],
+      "sourceContentHash": {
+        "82": "d0b9a73586ca93b080e5e9836dcf9db2dc1ad998c8321e439f60356a1651f132"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理輸入格式，補上剩餘剛好為 0 與第 2、3 天不足的測資。"
+    },
+    {
+      "pyjudgeId": 284,
+      "title": "機器人戰鬥力比對",
+      "sourceIds": [
+        "83"
+      ],
+      "sourceTitles": [
+        "機器人戰鬥力比對"
+      ],
+      "categories": [
+        "114/114年花蓮縣國小"
+      ],
+      "sourceContentHash": {
+        "83": "2688bfda7ca8d4654fdf7225030d1d477beb7b82e41ff8de43eb77576d10e166"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理輸出格式為單行，補上平手與相同戰鬥力多隻的測資。"
+    },
+    {
+      "pyjudgeId": 285,
+      "title": "字串內的秘密數字",
+      "sourceIds": [
+        "84"
+      ],
+      "sourceTitles": [
+        "字串內的秘密數字"
+      ],
+      "categories": [
+        "114/114年花蓮縣國小"
+      ],
+      "sourceContentHash": {
+        "84": "465737d4839b8c2943ef5f1e13d21c94385d9c454c23e651c94be0104ba219b2"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "把「讓角色說出」改為標準輸出，補上沒有數字與含符號的測資。"
+    },
+    {
+      "pyjudgeId": 286,
+      "title": "最佳派對地點",
+      "sourceIds": [
+        "85"
+      ],
+      "sourceTitles": [
+        "最佳派對地點"
+      ],
+      "categories": [
+        "114/114年花蓮縣國小"
+      ],
+      "sourceContentHash": {
+        "85": "9dadddd56da812ebc9da018598adced2a880d6c150389958964e51cb4807f8c2"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "把積木提示改為通用說明，補上偶數人數並列、負座標與重複座標的測資。"
+    },
+    {
+      "pyjudgeId": 287,
+      "title": "公車時刻表",
+      "sourceIds": [
+        "86"
+      ],
+      "sourceTitles": [
+        "公車時刻表"
+      ],
+      "categories": [
+        "114/114年花蓮縣國中"
+      ],
+      "sourceContentHash": {
+        "86": "cfbf3325f855f8d2d34849ef8196b439ee25412783427dd23bf6a5b20359bc55"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依原站範例明定 06:00 前到站需等到首班車，並移除未定義的末班車限制。"
+    },
+    {
+      "pyjudgeId": 288,
+      "title": "連續成績進步分析",
+      "sourceIds": [
+        "87"
+      ],
+      "sourceTitles": [
+        "連續成績進步分析"
+      ],
+      "categories": [
+        "114/114年花蓮縣國中"
+      ],
+      "sourceContentHash": {
+        "87": "84a9b5f6272c5fe45f64d564524c76638bf5ce794013f1ae61aa941282e08de5"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入格式，明定成績相同視為中斷、沒有進步時輸出 0。"
+    },
+    {
+      "pyjudgeId": 289,
+      "title": "卡住的鍵盤",
+      "sourceIds": [
+        "88"
+      ],
+      "sourceTitles": [
+        "卡住的鍵盤"
+      ],
+      "categories": [
+        "114/114年花蓮縣國中"
+      ],
+      "sourceContentHash": {
+        "88": "43007784539751b9970aa12ef619e558d01d1d329554d0f44f7fbae37d1bd122"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "統一輸出為字母與次數之間有一個空白，補上同字母分成多段與並列的測資。"
+    },
+    {
+      "pyjudgeId": 290,
+      "title": "外送員的接單策略",
+      "sourceIds": [
+        "89"
+      ],
+      "sourceTitles": [
+        "外送員的接單策略"
+      ],
+      "categories": [
+        "114/114年花蓮縣國中"
+      ],
+      "sourceContentHash": {
+        "89": "f5c4a69095f1c9079472efa2e911e8e75904bcc682fd6a662530bb5ac619d664"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "依原站資料採單行輸入所有時間；oracle 以枚舉所有子集驗證貪心解，並涵蓋開始等於結束的零長度訂單。"
+    },
+    {
+      "pyjudgeId": 291,
+      "title": "小島越野賽",
+      "sourceIds": [
+        "90"
+      ],
+      "sourceTitles": [
+        "小島越野賽(國小)"
+      ],
+      "categories": [
+        "114/114年屏東中小學"
+      ],
+      "sourceContentHash": {
+        "90": "937c555a103fc70cdd6bf9ab621b1650869ce8c78a701522c29a10f7292e7289"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "將五種走法整理為精確條件；原題列為國小題，但需要動態規劃，故歸入 LV.3。"
+    },
+    {
+      "pyjudgeId": 292,
+      "title": "基地台訊號覆蓋",
+      "sourceIds": [
+        "91"
+      ],
+      "sourceTitles": [
+        "基地台訊號覆蓋(國中)"
+      ],
+      "categories": [
+        "114/114年屏東中小學"
+      ],
+      "sourceContentHash": {
+        "91": "e7d52f257d1b6ad03b685747a513ca9689388fca16a97affa31c02c426bb9643"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "整理訊號傳播與分級規則，加上地圖大小與強度範圍。"
+    },
+    {
+      "pyjudgeId": 293,
+      "title": "考試獎勵",
+      "sourceIds": [
+        "92"
+      ],
+      "sourceTitles": [
+        "考試獎勵"
+      ],
+      "categories": [
+        "114/114年度全國賽個人賽國中組題目"
+      ],
+      "sourceContentHash": {
+        "92": "d1b171bd4124f85ccce95dcffb2959782a703341d0f361382b4764501c9b1556"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題未寫輸入格式，依原站範例補上（第一行為週數與每週娃娃點數），並明定點數足夠指大於或等於。"
+    },
+    {
+      "pyjudgeId": 294,
+      "title": "簽唱會門票",
+      "sourceIds": [
+        "93"
+      ],
+      "sourceTitles": [
+        "簽唱會門票"
+      ],
+      "categories": [
+        "114/114年度全國賽個人賽國中組題目"
+      ],
+      "sourceContentHash": {
+        "93": "dd07bc2431cf5d047176f59552eca21d187fd27d616cfb677fec7e3b0c164580"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入格式（第一行為人數上限與報名人數），並明定某組放不下時即停止、不跳過該組改邀較低積分者。"
+    },
+    {
+      "pyjudgeId": 295,
+      "title": "闖關遊戲",
+      "sourceIds": [
+        "94"
+      ],
+      "sourceTitles": [
+        "闖關遊戲"
+      ],
+      "categories": [
+        "114/114年度全國賽個人賽國中組題目"
+      ],
+      "sourceContentHash": {
+        "94": "aac2e12a17f82c9d174d9449a44e55b7c1db51c2cd05459c369082ad317e4b5a"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題以兩張圖提供房間排列與起始設定，改以文字列出；明定起始房間算第 1 次進入。"
+    },
+    {
+      "pyjudgeId": 296,
+      "title": "火星探測車",
+      "sourceIds": [
+        "95"
+      ],
+      "sourceTitles": [
+        "火星探測車"
+      ],
+      "categories": [
+        "114/114年度全國賽個人賽國中組題目"
+      ],
+      "sourceContentHash": {
+        "95": "d56338a1aab656583e2021f06f3cf639077e940067be0bcf34c3051d03e37294"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "補上輸入格式與每個任務最多執行一次的說明；oracle 以枚舉所有子集驗證。"
+    },
+    {
+      "pyjudgeId": 297,
+      "title": "熱浪區間",
+      "sourceIds": [
+        "96"
+      ],
+      "sourceTitles": [
+        "熱浪區間"
+      ],
+      "categories": [
+        "114/114年度全國賽個人賽國中組題目"
+      ],
+      "sourceContentHash": {
+        "96": "a283583b0212b95da5377ce676677731303b3b5219a9db78d699500cb43d5023"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題未定義同長度熱浪的選擇方式；依原站兩組範例推定「長度最大 → 起始日最早 → 結束日最早」並明列，補上不存在熱浪時輸出 0 0。"
+    },
+    {
+      "pyjudgeId": 298,
+      "title": "運動會",
+      "sourceIds": [
+        "102"
+      ],
+      "sourceTitles": [
+        "運動會"
+      ],
+      "categories": [
+        "114/114年度全國賽個人賽國小組題目"
+      ],
+      "sourceContentHash": {
+        "102": "140c542bb460f5fa69d6fcb15dc423bbecc69b8ed11f960510f577e3ec7052f7"
+      },
+      "reviewedAt": "2026-11-18",
+      "adaptation": "原題以表格圖片說明，改以文字範例；補上每群至少一班與人數為 0 的測資。"
+    }
+  ],
+  "skipped": [
+    {
+      "sourceId": "7",
+      "title": "最大公因數",
+      "reason": "與既有 Judge-003「最大公因數」重複（多數求最大公因數可視為延伸，暫不另立新題）"
+    },
+    {
+      "sourceId": "97",
+      "title": "訊息傳遞",
+      "reason": "全國賽國小組紙筆測驗：看圖作答的多小題題組，無標準輸入輸出，不適合 Judge 自動評測"
+    },
+    {
+      "sourceId": "98",
+      "title": "神奇表格",
+      "reason": "全國賽國小組紙筆測驗：看圖作答的多小題題組，無標準輸入輸出，不適合 Judge 自動評測"
+    },
+    {
+      "sourceId": "99",
+      "title": "動物樂園",
+      "reason": "全國賽國小組紙筆測驗：看圖作答的多小題題組，無標準輸入輸出，不適合 Judge 自動評測"
+    },
+    {
+      "sourceId": "100",
+      "title": "冰晶王國冬季仙境圖案",
+      "reason": "全國賽國小組紙筆測驗：看圖作答的多小題題組，無標準輸入輸出，不適合 Judge 自動評測"
+    },
+    {
+      "sourceId": "101",
+      "title": "澆花問題",
+      "reason": "全國賽國小組紙筆測驗：看圖作答的多小題題組，無標準輸入輸出，不適合 Judge 自動評測"
+    }
+  ]
+}

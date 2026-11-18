@@ -1,0 +1,105 @@
+{
+  "id": 233,
+  "title": "遊樂場",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "數學",
+    "最小值",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "比較不同購票方式找出最便宜的總價",
+    "用 min 找出可組成的親子套票數"
+  ],
+  "prerequisites": [
+    "四則運算",
+    "min 函式"
+  ],
+  "description": "<p class='problem-lead'>計算兒童與成人購買遊樂園門票的最優惠總價。</p><p>兒童票每張 400 元，成人票每張 500 元；親子套票組含 1 張兒童票與 1 張成人票，每組 800 元。輸入兒童與成人人數，請輸出最便宜的總票價。</p>",
+  "inputFormat": "<p>第一行為兒童人數，第二行為成人人數。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最優惠的總票價。</p>",
+  "constraints": "<ul><li>0 ≤ 兒童人數、成人人數 ≤ 1000</li></ul>",
+  "hint": "<p>一組套票比分開買便宜多少？能組幾組就組幾組嗎？</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n5",
+      "output": "4000"
+    },
+    {
+      "input": "6\n3",
+      "output": "3600"
+    },
+    {
+      "input": "0\n0",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "5\n5",
+  "sampleOutput": "4000",
+  "testCases": [
+    {
+      "input": "5\n5",
+      "output": "4000"
+    },
+    {
+      "input": "6\n3",
+      "output": "3600"
+    },
+    {
+      "input": "0\n0",
+      "output": "0"
+    },
+    {
+      "input": "1\n0",
+      "output": "400"
+    },
+    {
+      "input": "0\n1",
+      "output": "500"
+    },
+    {
+      "input": "1\n1",
+      "output": "800"
+    },
+    {
+      "input": "3\n6",
+      "output": "3900"
+    },
+    {
+      "input": "1000\n1000",
+      "output": "800000"
+    },
+    {
+      "input": "1000\n0",
+      "output": "400000"
+    },
+    {
+      "input": "0\n1000",
+      "output": "500000"
+    },
+    {
+      "input": "7\n2",
+      "output": "3600"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "21"
+    ],
+    "sourceTitle": "遊樂場 (Amusement Park)",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=21"
+    ],
+    "categories": [
+      "114/114年台南市國中"
+    ],
+    "adaptation": "補上輸入順序（先兒童後成人）與人數為 0 的測資。"
+  }
+}

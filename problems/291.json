@@ -1,0 +1,110 @@
+{
+  "id": 291,
+  "title": "小島越野賽",
+  "stage": "Advanced",
+  "difficulty": "Easy",
+  "audienceLevel": "M-8",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "動態規劃",
+    "最短路徑",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "依位置記錄到達該格的最少時間",
+    "由每一格嘗試所有合法走法並更新後面的格子"
+  ],
+  "prerequisites": [
+    "清單",
+    "迴圈",
+    "if 條件"
+  ],
+  "description": "<p class='problem-lead'>依地形選擇走法，求機器人從第 1 格到最後一格的最少秒數。</p><p>一條路由 N 格組成，每格有一個高度。機器人站在第 1 格，要走到第 N 格。設目前高度為 h，可用的走法有：</p><p>平地衝刺（1 秒）：前方第 1、2 格都與 h 一樣高時，直接到前方第 2 格。爬小階梯（1 秒）：前方第 1 格與 h 的高度差在 1 以內時，前進 1 格。動力大跳躍（3 秒）：前方第 1 格比 h 高 2 或以上時，前進 1 格。跨越坑洞（2 秒）：前方第 1 格比 h 矮、且前方第 2 格與 h 一樣高時，直接到前方第 2 格。深谷急降（1 秒）：前方第 1 格比 h 低 2 或以上時，前進 1 格。請輸出到達最後一格的最少秒數。</p>",
+  "inputFormat": "<p>第一行為格數 N。第二行有 N 個以空白分隔的整數，依序為每格的高度。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最少秒數。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 1000</li><li>0 ≤ 高度 ≤ 100</li></ul>",
+  "hint": "<p>用 cost[i] 記錄到第 i 格的最少秒數，從前往後更新 cost[i+1] 與 cost[i+2]。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n1 1 1 2",
+      "output": "2"
+    },
+    {
+      "input": "4\n3 1 3 6",
+      "output": "5"
+    },
+    {
+      "input": "5\n4 1 2 3 1",
+      "output": "4"
+    }
+  ],
+  "sampleInput": "4\n1 1 1 2",
+  "sampleOutput": "2",
+  "testCases": [
+    {
+      "input": "4\n1 1 1 2",
+      "output": "2"
+    },
+    {
+      "input": "4\n3 1 3 6",
+      "output": "5"
+    },
+    {
+      "input": "5\n4 1 2 3 1",
+      "output": "4"
+    },
+    {
+      "input": "3\n1 1 1",
+      "output": "1"
+    },
+    {
+      "input": "2\n1 2",
+      "output": "1"
+    },
+    {
+      "input": "1\n5",
+      "output": "0"
+    },
+    {
+      "input": "2\n1 3",
+      "output": "3"
+    },
+    {
+      "input": "2\n9 1",
+      "output": "1"
+    },
+    {
+      "input": "5\n2 2 2 2 2",
+      "output": "2"
+    },
+    {
+      "input": "7\n5 1 5 1 5 1 5",
+      "output": "6"
+    },
+    {
+      "input": "6\n1 3 5 7 9 11",
+      "output": "15"
+    },
+    {
+      "input": "8\n3 2 3 3 3 0 3 9",
+      "output": "8"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "90"
+    ],
+    "sourceTitle": "小島越野賽(國小)",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=90"
+    ],
+    "categories": [
+      "114/114年屏東中小學"
+    ],
+    "adaptation": "將五種走法整理為精確條件；原題列為國小題，但需要動態規劃，故歸入 LV.3。"
+  }
+}

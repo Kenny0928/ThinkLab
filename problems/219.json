@@ -1,0 +1,106 @@
+{
+  "id": 219,
+  "title": "短片欣賞",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "滑動視窗",
+    "字串",
+    "計數"
+  ],
+  "learningObjectives": [
+    "枚舉所有長度為 K 的連續區段",
+    "在區段中計數指定字母並取最大值"
+  ],
+  "prerequisites": [
+    "清單切片",
+    "巢狀迴圈",
+    "最大值"
+  ],
+  "description": "<p class='problem-lead'>找出連續看 K 場短片時，最多能看到幾次最喜歡的系列。</p><p>圖書館依序播放 N 場短片，每場以一個大寫英文字母代表所屬系列。娜娜可以挑選任一個起點，連續觀看剛好 K 場。</p><p>請計算她最多能看到幾場最喜歡的系列。例如序列 <code>A B C A W A Q A</code>、K = 5、最喜歡 A，從第 4 場開始看可以看到 3 次 A。</p>",
+  "inputFormat": "<p>第一行為場次數 N。第二行有 N 個以空白分隔的大寫英文字母。第三行為整數 K 與最喜歡的系列字母，以空白分隔。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最多能看到的次數。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 20</li><li>1 ≤ K ≤ N</li><li>字母皆為 A～Z 的大寫字母</li></ul>",
+  "hint": "<p>起點可以從第 1 場一路試到第 N − K + 1 場。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "8\nA B C A W A Q A\n5 A",
+      "output": "3"
+    },
+    {
+      "input": "3\nX G X\n2 X",
+      "output": "1"
+    },
+    {
+      "input": "1\nA\n1 A",
+      "output": "1"
+    }
+  ],
+  "sampleInput": "8\nA B C A W A Q A\n5 A",
+  "sampleOutput": "3",
+  "testCases": [
+    {
+      "input": "8\nA B C A W A Q A\n5 A",
+      "output": "3"
+    },
+    {
+      "input": "3\nX G X\n2 X",
+      "output": "1"
+    },
+    {
+      "input": "1\nA\n1 A",
+      "output": "1"
+    },
+    {
+      "input": "1\nA\n1 B",
+      "output": "0"
+    },
+    {
+      "input": "5\nA A A A A\n5 A",
+      "output": "5"
+    },
+    {
+      "input": "5\nB B B B B\n3 A",
+      "output": "0"
+    },
+    {
+      "input": "6\nA B A B A B\n1 A",
+      "output": "1"
+    },
+    {
+      "input": "20\nA B A B A B A B A B A B A B A B A B A B\n20 B",
+      "output": "10"
+    },
+    {
+      "input": "7\nC C D D D C C\n3 C",
+      "output": "2"
+    },
+    {
+      "input": "7\nC C D D D C C\n4 D",
+      "output": "3"
+    },
+    {
+      "input": "10\nZ Y Z Z Y Y Z Z Z Y\n4 Z",
+      "output": "3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "6"
+    ],
+    "sourceTitle": "短片欣賞",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=6"
+    ],
+    "categories": [
+      "114/師大題目"
+    ],
+    "adaptation": "原題以圖片說明範例，改以文字敘述；補上輸入格式與 K ≤ N 的限制。"
+  }
+}

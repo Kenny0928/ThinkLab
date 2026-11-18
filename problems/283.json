@@ -1,0 +1,106 @@
+{
+  "id": 283,
+  "title": "零用錢是否足夠",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "迴圈",
+    "條件判斷",
+    "提前結束"
+  ],
+  "learningObjectives": [
+    "依序扣除每天的花費",
+    "在第一次不足時立即輸出並停止"
+  ],
+  "prerequisites": [
+    "迴圈",
+    "if",
+    "break"
+  ],
+  "description": "<p class='problem-lead'>依序扣除 4 天的花費，判斷零用錢在哪一天不夠用。</p><p>從零用錢總額開始，依序扣除第 1 到第 4 天的花費。若某天扣除後剩餘金額小於 0，立即輸出 <code>第X天不夠用</code>（X 為該天）；若 4 天都能扣完，輸出 <code>錢剛好或有剩</code>。</p>",
+  "inputFormat": "<p>第一行為零用錢總額。第二行有 4 個以空白分隔的整數，依序為第 1～4 天的花費。</p>",
+  "outputFormat": "<p>輸出 <code>第X天不夠用</code> 或 <code>錢剛好或有剩</code>，沒有空白。</p>",
+  "constraints": "<ul><li>0 ≤ 零用錢 ≤ 10000</li><li>0 ≤ 每天花費 ≤ 10000</li></ul>",
+  "hint": "<p>剩餘金額剛好等於 0 時仍然夠用。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "100\n20 30 40 20",
+      "output": "第4天不夠用"
+    },
+    {
+      "input": "100\n10 20 30 40",
+      "output": "錢剛好或有剩"
+    },
+    {
+      "input": "5\n6 10 10 10",
+      "output": "第1天不夠用"
+    }
+  ],
+  "sampleInput": "100\n20 30 40 20",
+  "sampleOutput": "第4天不夠用",
+  "testCases": [
+    {
+      "input": "100\n20 30 40 20",
+      "output": "第4天不夠用"
+    },
+    {
+      "input": "100\n10 20 30 40",
+      "output": "錢剛好或有剩"
+    },
+    {
+      "input": "5\n6 10 10 10",
+      "output": "第1天不夠用"
+    },
+    {
+      "input": "100\n25 25 25 25",
+      "output": "錢剛好或有剩"
+    },
+    {
+      "input": "0\n0 0 0 0",
+      "output": "錢剛好或有剩"
+    },
+    {
+      "input": "0\n0 0 0 1",
+      "output": "第4天不夠用"
+    },
+    {
+      "input": "10000\n10000 0 0 0",
+      "output": "錢剛好或有剩"
+    },
+    {
+      "input": "10\n3 3 3 2",
+      "output": "第4天不夠用"
+    },
+    {
+      "input": "10\n3 3 3 1",
+      "output": "錢剛好或有剩"
+    },
+    {
+      "input": "50\n10 50 0 0",
+      "output": "第2天不夠用"
+    },
+    {
+      "input": "7\n0 0 8 0",
+      "output": "第3天不夠用"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "82"
+    ],
+    "sourceTitle": "零用錢是否足夠",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=82"
+    ],
+    "categories": [
+      "114/114年花蓮縣國小"
+    ],
+    "adaptation": "整理輸入格式，補上剩餘剛好為 0 與第 2、3 天不足的測資。"
+  }
+}

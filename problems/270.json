@@ -1,0 +1,102 @@
+{
+  "id": 270,
+  "title": "金門坑道開關管理",
+  "stage": "Beginner",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "模擬",
+    "布林變數",
+    "條件判斷"
+  ],
+  "learningObjectives": [
+    "用布林變數記錄開關狀態",
+    "只在狀態由關閉變為開啟時計數"
+  ],
+  "prerequisites": [
+    "布林值",
+    "if/else",
+    "迴圈"
+  ],
+  "description": "<p class='problem-lead'>依開關指令模擬坑道狀態，輸出最終狀態與成功開放的次數。</p><p>坑道一開始是 <code>CLOSED</code>。指令 O 代表開啟、C 代表關閉。關閉時收到 O 會轉為 <code>OPEN</code>，並記錄一次成功開放；開啟時收到 C 會轉為 <code>CLOSED</code>；其他情況狀態不變。請輸出最終狀態與成功開放的總次數。</p>",
+  "inputFormat": "<p>第一行為指令數 N。第二行有 N 個以空白分隔的大寫字母（O 或 C）。</p>",
+  "outputFormat": "<p>輸出最終狀態（<code>OPEN</code> 或 <code>CLOSED</code>）與成功開放次數，以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li></ul>",
+  "hint": "<p>已經開著時再收到 O，不算一次新的開放。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\nO C O O C",
+      "output": "CLOSED 2"
+    },
+    {
+      "input": "4\nC O C C",
+      "output": "CLOSED 1"
+    },
+    {
+      "input": "1\nO",
+      "output": "OPEN 1"
+    }
+  ],
+  "sampleInput": "5\nO C O O C",
+  "sampleOutput": "CLOSED 2",
+  "testCases": [
+    {
+      "input": "5\nO C O O C",
+      "output": "CLOSED 2"
+    },
+    {
+      "input": "4\nC O C C",
+      "output": "CLOSED 1"
+    },
+    {
+      "input": "1\nO",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "1\nC",
+      "output": "CLOSED 0"
+    },
+    {
+      "input": "3\nO O O",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "4\nO C O C",
+      "output": "CLOSED 2"
+    },
+    {
+      "input": "5\nC C C C O",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "6\nO C O C O C",
+      "output": "CLOSED 3"
+    },
+    {
+      "input": "2\nC O",
+      "output": "OPEN 1"
+    },
+    {
+      "input": "7\nO O C C O O O",
+      "output": "OPEN 2"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "69"
+    ],
+    "sourceTitle": "金門坑道開關管理",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=69"
+    ],
+    "categories": [
+      "114/114年金門縣國小"
+    ],
+    "adaptation": "整理狀態轉換規則，補上最終為開啟、連續重複指令的測資。"
+  }
+}

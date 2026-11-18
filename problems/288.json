@@ -1,0 +1,102 @@
+{
+  "id": 288,
+  "title": "連續成績進步分析",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "連段",
+    "前後比較",
+    "最大值"
+  ],
+  "learningObjectives": [
+    "比較相鄰兩天找出連續進步的段落",
+    "在中斷時重設計數並追蹤最大值"
+  ],
+  "prerequisites": [
+    "清單索引",
+    "迴圈",
+    "max"
+  ],
+  "description": "<p class='problem-lead'>找出成績連續進步的最長天數。</p><p>老師記錄了 N 天的測驗成績。從第 2 天起，若當天成績大於前一天，算一天「成績進步」；沒有比前一天高（含相同）就中斷連續進步。請輸出連續成績進步的最長天數（第 1 天不列入計算），若沒有任何進步則輸出 0。</p>",
+  "inputFormat": "<p>第一行為天數 N。第二行有 N 個以空白分隔的整數成績。</p>",
+  "outputFormat": "<p>輸出一個整數，代表最長連續進步天數。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 1000</li><li>0 ≤ 成績 ≤ 100</li></ul>",
+  "hint": "<p>用一個計數器：進步就加 1，否則歸零，每次都和最大值比較。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "5\n60 65 70 68 72",
+      "output": "2"
+    },
+    {
+      "input": "5\n50 60 55 56 57",
+      "output": "2"
+    },
+    {
+      "input": "5\n100 90 80 80 70",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "5\n60 65 70 68 72",
+  "sampleOutput": "2",
+  "testCases": [
+    {
+      "input": "5\n60 65 70 68 72",
+      "output": "2"
+    },
+    {
+      "input": "5\n50 60 55 56 57",
+      "output": "2"
+    },
+    {
+      "input": "5\n100 90 80 80 70",
+      "output": "0"
+    },
+    {
+      "input": "5\n60 60 60 60 60",
+      "output": "0"
+    },
+    {
+      "input": "1\n50",
+      "output": "0"
+    },
+    {
+      "input": "2\n1 2",
+      "output": "1"
+    },
+    {
+      "input": "2\n2 1",
+      "output": "0"
+    },
+    {
+      "input": "6\n1 2 3 4 5 6",
+      "output": "5"
+    },
+    {
+      "input": "8\n5 6 6 7 8 9 1 2",
+      "output": "3"
+    },
+    {
+      "input": "7\n10 20 10 20 30 40 30",
+      "output": "3"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "87"
+    ],
+    "sourceTitle": "連續成績進步分析",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=87"
+    ],
+    "categories": [
+      "114/114年花蓮縣國中"
+    ],
+    "adaptation": "補上輸入格式，明定成績相同視為中斷、沒有進步時輸出 0。"
+  }
+}

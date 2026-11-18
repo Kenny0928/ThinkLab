@@ -1,0 +1,102 @@
+{
+  "id": 275,
+  "title": "買五送一",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "排序",
+    "取餘數",
+    "累加"
+  ],
+  "learningObjectives": [
+    "將價格由高到低排序",
+    "用位置的餘數找出免費的杯數"
+  ],
+  "prerequisites": [
+    "sort",
+    "enumerate",
+    "取餘數"
+  ],
+  "description": "<p class='problem-lead'>依「每滿 6 杯第 6 杯免費」的規則計算飲料總價。</p><p>把所有飲料依價格由高到低排列，第 6、12、18……杯免費，其餘照價計算。請輸出應付的總金額。</p>",
+  "inputFormat": "<p>第一行為杯數 N。第二行有 N 個以空白分隔的整數，代表每杯飲料的價格。</p>",
+  "outputFormat": "<p>輸出一個整數，代表應付總金額。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>1 ≤ 價格 ≤ 1000</li></ul>",
+  "hint": "<p>排序後第 i 杯（從 1 開始數）若 i 除以 6 的餘數為 0 就免費。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "6\n80 70 60 50 40 30",
+      "output": "300"
+    },
+    {
+      "input": "9\n30 30 30 30 30 40 40 40 40",
+      "output": "280"
+    },
+    {
+      "input": "1\n50",
+      "output": "50"
+    }
+  ],
+  "sampleInput": "6\n80 70 60 50 40 30",
+  "sampleOutput": "300",
+  "testCases": [
+    {
+      "input": "6\n80 70 60 50 40 30",
+      "output": "300"
+    },
+    {
+      "input": "9\n30 30 30 30 30 40 40 40 40",
+      "output": "280"
+    },
+    {
+      "input": "1\n50",
+      "output": "50"
+    },
+    {
+      "input": "5\n10 20 30 40 50",
+      "output": "150"
+    },
+    {
+      "input": "6\n1 1 1 1 1 1",
+      "output": "5"
+    },
+    {
+      "input": "12\n1 2 3 4 5 6 7 8 9 10 11 12",
+      "output": "70"
+    },
+    {
+      "input": "7\n100 1 100 1 100 1 100",
+      "output": "402"
+    },
+    {
+      "input": "13\n1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000",
+      "output": "11000"
+    },
+    {
+      "input": "6\n30 40 50 60 70 80",
+      "output": "300"
+    },
+    {
+      "input": "11\n5 9 3 7 1 8 2 6 4 10 11",
+      "output": "60"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "74"
+    ],
+    "sourceTitle": "買五送一",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=74"
+    ],
+    "categories": [
+      "114/114年新竹市國中"
+    ],
+    "adaptation": "整理題意，補上不足 6 杯、剛好 12 杯與輸入未排序的測資。"
+  }
+}

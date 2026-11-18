@@ -1,0 +1,101 @@
+{
+  "id": 252,
+  "title": "圓柱體積計算",
+  "stage": "Beginner",
+  "difficulty": "Easy",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "數學",
+    "四則運算",
+    "格式化輸出"
+  ],
+  "learningObjectives": [
+    "套用圓柱體積公式",
+    "以固定兩位小數輸出結果"
+  ],
+  "prerequisites": [
+    "乘法",
+    "格式化輸出"
+  ],
+  "description": "<p class='problem-lead'>計算圓柱體的體積。</p><p>圓柱體積 = 底面半徑 × 底面半徑 × 圓周率 × 高，圓周率固定使用 3.14。輸入半徑與高，請輸出體積，固定顯示到小數點後兩位。</p>",
+  "inputFormat": "<p>第一行為底面半徑，第二行為高，皆為正整數。</p>",
+  "outputFormat": "<p>輸出體積，固定兩位小數，例如 <code>197.82</code>。</p>",
+  "constraints": "<ul><li>1 ≤ 半徑 ≤ 100</li><li>1 ≤ 高 ≤ 100</li></ul>",
+  "hint": "<p>用 <code>f\"{volume:.2f}\"</code> 可以固定輸出兩位小數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n7",
+      "output": "197.82"
+    },
+    {
+      "input": "9\n9",
+      "output": "2289.06"
+    },
+    {
+      "input": "1\n1",
+      "output": "3.14"
+    }
+  ],
+  "sampleInput": "3\n7",
+  "sampleOutput": "197.82",
+  "testCases": [
+    {
+      "input": "3\n7",
+      "output": "197.82"
+    },
+    {
+      "input": "9\n9",
+      "output": "2289.06"
+    },
+    {
+      "input": "1\n1",
+      "output": "3.14"
+    },
+    {
+      "input": "10\n1",
+      "output": "314.00"
+    },
+    {
+      "input": "1\n10",
+      "output": "31.40"
+    },
+    {
+      "input": "100\n100",
+      "output": "3140000.00"
+    },
+    {
+      "input": "5\n2",
+      "output": "157.00"
+    },
+    {
+      "input": "7\n3",
+      "output": "461.58"
+    },
+    {
+      "input": "12\n5",
+      "output": "2260.80"
+    },
+    {
+      "input": "50\n37",
+      "output": "290450.00"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "45"
+    ],
+    "sourceTitle": "圓柱體積計算",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=45"
+    ],
+    "categories": [
+      "114/114年新竹縣國小"
+    ],
+    "adaptation": "補上輸入順序（先半徑後高）與整數範圍，以整數運算的 oracle 確認兩位小數輸出。"
+  }
+}

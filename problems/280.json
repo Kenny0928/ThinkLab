@@ -1,0 +1,102 @@
+{
+  "id": 280,
+  "title": "寶可夢聯盟大挑戰",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "E-UPPER",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "多分支條件",
+    "排序",
+    "第二大值"
+  ],
+  "learningObjectives": [
+    "依條件決定加成倍率並計算戰鬥力",
+    "找出第二大的值並輸出對應資料"
+  ],
+  "prerequisites": [
+    "if/elif",
+    "清單",
+    "sort"
+  ],
+  "description": "<p class='problem-lead'>計算每隻寶可夢的戰鬥力，派出戰鬥力第二高的寶可夢。</p><p>戰鬥力 =（攻擊力 + 防禦力）× 戰技加成。攻擊力大於防禦力時加成為 2，相等時為 3，小於時為 1。</p><p>請輸出戰鬥力第二高的寶可夢的名稱、攻擊力、防禦力與戰鬥力。保證每隻寶可夢的戰鬥力都不相同。</p>",
+  "inputFormat": "<p>第一行為寶可夢數量 N。接下來 N 行，每行為「名稱 攻擊力 防禦力」，以空白分隔。</p>",
+  "outputFormat": "<p>輸出一行四個欄位：名稱 攻擊力 防禦力 戰鬥力，以一個空白分隔。</p>",
+  "constraints": "<ul><li>2 ≤ N ≤ 100</li><li>1 ≤ 攻擊力、防禦力 ≤ 100</li><li>名稱不含空白，長度 ≤ 20</li><li>戰鬥力互不相同</li></ul>",
+  "hint": "<p>把（戰鬥力, 名稱, 攻擊力, 防禦力）放進清單由大到小排序，第二個就是答案。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "4\n皮卡丘 10 5\n小火龍 7 7\n傑尼龜 6 9\n伊布 8 8",
+      "output": "小火龍 7 7 42"
+    },
+    {
+      "input": "5\n妙蛙種子 6 6\n波波 5 3\n可達鴨 4 7\n尼多力諾 9 4\n喵喵 3 3",
+      "output": "尼多力諾 9 4 26"
+    },
+    {
+      "input": "2\n甲 1 1\n乙 2 1",
+      "output": "乙 2 1 6"
+    }
+  ],
+  "sampleInput": "4\n皮卡丘 10 5\n小火龍 7 7\n傑尼龜 6 9\n伊布 8 8",
+  "sampleOutput": "小火龍 7 7 42",
+  "testCases": [
+    {
+      "input": "4\n皮卡丘 10 5\n小火龍 7 7\n傑尼龜 6 9\n伊布 8 8",
+      "output": "小火龍 7 7 42"
+    },
+    {
+      "input": "5\n妙蛙種子 6 6\n波波 5 3\n可達鴨 4 7\n尼多力諾 9 4\n喵喵 3 3",
+      "output": "尼多力諾 9 4 26"
+    },
+    {
+      "input": "2\n甲 1 1\n乙 2 1",
+      "output": "乙 2 1 6"
+    },
+    {
+      "input": "2\n甲 100 100\n乙 100 99",
+      "output": "乙 100 99 398"
+    },
+    {
+      "input": "3\n甲 1 100\n乙 100 1\n丙 50 50",
+      "output": "乙 100 1 202"
+    },
+    {
+      "input": "3\n甲 5 6\n乙 6 5\n丙 3 9",
+      "output": "丙 3 9 12"
+    },
+    {
+      "input": "4\n卡比獸 90 90\n胖丁 1 2\n快龍 99 98\n超夢 100 100",
+      "output": "卡比獸 90 90 540"
+    },
+    {
+      "input": "3\nA 10 20\nB 20 10\nC 15 15",
+      "output": "B 20 10 60"
+    },
+    {
+      "input": "5\n一號 1 2\n二號 2 3\n三號 3 4\n四號 4 5\n五號 5 7",
+      "output": "四號 4 5 9"
+    },
+    {
+      "input": "3\n大 100 1\n中 50 49\n小 1 100",
+      "output": "中 50 49 198"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "79"
+    ],
+    "sourceTitle": "寶可夢聯盟大挑戰",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=79"
+    ],
+    "categories": [
+      "114/114年新竹市國小"
+    ],
+    "adaptation": "依題目說明採每行一隻寶可夢的輸入，將 N 下限改為 2 以確保有第二名；原站單行資料以同一份解答核對。"
+  }
+}

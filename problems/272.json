@@ -1,0 +1,110 @@
+{
+  "id": 272,
+  "title": "想去遊樂園",
+  "stage": "Intermediate",
+  "difficulty": "Medium",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "多分支條件",
+    "計數",
+    "比較"
+  ],
+  "learningObjectives": [
+    "依不同規則分別計算兩種方案的總價",
+    "處理「一位長者帶一位幼童免費」的配對優惠"
+  ],
+  "prerequisites": [
+    "if/elif",
+    "min 函式",
+    "取餘數"
+  ],
+  "description": "<p class='problem-lead'>比較兩間遊樂園的總票價，輸出較便宜的一間與金額。</p><p>大人國：13 歲以上（含 65 歲以上長者）全票 599 元，12 歲以下半票 299 元。祖孫樂優惠：每一位 65 歲以上長者可免費帶一位 6 歲以下兒童。</p><p>七福村：年齡為 7 的倍數者免費；其餘 10 歲以上全票 499 元，9 歲以下半票 299 元。請分別算出全家在兩間的總價，輸出較便宜的園名與金額；若金額相同，輸出 <code>一樣</code> 與金額。</p>",
+  "inputFormat": "<p>第一行為同行人數 N。第二行有 N 個以空白分隔的整數，代表每位同行者的年齡。</p>",
+  "outputFormat": "<p>輸出園名（<code>大人國</code>、<code>七福村</code> 或 <code>一樣</code>）與金額，以一個空白分隔。</p>",
+  "constraints": "<ul><li>1 ≤ N ≤ 100</li><li>1 ≤ 年齡 ≤ 120</li></ul>",
+  "hint": "<p>大人國能免費的兒童數 = min(65 歲以上人數, 6 歲以下人數)。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "3\n70 5 10",
+      "output": "七福村 798"
+    },
+    {
+      "input": "4\n65 5 10 12",
+      "output": "大人國 1197"
+    },
+    {
+      "input": "1\n7",
+      "output": "七福村 0"
+    }
+  ],
+  "sampleInput": "3\n70 5 10",
+  "sampleOutput": "七福村 798",
+  "testCases": [
+    {
+      "input": "3\n70 5 10",
+      "output": "七福村 798"
+    },
+    {
+      "input": "4\n65 5 10 12",
+      "output": "大人國 1197"
+    },
+    {
+      "input": "1\n7",
+      "output": "七福村 0"
+    },
+    {
+      "input": "1\n30",
+      "output": "七福村 499"
+    },
+    {
+      "input": "1\n12",
+      "output": "大人國 299"
+    },
+    {
+      "input": "2\n65 6",
+      "output": "大人國 599"
+    },
+    {
+      "input": "2\n65 7",
+      "output": "七福村 499"
+    },
+    {
+      "input": "3\n80 3 4",
+      "output": "大人國 898"
+    },
+    {
+      "input": "4\n66 67 2 3",
+      "output": "大人國 1198"
+    },
+    {
+      "input": "2\n13 9",
+      "output": "七福村 798"
+    },
+    {
+      "input": "5\n35 70 14 21 28",
+      "output": "七福村 0"
+    },
+    {
+      "input": "3\n64 6 1",
+      "output": "七福村 1097"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "71"
+    ],
+    "sourceTitle": "想去遊樂園",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=71"
+    ],
+    "categories": [
+      "114/114年新竹市國中"
+    ],
+    "adaptation": "明定各票種年齡界線、祖孫樂為一對一配對，並補上兩園同價時的輸出。"
+  }
+}

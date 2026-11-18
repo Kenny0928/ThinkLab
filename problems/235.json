@@ -1,0 +1,110 @@
+{
+  "id": 235,
+  "title": "質數和",
+  "stage": "Intermediate",
+  "difficulty": "Easy",
+  "audienceLevel": "M-7",
+  "apcsLevel": null,
+  "platformMode": "Python",
+  "tags": [
+    "質數",
+    "巢狀迴圈",
+    "累加"
+  ],
+  "learningObjectives": [
+    "以試除法判斷質數",
+    "在範圍內累加符合條件的數"
+  ],
+  "prerequisites": [
+    "巢狀迴圈",
+    "取餘數",
+    "布林旗標"
+  ],
+  "description": "<p class='problem-lead'>計算兩個正整數之間（含兩端）所有質數的和。</p><p>質數是大於 1、且除了 1 和本身以外沒有其他因數的整數（1 不是質數）。輸入兩個由小到大的正整數 A、B，請輸出 A 到 B 之間所有質數的總和；若沒有質數則輸出 0。</p>",
+  "inputFormat": "<p>第一行為 A，第二行為 B。</p>",
+  "outputFormat": "<p>輸出一個整數，代表質數的總和。</p>",
+  "constraints": "<ul><li>1 ≤ A ≤ B ≤ 100</li></ul>",
+  "hint": "<p>判斷 x 是否為質數時，只要檢查 2 到 x−1 有沒有能整除 x 的數。</p>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "samples": [
+    {
+      "input": "21\n30",
+      "output": "52"
+    },
+    {
+      "input": "13\n19",
+      "output": "49"
+    },
+    {
+      "input": "54\n58",
+      "output": "0"
+    }
+  ],
+  "sampleInput": "21\n30",
+  "sampleOutput": "52",
+  "testCases": [
+    {
+      "input": "21\n30",
+      "output": "52"
+    },
+    {
+      "input": "13\n19",
+      "output": "49"
+    },
+    {
+      "input": "54\n58",
+      "output": "0"
+    },
+    {
+      "input": "1\n1",
+      "output": "0"
+    },
+    {
+      "input": "1\n2",
+      "output": "2"
+    },
+    {
+      "input": "2\n2",
+      "output": "2"
+    },
+    {
+      "input": "4\n4",
+      "output": "0"
+    },
+    {
+      "input": "1\n100",
+      "output": "1060"
+    },
+    {
+      "input": "97\n100",
+      "output": "97"
+    },
+    {
+      "input": "90\n96",
+      "output": "0"
+    },
+    {
+      "input": "2\n3",
+      "output": "5"
+    },
+    {
+      "input": "24\n28",
+      "output": "0"
+    }
+  ],
+  "source": {
+    "site": "bdesigner",
+    "sourceId": [
+      "23"
+    ],
+    "sourceTitle": "質數和 (Prime Sum)",
+    "sourceUrl": [
+      "https://bdesigner.star-kids.info/blockly2/index34.php?value=23"
+    ],
+    "categories": [
+      "114/114年台南市國中"
+    ],
+    "adaptation": "將埃拉托賽尼篩法的說明改為質數定義，明定範圍包含兩端與 1 不是質數。"
+  }
+}
