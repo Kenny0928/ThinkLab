@@ -345,6 +345,26 @@ test('Blockly native prompt block maps directly to Python input without printing
   h.workspace.dispose();
 });
 
+test('Blockly rounding block rounds in decimal, truncates toward zero and pads fixed digits', async () => {
+  const h = blocklyHarness();
+  const number = NUM => ({ block: { type: 'math_number', fields: { NUM } } });
+  const cases = [
+    ['ROUND_HALF_UP', number(2.675), 2, 'NUMBER', '2.68'], ['ROUND_HALF_UP', number(2.5), 0, 'NUMBER', '3'],
+    ['ROUND_HALF_UP', number(-2.5), 0, 'NUMBER', '-3'], ['ROUND_HALF_UP', number(3.1), 2, 'FIXED', '3.10'],
+    ['ROUND_HALF_UP', number(3.1), 2, 'NUMBER', '3.1'], ['ROUND_DOWN', number(3.79), 1, 'NUMBER', '3.7'],
+    ['ROUND_DOWN', number(-3.7), 0, 'NUMBER', '-3'], ['ROUND_UP', number(3.01), 0, 'NUMBER', '4'],
+    ['ROUND_UP', number(1234), -2, 'NUMBER', '1300'], ['ROUND_HALF_UP', number(-0.001), 2, 'FIXED', '0.00'],
+    ['ROUND_HALF_UP', { block: { type: 'text', fields: { TEXT: '1.005' } } }, 2, 'FIXED', '1.01'], ['ROUND_DOWN', number(7), 2, 'FIXED', '7.00']
+  ];
+  const blocks = cases.map(([MODE, VALUE, NUM, SHOW]) => ({ type: 'judge_print', fields: { END: 'SPACE' }, inputs: { VALUE: { block: {
+    type: 'judge_round', fields: { MODE, SHOW }, inputs: { VALUE, DIGITS: { block: { type: 'math_number', fields: { NUM } } } } } } } }));
+  for (let i = 1; i < blocks.length; i++) blocks[i - 1].next = { block: blocks[i] };
+  await h.request('init', { state: { format: 'skilllab-blockly', version: 1, workspace: { blocks: { languageVersion: 0, blocks: [blocks[0]] } } } });
+  const code = (await h.request('snapshot')).code;
+  assert.equal(execute(code, ''), cases.map(item => item[4] + ' ').join(''));
+  h.workspace.dispose();
+});
+
 (async () => {
   let failed = 0;
   for (const { name, run } of tests) {

@@ -31,10 +31,14 @@
   // True guarantees the matching 轉成 block succeeds; scientific notation, inf and nan are not numbers here.
   const isNumberDefinitions = `import math as _skilllab_math\nimport re as _skilllab_re\ndef _skilllab_is_number(value, integer):\n    if isinstance(value, bool):\n        return False\n    if isinstance(value, int):\n        return True\n    if isinstance(value, float):\n        return _skilllab_math.isfinite(value) and (not integer or value.is_integer())\n    if not isinstance(value, str):\n        return False\n    pattern = r'[+-]?[0-9]+' if integer else r'[+-]?([0-9]+\\.?[0-9]*|\\.[0-9]+)'\n    return _skilllab_re.fullmatch(pattern, value.strip()) is not None\n`;
   const ioDefinitions = `import io as _skilllab_io\nimport sys as _skilllab_sys\n_skilllab_stream = _skilllab_io.StringIO(_skilllab_sys.stdin.read(), newline=None)\ndef _skilllab_line():\n    line = _skilllab_stream.readline()\n    if line == '':\n        raise EOFError('題目輸入已讀完')\n    return line.rstrip('\\n').rstrip('\\r')\ndef _skilllab_token():\n    token = ''\n    while True:\n        char = _skilllab_stream.read(1)\n        if not char:\n            if token: return token\n            raise EOFError('題目輸入已讀完')\n        if char.isspace():\n            if token: return token\n        else:\n            token += char\n`;
+  // 「取到小數第幾位」：用 decimal 依十進位計算，避免 round(2.675, 2) 變成 2.67 這類二進位誤差，
+  // 也避開 Python round() 的「五取偶」。規則與 Excel 的 ROUND／ROUNDDOWN／ROUNDUP 相同（負數向 0 或遠離 0）。
+  const roundDefinitions = `import decimal as _skilllab_decimal\ndef _skilllab_round(value, digits, mode, fixed):\n    digits = int(digits)\n    number = _skilllab_decimal.Decimal(value if isinstance(value, (int, str)) else repr(float(value)))\n    context = _skilllab_decimal.Context(prec=200)\n    result = number.scaleb(digits).quantize(_skilllab_decimal.Decimal(1), rounding=mode, context=context).scaleb(-digits)\n    if result == 0:\n        result = abs(result)\n    if digits <= 0:\n        result = int(result)\n        return str(result) if fixed else result\n    result = result.quantize(_skilllab_decimal.Decimal(1).scaleb(-digits), context=context)\n    return format(result, 'f') if fixed else float(result)\n`;
   Blockly.defineBlocksWithJsonArray([
     ...inputTypes.map(({type, label, output, tooltip}) => ({ type, message0: label, output, colour: 190, tooltip })),
     { type: 'judge_print', message0: '輸出答案 %1 %2', args0: [{ type: 'input_value', name: 'VALUE' }, { type: 'field_dropdown', name: 'END', options: [['然後換行', 'NEWLINE'], ['後面加空格', 'SPACE'], ['不換行', 'NONE']] }], previousStatement: null, nextStatement: null, colour: 190, tooltip: '把值寫到程式的輸出結果。通常保持「然後換行」即可。' },
     { type: 'judge_number', message0: '轉成 %1 %2', args0: [{ type: 'field_dropdown', name: 'KIND', options: [['整數', 'int'], ['小數', 'float']] }, { type: 'input_value', name: 'VALUE' }], output: 'Number', colour: 230 },
+    { type: 'judge_round', message0: '%1 %2 取到小數第 %3 位 %4', args0: [{ type: 'field_dropdown', name: 'MODE', options: [['四捨五入', 'ROUND_HALF_UP'], ['無條件捨去', 'ROUND_DOWN'], ['無條件進位', 'ROUND_UP']] }, { type: 'input_value', name: 'VALUE' }, { type: 'input_value', name: 'DIGITS', check: 'Number' }, { type: 'field_dropdown', name: 'SHOW', options: [['結果是數字', 'NUMBER'], ['補 0 到固定位數（文字）', 'FIXED']] }], inputsInline: true, output: null, colour: 230, tooltip: '位數填 2 是取到小數第 2 位；填 0 是取到整數；填 -1 是取到十位。「結果是數字」可以繼續計算，3.10 會顯示成 3.1；「補 0 到固定位數」會得到文字「3.10」，適合直接輸出。負數：捨去和進位以 0 為基準，例如 -3.7 無條件捨去得 -3。' },
     { type: 'judge_is_number', message0: '%1 是 %2 嗎？', args0: [{ type: 'input_value', name: 'VALUE' }, { type: 'field_dropdown', name: 'KIND', options: [['數字', 'NUMBER'], ['整數', 'INTEGER']] }], inputsInline: true, output: 'Boolean', colour: 230, tooltip: '回傳真或假。文字或數字都能檢查：「12」「-3」「3.5」是數字；「abc」「2a」、空白文字不是。選「整數」時，「3.5」不算。結果為真時，「轉成」積木一定能轉換成功。' }
   ]);
   inputTypes.forEach(({type, code}) => {
@@ -51,6 +55,12 @@
     const value = generator.valueToCode(block, 'VALUE', order.NONE) || "''";
     return [`_skilllab_is_number(${value}, ${block.getFieldValue('KIND') === 'INTEGER' ? 'True' : 'False'})`, order.FUNCTION_CALL];
   };
+  generator.forBlock.judge_round = block => {
+    generator.definitions_['skilllab_round'] = roundDefinitions;
+    const value = generator.valueToCode(block, 'VALUE', order.NONE) || '0';
+    const digits = generator.valueToCode(block, 'DIGITS', order.NONE) || '0';
+    return [`_skilllab_round(${value}, ${digits}, '${block.getFieldValue('MODE')}', ${block.getFieldValue('SHOW') === 'FIXED' ? 'True' : 'False'})`, order.FUNCTION_CALL];
+  };
   // Blockly's native prompt block is the beginner-facing equivalent of Python
   // input(). Its visible prompt makes the block readable, but is deliberately
   // omitted from generated code so judge output is not polluted.
@@ -59,7 +69,9 @@
       return [block.getFieldValue('TYPE') === 'NUMBER' ? 'float(input())' : 'input()', order.FUNCTION_CALL];
     };
   });
-  const block = type => ({ kind: 'block', type });
+  const block = type => type === 'judge_round'
+    ? { kind: 'block', type, inputs: { DIGITS: { shadow: { type: 'math_number', fields: { NUM: 2 } } } } }
+    : { kind: 'block', type };
   const category = (name, colour, types) => ({ kind: 'category', name, colour, contents: types.map(block) });
   const ioCategory = {
     kind: 'category', name: '讀取／輸出', colour: '#167a88', contents: [
@@ -78,7 +90,7 @@
       ioCategory,
       category('判斷', '#5568a9', ['controls_if', 'logic_compare', 'logic_operation', 'logic_negate', 'logic_boolean', 'logic_ternary', 'judge_is_number']),
       category('迴圈', '#408f5a', ['controls_repeat_ext', 'controls_whileUntil', 'controls_for', 'controls_forEach', 'controls_flow_statements']),
-      category('數學', '#5663b0', ['math_number', 'math_arithmetic', 'math_modulo', 'math_single', 'math_round', 'math_number_property', 'math_on_list', 'math_constrain']),
+      category('數學', '#5663b0', ['math_number', 'math_arithmetic', 'math_modulo', 'math_single', 'math_round', 'judge_round', 'math_number_property', 'math_on_list', 'math_constrain']),
       category('文字', '#258878', ['text', 'text_join', 'text_append', 'text_length', 'text_isEmpty', 'text_indexOf', 'text_charAt', 'text_getSubstring', 'text_changeCase', 'text_trim', 'text_count', 'text_replace', 'text_reverse']),
       category('清單', '#805da8', ['lists_create_with', 'lists_repeat', 'lists_length', 'lists_isEmpty', 'lists_indexOf', 'lists_getIndex', 'lists_setIndex', 'lists_getSublist', 'lists_split', 'lists_sort', 'lists_reverse']),
       { kind: 'category', name: '變數', custom: 'VARIABLE', colour: '#a05f22' },
